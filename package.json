@@ -1,0 +1,31 @@
+{
+  "name": "iDioma",
+  "version": "1.0.0",
+  "description": "An app that connects language learners",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VictoriousResistance/iDioma.git"
+  },
+  "author": "See contributors",
+  "contributors": [
+    "Ashwin Ravi <ash.s.ravi@gmail.com>",
+    "Muhammad Naqvi <naqvi.muhammad@gmail.com>",
+    "Reina Mei <reinameic@gmail.com>"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VictoriousResistance/iDioma/issues"
+  },
+  "homepage": "https://github.com/VictoriousResistance/iDioma#readme",
+  "devDependencies": {
+    "eslint": "^2.8.0",
+    "eslint-config-airbnb": "^8.0.0",
+    "eslint-plugin-import": "^1.6.0",
+    "eslint-plugin-jsx-a11y": "^1.0.3",
+    "eslint-plugin-react": "^5.0.1"
+  }
+}
