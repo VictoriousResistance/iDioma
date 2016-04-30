@@ -6,6 +6,6 @@ import App from '../app.jsx';
 describe('app', function () {
   it('renders without issues', function () {
     const app = TestUtils.renderIntoDocument(<App/>);
-    expect(app).toBeDefined();
+    expect(app).to.be.defined;
   });
 });

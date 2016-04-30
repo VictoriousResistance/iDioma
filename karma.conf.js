@@ -6,12 +6,12 @@ module.exports = function (config) {
   config.set({
     browsers: [process.env.TRAVIS ? 'Firefox' : 'Chrome'], // Run tests in browser
     singleRun: true, //just run once by default
-    frameworks: [ 'mocha' ], //use the mocha test framework
+    frameworks: [ 'mocha', 'chai' ], //use the mocha test framework
     files: [
-      'client/tests.webpack.js' // load entry points for our tests
+      'client/tests/tests.webpack.js' // load entry points for our tests
     ],
     preprocessors: {
-      'client/tests.webpack.js': [ 'webpack', 'sourcemap' ], // Preprocess test files with webpack and sourcemap-loader plugins
+      'client/tests/tests.webpack.js': [ 'webpack', 'sourcemap' ], // Preprocess test files with webpack and sourcemap-loader plugins
     },
     reporters: [ 'spec' ], // We'll use the spec reporter rather than the default 'dots' or 'progress' reporters.
     specReporter: {
