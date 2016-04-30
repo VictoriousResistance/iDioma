@@ -1,14 +1,17 @@
 import { connect } from 'react-redux';
-import Persons from '../components/Persons.jsx';
+import Matches from '../components/Matches.jsx';
 
 
 const mapStateToProps = (state) => (
   {
-    persons: state.matches,
+    matches: state.matches,
   }
 );
 
-const Matches = connect(mapStateToProps)(Persons);
+const mapDispatchToProps = (dispatch) = (
+  {
 
-export default Matches;
+  }
+);
 
+export default connect(mapStateToProps, mapDispatchToProps)(Matches);
