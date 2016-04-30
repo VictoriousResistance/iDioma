@@ -11,6 +11,7 @@ import Matches from './containers/Matches.jsx';
 
 window.__INITIAL_STATE__ = {
   user: {
+    id: 1,
     firstName: 'Lach',
     lastName: 'Zester',
     canTeach: [
@@ -26,6 +27,7 @@ window.__INITIAL_STATE__ = {
   },
   connections: [
     {
+      id: 2,
       firstName: 'Mo',
       lastName: 'Naqvi',
       canTeach: [
@@ -39,6 +41,7 @@ window.__INITIAL_STATE__ = {
       ],
     },
     {
+      id: 3,
       firstName: 'Mo',
       lastName: 'Naqvi',
       canTeach: [
@@ -52,6 +55,7 @@ window.__INITIAL_STATE__ = {
       ],
     },
     {
+      id: 4,
       firstName: 'Mo',
       lastName: 'Naqvi',
       canTeach: [
@@ -67,6 +71,7 @@ window.__INITIAL_STATE__ = {
   ],
   matches: [
     {
+      id: 5,
       firstName: 'Mo',
       lastName: 'Naqvi',
       canTeach: [
@@ -80,6 +85,7 @@ window.__INITIAL_STATE__ = {
       ],
     },
     {
+      id: 6,
       firstName: 'Mo',
       lastName: 'Naqvi',
       canTeach: [
@@ -93,6 +99,7 @@ window.__INITIAL_STATE__ = {
       ],
     },
     {
+      id: 7,
       firstName: 'Mo',
       lastName: 'Naqvi',
       canTeach: [
@@ -108,6 +115,7 @@ window.__INITIAL_STATE__ = {
   ],
   incomingConnectionRequests: [
     {
+      id: 8,
       firstName: 'Add',
       lastName: 'Me',
       canTeach: [
@@ -121,6 +129,7 @@ window.__INITIAL_STATE__ = {
       ],
     },
     {
+      id: 9,
       firstName: 'Add',
       lastName: 'Me',
       canTeach: [
@@ -134,6 +143,7 @@ window.__INITIAL_STATE__ = {
       ],
     },
     {
+      id: 10,
       firstName: 'Add',
       lastName: 'Me',
       canTeach: [
