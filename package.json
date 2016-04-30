@@ -4,9 +4,9 @@
   "description": "An app that connects language learners",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack -d && node server/index.js",
-    "dev-start": "webpack -d && nodemon server/index.js"
+    "dev-start": "webpack -d && nodemon server/index.js",
+    "test": "karma start"
   },
   "repository": {
     "type": "git",
@@ -24,11 +24,22 @@
   },
   "homepage": "https://github.com/VictoriousResistance/iDioma#readme",
   "devDependencies": {
+    "chai": "^3.5.0",
     "eslint": "^2.8.0",
     "eslint-config-airbnb": "^8.0.0",
     "eslint-plugin-import": "^1.6.0",
     "eslint-plugin-jsx-a11y": "^1.0.3",
-    "eslint-plugin-react": "^5.0.1"
+    "eslint-plugin-react": "^5.0.1",
+    "karma": "^0.13.22",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-mocha": "^0.2.2",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-spec-reporter": "0.0.26",
+    "karma-webpack": "^1.7.0",
+    "mocha": "^2.4.5",
+    "react-addons-test-utils": "^15.0.0"
   },
   "dependencies": {
     "babel-core": "^6.7.7",
