@@ -4,7 +4,7 @@ webpackConfig.entry = {};
 
 module.exports = function (config) {
   config.set({
-    browsers: ['Chrome'], // Run tests in Chrome
+    browsers: [process.env.TRAVIS ? 'Firefox' : 'Chrome'], // Run tests in browser
     singleRun: true, //just run once by default
     frameworks: [ 'mocha' ], //use the mocha test framework
     files: [
