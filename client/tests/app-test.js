@@ -1,7 +1,7 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
-import App from '../app.jsx';
+import App from '../components/App.jsx';
 
 describe('app', function () {
   it('renders without issues', function () {
