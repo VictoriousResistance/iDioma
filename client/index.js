@@ -12,6 +12,7 @@ import App from './components/App.jsx';
 import Connections from './containers/Connections.js';
 import ConnectionRequests from './containers/ConnectionRequests.js';
 import Matches from './containers/Matches.js';
+import Profile from './containers/Profile.js';
 
 window.__INITIAL_STATE__ = {
   profile: {
@@ -174,6 +175,7 @@ render((
         <Route path="requests" component={ConnectionRequests} />
         <Route path="connections" component={Connections} />
         <Route path="matches" component={Matches} />
+        <Route path="profile" component={Profile} />
         <Route path="*" component={Matches} />
       </Route>
     </Router>

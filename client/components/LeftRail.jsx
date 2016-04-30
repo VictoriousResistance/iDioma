@@ -12,6 +12,10 @@ const LeftRail = () => (
     <li className="left-rail-item">
       <Link to="/matches">Matches</Link>
     </li>
+    <li className="left-rail-item">
+      <Link to="/profile">My Profile</Link>
+    </li>
+
   </ul>
 );
 
