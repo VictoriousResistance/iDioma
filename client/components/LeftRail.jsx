@@ -10,7 +10,7 @@ const LeftRail = () => (
       <Link to="/connections">My Connections</Link>
     </li>
     <li className="left-rail-item">
-      <Link to="/matches">Potential Connections</Link>
+      <Link to="/matches">Matches</Link>
     </li>
   </ul>
 );

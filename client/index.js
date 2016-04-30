@@ -7,7 +7,7 @@ import {
 import App from './components/App.jsx';
 import Connections from './containers/Connections.jsx';
 import ConnectionRequests from './containers/ConnectionRequests.jsx';
-import PotentialConnections from './containers/PotentialConnections.jsx';
+import Matches from './containers/Matches.jsx';
 
 window.__INITIAL_STATE__ = {
   user: {
@@ -152,11 +152,11 @@ window.__INITIAL_STATE__ = {
 render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <IndexRoute component={PotentialConnections} />
+      <IndexRoute component={Matches} />
       <Route path="requests" component={ConnectionRequests} />
       <Route path="connections" component={Connections} />
-      <Route path="matches" component={PotentialConnections} />
-      <Route path="*" component={PotentialConnections} />
+      <Route path="matches" component={Matches} />
+      <Route path="*" component={Matches} />
     </Route>
   </Router>
 ), document.getElementById('app'));
