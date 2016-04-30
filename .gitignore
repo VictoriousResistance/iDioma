@@ -34,3 +34,4 @@ node_modules
 
 # compiled client-side javascript
 client/bundle.js
+client/bundle.js.map
