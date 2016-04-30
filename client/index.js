@@ -76,7 +76,7 @@ window.__INITIAL_STATE__ = {
   matches: [
     {
       id: 5,
-      firstName: 'Mo',
+      firstName: 'MoMatch',
       lastName: 'Naqvi',
       canTeach: [
         ['German', 'fluent'],
@@ -90,7 +90,7 @@ window.__INITIAL_STATE__ = {
     },
     {
       id: 6,
-      firstName: 'Mo',
+      firstName: 'MoMatch',
       lastName: 'Naqvi',
       canTeach: [
         ['German', 'fluent'],
@@ -104,7 +104,7 @@ window.__INITIAL_STATE__ = {
     },
     {
       id: 7,
-      firstName: 'Mo',
+      firstName: 'MoMatch',
       lastName: 'Naqvi',
       canTeach: [
         ['German', 'fluent'],

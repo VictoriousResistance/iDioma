@@ -4,11 +4,11 @@ import ConnectionRequests from '../components/ConnectionRequests.jsx';
 
 const mapStateToProps = (state) => (
   {
-    connectionRequestss: state.connectionsRequests,
+    connectionRequests: state.connectionRequests,
   }
 );
 
-const mapDispatchToProps = (dispatch) = (
+const mapDispatchToProps = (dispatch) => (
   {
 
   }
