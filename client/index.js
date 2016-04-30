@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import {
   browserHistory, Router, Route, IndexRoute,
 } from 'react-router';
@@ -32,8 +32,8 @@ window.__INITIAL_STATE__ = {
   connections: [
     {
       id: 2,
-      firstName: 'Mo',
-      lastName: 'Naqvi',
+      firstName: 'Connection',
+      lastName: 'Established',
       canTeach: [
         ['German', 'fluent'],
       ],
@@ -46,8 +46,8 @@ window.__INITIAL_STATE__ = {
     },
     {
       id: 3,
-      firstName: 'Mo',
-      lastName: 'Naqvi',
+      firstName: 'Connection',
+      lastName: 'Established',
       canTeach: [
         ['German', 'fluent'],
       ],
@@ -60,8 +60,8 @@ window.__INITIAL_STATE__ = {
     },
     {
       id: 4,
-      firstName: 'Mo',
-      lastName: 'Naqvi',
+      firstName: 'Connection',
+      lastName: 'Established',
       canTeach: [
         ['German', 'fluent'],
       ],
@@ -76,8 +76,8 @@ window.__INITIAL_STATE__ = {
   matches: [
     {
       id: 5,
-      firstName: 'MoMatch',
-      lastName: 'Naqvi',
+      firstName: 'Match',
+      lastName: 'Potential',
       canTeach: [
         ['German', 'fluent'],
       ],
@@ -90,8 +90,8 @@ window.__INITIAL_STATE__ = {
     },
     {
       id: 6,
-      firstName: 'MoMatch',
-      lastName: 'Naqvi',
+      firstName: 'Match',
+      lastName: 'Potential',
       canTeach: [
         ['German', 'fluent'],
       ],
@@ -104,8 +104,8 @@ window.__INITIAL_STATE__ = {
     },
     {
       id: 7,
-      firstName: 'MoMatch',
-      lastName: 'Naqvi',
+      firstName: 'Match',
+      lastName: 'Potential',
       canTeach: [
         ['German', 'fluent'],
       ],
