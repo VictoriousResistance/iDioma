@@ -113,7 +113,7 @@ window.__INITIAL_STATE__ = {
       ],
     },
   ],
-  incomingConnectionRequests: [
+  connectionRequests: [
     {
       id: 8,
       firstName: 'Add',

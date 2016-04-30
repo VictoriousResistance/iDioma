@@ -1,7 +1,17 @@
-import React from 'react';
+import { connect } from 'react-redux';
+import ConnectionRequests from '../components/ConnectionRequests.jsx';
 
-const ConnectionRequests = () => (
-  <div>ConnectionRequests</div>
+
+const mapStateToProps = (state) => (
+  {
+    connectionRequestss: state.connectionsRequests,
+  }
 );
 
-export default ConnectionRequests;
+const mapDispatchToProps = (dispatch) = (
+  {
+
+  }
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(ConnectionRequests);

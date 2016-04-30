@@ -1,7 +1,17 @@
-import React from 'react';
+import { connect } from 'react-redux';
+import Connections from '../components/Connections.jsx';
 
-const Connections = () => (
-  <div>Connections</div>
+
+const mapStateToProps = (state) => (
+  {
+    connections: state.connections,
+  }
 );
 
-export default Connections;
+const mapDispatchToProps = (dispatch) = (
+  {
+
+  }
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Connections);
