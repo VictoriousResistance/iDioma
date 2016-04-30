@@ -3,10 +3,10 @@ import Header from './Header.jsx';
 import LeftRail from './LeftRail.jsx';
 
 const App = (props) => (
-  <div className="App">
+  <div className="grid">
     <Header />
     <LeftRail />
-    <div className="Content">
+    <div className="col-5-6">
       {props.children}
     </div>
   </div>
