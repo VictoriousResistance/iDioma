@@ -1,5 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
+import {
+  browserHistory, Router, Route, IndexRoute,
+} from 'react-router';
+
+import App from './components/App.jsx';
+import Connections from './containers/Connections.jsx';
+import ConnectionRequests from './containers/ConnectionRequests.jsx';
+import PotentialConnections from './containers/PotentialConnections.jsx';
 
 window.__INITIAL_STATE__ = {
   user: {
@@ -98,6 +106,60 @@ window.__INITIAL_STATE__ = {
       ],
     },
   ],
+  incomingConnectionRequests: [
+    {
+      firstName: 'Add',
+      lastName: 'Me',
+      canTeach: [
+        ['German', 'fluent'],
+      ],
+      willLearn: [
+        ['French', 'basic'],
+      ],
+      interests: [
+        'music',
+      ],
+    },
+    {
+      firstName: 'Add',
+      lastName: 'Me',
+      canTeach: [
+        ['German', 'fluent'],
+      ],
+      willLearn: [
+        ['French', 'basic'],
+      ],
+      interests: [
+        'music',
+      ],
+    },
+    {
+      firstName: 'Add',
+      lastName: 'Me',
+      canTeach: [
+        ['German', 'fluent'],
+      ],
+      willLearn: [
+        ['French', 'basic'],
+      ],
+      interests: [
+        'music',
+      ],
+    },
+  ],
 };
 
-render((<div>Hi</div>), document.getElementById('app'));
+render((
+  <Router history={browserHistory}>
+    <Route path="/" component={App}>
+      <IndexRoute component={PotentialConnections} />
+      <Route path="requests" component={ConnectionRequests} />
+      <Route path="connections" component={Connections} />
+      <Route path="matches" component={PotentialConnections} />
+      <Route path="*" component={PotentialConnections} />
+    </Route>
+  </Router>
+), document.getElementById('app'));
+
+
+

@@ -2,12 +2,12 @@ import React from 'react';
 import Header from './Header.jsx';
 import LeftRail from './LeftRail.jsx';
 
-const App = () => (
+const App = (props) => (
   <div className="App">
     <Header />
     <LeftRail />
     <div className="Content">
-      {this.props.children}
+      {props.children}
     </div>
   </div>
 );
