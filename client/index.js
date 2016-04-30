@@ -1,13 +1,17 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
 import {
   browserHistory, Router, Route, IndexRoute,
 } from 'react-router';
 
+import rootReducer from './reducers/index.js';
+
 import App from './components/App.jsx';
-import Connections from './containers/Connections.jsx';
-import ConnectionRequests from './containers/ConnectionRequests.jsx';
-import Matches from './containers/Matches.jsx';
+import Connections from './containers/Connections.js';
+import ConnectionRequests from './containers/ConnectionRequests.js';
+import Matches from './containers/Matches.js';
 
 window.__INITIAL_STATE__ = {
   profile: {
@@ -159,16 +163,21 @@ window.__INITIAL_STATE__ = {
   ],
 };
 
+const initialState = __INITIAL_STATE__;
+
+const store = createStore(rootReducer, initialState);
 render((
-  <Router history={browserHistory}>
-    <Route path="/" component={App}>
-      <IndexRoute component={Matches} />
-      <Route path="requests" component={ConnectionRequests} />
-      <Route path="connections" component={Connections} />
-      <Route path="matches" component={Matches} />
-      <Route path="*" component={Matches} />
-    </Route>
-  </Router>
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <Route path="/" component={App}>
+        <IndexRoute component={Matches} />
+        <Route path="requests" component={ConnectionRequests} />
+        <Route path="connections" component={Connections} />
+        <Route path="matches" component={Matches} />
+        <Route path="*" component={Matches} />
+      </Route>
+    </Router>
+  </Provider>
 ), document.getElementById('app'));
 
 
