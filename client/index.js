@@ -10,7 +10,7 @@ import ConnectionRequests from './containers/ConnectionRequests.jsx';
 import Matches from './containers/Matches.jsx';
 
 window.__INITIAL_STATE__ = {
-  user: {
+  profile: {
     id: 1,
     firstName: 'Lach',
     lastName: 'Zester',
