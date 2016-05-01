@@ -4,16 +4,16 @@ import { Link } from 'react-router';
 const LeftRail = () => (
   <ul className="col-1-6">
     <li className="left-rail-item">
-      <Link to="/requests">Connection Requests</Link>
+      <Link to="/home/requests">Connection Requests</Link>
     </li>
     <li className="left-rail-item">
-      <Link to="/connections">My Connections</Link>
+      <Link to="/home/connections">My Connections</Link>
     </li>
     <li className="left-rail-item">
-      <Link to="/matches">Matches</Link>
+      <Link to="/home/matches">Matches</Link>
     </li>
     <li className="left-rail-item">
-      <Link to="/profile">My Profile</Link>
+      <Link to="/home/profile">My Profile</Link>
     </li>
 
   </ul>
