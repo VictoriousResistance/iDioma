@@ -35,3 +35,6 @@ node_modules
 # compiled client-side javascript
 client/bundle.js
 client/bundle.js.map
+
+# App ID and secret
+server/auth/config.js
