@@ -13,6 +13,8 @@ app.get('/home/*', function(req, res) {
   res.sendFile(path.resolve(__dirname, '..', 'client', 'index.html'));
 });
 
-app.listen(3000, function() {
-  console.log('iDioma listening on http://localhost:3000, Ctrl + C to stop');
+var port = process.env.PORT ? process.env.PORT : 3000;
+
+app.listen(port, function() {
+  console.log('iDioma listening, Ctrl + C to stop');
 });
