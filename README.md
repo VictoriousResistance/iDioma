@@ -19,7 +19,7 @@ An app that connects language learners
 ## Requirements
 
 Node v5.8  
-Xcode v7.3
+Webpack  
 
 ## Tech Stack
 - [React](https://facebook.github.io/react/) and [Redux](http://redux.js.org/)
@@ -32,12 +32,6 @@ Xcode v7.3
 
 ## Development
 
-### Setting up React Native:
-(If you don't have Homebrew installed, go to http://brew.sh/ to install Homebrew.)
-```sh
-brew install watchman
-npm install -g react-native-cli
-```
 
 
 ### Installing Dependencies
@@ -54,7 +48,7 @@ npm install
   - __Scrum Master__: Ashwin Ravi
 
 ## Current Build Health [![Build Status](https://travis-ci.org/VictoriousResistance/iDioma.svg?branch=master)](https://travis-ci.org/VictoriousResistance/iDioma)
-View the build [history]](https://travis-ci.org/VictoriousResistance/iDioma/builds) 
+View the build [history](https://travis-ci.org/VictoriousResistance/iDioma/builds) 
 
 ## Roadmap
 
