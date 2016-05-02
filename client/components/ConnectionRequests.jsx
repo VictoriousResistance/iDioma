@@ -5,7 +5,7 @@ const ConnectionRequest = ({ connectionRequest }) => (
     <div>{connectionRequest.firstName + ' ' + connectionRequest.lastName}</div>
     <div>{connectionRequest.canTeach}</div>
     <div>{connectionRequest.willLearn}</div>
-    <div>{connectionRequest.interests}</div>
+    <div>{connectionRequest.description}</div>
   </div>
 );
 

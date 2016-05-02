@@ -5,7 +5,7 @@ const Match = ({ match }) => (
     <div>{match.firstName + ' ' + match.lastName}</div>
     <div>{match.canTeach}</div>
     <div>{match.willLearn}</div>
-    <div>{match.interests}</div>
+    <div>{match.description}</div>
   </div>
 );
 

@@ -1,15 +1,27 @@
 var express = require('express');
-var rewrite = require('express-urlrewrite');
-
-
+var bodyParser = require('body-parser');
+var session = require('express-session');
+var passport = require('passport');
 
 var app = express();
 
-// app.use(rewrite('/*', '/'));
+app.use(session({
+  secret: 'victoriousresistance',
+  resave: true, 
+  saveUninitialized: false
+}));
 
-app.use(express.static(__dirname + '/../client'));
-// app.use('/*', express.static(__dirname + '/../client'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.listen(3000, function() {
-  console.log('iDioma listening on http://localhost:3000, Ctrl + C to stop');
+app.use(passport.initialize());
+app.use(passport.session());
+
+//router
+require('./routes.js')(app, express);
+
+var port = process.env.PORT ? process.env.PORT : 8080;
+
+app.listen(port, function() {
+  console.log('iDioma listening on port: ' + port);
 });

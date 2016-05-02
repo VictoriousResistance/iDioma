@@ -5,7 +5,7 @@ const Connection = ({ connection }) => (
     <div>{connection.firstName + ' ' + connection.lastName}</div>
     <div>{connection.canTeach}</div>
     <div>{connection.willLearn}</div>
-    <div>{connection.interests}</div>
+    <div>{connection.description}</div>
   </div>
 );
 

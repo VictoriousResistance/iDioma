@@ -26,9 +26,7 @@ window.__INITIAL_STATE__ = {
     willLearn: [
       ['German', 'basic'],
     ],
-    interests: [
-      'computer science', 'house music',
-    ],
+    description: 'i wanna learn',
   },
   connections: [
     {
@@ -41,9 +39,7 @@ window.__INITIAL_STATE__ = {
       willLearn: [
         ['French', 'basic'],
       ],
-      interests: [
-        'music',
-      ],
+      description: 'sup',
     },
     {
       id: 3,
@@ -55,9 +51,7 @@ window.__INITIAL_STATE__ = {
       willLearn: [
         ['French', 'basic'],
       ],
-      interests: [
-        'music',
-      ],
+      description: 'musical genius',
     },
     {
       id: 4,
@@ -69,9 +63,7 @@ window.__INITIAL_STATE__ = {
       willLearn: [
         ['French', 'basic'],
       ],
-      interests: [
-        'music',
-      ],
+      description: 'sup',
     },
   ],
   matches: [
@@ -85,9 +77,7 @@ window.__INITIAL_STATE__ = {
       willLearn: [
         ['French', 'basic'],
       ],
-      interests: [
-        'music',
-      ],
+      description: 'sup',
     },
     {
       id: 6,
@@ -99,9 +89,7 @@ window.__INITIAL_STATE__ = {
       willLearn: [
         ['French', 'basic'],
       ],
-      interests: [
-        'music',
-      ],
+      description: 'sup',
     },
     {
       id: 7,
@@ -113,9 +101,7 @@ window.__INITIAL_STATE__ = {
       willLearn: [
         ['French', 'basic'],
       ],
-      interests: [
-        'music',
-      ],
+      description: 'sup',
     },
   ],
   connectionRequests: [
@@ -129,9 +115,7 @@ window.__INITIAL_STATE__ = {
       willLearn: [
         ['French', 'basic'],
       ],
-      interests: [
-        'music',
-      ],
+      description: 'sup',
     },
     {
       id: 9,
@@ -143,9 +127,7 @@ window.__INITIAL_STATE__ = {
       willLearn: [
         ['French', 'basic'],
       ],
-      interests: [
-        'music',
-      ],
+      description: 'sup',
     },
     {
       id: 10,
@@ -157,9 +139,7 @@ window.__INITIAL_STATE__ = {
       willLearn: [
         ['French', 'basic'],
       ],
-      interests: [
-        'music',
-      ],
+      description: 'sup',
     },
   ],
 };
@@ -172,10 +152,10 @@ render((
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={Matches} />
-        <Route path="requests" component={ConnectionRequests} />
-        <Route path="connections" component={Connections} />
-        <Route path="matches" component={Matches} />
-        <Route path="profile" component={Profile} />
+        <Route path="home/requests" component={ConnectionRequests} />
+        <Route path="home/connections" component={Connections} />
+        <Route path="home/matches" component={Matches} />
+        <Route path="home/profile" component={Profile} />
         <Route path="*" component={Matches} />
       </Route>
     </Router>
