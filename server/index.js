@@ -6,7 +6,9 @@ var passport = require('passport');
 var app = express();
 
 app.use(session({
-  secret: 'victoriousresistance'
+  secret: 'victoriousresistance',
+  resave: true, 
+  saveUninitialized: false
 }));
 
 app.use(bodyParser.json());

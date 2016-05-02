@@ -5,7 +5,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 passport.use(new FacebookStrategy({
     clientID: config.ID,
     clientSecret: config.SECRET,
-    callbackURL: 'http://localhost:3000/auth/facebook/callback',
+    callbackURL: '/auth/facebook/callback',
     profileFields: ['id', 'displayName']
   },
 
@@ -13,7 +13,7 @@ passport.use(new FacebookStrategy({
     // User.findOrCreate({ facebookId: profile.id }, function (err, user) {
     //   return cb(err, user);
     // });
-    return;
+    return cb(null, profile);
   }
 ));
 
@@ -26,7 +26,9 @@ passport.deserializeUser(function(obj, cb) {
 });
 
 exports.checkAuth = function(req, res, next) {
-  if (req.session.user) {
+  if (req.session.passport ? req.session.passport.user : false) {
+    console.log('user', req.user);
+    console.log('session', req.session);
     return next();
   }
   res.redirect('/login');
@@ -34,4 +36,4 @@ exports.checkAuth = function(req, res, next) {
 
 exports.handleLogin = passport.authenticate('facebook');
 
-exports.handleCallback = passport.authenticate('facebook', { failureRedirect: '/login' });
+exports.handleCallback = passport.authenticate('facebook', { successRedirect: '/home', failureRedirect: '/login' });

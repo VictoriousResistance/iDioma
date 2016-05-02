@@ -20,7 +20,5 @@ module.exports = function(app, express) {
     res.redirect('/home');
   });
 
-  app.get('/auth/facebook/callback', auth.handleCallback, function(req, res) {
-    res.redirect('/home');
-  });
+  app.get('/auth/facebook/callback', auth.handleCallback);
 };
