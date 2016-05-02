@@ -27,7 +27,7 @@ Webpack
 - [Sequelize ORM](http://docs.sequelizejs.com/en/latest/) and [MySQL](https://www.mysql.com/)
 
 ### Schema 
-<img src="http://imgur.com/26BmdGS.png" width="500px"/>
+<img src="http://imgur.com/mhDpsEt.png" width="500px"/>
 
 ## Development
 
