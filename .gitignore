@@ -33,8 +33,7 @@ node_modules
 .node_repl_history
 
 # compiled client-side javascript
-client/bundle.js
-client/bundle.js.map
+client/dist
 
 # App ID and secret
 server/auth/config.js

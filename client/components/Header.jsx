@@ -3,7 +3,7 @@ import React from 'react';
 const Header = () => (
   <div className="header">
     <div>Header</div>
-    <a href="/login">Sign in</a>
+    <a href="/logout">Sign out</a>
   </div>
 );
 

@@ -21,4 +21,13 @@ module.exports = function(app, express) {
   });
 
   app.get('/auth/facebook/callback', auth.handleCallback);
+
+  app.get('/logout', function(req, res) {
+    req.logout();
+    req.session.destroy(function() {
+      console.log('session after logout', req.session);
+      console.log('user after logout', req.user);
+      res.redirect('/login');
+    });
+  });
 };
