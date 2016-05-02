@@ -22,7 +22,13 @@ Node v5.8
 Xcode v7.3
 
 ## Tech Stack
+- [React](https://facebook.github.io/react/) and [Redux](http://redux.js.org/)
+- [Node](https://nodejs.org/en/) and [Express](http://expressjs.com/)
+- [Sequelize ORM](http://docs.sequelizejs.com/en/latest/) and [MySQL](https://www.mysql.com/)
 
+### Schema 
+![Schema design]
+(http://imgur.com/26BmdGS.png)
 
 ## Development
 
