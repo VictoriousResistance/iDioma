@@ -1,9 +1,12 @@
 var config = require(__dirname + '/config.js');
+var passport = require('passport');
+var FacebookStrategy = require('passport-facebook').Strategy;
 
 passport.use(new FacebookStrategy({
     clientID: config.ID,
     clientSecret: config.SECRET,
-    callbackURL: "/auth/facebook/callback"
+    callbackURL: 'http://localhost:3000/auth/facebook/callback',
+    profileFields: ['id', 'displayName']
   },
 
   function(accessToken, refreshToken, profile, cb) {
@@ -29,6 +32,6 @@ exports.checkAuth = function(req, res, next) {
   res.redirect('/login');
 };
 
-exports.handleLogin = passport.authenticate('google');
+exports.handleLogin = passport.authenticate('facebook');
 
 exports.handleCallback = passport.authenticate('facebook', { failureRedirect: '/login' });
