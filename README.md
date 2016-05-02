@@ -53,9 +53,10 @@ npm install
   - __Product Owners__: Muhammad Naqvi, Reina Mei
   - __Scrum Master__: Ashwin Ravi
 
-### Current Build Health 
+## Current Build Health [![Build Status](https://travis-ci.org/VictoriousResistance/iDioma.svg?branch=master)](https://travis-ci.org/VictoriousResistance/iDioma)
+View the build [history]](https://travis-ci.org/VictoriousResistance/iDioma/builds) 
 
-### Roadmap
+## Roadmap
 
 View the project roadmap [here](https://waffle.io/VictoriousResistance/iDioma)
 [![Stories in 'Backlog'](https://badge.waffle.io/VictoriousResistance/iDioma.svg?label=Backlog&title=Backlog)](http://waffle.io/VictoriousResistance/iDioma)
