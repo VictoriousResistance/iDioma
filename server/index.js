@@ -20,7 +20,7 @@ app.use(passport.session());
 //router
 require('./routes.js')(app, express);
 
-var port = process.env.PORT ? process.env.PORT : 8080;
+var port = process.env.PORT ? process.env.PORT : 3000;
 
 app.listen(port, function() {
   console.log('iDioma listening on port: ' + port);
