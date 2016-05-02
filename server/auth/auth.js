@@ -6,7 +6,7 @@ passport.use(new FacebookStrategy({
     clientID: config.ID,
     clientSecret: config.SECRET,
     callbackURL: '/auth/facebook/callback',
-    profileFields: ['id', 'displayName']
+    profileFields: ['id', 'name']
   },
 
   function(accessToken, refreshToken, profile, cb) {
