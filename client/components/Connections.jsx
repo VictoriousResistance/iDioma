@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Connection = ({ connection, facebookId }) =>
+const Connection = ({ connection, id }) =>
 {
-  const chatroomUrl = '/chat/' + facebookId;
+  const chatroomUrl = '/chat/' + id;
   return (
     <div className="person">
       <div>{connection.firstName + ' ' + connection.lastName}</div>

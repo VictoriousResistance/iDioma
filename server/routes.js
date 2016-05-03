@@ -32,4 +32,12 @@ module.exports = function(app, express) {
       res.redirect('/login');
     });
   });
+
+  app.get('/chat/:id', function(req, res) {
+    var users = {
+      initiator: req.user,
+      recipient: req.params.id
+    };
+    res.send(users);
+  });
 };
