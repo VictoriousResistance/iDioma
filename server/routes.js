@@ -1,5 +1,6 @@
 var path = require('path');
 var auth = require(__dirname + '/auth/auth.js');
+var homeHandler = require('./homeHandler.js');
 
 module.exports = function(app, express) {
 
@@ -13,11 +14,9 @@ module.exports = function(app, express) {
     res.send('<a href="/auth/facebook">login</a>');
   });
 
-  app.use('/home', auth.checkAuth, express.static(__dirname + '/../client'));
+  app.use('/home', auth.checkAuth, homeHandler);
 
-  app.get('/home/*', auth.checkAuth, function(req, res) {
-    res.sendFile(path.resolve(__dirname, '..', 'client', 'index.html'));
-  });
+  app.get('/home/*', auth.checkAuth, homeHandler);
 
   app.get('/auth/facebook', auth.handleLogin, function(req, res) {
     res.redirect('/home');
