@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ConnectionRequest = ({ connectionRequest }) => (
-  <div>
+  <div className="person">
     <div>{connectionRequest.firstName + ' ' + connectionRequest.lastName}</div>
     <div>{connectionRequest.canTeach}</div>
     <div>{connectionRequest.willLearn}</div>
