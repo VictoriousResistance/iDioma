@@ -37,5 +37,11 @@ ul {
 }
 
 .action {
-  padding: 1em 1em;
+  display: inline-block;
+  text-align: center;
+  color: white;
+  padding: 0.5em;
+  background-color: #771333;
+  border-radius: 3px;
+  margin: 0.5em 1em 0 0;
 }
