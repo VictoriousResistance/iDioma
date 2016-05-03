@@ -150,12 +150,12 @@ const store = createStore(rootReducer, initialState);
 render((
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={App}>
-        <IndexRoute component={Matches} />
-        <Route path="home/requests" component={ConnectionRequests} />
-        <Route path="home/connections" component={Connections} />
-        <Route path="home/matches" component={Matches} />
-        <Route path="home/profile" component={Profile} />
+      <Route path="home" component={App}>
+        <IndexRoute component={Connections} />
+        <Route path="requests" component={ConnectionRequests} />
+        <Route path="connections" component={Connections} />
+        <Route path="matches" component={Matches} />
+        <Route path="profile" component={Profile} />
         <Route path="*" component={Matches} />
       </Route>
     </Router>
