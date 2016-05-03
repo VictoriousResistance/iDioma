@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Match = ({ match }) => (
-  <div>
+  <div className="person">
     <div>{match.firstName + ' ' + match.lastName}</div>
     <div>{match.canTeach}</div>
     <div>{match.willLearn}</div>
