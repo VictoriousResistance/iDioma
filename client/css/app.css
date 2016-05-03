@@ -14,17 +14,24 @@ ul {
   padding-right: 2em;
 }
 
-.profile {
+.profile-link {
   position: absolute;
   right: 0;
   top: 1em;
 }
 
 #top-bar {
-  padding: 2em;
-  padding-left: 0;
+  padding: 2em 0 1em 0;
 }
 
 #logo {
   font-size: 2em;
+}
+
+.person {
+  margin: 2em 2em 2em 0;
+}
+
+.profile {
+  margin-top: 2em;
 }

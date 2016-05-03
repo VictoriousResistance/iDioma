@@ -15,7 +15,7 @@ const TopBar = () => (
     <li className="top-bar-item">
       <Link to="/home/requests">Connection Requests</Link>
     </li>
-    <div className="profile">
+    <div className="profile-link">
       <li className="top-bar-item">
         <Link to="/home/profile">My Profile</Link>
       </li>

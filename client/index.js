@@ -39,7 +39,7 @@ window.__INITIAL_STATE__ = {
       willLearn: [
         ['French', 'basic'],
       ],
-      description: 'sup',
+      description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
     },
     {
       id: 3,
@@ -63,7 +63,7 @@ window.__INITIAL_STATE__ = {
       willLearn: [
         ['French', 'basic'],
       ],
-      description: 'sup',
+      description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
     },
   ],
   matches: [
@@ -77,7 +77,7 @@ window.__INITIAL_STATE__ = {
       willLearn: [
         ['French', 'basic'],
       ],
-      description: 'sup',
+      description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
     },
     {
       id: 6,
@@ -89,7 +89,7 @@ window.__INITIAL_STATE__ = {
       willLearn: [
         ['French', 'basic'],
       ],
-      description: 'sup',
+      description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
     },
     {
       id: 7,
@@ -101,7 +101,7 @@ window.__INITIAL_STATE__ = {
       willLearn: [
         ['French', 'basic'],
       ],
-      description: 'sup',
+      description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
     },
   ],
   connectionRequests: [
@@ -115,7 +115,7 @@ window.__INITIAL_STATE__ = {
       willLearn: [
         ['French', 'basic'],
       ],
-      description: 'sup',
+      description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
     },
     {
       id: 9,
@@ -127,7 +127,7 @@ window.__INITIAL_STATE__ = {
       willLearn: [
         ['French', 'basic'],
       ],
-      description: 'sup',
+      description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
     },
     {
       id: 10,
@@ -139,7 +139,7 @@ window.__INITIAL_STATE__ = {
       willLearn: [
         ['French', 'basic'],
       ],
-      description: 'sup',
+      description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
     },
   ],
 };
