@@ -37,3 +37,6 @@ client/dist
 
 # App ID and secret
 server/auth/config.js
+
+# Database config
+server/db/config.js
