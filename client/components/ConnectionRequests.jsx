@@ -6,6 +6,8 @@ const ConnectionRequest = ({ connectionRequest }) => (
     <div>{connectionRequest.canTeach}</div>
     <div>{connectionRequest.willLearn}</div>
     <div>{connectionRequest.description}</div>
+    <a href="#" className="action">Accept</a>
+    <a href="#" className="action">Decline</a>
   </div>
 );
 

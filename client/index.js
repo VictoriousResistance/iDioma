@@ -14,7 +14,7 @@ import ConnectionRequests from './containers/ConnectionRequests.js';
 import Matches from './containers/Matches.js';
 import Profile from './containers/Profile.js';
 
-window.__INITIAL_STATE__ = {
+window.__STATE__ = {
   profile: {
     id: 1,
     firstName: 'Lach',
@@ -144,7 +144,7 @@ window.__INITIAL_STATE__ = {
   ],
 };
 
-const initialState = __INITIAL_STATE__;
+const initialState = __STATE__;
 
 const store = createStore(rootReducer, initialState);
 render((

@@ -6,6 +6,7 @@ const Match = ({ match }) => (
     <div>{match.canTeach}</div>
     <div>{match.willLearn}</div>
     <div>{match.description}</div>
+    <a href="#" className="action">Connect</a>
   </div>
 );
 
