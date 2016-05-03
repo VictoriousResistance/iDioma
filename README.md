@@ -20,6 +20,7 @@ An app that connects language learners
 
 Node v5.8  
 Webpack  
+MySQL
 
 ## Tech Stack
 - [React](https://facebook.github.io/react/) and [Redux](http://redux.js.org/)
