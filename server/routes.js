@@ -36,7 +36,7 @@ module.exports = function(app, express) {
   app.get('/chat/:id', auth.checkAuth, function(req, res) {
     var users = {
       initiator: req.user,
-      recipient: req.params.id
+      recipientId: req.params.id
     };
     res.send(users);
   });
