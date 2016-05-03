@@ -4,7 +4,7 @@
   "description": "An app that connects language learners",
   "main": "index.js",
   "scripts": {
-    "start": "webpack -d && node server/index.js",
+    "start": "webpack && node server/index.js",
     "dev-start": "webpack -d && nodemon server/index.js",
     "test": "karma start"
   },
