@@ -1,10 +1,30 @@
-.header {
-  height: 50px;
-  text-align: center;
+body {
+  font-size: 18px;
 }
 
 ul {
+  position: relative;
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+.top-bar-item {
+  display: inline-block;
+  padding-right: 2em;
+}
+
+.profile {
+  position: absolute;
+  right: 0;
+  top: 1em;
+}
+
+#top-bar {
+  padding: 2em;
+  padding-left: 0;
+}
+
+#logo {
+  font-size: 2em;
 }

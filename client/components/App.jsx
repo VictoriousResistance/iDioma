@@ -1,12 +1,10 @@
 import React from 'react';
-import Header from './Header.jsx';
-import LeftRail from './LeftRail.jsx';
+import TopBar from './TopBar.jsx';
 
 const App = ({ children }) => (
   <div className="grid">
-    <Header />
-    <LeftRail />
-    <div className="col-5-6">
+    <TopBar />
+    <div className="content">
       {children}
     </div>
   </div>

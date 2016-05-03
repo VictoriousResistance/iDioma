@@ -2,6 +2,9 @@ var path = require('path');
 var auth = require(__dirname + '/auth/auth.js');
 
 module.exports = function(app, express) {
+
+  app.use(express.static('../client'));
+
   app.get('/', auth.checkAuth, function(req, res) {
     res.redirect('/home');
   });
