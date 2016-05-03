@@ -7,13 +7,13 @@ const TopBar = () => (
       <a href="/home">iDioma</a>
     </li>
     <li className="top-bar-item">
-      <Link to="/home/requests">Connection Requests</Link>
-    </li>
-    <li className="top-bar-item">
       <Link to="/home/connections">My Connections</Link>
     </li>
     <li className="top-bar-item">
-      <Link to="/home/matches">Matches</Link>
+      <Link to="/home/matches">My Matches</Link>
+    </li>
+    <li className="top-bar-item">
+      <Link to="/home/requests">Connection Requests</Link>
     </li>
     <div className="profile">
       <li className="top-bar-item">
