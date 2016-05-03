@@ -1,15 +1,18 @@
 import React from 'react';
 
-const Connection = ({ connection }) => (
-  <div className="person">
-    <div>{connection.firstName + ' ' + connection.lastName}</div>
-    <div>{connection.canTeach}</div>
-    <div>{connection.willLearn}</div>
-    <div>{connection.description}</div>
-    <a href="#" className="action">Message</a>
-    <a href="#" className="action">Video Chat</a>
-  </div>
-);
+const Connection = ({ connection, facebookId }) =>
+{
+  const chatroomUrl = '/chat/' + facebookId;
+  return (
+    <div className="person">
+      <div>{connection.firstName + ' ' + connection.lastName}</div>
+      <div>{connection.canTeach}</div>
+      <div>{connection.willLearn}</div>
+      <div>{connection.description}</div>
+      <a href={chatroomUrl} target="_blank" className="action">Start Conversation</a>
+    </div>
+  );
+};
 
 const Connections = ({ connections }) => (
   <div>
