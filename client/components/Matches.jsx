@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Match = ({ match }) => (
-  <div className="person">
+  <div className={match.willUnmount ? "person animated fadeOut" : "person"}>
     <div>{match.firstName + ' ' + match.lastName}</div>
     <div>{match.canTeach}</div>
     <div>{match.willLearn}</div>
