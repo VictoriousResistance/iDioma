@@ -55,6 +55,14 @@ a {
   display: inline-block;
 }
 
+.profile-picture {
+  display: inline-block;
+  width: 11em;
+  height: 11em;
+  overflow: scroll;
+  border-radius: 5px;
+}
+
 /****************************** Language Component ******************************/
 
 .language {
