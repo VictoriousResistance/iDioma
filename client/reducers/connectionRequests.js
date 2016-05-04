@@ -1,5 +1,21 @@
 const connectionRequests = (state = [], action) => {
   switch (action.type) {
+
+    case 'UNMOUNT_REQUEST':
+      var newState = [];
+      state.forEach((request) => {
+        if (request.id === action.id) {
+          newState.push(Object.assign(
+            {},
+            request,
+            {willUnmount: true}
+          ));
+        } else {
+          newState.push(request);
+        }
+      });
+      return newState;
+
     case 'ACCEPT_REQUEST':
       var newState = [];
       state.forEach((request) => {
@@ -8,6 +24,7 @@ const connectionRequests = (state = [], action) => {
         }
       });
       return newState;
+
     case 'DECLINE_REQUEST':
       var newState = [];
       state.forEach((request) => {
@@ -16,8 +33,10 @@ const connectionRequests = (state = [], action) => {
         }
       });
       return newState;
+
     default:
       return state;
+      
   }
 };
 
