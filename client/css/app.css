@@ -9,6 +9,10 @@ ul {
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 .top-bar-item {
   display: inline-block;
   padding-right: 2em;
