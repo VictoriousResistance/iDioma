@@ -1,6 +1,7 @@
 var config = require(__dirname + '/config.js');
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
+var User = require('../db/models/userModel.js');
 
 passport.use(new FacebookStrategy({
     clientID: config.ID,
@@ -10,10 +11,18 @@ passport.use(new FacebookStrategy({
   },
 
   function(accessToken, refreshToken, profile, cb) {
-    // User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-    //   return cb(err, user);
-    // });
-    return cb(null, profile);
+    User.findOrCreate(
+      {
+        where: { facebookId: profile.id}, 
+        defaults: {
+          firstName: profile.name.givenName, 
+          lastName: profile.name.familyName, 
+          photoUrl: profile.photos[0].value
+        }
+      })
+      .spread(function (user, created) {
+        return cb(null, profile);
+      });
   }
 ));
 

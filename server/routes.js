@@ -4,7 +4,7 @@ var homeHandler = require('./homeHandler.js');
 
 module.exports = function(app, express) {
 
-  app.use(express.static('../client'));
+  app.use(express.static(__dirname + './../client'));
 
   app.get('/', auth.checkAuth, function(req, res) {
     res.redirect('/home');
