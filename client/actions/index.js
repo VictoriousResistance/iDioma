@@ -13,20 +13,6 @@ export const removeRequest = (id) => {
 };
 
 
-export const connectMatch = (id) => {
-  return {
-    type: 'CONNECT_MATCH',
-    id,
-  };
-};
-
-export const hideMatch = (id) => {
-  return {
-    type: 'HIDE_MATCH',
-    id,
-  };
-};
-
 export const unmountMatch = (id) => {
   return {
     type: 'UNMOUNT_MATCH',
@@ -34,4 +20,10 @@ export const unmountMatch = (id) => {
   };
 };
 
+export const removeMatch = (id) => {
+  return {
+    type: 'REMOVE_MATCH',
+    id,
+  };
+};
 

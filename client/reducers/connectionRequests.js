@@ -8,7 +8,7 @@ const connectionRequests = (state = [], action) => {
           newState.push(Object.assign(
             {},
             request,
-            {willUnmount: true}
+            { willUnmount: true }
           ));
         } else {
           newState.push(request);

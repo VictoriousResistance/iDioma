@@ -8,7 +8,7 @@ const matches = (state = [], action) => {
           newState.push(Object.assign(
             {},
             match,
-            {willUnmount: true}
+            { willUnmount: true }
           ));
         } else {
           newState.push(match);
@@ -16,16 +16,7 @@ const matches = (state = [], action) => {
       });
       return newState;
 
-    case 'CONNECT_MATCH':
-      var newState = [];
-      state.forEach((match) => {
-        if (match.id !== action.id) {
-          newState.push(match);
-        }
-      });
-      return newState;
-
-    case 'HIDE_MATCH':
+    case 'REMOVE_MATCH':
       var newState = [];
       state.forEach((match) => {
         if (match.id !== action.id) {

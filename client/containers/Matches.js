@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Matches from '../components/Matches.jsx';
-import { unmountMatch, connectMatch, hideMatch } from '../actions/index.js';
+import { unmountMatch, removeMatch } from '../actions/index.js';
 
 
 const mapStateToProps = (state) => (
@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch) => (
       dispatch(unmountMatch(id));
       setTimeout(
         () => {
-          dispatch(connectMatch(id));
+          dispatch(removeMatch(id));
         },
         120
       );
@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => (
       dispatch(unmountMatch(id));
       setTimeout(
         () => {
-          dispatch(hideMatch(id));
+          dispatch(removeMatch(id));
         },
         120
       );
