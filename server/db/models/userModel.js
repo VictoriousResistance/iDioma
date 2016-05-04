@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize');
-var db = require('../db/db.js');
+var db = require('../db.js');
 
 var User = db.define('User',
   {
@@ -10,7 +10,7 @@ var User = db.define('User',
     },
     facebookId: {
       type: Sequelize.STRING,
-      field: 'google_user_id'
+      field: 'facebook_id'
     },
     firstName: {
       type: Sequelize.STRING,
@@ -24,6 +24,11 @@ var User = db.define('User',
       type: Sequelize.STRING,
       field: 'photo_url'
     },
+    description: {
+      type: Sequelize.STRING(2500),
+      field: 'description'
+    }
+    // would like to add counter cache for request count and connection count
   }, 
   {
     freezeTableName: true

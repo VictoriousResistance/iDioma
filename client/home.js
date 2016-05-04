@@ -16,6 +16,7 @@ import Profile from './containers/Profile.js';
 
 const initialState = window.__INITIAL_STATE__;
 
+
 const store = createStore(rootReducer, initialState);
 
 render((
