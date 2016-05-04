@@ -31,7 +31,7 @@ a {
 }
 
 .top-bar-container {
-  display: block;
+
 }
 
 #logo {
@@ -43,6 +43,7 @@ a {
 
 .person {
   margin: 2em 2em 2em 0;
+  position: relative;
 }
 
 .action {
@@ -80,7 +81,9 @@ a {
 }
 
 .button-container {
-  display: inline-block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 /****************************** Language Component ******************************/
