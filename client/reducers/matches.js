@@ -24,7 +24,16 @@ const matches = (state = [], action) => {
         }
       });
       return newState;
-      
+
+    case 'HIDE_MATCH':
+      var newState = [];
+      state.forEach((match) => {
+        if (match.id !== action.id) {
+          newState.push(match);
+        }
+      });
+      return newState;
+
     default:
       return state;
   }
