@@ -17,9 +17,9 @@ module.exports = function(req, res) {
     },
     connections: [
       {
-        id: 2,
-        firstName: 'Connection',
-        lastName: 'Established',
+        id: '1556463314683658',
+        firstName: 'Reina',
+        lastName: 'IsNotHere',
         canTeach: [
           ['German', 'fluent'],
         ],
