@@ -27,8 +27,8 @@ module.exports = function(initialState) {
         <meta property="og:description" content="iDioma pairs native speakers who want to learn each other's languages." />
         <meta property="og:site_name" content="iDioma" />
 
-        <link rel="stylesheet" href="css/simple-grid.css" media="screen" title="no title" charset="utf-8">
-        <link rel="stylesheet" href="css/app.css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="/css/simple-grid.css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="/css/app.css" media="screen" title="no title" charset="utf-8">
 
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Signika:700,400,600' rel='stylesheet' type='text/css'>
@@ -39,7 +39,7 @@ module.exports = function(initialState) {
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
-        <script src="dist/home.bundle.js"></script>
+        <script src="/dist/home.bundle.js"></script>
       </body>
     </html>
   `;

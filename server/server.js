@@ -4,6 +4,8 @@ var session = require('express-session');
 var passport = require('passport');
 var sockets = require('./config/sockets');
 
+require('./db/index.js')();
+
 var app = express();
 
 app.use(session({
