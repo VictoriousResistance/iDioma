@@ -8,7 +8,7 @@ var User = db.define('User',
       defaultValue: Sequelize.UUIDV1,
       primaryKey: true
     },
-    facebookUserId: {
+    facebookId: {
       type: Sequelize.STRING,
       field: 'google_user_id'
     },
@@ -23,7 +23,7 @@ var User = db.define('User',
     photoUrl: {
       type: Sequelize.STRING,
       field: 'photo_url'
-    }
+    },
   }, 
   {
     freezeTableName: true
