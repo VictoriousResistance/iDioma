@@ -7,7 +7,7 @@ passport.use(new FacebookStrategy({
     clientID: config.ID,
     clientSecret: config.SECRET,
     callbackURL: '/auth/facebook/callback',
-    profileFields: ['id', 'name', 'picture.type(large)']
+    profileFields: ['id', 'name', 'picture.type(normal)']
   },
 
   function(accessToken, refreshToken, profile, cb) {
