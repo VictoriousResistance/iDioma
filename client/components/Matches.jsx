@@ -3,8 +3,8 @@ import Language from './Language.jsx';
 
 const Match = ({ match, onConnectClick, onHideClick }) => (
   <div className={match.willUnmount ? "person animated fadeOut" : "person"}>
-    <div className="profile-picture">
-      <img src="http://www.stableclosevets.co.uk/images/7gy768l5.jpeg"/>
+    <div className="profile-picture-container">
+      <img className="profile-picture" src="http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg"/>
     </div>
     <div>{match.firstName + ' ' + match.lastName}</div>
     <div>{match.description}</div>

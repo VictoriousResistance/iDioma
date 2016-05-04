@@ -55,12 +55,18 @@ a {
   display: inline-block;
 }
 
-.profile-picture {
+.profile-picture-container {
   display: inline-block;
-  width: 11em;
-  height: 11em;
+  height: 6em;
+  width: 6em;
   overflow: scroll;
-  border-radius: 5px;
+  border-radius: 50%;
+}
+
+.profile-picture {
+  object-fit: cover;
+  min-width: 6em;
+  min-height: 6em;
 }
 
 /****************************** Language Component ******************************/
