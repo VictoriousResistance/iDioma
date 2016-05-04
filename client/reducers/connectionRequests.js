@@ -1,7 +1,7 @@
 const connectionRequests = (state = [], action) => {
   switch (action.type) {
     case 'ACCEPT_REQUEST':
-      const newState = [];
+      var newState = [];
       state.forEach((request) => {
         if (request.id !== action.id) {
           newState.push(request);
@@ -9,7 +9,13 @@ const connectionRequests = (state = [], action) => {
       });
       return newState;
     case 'DECLINE_REQUEST':
-      return [];
+      var newState = [];
+      state.forEach((request) => {
+        if (request.id !== action.id) {
+          newState.push(request);
+        }
+      });
+      return newState;
     default:
       return state;
   }
