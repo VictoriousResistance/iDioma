@@ -5,23 +5,22 @@ const Connection = ({ connection }) =>
 {
   const chatroomUrl = '/chat/' + connection.id;
   return (
-    <div className={connection.willUnmount ? "person animated fadeOut" : "person"}>
+    <div className="person">
       <div>{connection.firstName + ' ' + connection.lastName}</div>
       <div>{connection.description}</div>
       <div>
-        <span>{'Languages ' + connection.firstName + ' can offer: '}</span>
+        <span>{'Can offer: '}</span>
         <div className="languages">
             {connection.canTeach.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
         </div>
       </div>
       <div>
-        <span>{'Languages ' + connection.firstName + ' wants to learn: '}</span>
+        <span>{'Wants to learn: '}</span>
         <div className="languages">
             {connection.willLearn.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
         </div>
       </div>
-      <a href="#" className="action" onClick={() => { onConnectClick(connection.id); }}>Connect</a>
-      <a href="#" className="action" onClick={() => { onHideClick(connection.id); }}>Hide</a>
+      <a href={chatroomUrl} target="_blank" className="action">Start Conversation</a>
     </div>
   );
 };

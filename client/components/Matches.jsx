@@ -6,13 +6,13 @@ const Match = ({ match, onConnectClick, onHideClick }) => (
     <div>{match.firstName + ' ' + match.lastName}</div>
     <div>{match.description}</div>
     <div>
-      <span>{'Languages ' + match.firstName + ' can offer: '}</span>
+      <span>{'Can offer: '}</span>
       <div className="languages">
           {match.canTeach.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
       </div>
     </div>
     <div>
-      <span>{'Languages ' + match.firstName + ' wants to learn: '}</span>
+      <span>{'Wants to learn: '}</span>
       <div className="languages">
           {match.willLearn.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
       </div>
