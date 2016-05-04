@@ -16,16 +16,7 @@ const connectionRequests = (state = [], action) => {
       });
       return newState;
 
-    case 'ACCEPT_REQUEST':
-      var newState = [];
-      state.forEach((request) => {
-        if (request.id !== action.id) {
-          newState.push(request);
-        }
-      });
-      return newState;
-
-    case 'DECLINE_REQUEST':
+    case 'REMOVE_REQUEST':
       var newState = [];
       state.forEach((request) => {
         if (request.id !== action.id) {
@@ -36,7 +27,7 @@ const connectionRequests = (state = [], action) => {
 
     default:
       return state;
-      
+
   }
 };
 

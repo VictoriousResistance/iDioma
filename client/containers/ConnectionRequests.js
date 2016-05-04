@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ConnectionRequests from '../components/ConnectionRequests.jsx';
-import { acceptRequest, declineRequest, unmountRequest } from '../actions/index.js';
+import { unmountRequest, removeRequest } from '../actions/index.js';
 
 
 const mapStateToProps = (state) => (
@@ -15,17 +15,17 @@ const mapDispatchToProps = (dispatch) => (
       dispatch(unmountRequest(id));
       setTimeout(
         () => {
-          dispatch(acceptRequest(id));
+          dispatch(removeRequest(id));
         },
         120
       );
     },
-    
+
     onDeclineClick: (id) => {
       dispatch(unmountRequest(id));
       setTimeout(
         () => {
-          dispatch(declineRequest(id));
+          dispatch(removeRequest(id));
         },
         120
       );

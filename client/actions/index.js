@@ -1,23 +1,17 @@
-export const acceptRequest = (id) => {
-  return {
-    type: 'ACCEPT_REQUEST',
-    id,
-  };
-};
-
-export const declineRequest = (id) => {
-  return {
-    type: 'DECLINE_REQUEST',
-    id,
-  };
-};
-
 export const unmountRequest = (id) => {
   return {
     type: 'UNMOUNT_REQUEST',
     id,
   };
 };
+
+export const removeRequest = (id) => {
+  return {
+    type: 'REMOVE_REQUEST',
+    id,
+  };
+};
+
 
 export const connectMatch = (id) => {
   return {
