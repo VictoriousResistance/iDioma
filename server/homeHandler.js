@@ -27,7 +27,6 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
-        willUnmount: false,
       },
       {
         id: 3,
@@ -40,7 +39,6 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'musical genius',
-        willUnmount: false,
       },
       {
         id: 4,
@@ -53,7 +51,6 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
-        willUnmount: false,
       },
     ],
     matches: [
@@ -68,7 +65,6 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
-        willUnmount: false,
       },
       {
         id: 6,
@@ -81,7 +77,6 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
-        willUnmount: false,
       },
       {
         id: 7,
@@ -94,7 +89,6 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
-        willUnmount: false,
       },
     ],
     connectionRequests: [
@@ -109,7 +103,6 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
-        willUnmount: false,
       },
       {
         id: 9,
@@ -122,7 +115,6 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
-        willUnmount: false,
       },
       {
         id: 10,
@@ -135,7 +127,6 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
-        willUnmount: false,
       },
     ],
   };

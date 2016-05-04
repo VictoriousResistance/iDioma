@@ -11,3 +11,19 @@ export const declineRequest = (id) => {
     id,
   };
 };
+
+export const connectMatch = (id) => {
+  return {
+    type: 'CONNECT_MATCH',
+    id,
+  };
+};
+
+export const unmountMatch = (id) => {
+  return {
+    type: 'UNMOUNT_MATCH',
+    id,
+  };
+};
+
+
