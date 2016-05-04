@@ -13,6 +13,8 @@ a {
   text-decoration: none;
 }
 
+
+/****************************** Top Bar ******************************/
 .top-bar-item {
   display: inline-block;
   padding-right: 2em;
@@ -32,24 +34,11 @@ a {
   font-size: 2em;
 }
 
+/****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
+
+
 .person {
   margin: 2em 2em 2em 0;
-}
-
-.profile {
-  margin-top: 2em;
-}
-
-.profile-section {
-  margin: 1em 0;
-}
-
-.profile-name {
-  font-size: 1.5em;
-}
-
-.profile-header {
-  margin-bottom: .2em;
 }
 
 .action {
@@ -62,7 +51,28 @@ a {
   margin: 0.5em 1em 0 0;
 }
 
+/****************************** Language Component ******************************/
+
 .language {
   display: inline-block;
   margin-right: 1em;
+}
+
+/****************************** Profile Tab ******************************/
+
+
+.profile {
+  margin-top: 2em;
+}
+
+.profile-name {
+  font-size: 1.5em;
+}
+
+.profile-section {
+  margin: 1em 0;
+}
+
+.profile-header {
+  margin-bottom: .2em;
 }
