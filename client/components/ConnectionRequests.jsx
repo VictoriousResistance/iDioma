@@ -1,14 +1,25 @@
 import React from 'react';
+import Language from './Language.jsx';
 
 const ConnectionRequest = ({ connectionRequest, onAcceptClick, onDeclineClick }) => (
-  <div className={connectionRequest.willUnmount ? "animated fadeOut person" : "person"}>
-    <div>{connectionRequest.firstName + ' ' + connectionRequest.lastName}</div>
-    <div>{connectionRequest.canTeach}</div>
-    <div>{connectionRequest.willLearn}</div>
-    <div>{connectionRequest.description}</div>
-    <a href="#" className="action" onClick={() => { onAcceptClick(connectionRequest.id); }}>Accept</a>
-    <a href="#" className="action" onClick={() => { onDeclineClick(connectionRequest.id); }}>Decline</a>
-  </div>
+  <div className={connectionRequest.willUnmount ? "person animated fadeOut" : "person"}>
+      <div>{connectionRequest.firstName + ' ' + connectionRequest.lastName}</div>
+      <div>{connectionRequest.description}</div>
+      <div>
+        <span>{'Languages ' + connectionRequest.firstName + ' can offer: '}</span>
+        <div className="languages">
+            {connectionRequest.canTeach.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
+        </div>
+      </div>
+      <div>
+        <span>{'Languages ' + connectionRequest.firstName + ' wants to learn: '}</span>
+        <div className="languages">
+            {connectionRequest.willLearn.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
+        </div>
+      </div>
+      <a href="#" className="action" onClick={() => { onConnectClick(connectionRequest.id); }}>Connect</a>
+      <a href="#" className="action" onClick={() => { onHideClick(connectionRequest.id); }}>Hide</a>
+    </div>
 );
 
 const ConnectionRequests = ({ connectionRequests, onAcceptClick, onDeclineClick }) => (
