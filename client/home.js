@@ -7,14 +7,14 @@ import {
 } from 'react-router';
 
 import rootReducer from './reducers/index.js';
-import socketIO from './chat/sockets.js';
+import socketIO from './conversations/sockets.js';
 
 import App from './components/App.jsx';
-import Connections from './containers/Connections.js';
-import ConnectionRequests from './containers/ConnectionRequests.js';
-import Matches from './containers/Matches.js';
-import Profile from './containers/Profile.js';
-import Conversations from './chat/containers/Conversations.js';
+import Connections from './connections/containers/Connections.js';
+import ConnectionRequests from './connectionRequests/containers/ConnectionRequests.js';
+import Matches from './matches/containers/Matches.js';
+import Profile from './profile/containers/Profile.js';
+import Conversations from './conversations/containers/Conversations.js';
 
 const initialState = window.__INITIAL_STATE__;
 
