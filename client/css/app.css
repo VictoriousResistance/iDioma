@@ -62,7 +62,6 @@ a {
 
 .profile-picture-container {
   display: inline-block;
-  margin-right: 1em;
   height: 6em;
   width: 6em;
   overflow: scroll;
@@ -76,8 +75,10 @@ a {
 }
 
 .text-container {
+  vertical-align: top;
+  padding-top: 1.2em;
   display: inline-block;
-  margin-right: 1em;
+  margin: 0 1em;
 }
 
 .button-container {
@@ -100,16 +101,43 @@ a {
   margin-top: 2em;
 }
 
+.profile-header {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 3em;
+}
+
+.profile-detail {
+  display: inline-block;
+  vertical-align: top;
+}
+
 .profile-name {
   font-size: 1.5em;
+  margin-top: 1em;
+}
+
+.profile-title {
+  margin-bottom: .2em;
 }
 
 .profile-section {
   margin: 1em 0;
 }
 
-.profile-header {
-  margin-bottom: .2em;
+.own-profile-picture {
+  object-fit: cover;
+  min-width: 8em;
+  min-height: 8em;
+}
+
+.own-profile-picture-container {
+  height: 8em;
+  width: 8em;
+  overflow: scroll;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
 }
 
 
