@@ -16,6 +16,9 @@ const TopBar = () => (
       <li className="top-bar-item">
         <Link to="/home/requests">Connection Requests</Link>
       </li>
+      <li className="top-bar-item">
+        <Link to="/home/conversations">Conversations</Link>
+      </li>
       <div className="profile-link">
         <li className="top-bar-item">
           <Link to="/home/profile">My Profile</Link>

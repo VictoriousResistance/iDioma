@@ -33,11 +33,4 @@ module.exports = function(app, express) {
     });
   });
 
-  app.get('/chat/:id', auth.checkAuth, function(req, res) {
-    var users = {
-      initiator: req.user,
-      recipientId: req.params.id
-    };
-    res.send(users);
-  });
 };

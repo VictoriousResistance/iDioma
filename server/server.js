@@ -10,8 +10,8 @@ var app = express();
 
 app.use(session({
   secret: 'victoriousresistance',
-  resave: true, 
-  saveUninitialized: false
+  resave: true,
+  saveUninitialized: false,
 }));
 
 app.use(bodyParser.json());
@@ -22,10 +22,11 @@ app.use(passport.session());
 
 //router and sockets
 require('./routes.js')(app, express);
-sockets(require('http').Server(app));
+var server = require('http').Server(app);
+sockets(server);
 
-var port = process.env.PORT ? process.env.PORT : 3000;
+var port = process.env.PORT || 3000;
 
-app.listen(port, function() {
+server.listen(port, function() {
   console.log('iDioma listening on port: ' + port);
 });

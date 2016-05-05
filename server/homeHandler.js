@@ -2,6 +2,51 @@ var makeHomePage = require('./views/home.js');
 
 module.exports = function(req, res) {
   var initialState = {
+    messages: [
+      {
+        from: 'Mo',
+        body: `Is anybody out there? OMG I LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE THIS APP`,
+      },
+      {
+        from: 'ReiRei',
+        body: 'Hello1',
+      },
+      {
+        from: 'Mo',
+        body: 'Hello2',
+      },
+      {
+        from: 'Mo',
+        body: 'Hello3',
+      },
+      {
+        from: 'Mo',
+        body: 'Hello4',
+      },
+      {
+        from: 'Mo',
+        body: 'Hello5',
+      },
+    ],
+
+    rooms: [
+      {
+        id: 1,
+        name: 'ReiRei',
+      },
+      {
+        id: 2,
+        name: 'Ashwin',
+      },
+      {
+        id: 3,
+        name: 'Merlin',
+      },
+      {
+        id: 4,
+        name: 'Morgana',
+      },
+    ],
     profile: {
       id: 1,
       firstName: 'Lach',

@@ -3,7 +3,6 @@ require('webpack');
 module.exports = {
   entry: {
     home: './client/home.js',
-    chat: './client/chat.js',
   },
   output: { path: 'client/dist', publicPath: 'client/dist', filename: '[name].bundle.js' },
   module: {
