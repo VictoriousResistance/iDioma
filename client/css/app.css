@@ -111,3 +111,15 @@ a {
 .profile-header {
   margin-bottom: .2em;
 }
+
+@media handheld, only screen and (max-width: 767px) {
+  .button-container {
+    position: absolute;
+    left: 0;
+    bottom: -3em;
+  }
+
+  .person {
+    margin-bottom: 5em;
+  }
+}

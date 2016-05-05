@@ -27,7 +27,7 @@ module.exports = function(req, res) {
         willLearn: [
           ['French', 'basic'],
         ],
-        description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
+        description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home? if i make this longer, will it still work?',
         photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
       },
       {
