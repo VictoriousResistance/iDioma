@@ -6,7 +6,7 @@ import {
   browserHistory, Router, Route, IndexRoute,
 } from 'react-router';
 
-import rootReducer from './reducers/index.js';
+import rootReducer from './rootReducer.js';
 import socketIO from './conversations/sockets.js';
 
 import App from './components/App.jsx';
