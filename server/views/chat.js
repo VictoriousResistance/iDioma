@@ -1,6 +1,5 @@
-module.exports = function(initialState) {
-  return `
-  <!DOCTYPE html>
+module.exports = (initialState) => (
+  `<!DOCTYPE html>
     <html>
       <head>
         <meta charset="utf-8">
@@ -41,6 +40,5 @@ module.exports = function(initialState) {
         </script>
         <script src="/dist/chat.bundle.js"></script>
       </body>
-    </html>
-  `;
-};
+    </html>`
+  );
