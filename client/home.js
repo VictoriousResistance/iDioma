@@ -26,7 +26,7 @@ render((
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="home" component={App}>
-        <IndexRoute component={Connections} />
+        <IndexRoute component={Profile} />
         <Route path="requests" component={ConnectionRequests} />
         <Route path="connections" component={Connections} />
         <Route path="matches" component={Matches} />
