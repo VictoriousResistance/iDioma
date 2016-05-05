@@ -38,6 +38,7 @@ module.exports = (initialState) => (
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
+        <script src="/socket.io/socket.io.js"></script>
         <script src="/dist/chat.bundle.js"></script>
       </body>
     </html>`

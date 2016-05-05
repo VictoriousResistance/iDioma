@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import ChatWindow from '../components/ChatWindow.jsx';
+import { addMsg } from '../actions/index.js';
 
+import { socket } from '../sockets.js';
 
 const mapStateToProps = (state) => (
   {
@@ -11,7 +13,10 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = (dispatch) => (
   {
-
+    sendMsg: (msg) => {
+      socket.emit('new message', msg);
+      dispatch(addMsg(msg));
+    },
   }
 );
 

@@ -2,12 +2,12 @@ import React from 'react';
 
 const Message = ({ message }) => (
   <div>
-    <div>
-      {message.from}
-    </div>
-    <div>
+    <span>
+      {message.from}:&nbsp;
+    </span>
+    <span>
       {message.body}
-    </div>
+    </span>
   </div>
 );
 
