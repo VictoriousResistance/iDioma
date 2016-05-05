@@ -13,20 +13,22 @@ module.exports = function(req, res) {
       willLearn: [
         ['German', 'basic'],
       ],
-      description: 'i wanna learn',
+      description: 'Javascript is a language too.',
+      photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
     },
     connections: [
       {
-        id: 2,
-        firstName: 'Connection',
-        lastName: 'Established',
+        id: '1556463314683658',
+        firstName: 'Reina',
+        lastName: 'IsNotHere',
         canTeach: [
           ['German', 'fluent'],
         ],
         willLearn: [
           ['French', 'basic'],
         ],
-        description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
+        description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home? if i make this longer, will it still work?',
+        photoUrl: 'https://e4292304444963bb9b1c-26c9e18a7a93639122506172dc90d702.ssl.cf2.rackcdn.com/gallery/img/t/golden-retriever-239058.jpg',
       },
       {
         id: 3,
@@ -39,6 +41,7 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'musical genius',
+        photoUrl: 'https://e4292304444963bb9b1c-26c9e18a7a93639122506172dc90d702.ssl.cf2.rackcdn.com/gallery/img/t/golden-retriever-239058.jpg',
       },
       {
         id: 4,
@@ -51,6 +54,7 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
+        photoUrl: 'https://e4292304444963bb9b1c-26c9e18a7a93639122506172dc90d702.ssl.cf2.rackcdn.com/gallery/img/t/golden-retriever-239058.jpg',
       },
     ],
     matches: [
@@ -65,6 +69,7 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
+        photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
       },
       {
         id: 6,
@@ -77,6 +82,7 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
+        photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
       },
       {
         id: 7,
@@ -89,6 +95,7 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
+        photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
       },
     ],
     connectionRequests: [
@@ -103,6 +110,7 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
+        photoUrl: 'http://www.pvvcvets.com/_images//kitten.jpg',
       },
       {
         id: 9,
@@ -115,6 +123,7 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
+        photoUrl: 'http://www.pvvcvets.com/_images//kitten.jpg',
       },
       {
         id: 10,
@@ -127,6 +136,7 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
+        photoUrl: 'http://www.pvvcvets.com/_images//kitten.jpg',
       },
     ],
   };

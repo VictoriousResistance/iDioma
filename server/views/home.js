@@ -28,6 +28,7 @@ module.exports = function(initialState) {
         <meta property="og:site_name" content="iDioma" />
 
         <link rel="stylesheet" href="/css/simple-grid.css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="/css/animate.css" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" href="/css/app.css" media="screen" title="no title" charset="utf-8">
 
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
