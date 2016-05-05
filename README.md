@@ -28,7 +28,7 @@ MySQL
 - [Sequelize ORM](http://docs.sequelizejs.com/en/latest/) and [MySQL](https://www.mysql.com/)
 
 ### Schema 
-<img src="http://imgur.com/dmPIBNU.png" width="550px"/>
+<img src="http://imgur.com/qyVb0Hi.png" width="550px"/>
 
 ## Development
 
