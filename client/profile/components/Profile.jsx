@@ -1,5 +1,5 @@
 import React from 'react';
-import Language from './Language.jsx';
+import Language from '../../components/Language.jsx';
 
 const Profile = ({ profile }) => (
   <div className="profile">
