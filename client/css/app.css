@@ -112,7 +112,9 @@ a {
   margin-bottom: .2em;
 }
 
+
 @media handheld, only screen and (max-width: 767px) {
+  /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
   .button-container {
     position: absolute;
     left: 0;
