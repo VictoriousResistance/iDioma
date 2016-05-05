@@ -1,6 +1,7 @@
 var path = require('path');
 var auth = require(__dirname + '/auth/auth.js');
 var homeHandler = require('./homeHandler.js');
+var chatHandler = require('./chatHandler.js');
 
 module.exports = function(app, express) {
 
@@ -33,11 +34,5 @@ module.exports = function(app, express) {
     });
   });
 
-  app.get('/chat/:id', auth.checkAuth, function(req, res) {
-    var users = {
-      initiator: req.user,
-      recipientId: req.params.id
-    };
-    res.send(users);
-  });
+  app.get('/chat', auth.checkAuth, chatHandler);
 };
