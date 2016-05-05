@@ -14,7 +14,7 @@ import Connections from './containers/Connections.js';
 import ConnectionRequests from './containers/ConnectionRequests.js';
 import Matches from './containers/Matches.js';
 import Profile from './containers/Profile.js';
-import ChatWindow from './chat/containers/ChatWindow.js';
+import Conversations from './chat/containers/Conversations.js';
 
 const initialState = window.__INITIAL_STATE__;
 
@@ -31,7 +31,7 @@ render((
         <Route path="connections" component={Connections} />
         <Route path="matches" component={Matches} />
         <Route path="profile" component={Profile} />
-        <Route path="chat" component={ChatWindow} />
+        <Route path="conversations" component={Conversations} />
         <Route path="*" component={Matches} />
       </Route>
     </Router>

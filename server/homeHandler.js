@@ -2,7 +2,7 @@ var makeHomePage = require('./views/home.js');
 
 module.exports = function(req, res) {
   var initialState = {
-    activeRoomMsgs: [
+    messages: [
       {
         from: 'Mo',
         body: `Is anybody out there? OMG I LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE THIS APP`,
@@ -29,22 +29,22 @@ module.exports = function(req, res) {
       },
     ],
 
-    conversations: [
+    rooms: [
       {
         id: 1,
-        roomName: 'ReiRei',
+        name: 'ReiRei',
       },
       {
         id: 2,
-        roomName: 'Ashwin',
+        name: 'Ashwin',
       },
       {
         id: 3,
-        roomName: 'Merlin',
+        name: 'Merlin',
       },
       {
         id: 4,
-        roomName: 'Morgana',
+        name: 'Morgana',
       },
     ],
     profile: {

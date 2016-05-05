@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
-import ChatWindow from '../components/ChatWindow.jsx';
+import Conversations from '../components/Conversations.jsx';
 import { addMsg } from '../actions/index.js';
 
 import { socket } from '../sockets.js';
 
 const mapStateToProps = (state) => (
   {
-    conversations: state.conversations,
-    messages: state.activeRoomMsgs,
+    rooms: state.rooms,
+    messages: state.messages,
   }
 );
 
@@ -20,4 +20,4 @@ const mapDispatchToProps = (dispatch) => (
   }
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChatWindow);
+export default connect(mapStateToProps, mapDispatchToProps)(Conversations);
