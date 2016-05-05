@@ -28,7 +28,7 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home? if i make this longer, will it still work?',
-        photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
+        photoUrl: 'https://e4292304444963bb9b1c-26c9e18a7a93639122506172dc90d702.ssl.cf2.rackcdn.com/gallery/img/t/golden-retriever-239058.jpg',
       },
       {
         id: 3,
@@ -41,7 +41,7 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'musical genius',
-        photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
+        photoUrl: 'https://e4292304444963bb9b1c-26c9e18a7a93639122506172dc90d702.ssl.cf2.rackcdn.com/gallery/img/t/golden-retriever-239058.jpg',
       },
       {
         id: 4,
@@ -54,7 +54,7 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
-        photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
+        photoUrl: 'https://e4292304444963bb9b1c-26c9e18a7a93639122506172dc90d702.ssl.cf2.rackcdn.com/gallery/img/t/golden-retriever-239058.jpg',
       },
     ],
     matches: [
@@ -110,7 +110,7 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
-        photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
+        photoUrl: 'http://www.pvvcvets.com/_images//kitten.jpg',
       },
       {
         id: 9,
@@ -123,7 +123,7 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
-        photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
+        photoUrl: 'http://www.pvvcvets.com/_images//kitten.jpg',
       },
       {
         id: 10,
@@ -136,7 +136,7 @@ module.exports = function(req, res) {
           ['French', 'basic'],
         ],
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home?',
-        photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
+        photoUrl: 'http://www.pvvcvets.com/_images//kitten.jpg',
       },
     ],
   };
