@@ -40,6 +40,7 @@ module.exports = function(initialState) {
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
+        <script src="/socket.io/socket.io.js"></script>
         <script src="/dist/home.bundle.js"></script>
       </body>
     </html>
