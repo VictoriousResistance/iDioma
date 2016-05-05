@@ -1,5 +1,5 @@
 import React from 'react';
-import Language from '../../components/Language.jsx';
+import Language from '../../../components/Language.jsx';
 
 const Match = ({ match, onConnectClick, onHideClick }) => (
   <div className={match.willUnmount ? "person animated fadeOut" : "person"}>

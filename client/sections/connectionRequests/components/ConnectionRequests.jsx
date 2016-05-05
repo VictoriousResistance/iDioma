@@ -1,5 +1,5 @@
 import React from 'react';
-import Language from '../../components/Language.jsx';
+import Language from '../../../components/Language.jsx';
 
 const ConnectionRequest = ({ connectionRequest, onAcceptClick, onDeclineClick }) => (
   <div className={connectionRequest.willUnmount ? "animated fadeOut person" : "person"}>

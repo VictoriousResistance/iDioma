@@ -1,5 +1,5 @@
 import React from 'react';
-import Language from '../../components/Language.jsx';
+import Language from '../../../components/Language.jsx';
 
 const Connection = ({ connection }) =>
 {
