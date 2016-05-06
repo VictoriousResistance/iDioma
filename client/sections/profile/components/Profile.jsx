@@ -1,17 +1,13 @@
 import React from 'react';
-import Language from '../../../components/Language.jsx';
+import Header from '../containers/Header.js';
 import WillLearn from '../containers/WillLearn.js';
 import CanTeach from '../containers/CanTeach.js';
+import Language from '../../../components/Language.jsx';
 
 const Profile = ({ profile }) => (
   <div className="profile">
 
-    <div className="profile-header">
-      <div className="profile-picture-container own-profile-picture-container">
-        <img className="profile-picture own-profile-picture" src={profile.photoUrl}/>
-      </div>
-      <div className="profile-name">{profile.firstName + ' ' + profile.lastName + "'s Profile"}</div>
-    </div>
+    <Header />
 
     <div className="profile-detail">
       <CanTeach />
