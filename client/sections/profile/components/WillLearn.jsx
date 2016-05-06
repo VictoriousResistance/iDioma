@@ -13,8 +13,8 @@ class WillLearn extends Component {
         <div>
           {willLearn.map((language, i) => (
             <div key={i}>
-            <Language level={language[1]} name={language[0]} />
-            <button onClick={() => { onRemoveLearnClick([language[0], language[1]]); }}>X</button>
+              <Language level={language[1]} name={language[0]} />
+              <button onClick={() => { onRemoveLearnClick([language[0], language[1]]); }}>X</button>
             </div>
           ))}
         </div>

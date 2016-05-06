@@ -12,3 +12,8 @@ export const removeLearn = (language) => ({
   type: 'REMOVE_LEARN',
   language,
 });
+
+export const removeTeach = (language) => ({
+  type: 'REMOVE_TEACH',
+  language,
+});

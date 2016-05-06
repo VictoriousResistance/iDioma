@@ -4,7 +4,7 @@ import Language from '../../../components/Language.jsx';
 class CanTeach extends Component {
 
   render() {
-    const { canTeach, onAddTeachClick } = this.props;
+    const { canTeach, onAddTeachClick, onRemoveTeachClick } = this.props;
     return (
       <div className="profile-section">
 
@@ -12,7 +12,10 @@ class CanTeach extends Component {
 
         <div>
           {canTeach.map((language, i) => (
-            <Language key={i} level={language[1]} name={language[0]} />
+            <div key={i}>
+              <Language level={language[1]} name={language[0]} />
+              <button onClick={() => { onRemoveTeachClick([language[0], language[1]]); }}>X</button>
+            </div>
           ))}
         </div>
 

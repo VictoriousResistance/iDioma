@@ -36,6 +36,15 @@ const profile = (state = {}, action) => {
       });
       return Object.assign({}, state, { willLearn: newLearn });
 
+    case 'REMOVE_TEACH':
+      const newTeach = [];
+      state.canTeach.forEach((language) => {
+        if (language[0] !== action.language[0] || language[1] !== action.language[1]) {
+          newTeach.push(language);
+        }
+      });
+      return Object.assign({}, state, { canTeach: newTeach });
+
     default:
       return state;
   }
