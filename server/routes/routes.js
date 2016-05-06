@@ -1,10 +1,10 @@
 var path = require('path');
-var auth = require(__dirname + '/auth/auth.js');
-var homeHandler = require('./homeHandler.js');
+var auth = require(__dirname + '/../auth/auth.js');
+var homeHandler = require('../utils/homeHandler.js');
 
 module.exports = function(app, express) {
 
-  app.use(express.static(__dirname + '/../client'));
+  app.use(express.static(__dirname + '/../../client'));
 
   app.get('/', auth.checkAuth, function(req, res) {
     res.redirect('/home');

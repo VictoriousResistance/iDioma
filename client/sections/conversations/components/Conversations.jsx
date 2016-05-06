@@ -2,7 +2,9 @@ import React from 'react';
 import Rooms from './Rooms.jsx';
 import Messages from './Messages.jsx';
 
-const Conversations = ({ rooms, messages, sendMsg }) => (
+let input;
+
+const Conversations = ({ user, rooms, messages, sendMsg }) => (
   <div>
     <div className="col-1-3" >
       <Rooms rooms={rooms} />
@@ -12,11 +14,11 @@ const Conversations = ({ rooms, messages, sendMsg }) => (
         <Messages messages={messages} />
       </div>
       <div>
-        <form action="">
-          <input id="m" autoComplete="off" className="col-1-1" />
-          <a href="#" className="action" onClick={() => { }}>Video</a>
-          <a href="#" className="action" onClick={() => { sendMsg({ from: 'user', body: 'hello' }); }}>Send</a>
-        </form>
+        <input id="m" autoComplete="off" className="col-1-1" placeholder="Type here" ref={ node => input = node } />
+        <a href="#" className="action" onClick={() => { }}>Video</a>
+        <a href="#" className="action" onClick={() => { 
+          sendMsg({ from: user.id, body: input.value });
+        }}>Send</a>
       </div>
     </div>
   </div>

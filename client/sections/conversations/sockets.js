@@ -1,5 +1,6 @@
 import * as actions from './actions/index';
 
+//FIXME import library?
 export const socket = window.io();
 
 export default function (store) {

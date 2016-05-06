@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
-var sockets = require('./config/sockets');
+var sockets = require('./routes/sockets');
 
 require('./db/index.js')();
 
@@ -21,7 +21,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //router and sockets
-require('./routes.js')(app, express);
+require('./routes/routes.js')(app, express);
 var server = require('http').Server(app);
 sockets(server);
 

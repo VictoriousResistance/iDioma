@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack && node server/index.js",
     "dev-start": "webpack -d && nodemon server/index.js",
-    "prod-start": "webpack && PORT=80 forever start server/index.js",
+    "prod-start": "webpack && forever stopall && PORT=80 forever start server/index.js",
     "test": "karma start"
   },
   "repository": {
