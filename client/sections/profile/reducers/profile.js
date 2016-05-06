@@ -30,7 +30,7 @@ const profile = (state = {}, action) => {
     case 'REMOVE_LEARN':
       const newLearn = [];
       state.willLearn.forEach((language) => {
-        if (language[0] !== action.language[0] && language[1] !== action.language[1]) {
+        if (language[0] !== action.language[0] || language[1] !== action.language[1]) {
           newLearn.push(language);
         }
       });
