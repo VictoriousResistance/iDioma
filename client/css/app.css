@@ -115,7 +115,7 @@ a {
 .profile-detail {
   display: inline-block;
   vertical-align: top;
-  min-width: 400px;
+  min-width: 300px;
 }
 
 .profile-name {

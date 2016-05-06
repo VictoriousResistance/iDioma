@@ -8,7 +8,7 @@ class CanTeach extends Component {
     return (
       <div className="profile-section">
 
-        <div className="profile-title">Languages I can offer</div>
+        <div className="profile-title">I can offer</div>
 
         <div>
           {canTeach.map((language, i) => (

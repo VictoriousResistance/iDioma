@@ -8,7 +8,7 @@ class WillLearn extends Component {
     return (
       <div className="profile-section">
 
-        <div className="profile-title">Languages I want to learn</div>
+        <div className="profile-title">I want to learn</div>
 
         <div>
           {willLearn.map((language, i) => (
