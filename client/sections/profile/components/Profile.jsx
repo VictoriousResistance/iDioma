@@ -1,6 +1,17 @@
 import React from 'react';
 import Language from '../../../components/Language.jsx';
 
+
+const selectLanguage = (
+  <select name="select" defaultValue="english" style={{width: '200px', padding: '6px', border: '2px #cccccc solid',
+    'borderRadius': '10px'}}>
+    <option value="english">English</option> 
+    <option value="spanish">Spanish</option>
+    <option value="french">French</option>
+  </select>
+);
+
+
 const Profile = ({ profile }) => (
   <div className="profile">
 
@@ -19,6 +30,7 @@ const Profile = ({ profile }) => (
             <Language key={i} level={language[1]} name={language[0]} />
           ))}
         </div>
+        {selectLanguage}
       </div>
       <div className="profile-section">
         <div className="profile-title">Languages I want to learn</div>
@@ -27,6 +39,7 @@ const Profile = ({ profile }) => (
             <Language key={i} level={language[1]} name={language[0]} />
           ))}
         </div>
+        {selectLanguage}
       </div>
       <div className="profile-section">
         <div className="profile-title">About Me</div>
