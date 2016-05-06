@@ -3,7 +3,7 @@ var db = require('../db.js');
 
 var User = db.define('User',
   {
-    id: {
+    userId: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV1,
       primaryKey: true
@@ -24,7 +24,7 @@ var User = db.define('User',
       type: Sequelize.STRING,
       field: 'photo_url'
     },
-    description: {
+    userDescription: {
       type: Sequelize.STRING(2500),
       field: 'description'
     }
