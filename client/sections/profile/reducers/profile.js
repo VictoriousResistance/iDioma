@@ -2,13 +2,16 @@ const profile = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_LEARN':
       const willLearn = state.willLearn;
-      const newWillLearn = [];
-      willLearn.forEach((language) {
-        if (language[0] !== action.language[0] && language[1] !== action.language[1]) {
-          newWillLearn.push(language);
+      var duplicate = false;
+      willLearn.forEach((language) => {
+        if (language[0] === action.language[0] && language[1] === action.language[1]) {
+          duplicate = true;
         }
       })
-      return Object.assign({}, state, {willLearn: newWillLearn});
+      if (duplicate) {
+        return state;
+      }
+      return Object.assign({}, state, {willLearn: willLearn.concat([action.language])});
     default:
       return state;
   }
