@@ -1,4 +1,4 @@
-var makeHomePage = require('./views/home.js');
+var makeHomePage = require('../views/home.js');
 
 module.exports = function(req, res) {
   var initialState = {
@@ -28,7 +28,6 @@ module.exports = function(req, res) {
         body: 'Hello5',
       },
     ],
-
     rooms: [
       {
         id: 1,
@@ -48,7 +47,7 @@ module.exports = function(req, res) {
       },
     ],
     profile: {
-      id: 1,
+      id: '1122067557855362',
       firstName: 'Lach',
       lastName: 'Zester',
       canTeach: [
@@ -104,7 +103,7 @@ module.exports = function(req, res) {
     ],
     matches: [
       {
-        id: 5,
+        id: '123456',
         firstName: 'Match',
         lastName: 'Potential',
         canTeach: [
@@ -117,7 +116,7 @@ module.exports = function(req, res) {
         photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
       },
       {
-        id: 6,
+        id: '78910',
         firstName: 'Match',
         lastName: 'Potential',
         canTeach: [

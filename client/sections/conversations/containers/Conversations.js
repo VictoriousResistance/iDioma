@@ -6,6 +6,7 @@ import { socket } from '../sockets.js';
 
 const mapStateToProps = (state) => (
   {
+    user: state.profile,
     rooms: state.rooms,
     messages: state.messages,
   }
