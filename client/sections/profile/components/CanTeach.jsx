@@ -1,35 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Language from '../../../components/Language.jsx';
 
-const CanTeach = ({ canTeach }) => (
-  <div className="profile-section">
+class CanTeach extends Component {
 
-    <div className="profile-title">Languages I can offer</div>
+  render() {
+    const { canTeach, onAddTeachClick } = this.props;
+    return (
+      <div className="profile-section">
 
-    <div>
-      {canTeach.map((language, i) => (
-        <Language key={i} level={language[1]} name={language[0]} />
-      ))}
-    </div>
+        <div className="profile-title">Languages I can offer</div>
 
-    <div>
-      <div className="language-label">Language</div><div className="level-label">My Level</div>
-    </div>
+        <div>
+          {canTeach.map((language, i) => (
+            <Language key={i} level={language[1]} name={language[0]} />
+          ))}
+        </div>
 
-    <select className="language-selection" defaultValue="english">
-      <option value="english">English</option> 
-      <option value="spanish">Spanish</option>
-      <option value="french">French</option>
-    </select>
+        <div>
+          <div className="language-label">Language</div><div className="level-label">My Level</div>
+        </div>
 
-    <select className="level-selection" defaultValue="native">
-      <option value="native">Native</option> 
-      <option value="fluent">Fluent</option>
-    </select>
+        <select ref="language" className="language-selection" defaultValue="english">
+          <option value="English">English</option> 
+          <option value="English">Spanish</option>
+          <option value="English">French</option>
+        </select>
 
-    <button>Add</button>
+        <select ref="teach-level" className="level-selection" defaultValue="native">
+          <option value="native">Native</option> 
+          <option value="fluent">Fluent</option>
+        </select>
 
-  </div>
-);
+        <button onClick={() => { onAddTeachClick([this.refs['language'].value, this.refs['teach-level'].value]); }}>Add</button>
+
+      </div>
+    );
+  }
+}
 
 export default CanTeach;
