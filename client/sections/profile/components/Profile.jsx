@@ -52,6 +52,7 @@ const Profile = ({ profile }) => (
         {labels}
         {selectLanguage}
         {selectTeachLevel}
+        <button>Add</button>
       </div>
       <div className="profile-section">
         <div className="profile-title">Languages I want to learn</div>
@@ -63,6 +64,7 @@ const Profile = ({ profile }) => (
         {labels}
         {selectLanguage}
         {selectLearnLevel}
+        <button>Add</button>
       </div>
       <div className="profile-section">
         <div className="profile-title">About Me</div>
