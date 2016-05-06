@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Language from '../../../components/Language.jsx';
-import X from '../containers/RemoveLearn.js';
 
 class WillLearn extends Component {
 
@@ -15,7 +14,7 @@ class WillLearn extends Component {
           {willLearn.map((language, i) => (
             <div key={i}>
             <Language level={language[1]} name={language[0]} />
-            <button onClick={ () => {onRemoveLearnClick([language[0], language[1]]);} }>X</button>
+            <button onClick={() => { onRemoveLearnClick([language[0], language[1]]); }}>X</button>
             </div>
           ))}
         </div>
