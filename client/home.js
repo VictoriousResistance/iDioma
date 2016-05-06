@@ -13,7 +13,7 @@ import App from './components/App.jsx';
 import Connections from './sections/connections/containers/Connections.js';
 import ConnectionRequests from './sections/connectionRequests/containers/ConnectionRequests.js';
 import Matches from './sections/matches/containers/Matches.js';
-import Profile from './sections/profile/components/Profile.jsx';
+import Profile from './sections/profile/containers/Profile.js';
 import Conversations from './sections/conversations/containers/Conversations.js';
 
 const initialState = window.__INITIAL_STATE__;
