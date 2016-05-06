@@ -40,3 +40,6 @@ server/auth/config.js
 
 # Database config
 server/db/config.js
+
+# Database config
+client/tests/*

@@ -24,9 +24,9 @@ var User = db.define('User',
       type: Sequelize.STRING,
       field: 'photo_url'
     },
-    description: {
+    userDescription: {
       type: Sequelize.STRING(2500),
-      field: 'description'
+      field: 'user_description'
     }
     // would like to add counter cache for request count and connection count
   }, 
