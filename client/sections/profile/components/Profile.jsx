@@ -14,7 +14,9 @@ const Profile = ({ profile }) => (
       <CanTeach /> {/*className is "profile-section"*/}
       <WillLearn /> {/*className is "profile-section"*/}
       <Description /> {/*className is "profile-section"*/}
+      <button>Update</button>
     </div>
+
 
   </div>
 );
