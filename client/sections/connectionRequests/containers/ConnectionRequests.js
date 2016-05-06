@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import ConnectionRequests from '../components/ConnectionRequests.jsx';
 import { unmountRequest, removeRequest } from '../actions/index.js';
+import { addConnection } from '../../connections/actions/index.js';
 
 
 const mapStateToProps = (state) => (
@@ -11,11 +12,12 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = (dispatch) => (
   {
-    onAcceptClick: (id) => {
-      dispatch(unmountRequest(id));
+    onAcceptClick: (person) => {
+      dispatch(unmountRequest(person.id));
       setTimeout(
         () => {
-          dispatch(removeRequest(id));
+          dispatch(removeRequest(person.id));
+          dispatch(addConnection(person));
         },
         120
       );

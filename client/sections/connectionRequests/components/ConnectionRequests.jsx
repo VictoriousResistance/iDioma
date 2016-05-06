@@ -26,7 +26,7 @@ const ConnectionRequest = ({ connectionRequest, onAcceptClick, onDeclineClick })
     </div>
 
     <div className="button-container">
-      <a href="#" className="action" onClick={() => { onAcceptClick(connectionRequest.id); }}>Accept</a>
+      <a href="#" className="action" onClick={() => { onAcceptClick(connectionRequest); }}>Accept</a>
       <a href="#" className="action" onClick={() => { onDeclineClick(connectionRequest.id); }}>Decline</a>
     </div>
 
