@@ -14,7 +14,7 @@ class CanTeach extends Component {
           {canTeach.map((language, i) => (
             <div key={i}>
               <Language level={language[1]} name={language[0]} />
-              <button onClick={() => { onRemoveTeachClick([language[0], language[1]]); }}>X</button>
+              <button className="x" onClick={() => { onRemoveTeachClick([language[0], language[1]]); }}>X</button>
             </div>
           ))}
         </div>
