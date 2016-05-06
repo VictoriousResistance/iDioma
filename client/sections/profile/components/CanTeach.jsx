@@ -20,7 +20,7 @@ class CanTeach extends Component {
           <div className="language-label">Language</div><div className="level-label">My Level</div>
         </div>
 
-        <select ref="language" className="language-selection" defaultValue="english">
+        <select ref="teach" className="language-selection" defaultValue="english">
           <option value="English">English</option> 
           <option value="English">Spanish</option>
           <option value="English">French</option>
@@ -31,7 +31,7 @@ class CanTeach extends Component {
           <option value="fluent">Fluent</option>
         </select>
 
-        <button onClick={() => { onAddTeachClick([this.refs['language'].value, this.refs['teach-level'].value]); }}>Add</button>
+        <button onClick={() => { onAddTeachClick([this.refs['teach'].value, this.refs['teach-level'].value]); }}>Add</button>
 
       </div>
     );
