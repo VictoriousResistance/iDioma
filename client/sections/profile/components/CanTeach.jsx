@@ -1,13 +1,13 @@
 import React from 'react';
 import Language from '../../../components/Language.jsx';
 
-const WillLearn = ({ willLearn }) => (
+const CanTeach = ({ canTeach }) => (
   <div className="profile-section">
 
     <div className="profile-title">Languages I can offer</div>
 
     <div>
-      {willLearn.map((language, i) => (
+      {canTeach.map((language, i) => (
         <Language key={i} level={language[1]} name={language[0]} />
       ))}
     </div>
@@ -22,10 +22,9 @@ const WillLearn = ({ willLearn }) => (
       <option value="french">French</option>
     </select>
 
-    <select className="level-selection" defaultValue="basic">
-      <option value="basic">Basic</option> 
-      <option value="intermediate">Intermediate</option>
-      <option value="advanced">Advanced</option>
+    <select className="level-selection" defaultValue="native">
+      <option value="native">Native</option> 
+      <option value="fluent">Fluent</option>
     </select>
 
     <button>Add</button>
@@ -33,4 +32,4 @@ const WillLearn = ({ willLearn }) => (
   </div>
 );
 
-export default WillLearn;
+export default CanTeach;
