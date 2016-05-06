@@ -2,6 +2,7 @@ var makeHomePage = require('../views/home.js');
 
 module.exports = function(req, res) {
   var initialState = {
+    inputText: { value: '' },
     messages: [
       {
         from: 'Mo',

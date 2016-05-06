@@ -4,3 +4,10 @@ export const addMsg = (msg) => (
     msg,
   }
 );
+
+export const changeInputText = (value) => (
+  {
+    type: 'CHANGE_TEXT_INPUT',
+    value,
+  }
+);
