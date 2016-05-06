@@ -22,8 +22,8 @@ class CanTeach extends Component {
 
         <select ref="teach" className="language-selection" defaultValue="english">
           <option value="English">English</option> 
-          <option value="English">Spanish</option>
-          <option value="English">French</option>
+          <option value="Spanish">Spanish</option>
+          <option value="French">French</option>
         </select>
 
         <select ref="teach-level" className="level-selection" defaultValue="native">
