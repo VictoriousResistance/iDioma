@@ -93,7 +93,10 @@ a {
 
 .language {
   display: inline-block;
-  margin-right: 1em;
+  background-color: #F3F3F3;
+  padding: .1em .3em;
+  border: .1em #cccccc solid;
+  border-radius: .2em;
 }
 
 /****************************** Profile Tab ******************************/
@@ -112,6 +115,7 @@ a {
 .profile-detail {
   display: inline-block;
   vertical-align: top;
+  min-width: 300px;
 }
 
 .profile-name {
@@ -142,6 +146,37 @@ a {
   margin: 0 auto;
 }
 
+.language-selection {
+  width: 50%;
+  padding: .5em;
+  border: 2px #cccccc solid;
+  border-radius: .5em;
+}
+
+.level-selection {
+  width: 35%;
+  padding: .5em;
+  border: .1em #cccccc solid;
+  border-radius: .5em;
+}
+
+.language-label {
+  display: inline-block;
+  width: 50%;
+}
+
+.level-label {
+  display: inline-block;
+  width: 35%;
+}
+
+.x {
+  background-color: #F3F3F3;
+  padding: .1em .3em;
+  border: .1em #cccccc solid;
+  border-radius: .2em;
+  vertical-align: text-bottom;
+}
 
 @media handheld, only screen and (max-width: 767px) {
   /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
