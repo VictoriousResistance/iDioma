@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import Language from '../../../components/Language.jsx';
+import X from '../containers/RemoveLearn.js';
 
 class WillLearn extends Component {
 
   render() {
-    const { willLearn, onAddLearnClick } = this.props;
+    const { willLearn, onAddLearnClick, onRemoveLearnClick } = this.props;
     return (
       <div className="profile-section">
 
@@ -12,7 +13,10 @@ class WillLearn extends Component {
 
         <div>
           {willLearn.map((language, i) => (
-            <Language key={i} level={language[1]} name={language[0]} />
+            <div key={i}>
+            <Language level={language[1]} name={language[0]} />
+            <button onClick={ () => {onRemoveLearnClick([language[0], language[1]]);} }>X</button>
+            </div>
           ))}
         </div>
 
