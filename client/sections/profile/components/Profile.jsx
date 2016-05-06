@@ -8,12 +8,12 @@ import Language from '../../../components/Language.jsx';
 const Profile = ({ profile }) => (
   <div className="profile">
 
-    <Header /> //className is "profile-header"
+    <Header /> {/*className is "profile-header"*/}
 
     <div className="profile-detail">
-      <CanTeach /> //className is "profile-section"
-      <WillLearn />  //className is "profile-section"
-      <Description />  //className is "profile-section"
+      <CanTeach /> {/*className is "profile-section"*/}
+      <WillLearn /> {/*className is "profile-section"*/}
+      <Description /> {/*className is "profile-section"*/}
     </div>
 
   </div>
