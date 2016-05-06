@@ -3,7 +3,7 @@ var db = require('../db.js');
 
 var User = db.define('User',
   {
-    userId: {
+    id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV1,
       primaryKey: true
@@ -26,7 +26,7 @@ var User = db.define('User',
     },
     userDescription: {
       type: Sequelize.STRING(2500),
-      field: 'description'
+      field: 'user_description'
     }
     // would like to add counter cache for request count and connection count
   }, 

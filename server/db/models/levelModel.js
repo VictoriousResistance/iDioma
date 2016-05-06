@@ -3,14 +3,14 @@ var db = require('../db.js');
 
 var Level = db.define('Level',
   {
-    levelId: {
+    id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV1,
       primaryKey: true
     },
-    level: {
+    levelName: {
       type: Sequelize.STRING,
-      field: 'level'
+      field: 'level_name'
     }
   }, 
   {

@@ -3,7 +3,12 @@ var db = require('../db.js');
 
 var UserLanguageLevel = db.define('UserLanguageLevel',
   {
-    // define only the attribute that is not inhereted
+    id: {
+      type: Sequelize.UUID,
+      defaultValue: Sequelize.UUIDV1,
+      primaryKey: true
+    },
+    // define only the attribute that is not inherited
     offerOrLearn: {
       type: Sequelize.STRING,
       field: 'type'

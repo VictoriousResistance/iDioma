@@ -1,16 +1,12 @@
 var Sequelize = require('sequelize');
 var db = require('../db.js');
 
-var Language = db.define('Language',
+var LanguageLevel = db.define('LanguageLevel',
   {
     id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV1,
       primaryKey: true
-    },
-    languageName: {
-      type: Sequelize.STRING,
-      field: 'language_name'
     }
   }, 
   {
@@ -18,4 +14,4 @@ var Language = db.define('Language',
   }
 );
 
-module.exports = Language;
+module.exports = LanguageLevel;
