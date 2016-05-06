@@ -25,6 +25,12 @@ const selectLearnLevel = (
   </select>
 );
 
+const labels = (
+  <div>
+    <div className="language-label">Language</div><div className="level-label">My Level</div>
+  </div>
+);
+
 const Profile = ({ profile }) => (
   <div className="profile">
 
@@ -43,6 +49,7 @@ const Profile = ({ profile }) => (
             <Language key={i} level={language[1]} name={language[0]} />
           ))}
         </div>
+        {labels}
         {selectLanguage}
         {selectTeachLevel}
       </div>
@@ -53,6 +60,7 @@ const Profile = ({ profile }) => (
             <Language key={i} level={language[1]} name={language[0]} />
           ))}
         </div>
+        {labels}
         {selectLanguage}
         {selectLearnLevel}
       </div>
