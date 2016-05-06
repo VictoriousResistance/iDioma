@@ -18,7 +18,7 @@ const profile = (state = {}, action) => {
         }
       });
       if (duplicate) {
-        return state;
+        return Object.assign({}, state, { needUpdate: true });
       }
       if (halfDuplicate) {
         for (var i = 0; i < willLearn.length; i++) {
@@ -28,9 +28,9 @@ const profile = (state = {}, action) => {
             newWillLearn.push(action.language);
           }
         }
-        return Object.assign({}, state, { willLearn: newWillLearn });
+        return Object.assign({}, state, { willLearn: newWillLearn }, { needUpdate: true });
       }
-      return Object.assign({}, state, { willLearn: willLearn.concat([action.language]) });
+      return Object.assign({}, state, { willLearn: willLearn.concat([action.language]) }, { needUpdate: true });
 
     case 'ADD_TEACH':
       const canTeach = state.canTeach;
@@ -49,7 +49,7 @@ const profile = (state = {}, action) => {
         }
       }); 
       if (duplicate) {
-        return state;
+        return Object.assign({}, state, { needUpdate: true });
       }
       if (halfDuplicate) {
         for (var i = 0; i < canTeach.length; i++) {
@@ -59,9 +59,9 @@ const profile = (state = {}, action) => {
             newCanTeach.push(action.language);
           }
         }
-        return Object.assign({}, state, { canTeach: newCanTeach });
+        return Object.assign({}, state, { canTeach: newCanTeach }, { needUpdate: true });
       }
-      return Object.assign({}, state, { canTeach: canTeach.concat([action.language]) });
+      return Object.assign({}, state, { canTeach: canTeach.concat([action.language]) }, { needUpdate: true });
 
     case 'REMOVE_LEARN':
       const newLearn = [];
@@ -70,7 +70,7 @@ const profile = (state = {}, action) => {
           newLearn.push(language);
         }
       });
-      return Object.assign({}, state, { willLearn: newLearn });
+      return Object.assign({}, state, { willLearn: newLearn }, { needUpdate: true });
 
     case 'REMOVE_TEACH':
       const newTeach = [];
@@ -79,7 +79,10 @@ const profile = (state = {}, action) => {
           newTeach.push(language);
         }
       });
-      return Object.assign({}, state, { canTeach: newTeach });
+      return Object.assign({}, state, { canTeach: newTeach }, { needUpdate: true });
+
+    case 'COMPLETE_UPDATE':
+      return Object.assign({}, state, { needUpdate: false });
 
     default:
       return state;

@@ -179,6 +179,10 @@ a {
   vertical-align: text-bottom;
 }
 
+.need-update {
+  background-color: red;
+}
+
 @media handheld, only screen and (max-width: 767px) {
   /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
   .button-container {

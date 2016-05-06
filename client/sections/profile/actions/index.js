@@ -17,3 +17,7 @@ export const removeTeach = (language) => ({
   type: 'REMOVE_TEACH',
   language,
 });
+
+export const completeUpdate = () => ({
+  type: 'COMPLETE_UPDATE',
+});

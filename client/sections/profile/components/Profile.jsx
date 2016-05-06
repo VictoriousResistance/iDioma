@@ -5,7 +5,7 @@ import WillLearn from '../containers/WillLearn.js';
 import Description from '../containers/Description.js';
 import Language from '../../../components/Language.jsx';
 
-const Profile = ({ profile }) => (
+const Profile = ({ profile, onUpdateClick }) => (
   <div className="profile">
 
     <Header /> {/*className is "profile-header"*/}
@@ -14,9 +14,8 @@ const Profile = ({ profile }) => (
       <CanTeach /> {/*className is "profile-section"*/}
       <WillLearn /> {/*className is "profile-section"*/}
       <Description /> {/*className is "profile-section"*/}
-      <button>Update</button>
+      <button className={profile.needUpdate ? "update need-update" : "update"} onClick={() => { onUpdateClick(profile); }}>Update</button>
     </div>
-
 
   </div>
 );
