@@ -142,6 +142,19 @@ a {
   margin: 0 auto;
 }
 
+.language-selection {
+  width: 50%;
+  padding: .5em;
+  border: 2px #cccccc solid;
+  border-radius: .5em;
+}
+
+.level-selection {
+  width: 35%;
+  padding: .5em;
+  border: 2px #cccccc solid;
+  border-radius: .5em;
+}
 
 @media handheld, only screen and (max-width: 767px) {
   /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/

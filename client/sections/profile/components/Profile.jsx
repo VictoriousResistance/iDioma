@@ -3,8 +3,7 @@ import Language from '../../../components/Language.jsx';
 
 
 const selectLanguage = (
-  <select defaultValue="english" style={{width: '200px', padding: '6px', border: '2px #cccccc solid',
-    'borderRadius': '10px'}}>
+  <select className="language-selection" defaultValue="english">
     <option value="english">English</option> 
     <option value="spanish">Spanish</option>
     <option value="french">French</option>
@@ -12,16 +11,14 @@ const selectLanguage = (
 );
 
 const selectTeachLevel = (
-  <select defaultValue="native" style={{width: '90px', padding: '6px', border: '2px #cccccc solid',
-    'borderRadius': '10px'}}>
+  <select className="level-selection" defaultValue="native">
     <option value="native">Native</option> 
     <option value="fluent">Fluent</option>
   </select>
 );
 
 const selectLearnLevel = (
-  <select defaultValue="basic" style={{width: '90px', padding: '6px', border: '2px #cccccc solid',
-    'borderRadius': '10px'}}>
+  <select className="level-selection" defaultValue="basic">
     <option value="basic">Basic</option> 
     <option value="intermediate">Intermediate</option>
     <option value="advanced">Advanced</option>
