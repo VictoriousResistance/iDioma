@@ -29,6 +29,7 @@ a {
 
 .main-nav {
   display: inline-block;
+  margin: 1em 0;
 }
 
 .right-nav {
