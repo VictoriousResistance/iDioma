@@ -5,14 +5,15 @@ class Description extends Component {
     const { description, updateDescription } = this.props;
     return (
       <div className="profile-section">
-      
+
         <div className="profile-title">About Me</div>
 
         <div
           contentEditable="true"
-          ref="words"
+          className="description"
+          ref="description"
           onKeyUp={() => {
-            updateDescription(this.refs.words.innerText);
+            updateDescription(this.refs.description.innerText);
           }}
         >
           {description}

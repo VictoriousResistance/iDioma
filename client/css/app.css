@@ -183,6 +183,11 @@ a {
   background-color: red;
 }
 
+.description {
+  max-width: 300px;
+  text-overflow: wrap;
+}
+
 @media handheld, only screen and (max-width: 767px) {
   /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
   .button-container {
