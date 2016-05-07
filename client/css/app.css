@@ -6,8 +6,7 @@
 
 body {
   font-size: 18px;
-  background-color: #FAFFFA;
-  width: 82%;
+  background-color: #DAFFFA;
   margin: 0 auto;
 }
 
@@ -27,8 +26,8 @@ a {
 
 .topbar {
   position: relative;
-  width: 100%;
-  margin-top: 2em;
+  padding: 1.2em 4em 0 4em;
+  background-color: yellow;
 }
 
 .main-nav-item, .right-nav-item {
@@ -43,12 +42,12 @@ a {
 
 .right-nav {
   position: absolute;
-  right: 0;
+  right: 2em;
   display: inline-block;
 }
 
 .logo {
-  font-size: 2em;
+  font-size: 3em;
   margin-right: 3em;
   display: inline-block;
 }
@@ -57,8 +56,10 @@ a {
 
 
 .person {
-  margin: 2em 2em 2em 0;
+  margin: 1em 5em;
   position: relative;
+  background-color: white;
+  padding: 1em;
 }
 
 .profile-picture-container {
@@ -86,8 +87,8 @@ a {
 
 .button-container {
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: 1em;
+  bottom: 1em;
 }
 
 .action {
@@ -118,7 +119,8 @@ a {
 
 
 .profile {
-  margin-top: 2em;
+  margin: 2.5em 5em;
+
 }
 
 .profile-header {
@@ -204,11 +206,6 @@ a {
 }
 
 @media handheld, only screen and (max-width: 767px) {
-
-  body {
-    width: 92%;
-  }
-
 
   /****************************** Top Bar ******************************/
 
