@@ -28,7 +28,7 @@ class Description extends Component {
               e.preventDefault();
               this.refs.description.blur();
             }
-            if (this.refs.description.innerText.length > charLimit && e.which !== 8) {
+            if (this.refs.description.innerText.length >= charLimit && e.which !== 8) {
               e.preventDefault();
             }
           }}
@@ -48,6 +48,7 @@ class Description extends Component {
         >
           {description}
         </div>
+        
         {charCount}
 
       </div>
