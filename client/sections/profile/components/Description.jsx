@@ -8,9 +8,13 @@ class Description extends Component {
     };
   }
   render() {
-    const { description, updateDescription } = this.props;
+    const { description, updateDescription, updateCanNotSubmit } = this.props;
     const charLimit = 255;
-    var charCount = this.state.showCount ? (<div>{ 'Characters left: ' + (charLimit - this.refs.description.innerText.length) }</div>) : null;
+
+    const charCount = this.state.showCount
+      ? (<div>{ 'Characters left: ' + (charLimit - this.refs.description.innerText.length) }</div>)
+      : null;
+
     return (
       <div className="profile-section">
 
@@ -22,18 +26,13 @@ class Description extends Component {
           ref="description"
           onKeyUp={() => {
             updateDescription(this.refs.description.innerText);
+            updateCanNotSubmit(charLimit - this.refs.description.innerText.length < 0);
           }}
           onKeyDown={(e) => {
             if (e.which === 13) {
               e.preventDefault();
               this.refs.description.blur();
             }
-            if (this.refs.description.innerText.length >= charLimit && e.which !== 8) {
-              e.preventDefault();
-            }
-          }}
-          onPaste={(e) => {
-            e.preventDefault();
           }}
           onFocus={() => {
             this.setState({
@@ -41,9 +40,11 @@ class Description extends Component {
             });
           }}
           onBlur={() => {
-            this.setState({
-              showCount: false,
-            });
+            if (charLimit - this.refs.description.innerText.length >= 0) {
+              this.setState({
+                showCount: false,
+              });
+            }
           }}
         >
           {description}

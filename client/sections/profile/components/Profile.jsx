@@ -5,19 +5,26 @@ import WillLearn from '../containers/WillLearn.js';
 import Description from '../containers/Description.js';
 import Language from '../../../components/Language.jsx';
 
-const Profile = ({ profile, onUpdateClick }) => (
-  <div className="profile">
+const Profile = ({ profile, onUpdateClick }) => {
 
-    <Header /> {/*className is "profile-header"*/}
+  const button = profile.canNotSubmit ?
+    (<button disabled className={profile.needUpdate ? "update need-update" : "update"} onClick={() => { onUpdateClick(profile); }}>Update</button>)
+    : (<button className={profile.needUpdate ? "update need-update" : "update"} onClick={() => { onUpdateClick(profile); }}>Update</button>)
 
-    <div className="profile-detail">
-      <CanTeach /> {/*className is "profile-section"*/}
-      <WillLearn /> {/*className is "profile-section"*/}
-      <Description /> {/*className is "profile-section"*/}
-      <button className={profile.needUpdate ? "update need-update" : "update"} onClick={() => { onUpdateClick(profile); }}>Update</button>
+  return (
+    <div className="profile">
+
+      <Header /> {/*className is "profile-header"*/}
+
+      <div className="profile-detail">
+        <CanTeach /> {/*className is "profile-section"*/}
+        <WillLearn /> {/*className is "profile-section"*/}
+        <Description /> {/*className is "profile-section"*/}
+        {button}
+      </div>
+
     </div>
-
-  </div>
-);
+  );
+};
 
 export default Profile;

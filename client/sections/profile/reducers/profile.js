@@ -87,6 +87,9 @@ const profile = (state = {}, action) => {
     case 'COMPLETE_UPDATE':
       return Object.assign({}, state, { needUpdate: false });
 
+    case 'UPDATE_CAN_NOT_SUBMIT':
+      return Object.assign({}, state, { canNotSubmit: action.canNotSubmit });
+
     default:
       return state;
   }
