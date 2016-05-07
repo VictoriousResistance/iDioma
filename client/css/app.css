@@ -1,7 +1,13 @@
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
   font-size: 18px;
   background-color: #FAFFFA;
-  width: 85%;
+  width: 82%;
   margin: 0 auto;
 }
 
@@ -200,7 +206,7 @@ a {
 @media handheld, only screen and (max-width: 767px) {
 
   body {
-    width: 93%;
+    width: 92%;
   }
 
 

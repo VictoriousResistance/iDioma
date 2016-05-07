@@ -27,7 +27,6 @@ module.exports = function(initialState) {
         <meta property="og:description" content="iDioma pairs native speakers who want to learn each other's languages." />
         <meta property="og:site_name" content="iDioma" />
 
-        <link rel="stylesheet" href="/css/simple-grid.css" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" href="/css/animate.css" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" href="/css/app.css" media="screen" title="no title" charset="utf-8">
 
