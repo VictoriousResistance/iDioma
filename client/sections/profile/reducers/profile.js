@@ -81,6 +81,9 @@ const profile = (state = {}, action) => {
       });
       return Object.assign({}, state, { canTeach: newTeach }, { needUpdate: true });
 
+    case 'UPDATE_DESCRIPTION':
+      return Object.assign({}, state, { description: action.description }, { needUpdate: true });
+
     case 'COMPLETE_UPDATE':
       return Object.assign({}, state, { needUpdate: false });
 

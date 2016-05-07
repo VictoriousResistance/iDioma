@@ -55,11 +55,11 @@ module.exports = function(req, res) {
       firstName: 'Lach',
       lastName: 'Zester',
       canTeach: [
-        ['French', 'fluent'],
+        ['German', 'fluent'],
         ['English', 'native'],
       ],
       willLearn: [
-        ['German', 'basic'],
+        ['French', 'basic'],
       ],
       description: 'Javascript is a language too.',
       photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',

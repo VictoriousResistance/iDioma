@@ -18,6 +18,11 @@ export const removeTeach = (language) => ({
   language,
 });
 
+export const updateDescription = (description) => ({
+  type: 'UPDATE_DESCRIPTION',
+  description,
+});
+
 export const completeUpdate = () => ({
   type: 'COMPLETE_UPDATE',
 });
