@@ -9,10 +9,11 @@ class Description extends Component {
   }
   render() {
     const { description, updateDescription, updateCanNotSubmit } = this.props;
+
     const charLimit = 255;
 
     const charCount = this.state.showCount
-      ? (<div>{ 'Characters left: ' + (charLimit - this.refs.description.innerText.length) }</div>)
+      ? (<div>{'Characters left: ' + (charLimit - this.refs.description.innerText.length)}</div>)
       : null;
 
     return (
