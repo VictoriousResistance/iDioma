@@ -2,31 +2,31 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const TopBar = () => (
-  <div className="top-bar-container">
-    <ul className="top-bar">
-      <li className="top-bar-item" id="logo">
-        <a href="/home">iDioma</a>
-      </li>
-      <li className="top-bar-item">
+  <div>
+    <div id="logo">
+      <a href="/home">iDioma</a>
+    </div>
+    <ul className="main-nav">
+      <li className="main-nav-item">
         <Link to="/home/connections">My Connections</Link>
       </li>
-      <li className="top-bar-item">
+      <li className="main-nav-item">
         <Link to="/home/matches">My Matches</Link>
       </li>
-      <li className="top-bar-item">
+      <li className="main-nav-item">
         <Link to="/home/requests">Connection Requests</Link>
       </li>
-      <li className="top-bar-item">
+      <li className="main-nav-item">
         <Link to="/home/conversations">Conversations</Link>
       </li>
-      <div className="profile-link">
-        <li className="top-bar-item">
-          <Link to="/home/profile">My Profile</Link>
-        </li>
-        <li className="top-bar-item">
-          <a href="/logout">Sign out</a>
-        </li>
-      </div>
+    </ul>
+    <ul className="right-nav">
+      <li className="right-nav-item">
+        <Link to="/home/profile">My Profile</Link>
+      </li>
+      <li className="right-nav-item">
+        <a href="/logout">Sign out</a>
+      </li>
     </ul>
   </div>
 );

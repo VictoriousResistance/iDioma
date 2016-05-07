@@ -16,27 +16,25 @@ a {
 
 
 /****************************** Top Bar ******************************/
-.top-bar-item {
+.main-nav-item, .right-nav-item {
   display: inline-block;
   padding-right: 2em;
 }
 
-.profile-link {
-  position: absolute;
-  right: 0;
-  top: 1em;
-}
-
-.top-bar {
+.main-nav {
   padding: 2em 0 1em 0;
+  display: inline-block;
 }
 
-.top-bar-container {
-
+.right-nav {
+  padding: 2em 0 1em 0;
+  display: inline-block;
 }
 
 #logo {
   font-size: 2em;
+  margin-right: 5em;
+  display: inline-block;
 }
 
 /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
