@@ -18,7 +18,7 @@ const profile = (state = {}, action) => {
         }
       });
       if (duplicate) {
-        return Object.assign({}, state, { needUpdate: true });
+        return state;
       }
       if (halfDuplicate) {
         for (var i = 0; i < willLearn.length; i++) {
@@ -49,7 +49,7 @@ const profile = (state = {}, action) => {
         }
       }); 
       if (duplicate) {
-        return Object.assign({}, state, { needUpdate: true });
+        state;
       }
       if (halfDuplicate) {
         for (var i = 0; i < canTeach.length; i++) {

@@ -35,18 +35,7 @@ class WillLearn extends Component {
           <option value="advanced">Advanced</option>
         </select>
 
-        <button
-          onClick={() => {
-            const isDuplicate = willLearn.reduce((isDup, language) => {
-              return isDup || ((language[0] === this.refs['learn'].value) && (language[1] === this.refs['learn-level'].value));
-            }, false);
-            if (!isDuplicate) {
-              onAddLearnClick([this.refs['learn'].value, this.refs['learn-level'].value]);
-            }
-          }}
-        >
-          Add
-        </button>
+        <button onClick={() => { onAddLearnClick([this.refs['learn'].value, this.refs['learn-level'].value]); }}>Add</button>
 
       </div>
     );
