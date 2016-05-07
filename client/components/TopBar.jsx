@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const TopBar = () => (
-  <div>
-    <div id="logo">
+  <div className="topbar">
+    <div className="logo">
       <a href="/home">iDioma</a>
     </div>
     <ul className="main-nav">

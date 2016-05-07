@@ -16,24 +16,30 @@ a {
 
 
 /****************************** Top Bar ******************************/
+
+.topbar {
+  position: relative;
+  margin-top: 2em;
+}
+
 .main-nav-item, .right-nav-item {
   display: inline-block;
-  padding-right: 2em;
+  margin-right: 2em;
 }
 
 .main-nav {
-  padding: 2em 0 1em 0;
   display: inline-block;
 }
 
 .right-nav {
-  padding: 2em 0 1em 0;
+  position: absolute;
+  right: 0;
   display: inline-block;
 }
 
-#logo {
+.logo {
   font-size: 2em;
-  margin-right: 5em;
+  margin-right: 3em;
   display: inline-block;
 }
 
@@ -188,6 +194,14 @@ a {
 }
 
 @media handheld, only screen and (max-width: 767px) {
+
+
+  /****************************** Top Bar ******************************/
+
+  .right-nav {
+    display: block;
+    position: static;
+  }
   /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
   .button-container {
     position: absolute;
