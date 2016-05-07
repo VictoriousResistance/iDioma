@@ -186,6 +186,7 @@ a {
 .description {
   max-width: 300px;
   text-overflow: wrap;
+  border: .1em #cccccc solid;
 }
 
 @media handheld, only screen and (max-width: 767px) {
