@@ -12,8 +12,8 @@ const Connection = ({ connection }) =>
       </div>
 
       <div className="text-container">
-        <div>{connection.firstName + ' ' + connection.lastName}</div>
-        <div>{connection.description}</div>
+        <div className="person-name">{connection.firstName + ' ' + connection.lastName}</div>
+        <div className="person-description">{connection.description}</div>
         <div>
           <span>{'Can offer: '}</span>
           <div className="languages">

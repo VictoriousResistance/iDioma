@@ -75,7 +75,7 @@ module.exports = function(req, res) {
         willLearn: [
           ['French', 'basic'],
         ],
-        description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home? if i make this longer, will it still work?',
+        description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home? if i make this longer, will it still work? imma make this really long and see what it looks like on the page and if the buttons still look good',
         photoUrl: 'https://e4292304444963bb9b1c-26c9e18a7a93639122506172dc90d702.ssl.cf2.rackcdn.com/gallery/img/t/golden-retriever-239058.jpg',
       },
       {

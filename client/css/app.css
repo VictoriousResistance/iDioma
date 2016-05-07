@@ -64,6 +64,16 @@ a {
   padding: 1em;
 }
 
+.person-name {
+  font-weight: bold;
+  margin-bottom: .3em;
+}
+
+.person-description {
+  margin-left: .5em;
+  font-style: italic;
+}
+
 .profile-picture-container {
   display: inline-block;
   height: 6em;
@@ -81,7 +91,6 @@ a {
 
 .text-container {
   vertical-align: top;
-  padding-top: .8em;
   position: absolute;
   left: 8em;
   display: inline-block;

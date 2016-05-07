@@ -9,8 +9,8 @@ const Match = ({ match, onConnectClick, onHideClick }) => (
     </div>
 
     <div className="text-container">
-      <div>{match.firstName + ' ' + match.lastName}</div>
-      <div>{match.description}</div>
+      <div className="person-name">{match.firstName + ' ' + match.lastName}</div>
+      <div className="person-description">{match.description}</div>
       <div>
         <span>{'Can offer: '}</span>
         <div className="languages">
