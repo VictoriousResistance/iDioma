@@ -30,8 +30,7 @@ module.exports = function(initialState) {
         <link rel="stylesheet" href="/css/animate.css" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" href="/css/app.css" media="screen" title="no title" charset="utf-8">
 
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Signika:700,400,600' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
       </head>
       <body>
         <div id='app'>

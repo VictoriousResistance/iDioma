@@ -8,6 +8,7 @@ body {
   font-size: 18px;
   background-color: #DAFFFA;
   margin: 0 auto;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 ul {
@@ -26,13 +27,14 @@ a {
 
 .topbar {
   position: relative;
-  padding: 1.2em 4em 0 4em;
-  background-color: yellow;
+  padding: 2% 5% 0 5%;
+  background-color: #FFCC66;
 }
 
 .main-nav-item, .right-nav-item {
   display: inline-block;
   margin-right: 2em;
+  background-color: #66FFFF;
 }
 
 .main-nav {
@@ -56,7 +58,7 @@ a {
 
 
 .person {
-  margin: 1em 5em;
+  margin: 1em 6%;
   position: relative;
   background-color: white;
   padding: 1em;
