@@ -13,7 +13,7 @@ module.exports = {
 	      throw error;
     });
   },
-  getAllLevels: function (req, res) {
+  getAllMessages: function (req, res) {
     Message.findAll()
       .then(function(messages) {
         res.status(201).json(messages);
