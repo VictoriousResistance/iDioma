@@ -20,6 +20,7 @@ ul {
 
 a {
   text-decoration: none;
+  color: white;
 }
 
 
@@ -27,31 +28,35 @@ a {
 
 .topbar {
   position: relative;
-  padding: 2% 5% 0 5%;
+  padding: 1% 6% 0 6%;
   background-color: #FFCC66;
+  font-weight: bold;
 }
 
 .main-nav-item, .right-nav-item {
   display: inline-block;
   margin-right: 2em;
-  background-color: #66FFFF;
 }
 
 .main-nav {
   display: inline-block;
-  margin: 1em 0;
+  margin-bottom: .3em;
+  vertical-align: bottom;
 }
 
 .right-nav {
   position: absolute;
   right: 2em;
+  bottom: 3em;
   display: inline-block;
 }
 
 .logo {
   font-size: 3em;
-  margin-right: 3em;
+  margin-right: 2em;
   display: inline-block;
+  font-weight: normal;
+  margin-bottom: .3em;
 }
 
 /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
@@ -149,6 +154,7 @@ a {
 .profile-name {
   font-size: 1.5em;
   margin-top: 1em;
+  font-weight: bold;
 }
 
 .profile-title {
