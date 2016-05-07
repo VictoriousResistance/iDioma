@@ -1,17 +1,12 @@
 var Sequelize = require('sequelize');
 var db = require('../db.js');
 
-var Language = db.define('Language',
+var Room = db.define('Room',
   {
     id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV1,
       primaryKey: true
-    },
-    languageName: {
-      type: Sequelize.STRING,
-      field: 'language_name',
-      defaultValue: 'English'
     }
   }, 
   {
@@ -19,4 +14,4 @@ var Language = db.define('Language',
   }
 );
 
-module.exports = Language;
+module.exports = Room;

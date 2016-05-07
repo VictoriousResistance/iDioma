@@ -1,10 +1,15 @@
 var User = require('../models/userModel.js');
 
 module.exports = {
-  get: function (req, res) {
+  getAllUsers: function (req, res) {
     User.findAll()
       .then(function(users) {
-        res.json(users);
-      });
+        res.status(201).json(users);
+      })
+      .catch(function(error) {
+	      res.sendStatus(404);
+	      throw error;
+    });
   }
+
 }
