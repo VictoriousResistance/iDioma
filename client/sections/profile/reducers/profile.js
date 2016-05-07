@@ -49,7 +49,7 @@ const profile = (state = {}, action) => {
         }
       }); 
       if (duplicate) {
-        state;
+        return state;
       }
       if (halfDuplicate) {
         for (var i = 0; i < canTeach.length; i++) {
