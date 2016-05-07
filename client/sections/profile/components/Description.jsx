@@ -9,7 +9,7 @@ class Description extends Component {
   }
   render() {
     const { description, updateDescription } = this.props;
-    const charLimit = 100;
+    const charLimit = 255;
     var charCount = this.state.showCount ? (<div>{ 'Characters left: ' + (charLimit - this.refs.description.innerText.length) }</div>) : null;
     return (
       <div className="profile-section">
@@ -48,7 +48,7 @@ class Description extends Component {
         >
           {description}
         </div>
-        
+
         {charCount}
 
       </div>
