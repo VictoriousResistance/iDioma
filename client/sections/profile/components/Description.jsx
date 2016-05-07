@@ -25,9 +25,7 @@ class Description extends Component {
             }
           }}
           onPaste={(e) => {
-            if (this.refs.description.innerText.length > 100) {
-              e.preventDefault();
-            }
+            e.preventDefault();
           }}
         >
           {description}
