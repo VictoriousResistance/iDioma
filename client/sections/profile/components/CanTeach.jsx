@@ -34,7 +34,18 @@ class CanTeach extends Component {
           <option value="fluent">Fluent</option>
         </select>
 
-        <button onClick={() => { onAddTeachClick([this.refs['teach'].value, this.refs['teach-level'].value]); }}>Add</button>
+        <button
+          onClick={() => {
+            const isDuplicate = canTeach.reduce((isDup, language) => {
+              return isDup || ((language[0] === this.refs['teach'].value) && (language[1] === this.refs['teach-level'].value));
+            }, false);
+            if (!isDuplicate) {
+              onAddTeachClick([this.refs['teach'].value, this.refs['teach-level'].value]);
+            }
+          }}
+        >
+          Add
+        </button>
 
       </div>
     );
