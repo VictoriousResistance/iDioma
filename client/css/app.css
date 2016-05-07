@@ -5,8 +5,8 @@
 }
 
 body {
-  font-size: 18px;
-  background-color: #DAFFFA;
+  font-size: 17px;
+  background-color: #86D0FF;
   margin: 0 auto;
   font-family: 'Source Sans Pro', sans-serif;
 }
@@ -28,9 +28,11 @@ a {
 
 .topbar {
   position: relative;
-  padding: 1% 6% 0 6%;
-  background-color: #FFCC66;
+  padding: 1% 8% 0 8%;
+  background-color: #004080;
   font-weight: bold;
+  margin-bottom: 1em;
+  border-bottom: 1em #132A6C solid;
 }
 
 .main-nav-item, .right-nav-item {
@@ -46,7 +48,7 @@ a {
 
 .right-nav {
   position: absolute;
-  right: 2em;
+  right: 6%;
   bottom: 3em;
   display: inline-block;
 }
@@ -63,10 +65,11 @@ a {
 
 
 .person {
-  margin: 1em 6%;
+  margin: 1em 8%;
   position: relative;
-  background-color: white;
+  background-color: #D6DFF3;
   padding: 1em;
+  border-radius: 10px;
 }
 
 .person-name {
@@ -159,6 +162,7 @@ a {
 
 .profile-title {
   margin-bottom: .2em;
+  font-weight: bold;
 }
 
 .profile-section {
