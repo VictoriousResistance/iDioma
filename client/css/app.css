@@ -104,7 +104,7 @@ a {
   position: relative;
   left: 3%;
   display: inline-block;
-  width: 80%;
+  width: 85%;
 }
 
 .button-container {
@@ -279,6 +279,8 @@ a {
 
   .person {
     margin: 0 8% 5em 8%;
+    border-bottom: transparent;
+    border-top: 1.5px grey solid;
   }
 
   .text-container {
