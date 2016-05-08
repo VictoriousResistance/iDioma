@@ -67,10 +67,8 @@ a {
 .person {
   margin: 1em 8%;
   position: relative;
-  background-color: #F5F5F5;
   padding: 1em;
-  border-radius: 10px;
-  border: 1.5px grey solid;
+  border-bottom: 1.5px grey solid;
 }
 
 .person-name {
@@ -118,9 +116,9 @@ a {
 .action {
   display: inline-block;
   text-align: center;
-  color: white;
   padding: 0.3em;
-  background-color: #771333;
+  color: white;
+  background-color: #004080;
   border-radius: 5px;
   margin: 0.5em 0.3em 0 0;
 }
