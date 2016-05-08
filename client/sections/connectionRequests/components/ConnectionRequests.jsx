@@ -23,12 +23,12 @@ const ConnectionRequest = ({ connectionRequest, onAcceptClick, onDeclineClick })
             {connectionRequest.willLearn.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
         </div>
       </div>
+      <div className="button-container">
+        <a href="#" className="action" onClick={() => { onAcceptClick(connectionRequest); }}>Accept</a>
+        <a href="#" className="action negative-action" onClick={() => { onDeclineClick(connectionRequest.id); }}>Decline</a>
+      </div>
     </div>
 
-    <div className="button-container">
-      <a href="#" className="action" onClick={() => { onAcceptClick(connectionRequest); }}>Accept</a>
-      <a href="#" className="action negative-action" onClick={() => { onDeclineClick(connectionRequest.id); }}>Decline</a>
-    </div>
 
   </div>
 );

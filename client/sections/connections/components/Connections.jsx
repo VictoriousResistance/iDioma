@@ -14,13 +14,13 @@ const Connection = ({ connection, onRemoveClick }) =>
       <div className="text-container">
         <div className="person-name">{connection.firstName + ' ' + connection.lastName}</div>
         <div className="person-description">{connection.description}</div>
-        <div className="offer-container">
+        <div>
           <span>{'Can offer: '}</span>
           <div className="languages">
               {connection.canTeach.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
           </div>
         </div>
-        <div className="offer-container">
+        <div>
           <span>{'Wants to learn: '}</span>
           <div className="languages">
               {connection.willLearn.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}

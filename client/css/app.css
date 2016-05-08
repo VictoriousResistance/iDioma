@@ -114,10 +114,6 @@ a {
   bottom: 0;
 }
 
-.learn-container, .teach-container {
-  display: block;
-}
-
 .action {
   display: inline-block;
   text-align: center;
@@ -275,12 +271,12 @@ a {
     position: static;
   }
   /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
-  /*.button-container {
+  .button-container {
     position: absolute;
     left: 0;
     bottom: -3em;
   }
-*/
+
   .person {
     margin: 0 8% 5em 8%;
   }
