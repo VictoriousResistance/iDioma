@@ -120,9 +120,14 @@ a {
   text-align: center;
   color: white;
   padding: 0.5em;
-  background-color: #004080;
-  border-radius: 3px;
-  margin: 0.5em 1em 0 0;
+  background-color: #771333;
+  border-radius: 5px;
+  margin: 0.5em 0.5em 0 0;
+}
+
+.negative-action {
+  color: #004080;
+  background-color: transparent;
 }
 
 .languages {
