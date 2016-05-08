@@ -4,7 +4,7 @@ var session = require('express-session');
 var passport = require('passport');
 var sockets = require('./routes/sockets');
 
-require('./db/index.js')();
+require('./db/')();
 
 var app = express();
 
