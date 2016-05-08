@@ -203,6 +203,8 @@ a {
   padding: .5em;
   border: .1em #004080 solid;
   border-radius: .5em;
+  color: #004080;
+  font-weight: bold;
 }
 
 .level-selection {
@@ -210,6 +212,8 @@ a {
   padding: .5em;
   border: .1em #004080 solid;
   border-radius: .5em;
+  color: #004080;
+  font-weight: bold;
 }
 
 .add {
@@ -255,6 +259,7 @@ a {
   max-width: 300px;
   text-overflow: wrap;
   border: .1em #cccccc solid;
+  border-radius: .3em;
   background-color: #F5F5F5;
 }
 
