@@ -1,9 +1,12 @@
 import React from 'react';
 
-const Input = ({ inputText, handleTextInput }) => (
-  <div>
-    <input type="text" value={inputText.value} onChange={handleTextInput} />
-  </div>
+const Input = ({ msgTemplate, inputText, handleTextInput, handleOnSend }) => (
+  <input
+    type="text"
+    value={inputText.value}
+    onChange={handleTextInput}
+    onKeyDown={(e) => { if (e.keyCode === 13) handleOnSend(Object.assign({}, msgTemplate, { body: inputText.value })); }}
+  />
 );
 
 export default Input;

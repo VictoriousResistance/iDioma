@@ -4,20 +4,30 @@ import Messages from './Messages.jsx';
 import Input from './Input.jsx';
 import Button from './Button.jsx';
 
-//FIXME add handleOnVideo
-const Conversations = ({ user, rooms, messages, inputText, handleTextInput, handleOnSend }) => (
-  <div>
-    <div className="col-1-3" >
-      <Rooms rooms={rooms} />
-    </div>
-    <div className="col-2-3" >
-      <div>
-        <Messages messages={messages} />
+// FIXME add handleOnVideo
+// current room will always be the first object in rooms (i.e. rooms[0])
+const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInput, handleOnSend }) => {
+  const currRoom = rooms[0];
+  const msgTemplate = {
+    roomId: currRoom.id,
+    from: user.id,
+    body: '',
+  };
+
+  return (
+    <div>
+      <div className="col-1-3" >
+        <Rooms rooms={rooms} currentRoom={currRoom} handleRoomChange={handleRoomChange} />
       </div>
-      <Input inputText={inputText} handleTextInput={handleTextInput} />
-      <Button user={user} inputText={inputText} handleOnSend={handleOnSend} />
+      <div className="col-2-3" >
+        <div>
+          <Messages messages={currRoom.messages} />
+        </div>
+        <Input msgTemplate={msgTemplate} inputText={inputText} handleOnSend={handleOnSend} handleTextInput={handleTextInput} />
+        <Button msgTemplate={msgTemplate} inputText={inputText} handleOnSend={handleOnSend} />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Conversations;

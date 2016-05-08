@@ -3,48 +3,51 @@ var makeHomePage = require('../views/home.js');
 module.exports = function(req, res) {
   var initialState = {
     inputText: { value: '' },
-    messages: [
-      {
-        from: 'Mo',
-        body: `Is anybody out there? OMG I LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE THIS APP`,
-      },
-      {
-        from: 'ReiRei',
-        body: 'Hello1',
-      },
-      {
-        from: 'Mo',
-        body: 'Hello2',
-      },
-      {
-        from: 'Mo',
-        body: 'Hello3',
-      },
-      {
-        from: 'Mo',
-        body: 'Hello4',
-      },
-      {
-        from: 'Mo',
-        body: 'Hello5',
-      },
-    ],
     rooms: [
       {
-        id: 1,
+        id: '15564633314683658',
         name: 'ReiRei',
+        messages: [
+          {
+            from: 'Mo',
+            body: `Is anybody out there? OMG I LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE LOVE THIS APP`,
+          },
+          {
+            from: 'ReiRei',
+            body: 'Hello1',
+          },
+          {
+            from: 'Mo',
+            body: 'Hello2',
+          },
+          {
+            from: 'Mo',
+            body: 'Hello3',
+          },
+          {
+            from: 'Mo',
+            body: 'Hello4',
+          },
+          {
+            from: 'Mo',
+            body: 'Hello5',
+          },
+        ],
       },
       {
-        id: 2,
+        id: '31556463314683658',
         name: 'Ashwin',
+        messages: [],
       },
       {
-        id: 3,
+        id: '15356463314683658',
         name: 'Merlin',
+        messages: [],
       },
       {
-        id: 4,
+        id: '15564633146836583',
         name: 'Morgana',
+        messages: [],
       },
     ],
     profile: {
