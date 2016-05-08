@@ -142,7 +142,7 @@ a {
 
 
 .profile {
-  margin: 2.5em 5em;
+  margin: 2.5em 0 0 22%;
 
 }
 
@@ -150,6 +150,7 @@ a {
   display: inline-block;
   vertical-align: top;
   margin-right: 4em;
+  margin-bottom: 2em;
 }
 
 .profile-detail {
@@ -267,5 +268,10 @@ a {
   .text-container {
     display: block;
     position: static;
+  }
+
+  /****************************** Profile Tab ******************************/
+  .profile {
+    margin-left: 10%;
   }
 }
