@@ -133,8 +133,8 @@ a {
 
 .language {
   display: inline-block;
-  background-color: #F3F3F3;
-  border: .1em #cccccc solid;
+  background-color: #86CDFF;
+  border: .1em #004080 solid;
   border-radius: .2em;
 }
 
@@ -219,9 +219,9 @@ a {
 }
 
 .x {
-  background-color: #F3F3F3;
+  background-color: #86CDFF;
   padding: 0 .4em;
-  border: .1em #cccccc solid;
+  border: .1em #004080 solid;
   border-radius: .2em;
   vertical-align: bottom;
 }
