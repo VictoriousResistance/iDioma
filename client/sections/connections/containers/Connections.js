@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Connections from '../components/Connections.jsx';
+import { removeConnection } from '../actions/index.js';
 
 
 const mapStateToProps = (state) => (
@@ -10,7 +11,9 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = (dispatch) => (
   {
-
+    onRemoveClick: (id) => {
+      dispatch(removeConnection(id));
+    },
   }
 );
 

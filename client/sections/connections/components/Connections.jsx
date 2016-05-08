@@ -1,7 +1,7 @@
 import React from 'react';
 import Language from '../../../components/Language.jsx';
 
-const Connection = ({ connection }) =>
+const Connection = ({ connection, onRemoveClick }) =>
 {
   const chatroomUrl = '/chat/' + connection.id;
   return (
@@ -30,16 +30,17 @@ const Connection = ({ connection }) =>
 
       <div className="button-container">
         <a href={chatroomUrl} target="_blank" className="action">Start Conversation</a>
+        <a href="#" className="action" onClick={() => { onRemoveClick(connection.id); }}>Remove</a>
       </div>
 
     </div>
   );
 };
 
-const Connections = ({ connections }) => (
+const Connections = ({ connections, onRemoveClick }) => (
   <div>
     {connections.map((connection) => (
-      <Connection key={connection.id} connection={connection} />
+      <Connection key={connection.id} connection={connection} onRemoveClick={onRemoveClick}/>
     ))}
   </div>
 );
