@@ -34,7 +34,7 @@ class CanTeach extends Component {
           <option value="fluent">Fluent</option>
         </select>
 
-        <button onClick={() => { onAddTeachClick([this.refs['teach'].value, this.refs['teach-level'].value]); }}>Add</button>
+        <button className="add" onClick={() => { onAddTeachClick([this.refs['teach'].value, this.refs['teach-level'].value]); }}>Add</button>
 
       </div>
     );

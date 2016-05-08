@@ -212,6 +212,13 @@ a {
   border-radius: .5em;
 }
 
+.add {
+  border: .1em #004080 solid;
+  border-radius: .5em;
+  background-color: #004080;
+  color: white;
+}
+
 .language-label {
   display: inline-block;
   width: 50%;
