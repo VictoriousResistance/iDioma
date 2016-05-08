@@ -101,16 +101,21 @@ a {
 
 .text-container {
   vertical-align: top;
-  position: absolute;
-  left: 9em;
-  right: 0;
+  position: relative;
+  left: 3%;
   display: inline-block;
+  width: 80%;
 }
 
 .button-container {
   position: absolute;
-  right: 1em;
-  bottom: 1em;
+  float: right;
+  right: 0;
+  bottom: 0;
+}
+
+.learn-container, .teach-container {
+  display: block;
 }
 
 .action {
@@ -270,12 +275,12 @@ a {
     position: static;
   }
   /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
-  .button-container {
+  /*.button-container {
     position: absolute;
     left: 0;
     bottom: -3em;
   }
-
+*/
   .person {
     margin: 0 8% 5em 8%;
   }

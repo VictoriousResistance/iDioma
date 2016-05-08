@@ -14,24 +14,24 @@ const Connection = ({ connection, onRemoveClick }) =>
       <div className="text-container">
         <div className="person-name">{connection.firstName + ' ' + connection.lastName}</div>
         <div className="person-description">{connection.description}</div>
-        <div>
+        <div className="offer-container">
           <span>{'Can offer: '}</span>
           <div className="languages">
               {connection.canTeach.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
           </div>
         </div>
-        <div>
+        <div className="offer-container">
           <span>{'Wants to learn: '}</span>
           <div className="languages">
               {connection.willLearn.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
           </div>
         </div>
+        <div className="button-container">
+          <a href={chatroomUrl} target="_blank" className="action">Start Conversation</a>
+          <a href="#" className="action negative-action" onClick={() => { onRemoveClick(connection.id); }}>Remove</a>
+        </div>
       </div>
 
-      <div className="button-container">
-        <a href={chatroomUrl} target="_blank" className="action">Start Conversation</a>
-        <a href="#" className="action negative-action" onClick={() => { onRemoveClick(connection.id); }}>Remove</a>
-      </div>
 
     </div>
   );
