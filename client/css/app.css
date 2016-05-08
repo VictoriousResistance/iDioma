@@ -258,7 +258,7 @@ a {
 .description {
   max-width: 300px;
   text-overflow: wrap;
-  border: .1em #cccccc solid;
+  border: .1em #004080 solid;
   border-radius: .3em;
   background-color: #F5F5F5;
 }
