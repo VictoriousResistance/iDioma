@@ -9,8 +9,8 @@ const ConnectionRequest = ({ connectionRequest, onAcceptClick, onDeclineClick })
     </div>
 
     <div className="text-container">
-      <div>{connectionRequest.firstName + ' ' + connectionRequest.lastName}</div>
-      <div>{connectionRequest.description}</div>
+      <div className="person-name">{connectionRequest.firstName + ' ' + connectionRequest.lastName}</div>
+      <div className="person-description">{connectionRequest.description}</div>
       <div>
         <span>{'Can offer: '}</span>
         <div className="languages">

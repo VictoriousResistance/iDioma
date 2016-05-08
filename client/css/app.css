@@ -1,6 +1,14 @@
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
-  font-size: 18px;
-  background-color: #FAFFFA;
+  font-size: 17px;
+  background-color: #86D0FF;
+  margin: 0 auto;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 ul {
@@ -12,39 +20,71 @@ ul {
 
 a {
   text-decoration: none;
+  color: white;
 }
 
 
 /****************************** Top Bar ******************************/
-.top-bar-item {
+
+.topbar {
+  position: relative;
+  padding: 1% 8% 0 8%;
+  background-color: #004080;
+  font-weight: bold;
+  margin-bottom: 1em;
+  border-bottom: 1em #132A6C solid;
+}
+
+.main-nav-item, .right-nav-item {
   display: inline-block;
-  padding-right: 2em;
+  margin-right: 2em;
 }
 
-.profile-link {
+.main-nav {
+  display: inline-block;
+  margin-bottom: .3em;
+  vertical-align: bottom;
+}
+
+.right-nav {
   position: absolute;
-  right: 0;
-  top: 1em;
+  right: 6%;
+  bottom: 3em;
+  display: inline-block;
 }
 
-.top-bar {
-  padding: 2em 0 1em 0;
-}
-
-.top-bar-container {
-
-}
-
-#logo {
-  font-size: 2em;
+.logo {
+  font-size: 3em;
+  margin-right: 2em;
+  display: inline-block;
+  font-weight: normal;
+  margin-bottom: .3em;
 }
 
 /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
 
 
 .person {
-  margin: 2em 2em 2em 0;
+  margin: 1em 8%;
   position: relative;
+  background-color: #F5F5F5;
+  padding: 1em;
+  border-radius: 10px;
+  border: 1.5px grey solid;
+}
+
+.person-name {
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-bottom: .3em;
+  width: 100%;
+  padding-left: 2px;
+}
+
+.person-description {
+  margin-left: .5em;
+  font-style: italic;
 }
 
 .profile-picture-container {
@@ -53,7 +93,6 @@ a {
   width: 6em;
   overflow: scroll;
   border-radius: 50%;
-  margin-right: 1.5em;
 }
 
 .profile-picture {
@@ -64,16 +103,16 @@ a {
 
 .text-container {
   vertical-align: top;
-  padding-top: .8em;
   position: absolute;
-  left: 8em;
+  left: 9em;
+  right: 0;
   display: inline-block;
 }
 
 .button-container {
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: 1em;
+  bottom: 1em;
 }
 
 .action {
@@ -94,9 +133,8 @@ a {
 
 .language {
   display: inline-block;
-  background-color: #F3F3F3;
-  padding: .1em .3em;
-  border: .1em #cccccc solid;
+  background-color: #86CDFF;
+  border: .1em #004080 solid;
   border-radius: .2em;
 }
 
@@ -104,13 +142,14 @@ a {
 
 
 .profile {
-  margin-top: 2em;
+  margin: 2.5em 5em;
+
 }
 
 .profile-header {
   display: inline-block;
   vertical-align: top;
-  margin-right: 3em;
+  margin-right: 4em;
 }
 
 .profile-detail {
@@ -122,14 +161,17 @@ a {
 .profile-name {
   font-size: 1.5em;
   margin-top: 1em;
+  font-weight: bold;
 }
 
 .profile-title {
   margin-bottom: .2em;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 .profile-section {
-  margin: 1em 0;
+  margin: 1.5em 0;
 }
 
 .own-profile-picture {
@@ -147,6 +189,9 @@ a {
   margin: 0 auto;
 }
 
+.profile-language {
+  margin-bottom: .3em;
+}
 .language-selection {
   width: 50%;
   padding: .5em;
@@ -164,26 +209,50 @@ a {
 .language-label {
   display: inline-block;
   width: 50%;
+  font-weight: bold;
 }
 
 .level-label {
   display: inline-block;
   width: 35%;
+  font-weight: bold;
 }
 
 .x {
-  background-color: #F3F3F3;
-  padding: .1em .3em;
-  border: .1em #cccccc solid;
+  background-color: #86CDFF;
+  padding: 0 .4em;
+  border: .1em #004080 solid;
   border-radius: .2em;
-  vertical-align: text-bottom;
+  vertical-align: bottom;
 }
 
+.update {
+  font-size: 1em;
+  padding: 5px;
+  color: white;
+  background-color: #004080;
+  border: .1em black solid;
+  border-radius: 5px;
+}
 .need-update {
-  background-color: red;
+  background-color: #FF0000;
+}
+
+.description {
+  max-width: 300px;
+  text-overflow: wrap;
+  border: .1em #cccccc solid;
+  background-color: #F5F5F5;
 }
 
 @media handheld, only screen and (max-width: 767px) {
+
+  /****************************** Top Bar ******************************/
+
+  .right-nav {
+    display: block;
+    position: static;
+  }
   /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
   .button-container {
     position: absolute;

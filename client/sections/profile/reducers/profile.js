@@ -18,7 +18,7 @@ const profile = (state = {}, action) => {
         }
       });
       if (duplicate) {
-        return Object.assign({}, state, { needUpdate: true });
+        return state;
       }
       if (halfDuplicate) {
         for (var i = 0; i < willLearn.length; i++) {
@@ -49,7 +49,7 @@ const profile = (state = {}, action) => {
         }
       }); 
       if (duplicate) {
-        return Object.assign({}, state, { needUpdate: true });
+        return state;
       }
       if (halfDuplicate) {
         for (var i = 0; i < canTeach.length; i++) {
@@ -81,8 +81,14 @@ const profile = (state = {}, action) => {
       });
       return Object.assign({}, state, { canTeach: newTeach }, { needUpdate: true });
 
+    case 'UPDATE_DESCRIPTION':
+      return Object.assign({}, state, { description: action.description }, { needUpdate: true });
+
     case 'COMPLETE_UPDATE':
       return Object.assign({}, state, { needUpdate: false });
+
+    case 'UPDATE_CAN_NOT_SUBMIT':
+      return Object.assign({}, state, { canNotSubmit: action.canNotSubmit });
 
     default:
       return state;
