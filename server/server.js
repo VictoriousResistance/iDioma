@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
-var sockets = require('./routes/sockets');
+var sockets = require('./routes/sockets.js');
 
 require('./db/index.js')();
 
