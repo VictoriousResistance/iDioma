@@ -226,8 +226,16 @@ a {
   vertical-align: bottom;
 }
 
+.update {
+  font-size: 1em;
+  padding: 5px;
+  color: white;
+  background-color: #004080;
+  border: .1em black solid;
+  border-radius: 5px;
+}
 .need-update {
-  background-color: red;
+  background-color: #FF0000;
 }
 
 .description {
