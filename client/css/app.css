@@ -65,7 +65,7 @@ a {
 
 
 .person {
-  margin: 1em 8%;
+  margin: 1em 12%;
   position: relative;
   padding: 1em;
   border-bottom: 1.5px grey solid;
@@ -277,7 +277,7 @@ a {
   }
 
   .person {
-    margin-bottom: 5em;
+    margin: 0 8% 5em 8%;
   }
 
   .text-container {
