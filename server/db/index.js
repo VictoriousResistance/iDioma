@@ -34,7 +34,14 @@ module.exports = function() {
   //   ]
   //   );
 
-  db.sync({force: true});
+  db.sync({force: true}).then(function() {
+    Language.bulkCreate([
+      {languageName: 'English'},
+      {languageName: 'Spanish'},
+      {languageName: 'French'}
+      ]
+      );
+  });
   //TODO: remove force true
 
 };
