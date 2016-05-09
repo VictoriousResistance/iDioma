@@ -6,11 +6,14 @@ var Room = db.define('Room',
     id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV1,
-      primaryKey: true
-    }
-  }, 
+      primaryKey: true,
+    },
+    numberActiveParticipants: {
+      type: Sequelize.INTEGER,
+    },
+  },
   {
-    freezeTableName: true
+    freezeTableName: true,
   }
 );
 
