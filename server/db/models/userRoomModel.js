@@ -6,11 +6,15 @@ var UserRoom = db.define('UserRoom',
     id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV1,
-      primaryKey: true
-    }
-  }, 
+      primaryKey: true,
+    },
+    show: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: true,
+    },
+  },
   {
-    freezeTableName: true
+    freezeTableName: true,
   }
 );
 
