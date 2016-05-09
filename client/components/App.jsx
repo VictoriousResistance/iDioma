@@ -4,7 +4,7 @@ import TopBar from './TopBar.jsx';
 const App = ({ children }) => (
   <div>
     <TopBar />
-    <div>
+    <div className="content">
       {children}
     </div>
   </div>

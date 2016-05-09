@@ -61,6 +61,12 @@ a {
   margin-bottom: .3em;
 }
 
+
+/****************************** Content ******************************/
+.content {
+  padding-bottom: 5em;
+}
+
 /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
 
 
