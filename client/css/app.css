@@ -31,7 +31,7 @@ a {
   padding: 1% 8% 0 8%;
   background-color: #004080;
   font-weight: bold;
-  margin-bottom: 1em;
+  margin-bottom: 2.5em;
   border-bottom: 1em #132A6C solid;
 }
 
@@ -61,16 +61,20 @@ a {
   margin-bottom: .3em;
 }
 
+
+/****************************** Content ******************************/
+.content {
+  padding-bottom: 5em;
+}
+
 /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
 
 
 .person {
-  margin: 1em 8%;
+  margin: 1em 12%;
   position: relative;
-  background-color: #F5F5F5;
   padding: 1em;
-  border-radius: 10px;
-  border: 1.5px grey solid;
+  border-bottom: 1.5px grey solid;
 }
 
 .person-name {
@@ -103,26 +107,32 @@ a {
 
 .text-container {
   vertical-align: top;
-  position: absolute;
-  left: 9em;
-  right: 0;
+  position: relative;
+  left: 3%;
   display: inline-block;
+  width: 85%;
 }
 
 .button-container {
   position: absolute;
-  right: 1em;
-  bottom: 1em;
+  float: right;
+  right: 0;
+  bottom: 0;
 }
 
 .action {
   display: inline-block;
   text-align: center;
+  padding: 0.3em;
   color: white;
-  padding: 0.5em;
-  background-color: #771333;
-  border-radius: 3px;
-  margin: 0.5em 1em 0 0;
+  background-color: #004080;
+  border-radius: 5px;
+  margin: 0.5em 0.3em 0 0;
+}
+
+.negative-action {
+  color: #004080;
+  background-color: transparent;
 }
 
 .languages {
@@ -142,7 +152,7 @@ a {
 
 
 .profile {
-  margin: 2.5em 5em;
+  margin: 2.5em 0 0 22%;
 
 }
 
@@ -150,6 +160,7 @@ a {
   display: inline-block;
   vertical-align: top;
   margin-right: 4em;
+  margin-bottom: 2em;
 }
 
 .profile-detail {
@@ -195,15 +206,26 @@ a {
 .language-selection {
   width: 50%;
   padding: .5em;
-  border: 2px #cccccc solid;
+  border: .1em #004080 solid;
   border-radius: .5em;
+  color: #004080;
+  font-weight: bold;
 }
 
 .level-selection {
   width: 35%;
   padding: .5em;
-  border: .1em #cccccc solid;
+  border: .1em #004080 solid;
   border-radius: .5em;
+  color: #004080;
+  font-weight: bold;
+}
+
+.add {
+  border: .1em #004080 solid;
+  border-radius: .5em;
+  background-color: #004080;
+  color: white;
 }
 
 .language-label {
@@ -231,17 +253,22 @@ a {
   padding: 5px;
   color: white;
   background-color: #004080;
-  border: .1em black solid;
-  border-radius: 5px;
+  border: .12em black solid;
+  border-radius: .3em;
 }
 .need-update {
   background-color: #FF0000;
 }
 
+.need-update:disabled {
+  opacity: .6;
+}
+
 .description {
   max-width: 300px;
   text-overflow: wrap;
-  border: .1em #cccccc solid;
+  border: .1em #004080 solid;
+  border-radius: .3em;
   background-color: #F5F5F5;
 }
 
@@ -261,11 +288,18 @@ a {
   }
 
   .person {
-    margin-bottom: 5em;
+    margin: 0 8% 5em 8%;
+    border-bottom: transparent;
+    border-top: 1.5px grey solid;
   }
 
   .text-container {
     display: block;
     position: static;
+  }
+
+  /****************************** Profile Tab ******************************/
+  .profile {
+    margin-left: 10%;
   }
 }

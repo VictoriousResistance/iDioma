@@ -116,7 +116,7 @@ module.exports = function(req, res) {
         willLearn: [
           ['French', 'basic'],
         ],
-        description: 'this love is taking a toll on me. she said goodbye, too many times before',
+        description: 'i was so high i didnt recognize the fire burning in her eyes. this love is taking a toll on me. she said goodbye, too many times before.',
         photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
       },
       {
@@ -157,7 +157,7 @@ module.exports = function(req, res) {
         willLearn: [
           ['French', 'basic'],
         ],
-        description: 'we couldve had it all. rolling in the deep. you had my heart inside of your hand...',
+        description: 'theres a fire burning in my heart. we couldve had it all. rolling in the deep. you had my heart inside of your hand...',
         photoUrl: 'http://www.pvvcvets.com/_images//kitten.jpg',
       },
       {

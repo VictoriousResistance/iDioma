@@ -23,12 +23,12 @@ const Match = ({ match, onConnectClick, onHideClick }) => (
             {match.willLearn.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
         </div>
       </div>
+      <div className="button-container">
+        <a href="#" className="action" onClick={() => { onConnectClick(match.id); }}>Connect</a>
+        <a href="#" className="action negative-action" onClick={() => { onHideClick(match.id); }}>Hide</a>
+      </div>
     </div>
 
-    <div className="button-container">
-      <a href="#" className="action" onClick={() => { onConnectClick(match.id); }}>Connect</a>
-      <a href="#" className="action" onClick={() => { onHideClick(match.id); }}>Hide</a>
-    </div>
     
   </div>
 );

@@ -35,7 +35,7 @@ class WillLearn extends Component {
           <option value="advanced">Advanced</option>
         </select>
 
-        <button onClick={() => { onAddLearnClick([this.refs['learn'].value, this.refs['learn-level'].value]); }}>Add</button>
+        <button className="add" onClick={() => { onAddLearnClick([this.refs['learn'].value, this.refs['learn-level'].value]); }}>Add</button>
 
       </div>
     );
