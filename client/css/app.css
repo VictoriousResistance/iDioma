@@ -247,8 +247,8 @@ a {
   padding: 5px;
   color: white;
   background-color: #004080;
-  border: .1em black solid;
-  border-radius: 5px;
+  border: .12em black solid;
+  border-radius: .3em;
 }
 .need-update {
   background-color: #FF0000;
