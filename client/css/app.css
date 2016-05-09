@@ -254,6 +254,10 @@ a {
   background-color: #FF0000;
 }
 
+.need-update:disabled {
+  opacity: .6;
+}
+
 .description {
   max-width: 300px;
   text-overflow: wrap;
