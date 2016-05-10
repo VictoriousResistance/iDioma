@@ -1,16 +1,20 @@
-var Sequelize = require('sequelize');
-var db = require('../db.js');
+const Sequelize = require('sequelize');
+const db = require('../db.js');
 
-var Room = db.define('Room',
+const Room = db.define('Room',
   {
     id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV1,
-      primaryKey: true
-    }
-  }, 
+      primaryKey: true,
+    },
+    numberActiveParticipants: {
+      type: Sequelize.INTEGER,
+      field: 'number_active_participants',
+    },
+  },
   {
-    freezeTableName: true
+    freezeTableName: true,
   }
 );
 

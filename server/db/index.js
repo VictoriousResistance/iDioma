@@ -8,6 +8,7 @@ module.exports = function() {
   var Message = require('./models/messageModel.js');
   var Room = require('./models/roomModel.js');
   var UserRoom = require('./models/userRoomModel.js');
+  var Relationship = require('./models/relationshipModel.js');
 
 
   Language.belongsToMany(Level, {through: 'LanguageLevel'});
@@ -22,14 +23,17 @@ module.exports = function() {
   Message.belongsTo(Room);
   Message.belongsTo(User);
 
-// creates duplicates -- investigate
-  // Language.bulkCreate([
-  //   {languageName: 'English'},
-  //   {languageName: 'Spanish'},
-  //   {languageName: 'French'}
-  //   ]
-  //   );
+  User.belongsToMany(User, {as: 'User1', through: 'Relationship', foreignKey: 'user1Id'});
+  User.belongsToMany(User, {as: 'User2', through: 'Relationship', foreignKey: 'user2Id'});
 
-  db.sync();
+  db.sync({force: true}).then(function() {
+    Language.bulkCreate([
+      {languageName: 'English'},
+      {languageName: 'Spanish'},
+      {languageName: 'French'}
+      ]
+      );
+  });
+  //TODO: remove force true
 
 };

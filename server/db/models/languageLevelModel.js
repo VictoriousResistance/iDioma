@@ -1,16 +1,16 @@
-var Sequelize = require('sequelize');
-var db = require('../db.js');
+const Sequelize = require('sequelize');
+const db = require('../db.js');
 
-var LanguageLevel = db.define('LanguageLevel',
+const LanguageLevel = db.define('LanguageLevel',
   {
     id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV1,
-      primaryKey: true
-    }
-  }, 
+      primaryKey: true,
+    },
+  },
   {
-    freezeTableName: true
+    freezeTableName: true,
   }
 );
 

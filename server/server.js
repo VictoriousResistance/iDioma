@@ -21,7 +21,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //router and sockets
-require('./routes/routes.js')(app, express);
+require('./routes/webRoutes.js')(app, express);
 var server = require('http').Server(app);
 sockets(server);
 

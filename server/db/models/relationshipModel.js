@@ -1,16 +1,15 @@
 const Sequelize = require('sequelize');
 const db = require('../db.js');
 
-const UserRoom = db.define('UserRoom',
+const Relationship = db.define('Relationship',
   {
     id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV1,
       primaryKey: true,
     },
-    show: {
-      type: Sequelize.BOOLEAN,
-      defaultValue: true,
+    type: {
+      type: Sequelize.STRING,
     },
   },
   {
@@ -18,4 +17,4 @@ const UserRoom = db.define('UserRoom',
   }
 );
 
-module.exports = UserRoom;
+module.exports = Relationship;

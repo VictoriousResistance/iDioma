@@ -1,20 +1,19 @@
-var Sequelize = require('sequelize');
-var db = require('../db.js');
+const Sequelize = require('sequelize');
+const db = require('../db.js');
 
-var Message = db.define('Message',
+const Message = db.define('Message',
   {
     id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV1,
-      primaryKey: true
+      primaryKey: true,
     },
     body: {
       type: Sequelize.STRING,
-      field: 'message_body'
-    }
-  }, 
+    },
+  },
   {
-    freezeTableName: true
+    freezeTableName: true,
   }
 );
 
