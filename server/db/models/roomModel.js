@@ -1,7 +1,7 @@
-var Sequelize = require('sequelize');
-var db = require('../db.js');
+const Sequelize = require('sequelize');
+const db = require('../db.js');
 
-var Room = db.define('Room',
+const Room = db.define('Room',
   {
     id: {
       type: Sequelize.UUID,
@@ -10,6 +10,7 @@ var Room = db.define('Room',
     },
     numberActiveParticipants: {
       type: Sequelize.INTEGER,
+      field: 'number_active_participants',
     },
   },
   {

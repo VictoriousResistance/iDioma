@@ -1,7 +1,7 @@
-var Sequelize = require('sequelize');
-var db = require('../db.js');
+const Sequelize = require('sequelize');
+const db = require('../db.js');
 
-var Relationship = db.define('Relationship',
+const Relationship = db.define('Relationship',
   {
     id: {
       type: Sequelize.UUID,

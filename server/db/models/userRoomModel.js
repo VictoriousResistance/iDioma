@@ -1,7 +1,7 @@
-var Sequelize = require('sequelize');
-var db = require('../db.js');
+const Sequelize = require('sequelize');
+const db = require('../db.js');
 
-var UserRoom = db.define('UserRoom',
+const UserRoom = db.define('UserRoom',
   {
     id: {
       type: Sequelize.UUID,
