@@ -1,6 +1,8 @@
 const auth = require(__dirname + '/../auth/auth.js');
 const homeHandler = require('../utils/homeHandler.js');
 
+const getUserProfile = require('../db/controllers/getSelfGivenFBProfile.js');
+
 module.exports = function(app, express) {
 
   const redirectHome = function(req, res) {
@@ -8,7 +10,10 @@ module.exports = function(app, express) {
   };
 
   app.use(express.static(__dirname + '/../../client'));
-  app.use('/home/*', auth.checkAuth, homeHandler);
+
+  app.use('/home/*', auth.checkAuth, 
+    getUserProfile,
+    homeHandler);
 
   app.get('/login', (req, res) =>
     res.send('<a href="/auth/facebook">login</a>')
@@ -20,7 +25,7 @@ module.exports = function(app, express) {
 
   app.get('/auth/facebook', auth.handleLogin, redirectHome);
   app.get('/auth/facebook/callback', auth.handleCallback);
-  
+
   app.get('/logout', (req, res) => {
     req.logout();
     req.session.destroy(() => {
