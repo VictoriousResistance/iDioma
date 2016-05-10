@@ -26,14 +26,6 @@ module.exports = function() {
   User.belongsToMany(User, {as: 'User1', through: 'Relationship', foreignKey: 'user1Id'});
   User.belongsToMany(User, {as: 'User2', through: 'Relationship', foreignKey: 'user2Id'});
 
-// creates duplicates -- investigate
-  // Language.bulkCreate([
-  //   {languageName: 'English'},
-  //   {languageName: 'Spanish'},
-  //   {languageName: 'French'}
-  //   ]
-  //   );
-
   db.sync({force: true}).then(function() {
     Language.bulkCreate([
       {languageName: 'English'},
