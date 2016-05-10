@@ -45,4 +45,4 @@ exports.checkAuth = function(req, res, next) {
 
 exports.handleLogin = passport.authenticate('facebook');
 
-exports.handleCallback = passport.authenticate('facebook', { successRedirect: '/home', failureRedirect: '/login' });
+exports.handleCallback = passport.authenticate('facebook', { successRedirect: '/home/', failureRedirect: '/login' });
