@@ -1,7 +1,7 @@
 const db = require('../db.js');
 const Sequelize = require('sequelize');
 
-const ans = (self, offSet) => {
+module.exports = (self, offSet) => {
   const queryStr = `SELECT DISTINCT teach.teach_id FROM (
                       (
                         SELECT users_languages_levels.user_id AS teach_id FROM users_languages_levels 
@@ -29,7 +29,5 @@ const ans = (self, offSet) => {
                       LIMIT 20 
                       OFFSET ${offSet}
                     `;
-  return db.query(queryStr, { type: Sequelize.QueryTypes.SELECT }); //not sure if 'Sequelize' should be an instance of sequelize or the db itself
+  return db.query(queryStr, { type: Sequelize.QueryTypes.SELECT });
 };
-
-module.exports = ans;
