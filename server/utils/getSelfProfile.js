@@ -1,18 +1,16 @@
+const getBasicInfo = require('../db/controllers/getSelfBasicInfoGivenFBProfile.js');
+
 module.exports = (req, res, next) => {
   console.log('reached');
-  const fbID = req.user.id;
-
-  const db = require('../db/db.js');
-
-  db.query(
-    `SELECT *
-    FROM users;`
-
-  ).spread(function(results, metadata) {
-  // Results will be an empty array and metadata will contain the number of affected rows.
-  console.log(results);
-  console.log(metadata);
-  });
-
-  next();
+  const fbId = req.user.id;
+  getBasicInfo(fbId).then(results => {
+    const user = results[0];
+    req.idioma.profile = {
+      id: user.id,
+      firstName: user.first_name,
+      lastName: user.last_name,
+      description: user.description,
+      photoUrl: user.photo_url,
+    };
+  }).then(next());
 };
