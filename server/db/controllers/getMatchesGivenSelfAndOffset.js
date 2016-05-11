@@ -30,22 +30,22 @@ module.exports = (self, offSet) => {
                       ) AS learn 
                         ON teach.teach_id = learn.learn_id 
                       ) 
-                      LIMIT 20 
-                      OFFSET ${offSet}
-                      WHERE teach.teach_id NOT IN 
-                        (
-                          SELECT relationships.user1Id FROM users 
+                      WHERE teach.teach_id NOT IN  
+                        (SELECT * from ((
+                          SELECT relationships.user1Id as userid FROM users 
                             INNER JOIN relationships 
                               ON users.id = relationships.user2Id 
-                            WHERE users.id = ${self.id} AND relationships.type = 'reject'
+                            WHERE users.id = '${self.id}' AND relationships.type = 'reject'
                         )
-                        UNION 
+                        UNION ALL
                         (
-                          SELECT relationships.user2Id FROM users 
+                          SELECT relationships.user2Id as userid FROM users 
                             INNER JOIN relationships 
                               ON users.id = relationships.user1Id 
-                            WHERE users.id = ${self.id} AND relationships.type = 'reject'
-                        )
+                            WHERE users.id = '${self.id}' AND relationships.type = 'reject'
+                        )) AS rejectIds)
+                      LIMIT 20 
+                      OFFSET ${offSet}
                     `;
   return db.query(queryStr, { type: Sequelize.QueryTypes.SELECT });
 };
