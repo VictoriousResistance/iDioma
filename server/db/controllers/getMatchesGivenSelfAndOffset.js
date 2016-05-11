@@ -1,14 +1,18 @@
 const db = require('../db.js');
 
 module.exports = (self, offSet) => {
-  const queryString = `SELECT UserLanguageLevel.User FROM UserLanguageLevel 
-                         INNER JOIN LanguageLevel 
-                           ON UserLanguageLevel.LanguageLevel = LanguageLevel.id
-                         INNER JOIN Language
-                           ON LanguageLevel.Language = Language.id
-                         INNER JOIN Level
-                           ON LanguageLevel.Level = Level.id
-                         WHERE Language.name IN (${self.canTeach.map(language => language[0]).join(',')}) AND Level.name IN ('fluent', 'native')
+  const queryString = `(
+                        SELECT users_languages_levels.user AS teach_id FROM users_languages_levels 
+                         INNER JOIN languages_levels 
+                           ON users_languages_levels.languages_levels = languages_levels.id
+                         INNER JOIN languages
+                           ON languages_levels.language = language.id
+                         INNER JOIN levels
+                           ON languages_levels.level = level.id
+                         WHERE language.name IN (${self.canTeach.map(language => language[0]).join(',')}) AND level.name IN ('fluent', 'native')
+                        ) AS teach
+                        INNER JOIN
+                        
                       `;
   // db.query();
 };
