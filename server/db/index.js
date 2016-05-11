@@ -30,8 +30,8 @@ module.exports = function() {
   db.sync({force: true})
     .then(function() {
       return Rooms.bulkCreate([
-        { number_active_participants: 2 },
         { number_active_participants: 3 },
+        { number_active_participants: 2 },
       ]);
     })
     .then(function(rooms) {
@@ -43,8 +43,9 @@ module.exports = function() {
       .then(function(users) {
         // console.log('USERS: ', users)
         // console.log('ROOMS: ', rooms)
-        users.forEach((user) => { user.addRoom(rooms[1]); });
-        users[0].addRoom(rooms[0]);
+        users.forEach((user) => { user.addRoom(rooms[0]); });
+        users[0].addRoom(rooms[1]);
+        users[1].addRoom(rooms[1]);
       });
     })
     .then(function() {
