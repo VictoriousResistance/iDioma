@@ -8,7 +8,7 @@ module.exports = function(req, res) {
     rooms: [
       {
         id: '15564633314683658',
-        name: 'ReiRei',
+        name: 'ReiRei', /* users: [{id: '123', firstName: 'ReiRei', lastName: 'ReiRei'}] */
         messages: [
           {
             from: 'Mo',
