@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch) => (
     },
     onLoadMoreClick: (selfId, offset) => {
       //use the offset to get additional matches from db, then
-      dispatch(addMatches([{firstName: 'Velvet', lastName: 'Underground', canTeach: [['English', 'native']], willLearn: [['German', 'advanced']], description: 'hi there'}]));
+      dispatch(addMatches([{firstName: 'Velvet', lastName: 'Underground', canTeach: [['English', 'native']], willLearn: [['German', 'advanced']], description: 'hi there', photoUrl: 'http://watchmojo.com/uploads/blipthumbs/M-RR-Top10-Velvet-Underground-Songs-480p30_480.jpg'}]));
       dispatch(incrementOffset(20));
     },
   }
