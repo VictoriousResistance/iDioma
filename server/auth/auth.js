@@ -1,4 +1,4 @@
-var config = require(__dirname + '/config.js');
+var config = require('./config.js');
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var User = require('../db/models/userModel.js');
@@ -13,11 +13,11 @@ passport.use(new FacebookStrategy({
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate(
       {
-        where: { facebookId: profile.id}, 
+        where: { facebook_id: profile.id},
         defaults: {
-          firstName: profile.name.givenName, 
-          lastName: profile.name.familyName, 
-          photoUrl: profile.photos[0].value
+          first_name: profile.name.givenName,
+          last_name: profile.name.familyName,
+          photo_url: profile.photos[0].value,
         }
       })
       .spread(function (user, created) {

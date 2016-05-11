@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db.js');
 
-const UserRoom = db.define('UserRoom',
+const UsersRooms = db.define('users_rooms',
   {
     id: {
       type: Sequelize.UUID,
@@ -18,4 +18,4 @@ const UserRoom = db.define('UserRoom',
   }
 );
 
-module.exports = UserRoom;
+module.exports = UsersRooms;

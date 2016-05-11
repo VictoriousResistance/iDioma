@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db.js');
 
-const Level = db.define('Level',
+const Levels = db.define('levels',
   {
     id: {
       type: Sequelize.UUID,
@@ -17,4 +17,4 @@ const Level = db.define('Level',
   }
 );
 
-module.exports = Level;
+module.exports = Levels;
