@@ -1,4 +1,4 @@
-const getBasicInfo = require('../db/controllers/getSelfBasicInfoGivenFBProfile.js');
+const getBasicInfo = require('../db/controllers/getSelfBasicInfoGivenFBId.js');
 
 module.exports = (req, res, next) => {
   console.log('reached');
