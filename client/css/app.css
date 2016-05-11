@@ -139,6 +139,16 @@ a {
   display: inline-block;
 }
 
+.load {
+  margin: auto;
+  position: relative;
+  left: 48%;
+  font-size: .8em;
+  background-color: transparent;
+  border: transparent;
+  color: #004080;
+}
+
 /****************************** Language Component ******************************/
 
 .language {

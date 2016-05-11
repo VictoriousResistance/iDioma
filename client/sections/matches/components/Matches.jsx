@@ -37,7 +37,7 @@ const Matches = ({ matches, onConnectClick, onHideClick, offset, onLoadMoreClick
     {matches.map((match) => (
       <Match key={match.id} match={match} onConnectClick={onConnectClick} onHideClick={onHideClick} />
     ))}
-    <a href="#" onClick={() => { onLoadMoreClick(selfId, offset); }}>Load More</a>
+    <button href="#" className="load" onClick={() => { onLoadMoreClick(selfId, offset); }}>Load More</button>
   </div>
 );
 
