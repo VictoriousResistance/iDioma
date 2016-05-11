@@ -3,6 +3,7 @@ const Rooms = require('../models/roomModel.js');
 
 
 const getRoomIdsAndUserIdsGivenSelfId = (selfId) => {
+  console.log('input.............', selfId)
   // first find rooms that self is a participant
   return UserRooms.findAll({ where: { user_id: selfId } })
     .then((results) => {
@@ -60,7 +61,7 @@ const getRoomIdsAndUserIdsGivenSelfId = (selfId) => {
               // push outputObj to outputArray
               outputArray.push(outputObj);
             });
-
+          console.log('output.............', outputArray)
           return outputArray;
         });
     })
