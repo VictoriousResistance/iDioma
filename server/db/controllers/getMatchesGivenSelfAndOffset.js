@@ -2,7 +2,7 @@ const db = require('../db.js');
 const Sequelize = require('sequelize');
 
 module.exports = (self, offSet) => {
-  const queryStr = `SELECT DISTINCT * FROM (
+  const queryStr = `SELECT DISTINCT teach.teach_id, teach.teach_url, teach.teach_first, teach.teach_last, teach.teach_description FROM (
                       (
                         SELECT users.id AS teach_id, users.photo_url AS teach_url, users.first_name AS teach_first, users.last_name AS teach_last, users.description AS teach_description FROM users 
                           INNER JOIN users_languages_levels  
@@ -30,6 +30,20 @@ module.exports = (self, offSet) => {
                       ) AS learn 
                         ON teach.teach_id = learn.learn_id 
                       ) 
+                      WHERE teach.teach_id NOT IN  
+                        (SELECT * from ((
+                          SELECT relationships.user1Id as userid FROM users 
+                            INNER JOIN relationships 
+                              ON users.id = relationships.user2Id 
+                            WHERE users.id = '${self.id}' AND relationships.type = 'reject'
+                        )
+                        UNION ALL
+                        (
+                          SELECT relationships.user2Id as userid FROM users 
+                            INNER JOIN relationships 
+                              ON users.id = relationships.user1Id 
+                            WHERE users.id = '${self.id}' AND relationships.type = 'reject'
+                        )) AS rejectIds)
                       LIMIT 20 
                       OFFSET ${offSet}
                     `;

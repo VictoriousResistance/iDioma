@@ -1,16 +1,35 @@
-var getUserIdsGivenSelfIdAndRelationshipType = function(selfId, relationshipType) {
+const db = require('../db.js');
+const Sequelize = require('sequelize');
 
+const getUserIdsGivenSelfIdAndRelationshipType = (selfId, relationshipType) => {
+  const queryStr = `
+                    (
+                      SELECT relationships.user1Id as userid FROM users 
+                        INNER JOIN relationships 
+                          ON users.id = relationships.user2Id 
+                        WHERE users.id = '${selfId}' AND relationships.type = '${relationshipType}'
+                    )
+                    UNION 
+                    (
+                      SELECT relationships.user2Id as userid FROM users 
+                        INNER JOIN relationships 
+                          ON users.id = relationships.user1Id 
+                        WHERE users.id = '${selfId}' AND relationships.type = '${relationshipType}'
+                    )
+                    `;
+  return db.query(queryStr, { type: Sequelize.QueryTypes.SELECT });
 };
 
-exports.getConnections = function(selfId) {
-  return getUserIdsGivenSelfIdAndRelationshipType(selfId, 'connection');
-};
+exports.getConnections = (selfId) => getUserIdsGivenSelfIdAndRelationshipType(selfId, 'connection');
 
-exports.getRejects = function(selfId) {
-  return getUserIdsGivenSelfIdAndRelationshipType(selfId, 'reject');
-};
+exports.getRejects = (selfId) => getUserIdsGivenSelfIdAndRelationshipType(selfId, 'reject');
 
-exports.getRequests = function(selfId) {
-  return getUserIdsGivenSelfIdAndRelationshipType(selfId, 'request');
+exports.getRequests = (selfId) => {
+  const queryStr = `
+                    SELECT relationships.user1Id FROM users 
+                      INNER JOIN relationships 
+                        ON users.id = relationships.user2Id 
+                      WHERE users.id = ${selfId} AND relationships.type = 'request'
+                    `;
+  return db.query(queryStr, { type: Sequelize.QueryTypes.SELECT });
 };
-

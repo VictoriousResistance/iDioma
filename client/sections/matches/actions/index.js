@@ -11,3 +11,17 @@ export const removeMatch = (id) => {
     id,
   };
 };
+
+export const incrementOffset = (increment) => {
+  return {
+    type: 'INCREMENT_OFFSET',
+    increment,
+  };
+};
+
+export const addMatches = (matches) => {
+  return {
+    type: 'ADD_MATCHES',
+    matches,
+  };
+};
