@@ -9,6 +9,7 @@ module.exports = function() {
   var Rooms = require('./models/roomModel.js');
   var UserRooms = require('./models/userRoomModel.js');
   var Relationships = require('./models/relationshipModel.js');
+  var test = require('./controllers/getRoomIdsAndUserIdsGivenSelfId.js')
 
 
   Languages.belongsToMany(Levels, {through: 'languages_levels', foreignKey: 'language_id' });
@@ -43,13 +44,14 @@ module.exports = function() {
         // console.log('USERS: ', users)
         // console.log('ROOMS: ', rooms)
         users.forEach((user) => { user.addRoom(rooms[1]); });
+        users[0].addRoom(rooms[0]);
       });
     })
     .then(function() {
       return Users.findOne({ where: { first_name: 'Ash' } })
         .then(function(result) {
-          console.log('result.........', result.dataValues.id)
-        })
+          return test(result.dataValues.id);
+        });
     });
   //TODO: remove force true
 
