@@ -14,5 +14,11 @@ exports.getConnections = (selfId) => getUserIdsGivenSelfIdAndRelationshipType(se
 
 exports.getRejects = (selfId) => getUserIdsGivenSelfIdAndRelationshipType(selfId, 'reject');
 
-exports.getRequests = (selfId) => getUserIdsGivenSelfIdAndRelationshipType(selfId, 'request');
-
+exports.getRequests = (selfId) => {
+  const queryStr = `SELECT users.id FROM users 
+                      INNER JOIN relationships 
+                        ON users.id = relationships.user2Id 
+                      WHERE users.id = ${selfId} AND relationships.type = 'request'
+                    `;
+  return db.query(queryStr, { type: Sequelize.QueryTypes.SELECT });
+};
