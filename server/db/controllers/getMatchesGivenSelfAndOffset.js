@@ -1,7 +1,7 @@
 const db = require('../db.js');
 const Sequelize = require('sequelize');
 
-module.exports = (self, offSet) => {
+const ans = (self, offSet) => {
   const queryStr = `SELECT DISTINCT teach.teach_id FROM (
                       (
                         SELECT users_languages_levels.user_id AS teach_id FROM users_languages_levels 
@@ -11,7 +11,7 @@ module.exports = (self, offSet) => {
                             ON languages_levels.language_id = languages.id 
                           INNER JOIN levels 
                             ON languages_levels.level_id = levels.id 
-                          WHERE languages.name IN (${self.willLearn.map(language => language[0]).join(',')}) AND level.name IN ('fluent', 'native') 
+                          WHERE languages.name IN ('${self.willLearn.map(language => language[0]).join("', '")}') AND levels.name IN ('fluent', 'native') 
                       ) AS teach 
                       INNER JOIN 
                       ( 
@@ -22,7 +22,7 @@ module.exports = (self, offSet) => {
                             ON languages_levels.language_id = languages.id 
                           INNER JOIN levels 
                             ON languages_levels.level_id = levels.id 
-                          WHERE languages.name IN (${self.canTeach.map(language => language[0]).join(',')}) AND level.name IN ('basic', 'intermediate', 'advanced')
+                          WHERE languages.name IN ('${self.canTeach.map(language => language[0]).join("', '")}') AND levels.name IN ('basic', 'intermediate', 'advanced')
                       ) AS learn 
                         ON teach.teach_id = learn.learn_id 
                       ) 
@@ -31,3 +31,5 @@ module.exports = (self, offSet) => {
                     `;
   return db.query(queryStr, { type: Sequelize.QueryTypes.SELECT }); //not sure if 'Sequelize' should be an instance of sequelize or the db itself
 };
+
+module.exports = ans;
