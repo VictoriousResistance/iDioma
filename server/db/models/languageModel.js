@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db.js');
 
-const Language = db.define('Language',
+const Languages = db.define('languages',
   {
     id: {
       type: Sequelize.UUID,
@@ -18,4 +18,4 @@ const Language = db.define('Language',
   }
 );
 
-module.exports = Language;
+module.exports = Languages;

@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db.js');
 
-const LanguageLevel = db.define('LanguageLevel',
+const LanguagesLevels = db.define('languages_levels',
   {
     id: {
       type: Sequelize.UUID,
@@ -14,4 +14,4 @@ const LanguageLevel = db.define('LanguageLevel',
   }
 );
 
-module.exports = LanguageLevel;
+module.exports = LanguagesLevels;

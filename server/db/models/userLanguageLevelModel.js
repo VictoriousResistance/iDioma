@@ -1,16 +1,15 @@
 const Sequelize = require('sequelize');
 const db = require('../db.js');
 
-const UserLanguageLevel = db.define('UserLanguageLevel',
+const UsersLanguagesLevels = db.define('users_languages_levels',
   {
     id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV1,
       primaryKey: true,
     },
-    offerOrLearn: {
+    offer_or_learn: {
       type: Sequelize.STRING,
-      field: 'type',
     },
   },
   {
@@ -18,4 +17,4 @@ const UserLanguageLevel = db.define('UserLanguageLevel',
   }
 );
 
-module.exports = UserLanguageLevel;
+module.exports = UsersLanguagesLevels;

@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db.js');
 
-const Relationship = db.define('Relationship',
+const Relationships = db.define('relationships',
   {
     id: {
       type: Sequelize.UUID,
@@ -17,4 +17,4 @@ const Relationship = db.define('Relationship',
   }
 );
 
-module.exports = Relationship;
+module.exports = Relationships;

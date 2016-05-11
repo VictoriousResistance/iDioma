@@ -1,36 +1,36 @@
 module.exports = function() {
   var db = require('./db.js');
-  var User = require('./models/userModel.js');
-  var Language = require('./models/languageModel.js');
-  var Level = require('./models/levelModel.js');
-  var LanguageLevel = require('./models/languageLevelModel.js');
-  var UserLanguageLevel = require('./models/userLanguageLevelModel.js');
-  var Message = require('./models/messageModel.js');
-  var Room = require('./models/roomModel.js');
-  var UserRoom = require('./models/userRoomModel.js');
-  var Relationship = require('./models/relationshipModel.js');
+  var Users = require('./models/userModel.js');
+  var Languages = require('./models/languageModel.js');
+  var Levels = require('./models/levelModel.js');
+  var LanguagesLevels = require('./models/languageLevelModel.js');
+  var UsersLanguagesLevels = require('./models/userLanguageLevelModel.js');
+  var Messages = require('./models/messageModel.js');
+  var Rooms = require('./models/roomModel.js');
+  var UserRooms = require('./models/userRoomModel.js');
+  var Relationships = require('./models/relationshipModel.js');
 
 
-  Language.belongsToMany(Level, {through: 'LanguageLevel'});
-  Level.belongsToMany(Language, {through: 'LanguageLevel'});
+  Languages.belongsToMany(Levels, {through: 'languages_levels'});
+  Levels.belongsToMany(Languages, {through: 'languages_levels'});
 
-  User.belongsToMany(LanguageLevel, {through: 'UserLanguageLevel'});
-  LanguageLevel.belongsToMany(User, {through: 'UserLanguageLevel'});
+  Users.belongsToMany(LanguagesLevels, {through: 'users_languages_levels'});
+  LanguagesLevels.belongsToMany(Users, {through: 'users_languages_levels'});
 
-  User.belongsToMany(Room, {through: 'UserRoom'});
-  Room.belongsToMany(User, {through: 'UserRoom'});
+  Users.belongsToMany(Rooms, {through: 'users_rooms'});
+  Rooms.belongsToMany(Users, {through: 'users_rooms'});
 
-  Message.belongsTo(Room);
-  Message.belongsTo(User);
+  Messages.belongsTo(Rooms);
+  Messages.belongsTo(Users);
 
-  User.belongsToMany(User, {as: 'User1', through: 'Relationship', foreignKey: 'user1Id'});
-  User.belongsToMany(User, {as: 'User2', through: 'Relationship', foreignKey: 'user2Id'});
+  Users.belongsToMany(Users, {as: 'User1', through: 'relationships', foreignKey: 'user1Id'});
+  Users.belongsToMany(Users, {as: 'User2', through: 'relationships', foreignKey: 'user2Id'});
 
   db.sync({force: true}).then(function() {
-    Language.bulkCreate([
-      {languageName: 'English'},
-      {languageName: 'Spanish'},
-      {languageName: 'French'}
+    Languages.bulkCreate([
+      {name: 'English'},
+      {name: 'Spanish'},
+      {name: 'French'},
       ]
       );
   });

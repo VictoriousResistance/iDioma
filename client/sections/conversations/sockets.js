@@ -1,6 +1,7 @@
 import * as actions from './actions/';
+import io from 'socket.io-client';
 
-export const socket = window.io();
+export const socket = io();
 
 socket.emitMsg = (msg) => {
   socket.emit('new message', msg);

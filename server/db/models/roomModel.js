@@ -1,16 +1,15 @@
 const Sequelize = require('sequelize');
 const db = require('../db.js');
 
-const Room = db.define('Room',
+const Rooms = db.define('rooms',
   {
     id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV1,
       primaryKey: true,
     },
-    numberActiveParticipants: {
+    number_active_participants: {
       type: Sequelize.INTEGER,
-      field: 'number_active_participants',
     },
   },
   {
@@ -18,4 +17,4 @@ const Room = db.define('Room',
   }
 );
 
-module.exports = Room;
+module.exports = Rooms;

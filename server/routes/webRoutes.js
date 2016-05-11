@@ -1,32 +1,37 @@
-var path = require('path');
-var auth = require(__dirname + '/../auth/auth.js');
-var homeHandler = require('../utils/homeHandler.js');
+const auth = require('../auth/auth.js');
+const homeHandler = require('../utils/homeHandler.js');
 
-module.exports = function(app, express) {
+const getSelfProfile = require('../utils/getSelfProfile.js');
+
+module.exports = (app, express) => {
+
+  const redirectHome = (req, res) => res.redirect('/home/');
 
   app.use(express.static(__dirname + '/../../client'));
 
-  app.get('/', auth.checkAuth, function(req, res) {
-    res.redirect('/home');
-  });
+  app.use('/home/*', auth.checkAuth,
+    (req, res, next) => {
+      req.idioma = {};
+      next();
+    },
+    getSelfProfile,
+    
+    homeHandler);
 
-  app.get('/login', function(req, res) {
-    res.send('<a href="/auth/facebook">login</a>');
-  });
+  app.get('/login', (req, res) =>
+    res.send('<a href="/auth/facebook">login</a>')
+  );
 
-  app.use('/home', auth.checkAuth, homeHandler);
+  app.get('/', redirectHome);
+  app.get('/home', redirectHome);
 
-  app.get('/home/*', auth.checkAuth, homeHandler);
 
-  app.get('/auth/facebook', auth.handleLogin, function(req, res) {
-    res.redirect('/home');
-  });
-
+  app.get('/auth/facebook', auth.handleLogin, redirectHome);
   app.get('/auth/facebook/callback', auth.handleCallback);
 
-  app.get('/logout', function(req, res) {
+  app.get('/logout', (req, res) => {
     req.logout();
-    req.session.destroy(function() {
+    req.session.destroy(() => {
       console.log('session after logout', req.session);
       console.log('user after logout', req.user);
       res.redirect('/login');
