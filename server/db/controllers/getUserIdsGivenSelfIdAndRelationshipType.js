@@ -1,16 +1,16 @@
-var getUserIdsGivenSelfIdAndRelationshipType = function(selfId, relationshipType) {
+const getUserIdsGivenSelfIdAndRelationshipType = (selfId, relationshipType) => {
 
 };
 
-exports.getConnections = function(selfId) {
+exports.getConnections = (selfId) => {
   return getUserIdsGivenSelfIdAndRelationshipType(selfId, 'connection');
 };
 
-exports.getRejects = function(selfId) {
+exports.getRejects = (selfId) => {
   return getUserIdsGivenSelfIdAndRelationshipType(selfId, 'reject');
 };
 
-exports.getRequests = function(selfId) {
+exports.getRequests = (selfId) => {
   return getUserIdsGivenSelfIdAndRelationshipType(selfId, 'request');
 };
 
