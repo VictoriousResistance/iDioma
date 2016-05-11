@@ -1,7 +1,7 @@
 const db = require('../db.js');
 
 module.exports = (self, offSet) => {
-  const queryStr = `SELECT teach.teach_id FROM (
+  const queryStr = `SELECT DISTINCT teach.teach_id FROM (
                       (
                         SELECT users_languages_levels.user AS teach_id FROM users_languages_levels 
                           INNER JOIN languages_levels 
