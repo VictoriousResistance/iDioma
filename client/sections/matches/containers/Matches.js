@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import Matches from '../components/Matches.jsx';
-import { unmountMatch, removeMatch } from '../actions/index.js';
+import { unmountMatch, removeMatch, incrementOffset, addMatches } from '../actions/index.js';
 
 
 const mapStateToProps = (state) => (
   {
     matches: state.matches.values,
+    offset: state.matches.offset,
   }
 );
 
@@ -28,6 +29,11 @@ const mapDispatchToProps = (dispatch) => (
         },
         120
       );
+    },
+    onLoadMoreClick: (offset) => {
+      //use the offset to get additional matches from db, then
+      dispatch(addMatches([]));
+      dispatch(incrementOffset(20));
     },
   }
 );

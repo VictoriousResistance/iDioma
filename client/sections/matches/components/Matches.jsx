@@ -28,16 +28,16 @@ const Match = ({ match, onConnectClick, onHideClick }) => (
         <a href="#" className="action negative-action" onClick={() => { onHideClick(match.id); }}>Hide</a>
       </div>
     </div>
-
     
   </div>
 );
 
-const Matches = ({ matches, onConnectClick, onHideClick }) => (
+const Matches = ({ matches, onConnectClick, onHideClick, offset, onLoadMoreClick }) => (
   <div>
     {matches.map((match) => (
       <Match key={match.id} match={match} onConnectClick={onConnectClick} onHideClick={onHideClick} />
     ))}
+    <button onClick={() => { onLoadMoreClick(offset); }}>Load More</button>
   </div>
 );
 
