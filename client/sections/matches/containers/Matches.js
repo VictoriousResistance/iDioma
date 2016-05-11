@@ -7,6 +7,7 @@ const mapStateToProps = (state) => (
   {
     matches: state.matches.values,
     offset: state.matches.offset,
+    selfId: state.profile.id,
   }
 );
 
@@ -30,9 +31,9 @@ const mapDispatchToProps = (dispatch) => (
         120
       );
     },
-    onLoadMoreClick: (offset) => {
+    onLoadMoreClick: (selfId, offset) => {
       //use the offset to get additional matches from db, then
-      dispatch(addMatches([]));
+      dispatch(addMatches([{firstName: 'Velvet', lastName: 'Underground', canTeach: [['English', 'native']], willLearn: [['German', 'advanced']], description: 'hi there'}]));
       dispatch(incrementOffset(20));
     },
   }

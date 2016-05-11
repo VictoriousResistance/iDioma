@@ -32,12 +32,12 @@ const Match = ({ match, onConnectClick, onHideClick }) => (
   </div>
 );
 
-const Matches = ({ matches, onConnectClick, onHideClick, offset, onLoadMoreClick }) => (
+const Matches = ({ matches, onConnectClick, onHideClick, offset, onLoadMoreClick, selfId }) => (
   <div>
     {matches.map((match) => (
       <Match key={match.id} match={match} onConnectClick={onConnectClick} onHideClick={onHideClick} />
     ))}
-    <button onClick={() => { onLoadMoreClick(offset); }}>Load More</button>
+    <a href="#" onClick={() => { onLoadMoreClick(selfId, offset); }}>Load More</a>
   </div>
 );
 

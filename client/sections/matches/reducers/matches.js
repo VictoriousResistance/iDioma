@@ -29,7 +29,7 @@ const matches = (state = {}, action) => {
       return Object.assign({}, state, {offset: state.offset + action.increment});
 
     case 'ADD_MATCHES':
-      return Object.assign({}, state, {values: state.values.concat(action.matches)})
+      return Object.assign({}, state, {values: state.values.concat(action.matches)});
 
     default:
       return state;
