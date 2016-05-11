@@ -9,7 +9,6 @@ module.exports = function() {
   var Rooms = require('./models/roomModel.js');
   var UserRooms = require('./models/userRoomModel.js');
   var Relationships = require('./models/relationshipModel.js');
-  var test = require('./controllers/getRoomIdsAndUserIdsGivenSelfId.js')
 
 
   Languages.belongsToMany(Levels, {through: 'languages_levels', foreignKey: 'language_id' });
@@ -27,33 +26,14 @@ module.exports = function() {
   Users.belongsToMany(Users, {as: 'User1', through: 'relationships', foreignKey: 'user1Id' });
   Users.belongsToMany(Users, {as: 'User2', through: 'relationships', foreignKey: 'user2Id' });
 
-  db.sync({force: true})
-    .then(function() {
-      return Rooms.bulkCreate([
-        { number_active_participants: 3 },
-        { number_active_participants: 2 },
-      ]);
-    })
-    .then(function(rooms) {
-      return Users.bulkCreate([
-        { facebook_id: 1234, first_name: 'Ash' },
-        { facebook_id: 3456, first_name: 'Mo' },
-        { facebook_id: 5678, first_name: 'Reina' },
-      ])
-      .then(function(users) {
-        // console.log('USERS: ', users)
-        // console.log('ROOMS: ', rooms)
-        users.forEach((user) => { user.addRoom(rooms[0]); });
-        users[0].addRoom(rooms[1]);
-        users[1].addRoom(rooms[1]);
-      });
-    })
-    .then(function() {
-      return Users.findOne({ where: { first_name: 'Ash' } })
-        .then(function(result) {
-          return test(result.dataValues.id);
-        });
-    });
+  db.sync({force: true}).then(function() {
+    Languages.bulkCreate([
+      {name: 'English'},
+      {name: 'Spanish'},
+      {name: 'French'},
+      ]
+      );
+  });
   //TODO: remove force true
 
 };
