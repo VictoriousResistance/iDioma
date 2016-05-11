@@ -12,20 +12,20 @@ module.exports = function() {
   var test = require('./controllers/getRoomIdsAndUserIdsGivenSelfId.js')
 
 
-  Languages.belongsToMany(Levels, {through: 'languages_levels', foreignKey: 'language_id' });
-  Levels.belongsToMany(Languages, {through: 'languages_levels', foreignKey: 'level_id' });
+  Languages.belongsToMany(Levels, { through: 'languages_levels', foreignKey: 'language_id' });
+  Levels.belongsToMany(Languages, { through: 'languages_levels', foreignKey: 'level_id' });
 
-  Users.belongsToMany(LanguagesLevels, {through: 'users_languages_levels', foreignKey: 'user_id' });
-  LanguagesLevels.belongsToMany(Users, {through: 'users_languages_levels', foreignKey: 'language_level_id' });
+  Users.belongsToMany(LanguagesLevels, { through: 'users_languages_levels', foreignKey: 'user_id' });
+  LanguagesLevels.belongsToMany(Users, { through: 'users_languages_levels', foreignKey: 'language_level_id' });
 
-  Users.belongsToMany(Rooms, {through: 'users_rooms', foreignKey: 'user_id' });
-  Rooms.belongsToMany(Users, {through: 'users_rooms', foreignKey: 'room_id' });
+  Users.belongsToMany(Rooms, { through: 'users_rooms', foreignKey: 'user_id' });
+  Rooms.belongsToMany(Users, { through: 'users_rooms', foreignKey: 'room_id' });
 
   Messages.belongsTo(Rooms, { foreignKey: 'room_id' });
   Messages.belongsTo(Users, { foreignKey: 'user_id' });
 
-  Users.belongsToMany(Users, {as: 'User1', through: 'relationships', foreignKey: 'user1Id' });
-  Users.belongsToMany(Users, {as: 'User2', through: 'relationships', foreignKey: 'user2Id' });
+  Users.belongsToMany(Users, { as: 'User1', through: 'relationships', foreignKey: 'user1Id' });
+  Users.belongsToMany(Users, { as: 'User2', through: 'relationships', foreignKey: 'user2Id' });
 
   db.sync({force: true})
     .then(function() {
@@ -55,5 +55,4 @@ module.exports = function() {
         });
     });
   //TODO: remove force true
-
 };
