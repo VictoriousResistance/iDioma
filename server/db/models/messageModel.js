@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db.js');
 
-const Message = db.define('Message',
+const Messages = db.define('messages',
   {
     id: {
       type: Sequelize.UUID,
@@ -17,4 +17,4 @@ const Message = db.define('Message',
   }
 );
 
-module.exports = Message;
+module.exports = Messages;

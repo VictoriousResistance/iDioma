@@ -1,18 +1,21 @@
-const auth = require(__dirname + '/../auth/auth.js');
+const auth = require('../auth/auth.js');
 const homeHandler = require('../utils/homeHandler.js');
 
-const getUserProfile = require('../db/controllers/getSelfGivenFBProfile.js');
+const getSelfProfile = require('../utils/getSelfProfile.js');
 
-module.exports = function(app, express) {
+module.exports = (app, express) => {
 
-  const redirectHome = function(req, res) {
-    res.redirect('/home/');
-  };
+  const redirectHome = (req, res) => res.redirect('/home/');
 
   app.use(express.static(__dirname + '/../../client'));
 
-  app.use('/home/*', auth.checkAuth, 
-    getUserProfile,
+  app.use('/home/*', auth.checkAuth,
+    (req, res, next) => {
+      req.idioma = {};
+      next();
+    },
+    getSelfProfile,
+    
     homeHandler);
 
   app.get('/login', (req, res) =>
