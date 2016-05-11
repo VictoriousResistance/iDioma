@@ -46,13 +46,5 @@ module.exports = function() {
         users.forEach((user) => { user.addRoom(rooms[0]); });
         users[0].addRoom(rooms[1]);
         users[1].addRoom(rooms[1]);
-      });
-    })
-    .then(function() {
-      return Users.findOne({ where: { first_name: 'Ash' } })
-        .then(function(result) {
-          return test(result.dataValues.id);
-        });
-    });
   //TODO: remove force true
 };
