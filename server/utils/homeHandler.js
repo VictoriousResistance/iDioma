@@ -3,6 +3,7 @@ var makeHomePage = require('../views/home.js');
 module.exports = function(req, res) {
   console.log(req);
   var initialState = {
+    matchesOffset: 0,
     inputText: { value: '' },
     rooms: [
       {
