@@ -26,14 +26,31 @@ module.exports = function() {
   Users.belongsToMany(Users, {as: 'User1', through: 'relationships', foreignKey: 'user1Id' });
   Users.belongsToMany(Users, {as: 'User2', through: 'relationships', foreignKey: 'user2Id' });
 
-  db.sync({force: true}).then(function() {
-    Languages.bulkCreate([
-      {name: 'English'},
-      {name: 'Spanish'},
-      {name: 'French'},
-      ]
-      );
-  });
+  db.sync({force: true})
+    .then(function() {
+      return Rooms.bulkCreate([
+        { number_active_participants: 2 },
+        { number_active_participants: 3 },
+      ]);
+    })
+    .then(function(rooms) {
+      return Users.bulkCreate([
+        { facebook_id: 1234, first_name: 'Ash' },
+        { facebook_id: 3456, first_name: 'Mo' },
+        { facebook_id: 5678, first_name: 'Reina' },
+      ])
+      .then(function(users) {
+        // console.log('USERS: ', users)
+        // console.log('ROOMS: ', rooms)
+        users.forEach((user) => { user.addRoom(rooms[1]); });
+      });
+    })
+    .then(function() {
+      return Users.findOne({ where: { first_name: 'Ash' } })
+        .then(function(result) {
+          console.log('result.........', result.dataValues.id)
+        })
+    });
   //TODO: remove force true
 
 };
