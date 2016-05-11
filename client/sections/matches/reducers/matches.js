@@ -25,6 +25,9 @@ const matches = (state = {}, action) => {
       });
       return Object.assign({}, state, {values: newMatches});
 
+    case 'INCREMENT_OFFSET':
+      return Object.assign({}, state, {offset: state.offset + action.increment});
+
     default:
       return state;
   }
