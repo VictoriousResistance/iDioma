@@ -18,3 +18,10 @@ export const incrementOffset = (increment) => {
     increment,
   };
 };
+
+export const addMatches = (matches) => {
+  return {
+    type: 'ADD_MATCHES',
+    matches,
+  };
+};
