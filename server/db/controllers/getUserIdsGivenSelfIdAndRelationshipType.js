@@ -2,7 +2,8 @@ const db = require('../db.js');
 const Sequelize = require('sequelize');
 
 const getUserIdsGivenSelfIdAndRelationshipType = (selfId, relationshipType) => {
-  const queryStr = `(
+  const queryStr = `
+                    (
                       SELECT relationships.user1Id FROM users 
                         INNER JOIN relationships 
                           ON users.id = relationships.user2Id 
@@ -24,7 +25,8 @@ exports.getConnections = (selfId) => getUserIdsGivenSelfIdAndRelationshipType(se
 exports.getRejects = (selfId) => getUserIdsGivenSelfIdAndRelationshipType(selfId, 'reject');
 
 exports.getRequests = (selfId) => {
-  const queryStr = `SELECT relationships.user1Id FROM users 
+  const queryStr = `
+                    SELECT relationships.user1Id FROM users 
                       INNER JOIN relationships 
                         ON users.id = relationships.user2Id 
                       WHERE users.id = ${selfId} AND relationships.type = 'request'

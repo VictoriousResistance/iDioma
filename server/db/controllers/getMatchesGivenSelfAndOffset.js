@@ -32,6 +32,20 @@ module.exports = (self, offSet) => {
                       ) 
                       LIMIT 20 
                       OFFSET ${offSet}
+                      WHERE teach.teach_id NOT IN 
+                        (
+                          SELECT relationships.user1Id FROM users 
+                            INNER JOIN relationships 
+                              ON users.id = relationships.user2Id 
+                            WHERE users.id = ${self.id} AND relationships.type = 'reject'
+                        )
+                        UNION 
+                        (
+                          SELECT relationships.user2Id FROM users 
+                            INNER JOIN relationships 
+                              ON users.id = relationships.user1Id 
+                            WHERE users.id = ${self.id} AND relationships.type = 'reject'
+                        )
                     `;
   return db.query(queryStr, { type: Sequelize.QueryTypes.SELECT });
 };
