@@ -24,8 +24,8 @@ const Match = ({ match, onConnectClick, onHideClick }) => (
         </div>
       </div>
       <div className="button-container">
-        <a href="#" className="action" onClick={() => { onConnectClick(match.id); }}>Connect</a>
-        <a href="#" className="action negative-action" onClick={() => { onHideClick(match.id); }}>Hide</a>
+        <button className="action" onClick={() => { onConnectClick(match.id); }}>Connect</button>
+        <button className="action negative-action" onClick={() => { onHideClick(match.id); }}>Hide</button>
       </div>
     </div>
     

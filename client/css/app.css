@@ -127,6 +127,8 @@ button {
 .action {
   display: inline-block;
   text-align: center;
+  font-size: 1em;
+  border: .1em #004080 solid;
   padding: 0.3em;
   color: white;
   background-color: #004080;
@@ -136,6 +138,7 @@ button {
 
 .negative-action {
   color: #004080;
+  border-color: transparent;
   background-color: transparent;
 }
 

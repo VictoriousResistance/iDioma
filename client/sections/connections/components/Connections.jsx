@@ -27,8 +27,8 @@ const Connection = ({ connection, onRemoveClick }) =>
           </div>
         </div>
         <div className="button-container">
-          <a href={chatroomUrl} target="_blank" className="action">Start Conversation</a>
-          <a href="#" className="action negative-action" onClick={() => { onRemoveClick(connection.id); }}>Remove</a>
+          <button className="action">Start Conversation</button>
+          <button className="action negative-action" onClick={() => { onRemoveClick(connection.id); }}>Remove</button>
         </div>
       </div>
 
