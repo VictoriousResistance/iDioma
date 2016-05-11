@@ -7,14 +7,14 @@ const getUserIdsGivenSelfIdAndRelationshipType = (selfId, relationshipType) => {
                       SELECT relationships.user1Id as userid FROM users 
                         INNER JOIN relationships 
                           ON users.id = relationships.user2Id 
-                        WHERE users.id = ${selfId} AND relationships.type = ${relationshipType}
+                        WHERE users.id = '${selfId}' AND relationships.type = '${relationshipType}'
                     )
                     UNION 
                     (
                       SELECT relationships.user2Id as userid FROM users 
                         INNER JOIN relationships 
                           ON users.id = relationships.user1Id 
-                        WHERE users.id = ${selfId} AND relationships.type = ${relationshipType}
+                        WHERE users.id = '${selfId}' AND relationships.type = '${relationshipType}'
                     )
                     `;
   return db.query(queryStr, { type: Sequelize.QueryTypes.SELECT });
