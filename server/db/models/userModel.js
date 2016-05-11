@@ -1,32 +1,27 @@
 const Sequelize = require('sequelize');
 const db = require('../db.js');
 
-const User = db.define('User',
+const Users = db.define('users',
   {
     id: {
       type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV1,
       primaryKey: true,
     },
-    facebookId: {
+    facebook_id: {
       type: Sequelize.STRING,
-      field: 'facebook_id',
     },
-    firstName: {
+    first_name: {
       type: Sequelize.STRING,
-      field: 'first_name',
     },
-    lastName: {
+    last_name: {
       type: Sequelize.STRING,
-      field: 'last_name',
     },
-    photoUrl: {
+    photo_url: {
       type: Sequelize.STRING,
-      field: 'photo_url',
     },
-    userDescription: {
+    user_description: {
       type: Sequelize.STRING(256),
-      field: 'user_description',
     },
     // would like to add counter cache for request count and connection count
   },
@@ -35,4 +30,4 @@ const User = db.define('User',
   }
 );
 
-module.exports = User;
+module.exports = Users;
