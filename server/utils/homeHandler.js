@@ -3,7 +3,6 @@ var makeHomePage = require('../views/home.js');
 module.exports = function(req, res) {
   console.log(req);
   var initialState = {
-    matchesOffset: 0,
     inputText: { value: '' },
     rooms: [
       {
@@ -107,47 +106,50 @@ module.exports = function(req, res) {
         photoUrl: 'https://e4292304444963bb9b1c-26c9e18a7a93639122506172dc90d702.ssl.cf2.rackcdn.com/gallery/img/t/golden-retriever-239058.jpg',
       },
     ],
-    matches: [
-      {
-        id: '123456',
-        firstName: 'Maroon',
-        lastName: '5',
-        canTeach: [
-          ['German', 'fluent'],
-        ],
-        willLearn: [
-          ['French', 'basic'],
-        ],
-        description: 'i was so high i didnt recognize the fire burning in her eyes. this love is taking a toll on me. she said goodbye, too many times before.',
-        photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
-      },
-      {
-        id: '78910',
-        firstName: 'Anna',
-        lastName: 'Frozen',
-        canTeach: [
-          ['Polish', 'fluent'],
-        ],
-        willLearn: [
-          ['English', 'basic'],
-        ],
-        description: 'do you wanna build a snowman, come on lets go and play',
-        photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
-      },
-      {
-        id: 7,
-        firstName: 'Slim',
-        lastName: 'Shady',
-        canTeach: [
-          ['English', 'fluent'],
-        ],
-        willLearn: [
-          ['French', 'basic'],
-        ],
-        description: 'im beginning to feel like a rap god',
-        photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
-      },
-    ],
+    matches: {
+      offset: 0,
+      values: [
+        {
+          id: '123456',
+          firstName: 'Maroon',
+          lastName: '5',
+          canTeach: [
+            ['German', 'fluent'],
+          ],
+          willLearn: [
+            ['French', 'basic'],
+          ],
+          description: 'i was so high i didnt recognize the fire burning in her eyes. this love is taking a toll on me. she said goodbye, too many times before.',
+          photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
+        },
+        {
+          id: '78910',
+          firstName: 'Anna',
+          lastName: 'Frozen',
+          canTeach: [
+            ['Polish', 'fluent'],
+          ],
+          willLearn: [
+            ['English', 'basic'],
+          ],
+          description: 'do you wanna build a snowman, come on lets go and play',
+          photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
+        },
+        {
+          id: 7,
+          firstName: 'Slim',
+          lastName: 'Shady',
+          canTeach: [
+            ['English', 'fluent'],
+          ],
+          willLearn: [
+            ['French', 'basic'],
+          ],
+          description: 'im beginning to feel like a rap god',
+          photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
+        },
+      ],
+    },
     connectionRequests: [
       {
         id: 8,
