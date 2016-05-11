@@ -5,7 +5,7 @@ import { unmountMatch, removeMatch } from '../actions/index.js';
 
 const mapStateToProps = (state) => (
   {
-    matches: state.matches,
+    matches: state.matches.values,
   }
 );
 
