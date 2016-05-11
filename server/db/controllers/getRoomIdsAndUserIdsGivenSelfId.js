@@ -6,6 +6,7 @@ const getRoomIdsAndUserIdsGivenSelfId = (selfId) => {
   // first find rooms that self is a participant
   return UserRooms.findAll({ where: { user_id: selfId } })
     .then((results) => {
+
       const roomIds = results.map((userRoomObj) => userRoomObj.dataValues.room_id);
       return roomIds;
     })
@@ -43,7 +44,10 @@ const getRoomIdsAndUserIdsGivenSelfId = (selfId) => {
 
           const populateOutput = (outputObj, userRoomObj) => {
             outputObj.roomId = userRoomObj.dataValues.room_id;
-            outputObj.userIds.push(userRoomObj.dataValues.user_id);
+            // add userId to outputObj array property, only if not equal to selfId
+            if (userRoomObj.dataValues.user_id !== selfId) {
+              outputObj.userIds.push(userRoomObj.dataValues.user_id);
+            }
           };
 
           sortedUserRoomArray.forEach(
