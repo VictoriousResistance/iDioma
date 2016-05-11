@@ -7,10 +7,10 @@ module.exports = (self, offSet) => {
                          INNER JOIN languages_levels 
                            ON users_languages_levels.languages_levels = languages_levels.id
                          INNER JOIN languages
-                           ON languages_levels.language = language.id
+                           ON languages_levels.language = languages.id
                          INNER JOIN levels
-                           ON languages_levels.level = level.id
-                         WHERE language.name IN (${self.willLearn.map(language => language[0]).join(',')}) AND level.name IN ('fluent', 'native')
+                           ON languages_levels.level = levels.id
+                         WHERE languages.name IN (${self.willLearn.map(language => language[0]).join(',')}) AND level.name IN ('fluent', 'native')
                       ) AS teach
                       INNER JOIN
                       (
@@ -18,10 +18,10 @@ module.exports = (self, offSet) => {
                          INNER JOIN languages_levels 
                            ON users_languages_levels.languages_levels = languages_levels.id
                          INNER JOIN languages
-                           ON languages_levels.language = language.id
+                           ON languages_levels.language = languages.id
                          INNER JOIN levels
-                           ON languages_levels.level = level.id
-                         WHERE language.name IN (${self.canTeach.map(language => language[0]).join(',')}) AND level.name IN ('fluent', 'native')
+                           ON languages_levels.level = levels.id
+                         WHERE languages.name IN (${self.canTeach.map(language => language[0]).join(',')}) AND level.name IN ('fluent', 'native')
                       ) AS learn
                         ON teach.teach_id = learn.learn_id
                       )
