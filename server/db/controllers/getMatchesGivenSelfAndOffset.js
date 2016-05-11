@@ -2,9 +2,11 @@ const db = require('../db.js');
 const Sequelize = require('sequelize');
 
 module.exports = (self, offSet) => {
-  const queryStr = `SELECT DISTINCT teach.teach_id FROM (
+  const queryStr = `SELECT DISTINCT * FROM (
                       (
-                        SELECT users_languages_levels.user_id AS teach_id FROM users_languages_levels 
+                        SELECT users.id AS teach_id, users.photo_url AS teach_url, users.first_name AS teach_first, users.last_name AS teach_last FROM users 
+                          INNER JOIN users_languages_levels  
+                            ON users_languages_levels.user_id = users.id
                           INNER JOIN languages_levels 
                             ON users_languages_levels.language_level_id = languages_levels.id 
                           INNER JOIN languages 
@@ -15,7 +17,9 @@ module.exports = (self, offSet) => {
                       ) AS teach 
                       INNER JOIN 
                       ( 
-                        SELECT users_languages_levels.user_id AS learn_id FROM users_languages_levels 
+                        SELECT users.id AS learn_id, users.photo_url AS learn_url, users.first_name AS learn_first, users.last_name AS learn_last FROM users 
+                          INNER JOIN users_languages_levels  
+                            ON users_languages_levels.user_id = users.id
                           INNER JOIN languages_levels 
                             ON users_languages_levels.language_level_id = languages_levels.id 
                           INNER JOIN languages 
