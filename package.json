@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack && node server/index.js",
-    "dev-start": "webpack -d && nodemon server/index.js",
+    "dev-start": "webpack -d && nodemon --debug server/index.js",
     "prod-start": "webpack && forever stopall && PORT=80 forever start server/index.js",
     "test": "karma start"
   },
@@ -40,6 +40,7 @@
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.4.5",
+    "node-inspector": "^0.12.8",
     "react-addons-test-utils": "^15.0.0"
   },
   "dependencies": {
