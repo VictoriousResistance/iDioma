@@ -1,16 +1,17 @@
-module.exports = function() {
-  var db = require('./db.js');
-  var Users = require('./models/userModel.js');
-  var Languages = require('./models/languageModel.js');
-  var Levels = require('./models/levelModel.js');
-  var LanguagesLevels = require('./models/languageLevelModel.js');
-  var UsersLanguagesLevels = require('./models/userLanguageLevelModel.js');
-  var Messages = require('./models/messageModel.js');
-  var Rooms = require('./models/roomModel.js');
-  var UserRooms = require('./models/userRoomModel.js');
-  var Relationships = require('./models/relationshipModel.js');
-  var test = require('./controllers/getRoomIdsAndUserIdsGivenSelfId.js')
+module.exports = function(next) {
+  const db = require('./db.js');
+  const Users = require('./models/userModel.js');
+  const Languages = require('./models/languageModel.js');
+  const Levels = require('./models/levelModel.js');
+  const LanguagesLevels = require('./models/languageLevelModel.js');
+  const UsersLanguagesLevels = require('./models/userLanguageLevelModel.js');
+  const Messages = require('./models/messageModel.js');
+  const Rooms = require('./models/roomModel.js');
+  const UserRooms = require('./models/userRoomModel.js');
+  const Relationships = require('./models/relationshipModel.js');
 
+  const languagesData = require('./seed/languages.js');
+  const levelsData = require('./seed/levels.js');
 
   Languages.belongsToMany(Levels, { through: 'languages_levels', foreignKey: 'language_id' });
   Levels.belongsToMany(Languages, { through: 'languages_levels', foreignKey: 'level_id' });
@@ -27,33 +28,9 @@ module.exports = function() {
   Users.belongsToMany(Users, { as: 'User1', through: 'relationships', foreignKey: 'user1Id' });
   Users.belongsToMany(Users, { as: 'User2', through: 'relationships', foreignKey: 'user2Id' });
 
-  db.sync({force: true})
-    .then(function() {
-      return Rooms.bulkCreate([
-        { number_active_participants: 3 },
-        { number_active_participants: 2 },
-      ]);
-    })
-    .then(function(rooms) {
-      return Users.bulkCreate([
-        { facebook_id: 1234, first_name: 'Ash' },
-        { facebook_id: 3456, first_name: 'Mo' },
-        { facebook_id: 5678, first_name: 'Reina' },
-      ])
-      .then(function(users) {
-        // console.log('USERS: ', users)
-        // console.log('ROOMS: ', rooms)
-        users.forEach((user) => { user.addRoom(rooms[0]); });
-        users[0].addRoom(rooms[1]);
-        users[1].addRoom(rooms[1]);
-      });
-    })
-    .then(function() {
-      return Users.findOne({ where: { first_name: 'Ash' } })
-        .then(function(result) {
-          return test(result.dataValues.id);
-        });
-    });
-  //TODO: remove force true
-
+  // TODO: remove force true
+  db.sync({ force: true })
+    .then(languagesData.seed)
+    .then(levelsData.seed)
+    .then(next);
 };

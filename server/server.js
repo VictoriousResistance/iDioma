@@ -31,4 +31,5 @@ function initServer() {
   server.listen(port, function() {
     console.log('iDioma listening on port: ' + port);
   });
-};
+}
+
