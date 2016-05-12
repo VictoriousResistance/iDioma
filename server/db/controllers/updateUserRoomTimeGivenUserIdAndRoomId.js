@@ -4,7 +4,7 @@ const db = require('../db.js');
 module.exports = (userId, roomId) => {
   const queryStr = `
     UPDATE users_rooms 
-      SET updatedAt = CURRENT_TIMESTAMP  
+      SET updatedAt = UTC_TIMESTAMP()   
       WHERE room_id = '${roomId}' AND user_id = '${userId}' 
   `;
   return db.query(queryStr).spread(results => results);
