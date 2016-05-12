@@ -1,4 +1,6 @@
 const db = require('../db.js');
+const Rooms = require('../models/roomModel.js');
+const UsersRooms = require('../models/userRoomModel.js');
 
 
 module.exports = (user1Id, user2Id) => {
@@ -19,8 +21,24 @@ module.exports = (user1Id, user2Id) => {
   return db.query(queryStr).spread((results, metadata) => {
     if (results.length > 0) {
       return results;
-    } else {
-
     }
+    return Rooms.create({
+      number_active_participants: 2,
+    })
+    .then(room => (
+      UsersRooms.bulkCreate([
+        {
+          user_id: user1Id,
+          room_id: room.id,
+        },
+        {
+          user_id: user2Id,
+          room_id: room.id,
+        },
+      ])
+      .then(() => (
+        [room]
+      ))
+    ));
   });
 };
