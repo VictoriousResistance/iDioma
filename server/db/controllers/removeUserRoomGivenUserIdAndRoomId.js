@@ -18,19 +18,27 @@ module.exports = (userId, roomId) => {
     DELETE from users_rooms 
       WHERE room_id = '${roomId}' AND user_id = '${userId}' 
   `;
+  const deleteRelatedMessagesQueryStr = `
+    DELETE from messages 
+      WHERE room_id = '${roomId}'
+  `;
 
   return db.query(findNumberActiveParticipantsQueryStr).spread(results => {
     if (results[0] == 1) {
       return db.query(removeUserRoomQueryStr)
                .spread(() => (
-                 db.query(removeRoomQueryStr)
-                   .spread(room => room)
-               ));
+                  db.query(deleteRelatedMessagesQueryStr)
+                )
+               .spread(() => (
+                  db.query(removeRoomQueryStr)
+                ))
+               .spread(room => room)
+                );
     }
     return db.query(removeUserRoomQueryStr)
              .spread(() => (
                 db.query(reduceNumberActiveParticipantsQueryStr)
-                  .spread(room => room)
-              ));
+              ))
+             .spread(room => room);
   });
 };
