@@ -35,15 +35,15 @@ module.exports = (self, offSet) => {
                           SELECT relationships.user1Id as userid FROM users 
                             INNER JOIN relationships 
                               ON users.id = relationships.user2Id 
-                            WHERE users.id = '${self.id}' AND relationships.type = 'reject'
+                            WHERE users.id = '${self.id}'
                         )
                         UNION ALL
                         (
                           SELECT relationships.user2Id as userid FROM users 
                             INNER JOIN relationships 
                               ON users.id = relationships.user1Id 
-                            WHERE users.id = '${self.id}' AND relationships.type = 'reject'
-                        )) AS rejectIds)
+                            WHERE users.id = '${self.id}'
+                        )) AS relatedIds)
                       LIMIT 20 
                       OFFSET ${offSet}
                     `;
