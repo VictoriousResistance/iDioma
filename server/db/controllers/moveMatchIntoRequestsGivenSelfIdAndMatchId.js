@@ -1,11 +1,9 @@
-const db = require('../db.js');
+const Relationships = require('../models/relationshipModel.js');
 
-module.exports = (selfId, matchId) => {
-  const queryStr = `
-                    INSERT 
-                      INTO relationships 
-                      (type, user1Id, user2Id)
-                      VALUES ('request', '${selfId}', '${matchId}') 
-                  `;
-  return db.query(queryStr).spread((results, metadata) => results);
-};
+module.exports = (selfId, matchId) => (
+  Relationships.create({
+    type: 'request',
+    user1Id: selfId,
+    user2Id: matchId,
+  })
+);
