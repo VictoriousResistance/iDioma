@@ -8,9 +8,9 @@ module.exports.seed = () =>
     { id: 3, name: 'French' },
   ])
   .then((languages) => {
-    const languagesStore = module.exports.store = {};
+    const idToLanguage = module.exports.idToLanguage = {};
     languages.forEach(function(language) {
-      languagesStore[language.dataValues.id] = language.dataValues.name;
+      idToLanguage[language.dataValues.id] = language.dataValues.name;
     });
-    return languagesStore;
+    return idToLanguage;
   });

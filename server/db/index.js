@@ -1,4 +1,4 @@
-module.exports = function(next) {
+module.exports = function(launchServer) {
   const db = require('./db.js');
   const Users = require('./models/userModel.js');
   const Languages = require('./models/languageModel.js');
@@ -32,5 +32,5 @@ module.exports = function(next) {
   db.sync({ force: true })
     .then(languagesData.seed)
     .then(levelsData.seed)
-    .then(next);
+    .then(launchServer);
 };
