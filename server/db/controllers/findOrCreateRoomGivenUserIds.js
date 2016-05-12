@@ -30,10 +30,12 @@ module.exports = (user1Id, user2Id) => {
         {
           user_id: user1Id,
           room_id: room.id,
+          show: true,
         },
         {
           user_id: user2Id,
           room_id: room.id,
+          show: true,
         },
       ])
       .then(() => (
