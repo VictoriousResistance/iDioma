@@ -1,7 +1,7 @@
 const getBasicInfo = require('../db/controllers/getUserBasicInfoGivenFBId.js');
 const getLanguageInfo = require('../db/controllers/getUserLanguageInfoGivenUserId.js');
 
-var assignBasicInfoToReq = (user, req) => {
+const assignBasicInfoToReq = (user, req) => {
   req.idioma.profile = {
     id: user.id,
     firstName: user.first_name,
@@ -12,23 +12,17 @@ var assignBasicInfoToReq = (user, req) => {
   return user.id;
 };
 
-var assignLanguageInfoToReq = results => {
-  const user = results[0];
-  req.idioma.profile = {
-    id: user.id,
-    firstName: user.first_name,
-    lastName: user.last_name,
-    description: user.description,
-    photoUrl: user.photo_url,
-  };
+const assignLanguageInfoToReq = (offerOrLearn, req) => {
+  req.idioma.profile.canTeach = offerOrLearn[0];
+  req.idioma.profile.willLearn = offerOrLearn[1];
 };
 
 module.exports = (req, res, next) => {
   // const fbId = req.user.id;
-  const fbId = '11111';
+  const fbId = '22222';
   getBasicInfo(fbId)
-  .then(results => assignBasicInfoToReq(results[0], req))
+  .then(basicInfo => assignBasicInfoToReq(basicInfo[0], req))
   .then(getLanguageInfo)
-  .then(results => console.log('herreererere', results))
+  .then(languageDetails => assignLanguageInfoToReq(languageDetails, req))
   .then(next());
 };
