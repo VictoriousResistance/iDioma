@@ -10,6 +10,8 @@ module.exports = function(launchServer) {
   const UserRooms = require('./models/userRoomModel.js');
   const Relationships = require('./models/relationshipModel.js');
 
+  const testDB = require('../tests/db.js');
+
   const languagesData = require('./seed/languages.js');
   const levelsData = require('./seed/levels.js');
 
@@ -32,5 +34,17 @@ module.exports = function(launchServer) {
   db.sync({ force: true })
     .then(languagesData.seed)
     .then(levelsData.seed)
+    // make sure first test function does not need ANY inputs
+    .then(testDB.addUsers)
+    // don't need these since they're already seeded:
+    // .then(testDB.addLevels)
+    // .then(testDB.addLanguages)
+    .then(testDB.addLanguagesLevels)
+    .then(testDB.addUsersLanguagesLevels)
+    .then(testDB.addRooms)
+    .then(testDB.addUsersRooms)
+    .then(testDB.addMessages)
+    // end of tests 
+    .then(r => console.log(r))
     .then(launchServer);
 };
