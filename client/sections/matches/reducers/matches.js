@@ -3,7 +3,7 @@ const matches = (state = {}, action) => {
 
     case 'UNMOUNT_MATCH':
       var newMatches = [];
-      state.forEach((match) => {
+      state.values.forEach((match) => {
         if (match.id === action.id) {
           newMatches.push(Object.assign(
             {},
@@ -18,7 +18,7 @@ const matches = (state = {}, action) => {
 
     case 'REMOVE_MATCH':
       var newMatches = [];
-      state.forEach((match) => {
+      state.values.forEach((match) => {
         if (match.id !== action.id) {
           newMatches.push(match);
         }
