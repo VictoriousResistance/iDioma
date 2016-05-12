@@ -18,9 +18,16 @@ module.exports = (user1Id, user2Id) => {
                       ON ur_1.ur1_id = ur_2.ur2_id 
                     )
                     `;
-  return db.query(queryStr).spread((results, metadata) => {
+
+  return db.query(queryStr).spread((results) => {
     if (results.length > 0) {
-      return results;
+      return db.query(
+        `UPDATE users_rooms 
+          SET \`show\` = true 
+          WHERE room_id = '${results[0].id}'
+        `
+      )
+      .spread(data => data);
     }
     return Rooms.create({
       number_active_participants: 2,
