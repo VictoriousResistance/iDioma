@@ -8,8 +8,8 @@ import Language from '../../../components/Language.jsx';
 const Profile = ({ profile, onUpdateClick }) => {
 
   const button = profile.canNotSubmit
-    ? (<button disabled className={profile.needUpdate ? "update need-update" : "update"} onClick={() => { onUpdateClick(profile); }}>Update</button>)
-    : (<button className={profile.needUpdate ? "update need-update" : "update"} onClick={() => { onUpdateClick(profile); }}>Update</button>);
+    ? (<button disabled className={profile.needUpdate ? "update need-update" : "update"} onMouseDown={() => { onUpdateClick(profile); }}>Update</button>)
+    : (<button className={profile.needUpdate ? "update need-update" : "update"} onMouseDown={() => { onUpdateClick(profile); }}>Update</button>);
 
   return (
     <div className="profile">
