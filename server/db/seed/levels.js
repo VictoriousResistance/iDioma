@@ -1,4 +1,3 @@
-const db = require('../db.js');
 const Levels = require('../models/levelModel.js');
 
 module.exports.seed = () =>

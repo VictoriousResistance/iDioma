@@ -1,4 +1,3 @@
-const db = require('../db.js');
 const Languages = require('../models/languageModel.js');
 
 module.exports.seed = () =>
