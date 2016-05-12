@@ -3,7 +3,7 @@ const Rooms = require('../models/roomModel.js');
 const UsersRooms = require('../models/userRoomModel.js');
 
 
-module.exports = (user1Id, user2Id) => {
+module.exports = (user1Id, user2Id) => { //user1 is the one trying to start a conversation
   const queryStr = `
                     SELECT ur_1.ur1_id FROM ( 
                       (
@@ -17,14 +17,14 @@ module.exports = (user1Id, user2Id) => {
                       ) AS ur_2 
                       ON ur_1.ur1_id = ur_2.ur2_id 
                     )
-                    `;
+                    `; //checks whether or not they already have a room in common
 
   return db.query(queryStr).spread((results) => {
     if (results.length > 0) {
       return db.query(
         `UPDATE users_rooms 
           SET \`show\` = true 
-          WHERE room_id = '${results[0].id}'
+          WHERE room_id = '${results[0].id}' AND user_id = '${user1Id}'
         `
       )
       .spread(data => data);
