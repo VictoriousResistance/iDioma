@@ -28,12 +28,11 @@ module.exports = (userId, roomId) => {
       return db.query(removeUserRoomQueryStr)
                .spread(() => (
                   db.query(deleteRelatedMessagesQueryStr)
-                )
+                ))
                .spread(() => (
                   db.query(removeRoomQueryStr)
                 ))
-               .spread(room => room)
-                );
+               .spread(room => room);
     }
     return db.query(removeUserRoomQueryStr)
              .spread(() => (
