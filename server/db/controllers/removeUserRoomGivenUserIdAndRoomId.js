@@ -24,7 +24,7 @@ module.exports = (userId, roomId) => {
   `;
 
   return db.query(findNumberActiveParticipantsQueryStr).spread(results => {
-    if (results[0] == 1) {
+    if (results[0] == 1) { //need to figure out if it's results[0] or results[0]['number_active_participants']
       return db.query(removeUserRoomQueryStr)
                .spread(() => (
                   db.query(deleteRelatedMessagesQueryStr)
