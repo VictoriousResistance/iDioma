@@ -116,8 +116,8 @@ module.exports.addUsersLanguagesLevels = (obj) => {
 
 module.exports.addRooms = () => {
   return Rooms.bulkCreate([
-    { number_active_participants: 2 },
-    { number_active_participants: 2 },
+    { id: '3333', number_active_participants: 2 },
+    { id: '5555', number_active_participants: 2 },
   ]).then(r => storeResults('rooms', r));
 };
 
