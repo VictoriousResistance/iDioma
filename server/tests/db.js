@@ -21,24 +21,24 @@ module.exports.addUsers = () =>
   Users.bulkCreate([
     {
       id: '12345',
-      facebook_id: '11111',
+      facebook_id: '1122067557855362',
       last_name: 'Naqvi',
       first_name: 'Muhammad',
       photo_url: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/12650879_1057351587660293_1561191701422265647_n.jpg?oh=1c2c208ef646239f6cedb8a79f582572&oe=57996888',
     },
     {
       id: '678910',
-      facebook_id: '22222',
+      facebook_id: '1556463314683658',
       last_name: 'Mei',
       first_name: 'Reina',
-      photo_url: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/12650879_1057351587660293_1561191701422265647_n.jpg?oh=1c2c208ef646239f6cedb8a79f582572&oe=57996888',
+      photo_url: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/9448_1385754095087915_416072552572854900_n.jpg?oh=f3539c78e31e25039e3b678759a962ce&oe=57D8D7B9',
     },
     {
       id: '111213',
-      facebook_id: '33333',
+      facebook_id: '10106480085987553',
       last_name: 'Ravi',
       first_name: 'Ashwin',
-      photo_url: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/12650879_1057351587660293_1561191701422265647_n.jpg?oh=1c2c208ef646239f6cedb8a79f582572&oe=57996888',
+      photo_url: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/10474675_10104083394007493_4059254427085666486_n.jpg?oh=d92cf7d27951e313eba87dfc7bfa9dc3&oe=57A317B2',
     },
   ]).then(r => storeResults('users', r));
 
