@@ -150,11 +150,12 @@ module.exports.addRooms = () =>
     { id: '5555', number_active_participants: 3 },
   ]).then(r => storeResults('rooms', r));
 
-module.exports.addUsersRooms = (obj) => {
-  obj.users.forEach(user => user.addRoom(obj.rooms[1]));
-  obj.users[0].addRoom(obj.rooms[0]);
-  return obj;
-};
+module.exports.addUsersRooms = (obj) =>
+  Promise.all(obj.users.map(
+    user => user.addRoom(obj.rooms[1])
+  ))
+  .then(() => obj.users[0].addRoom(obj.rooms[0]))
+  .then(() => obj);
 
 module.exports.addMessages = (obj) => {
   const room0 = obj.rooms[0].dataValues.id;
