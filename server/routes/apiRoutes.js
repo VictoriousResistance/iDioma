@@ -38,12 +38,18 @@ apiRouter.route('/relationships')
       return addToRequests(req.body.selfId, req.body.matchId)
         .then(() => {
           res.sendStatus(201);
+        })
+        .catch(() => {
+          res.sendStatus(404);
         });
     }
     if (req.body.newType === 'reject') {
       return addToRejects(req.body.selfId, req.body.matchId)
         .then(() => {
           res.sendStatus(201);
+        })
+        .catch(() => {
+          res.sendStatus(404);
         });
     }
     return res.sendStatus(404);
@@ -53,6 +59,9 @@ apiRouter.route('/relationships')
       return changeToRejectFromConnection(req.body.selfId, req.body.connectionId)
         .then(() => {
           res.sendStatus(200);
+        })
+        .catch(() => {
+          res.sendStatus(404);
         });
     }
     if (req.body.oldType === 'request') {
@@ -60,12 +69,18 @@ apiRouter.route('/relationships')
         return changeToConnectionFromRequest(req.body.selfId, req.body.requestId)
           .then(() => {
             res.sendStatus(200);
+          })
+          .catch(() => {
+            res.sendStatus(404);
           });
       }
       if (req.body.newType === 'reject') {
         return changeToRejectFromRequest(req.body.selfId, req.body.requestId)
           .then(() => {
             res.sendStatus(200);
+          })
+          .catch(() => {
+            res.sendStatus(404);
           });
       }
       return res.sendStatus(404);
@@ -75,7 +90,19 @@ apiRouter.route('/relationships')
 
 apiRouter.route('/profile/:id')
   .put((req, res) => { // update profile
-
+    updateDescription(req.params.id, req.body.description)
+    .then(() => (
+      updateLanguages('learn', req.params.id, req.body.languages.willLearn)
+    ))
+    .then(() => (
+      updateLanguages('offer', req.params.id, req.body.languages.canTeach)
+    ))
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch(() => {
+      res.sendStatus(404);
+    });
   });
 
 apiRouter.route('/rooms')
