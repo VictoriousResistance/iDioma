@@ -107,7 +107,13 @@ apiRouter.route('/profile/:id')
 
 apiRouter.route('/rooms')
   .get((req, res) => {
-
+    findRoom(req.body.selfId, req.body.otherId)
+      .then(rooms => {
+        res.json(rooms[0]);
+      })
+      .catch(() => {
+        res.sendStatus(404);
+      });
   });
 
 apiRouter.route('/messages')
