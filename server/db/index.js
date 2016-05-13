@@ -44,7 +44,8 @@ module.exports = function(launchServer) {
     .then(testDB.addRooms)
     .then(testDB.addUsersRooms)
     .then(testDB.addMessages)
-    // end of tests 
+    .then(testDB.addRelationships)
+    // end of tests
     .then(r => console.log(r))
     .then(launchServer);
 };

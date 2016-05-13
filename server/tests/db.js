@@ -16,8 +16,9 @@ const storeResults = module.exports.storeResults = (key, value) => {
   return storage;
 };
 
-module.exports.addUsers = () => {
-  return Users.bulkCreate([
+// arrow functions automatically return if 1 line
+module.exports.addUsers = () =>
+  Users.bulkCreate([
     {
       id: '12345',
       facebook_id: '11111',
@@ -40,10 +41,42 @@ module.exports.addUsers = () => {
       photo_url: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/12650879_1057351587660293_1561191701422265647_n.jpg?oh=1c2c208ef646239f6cedb8a79f582572&oe=57996888',
     },
   ]).then(r => storeResults('users', r));
+
+module.exports.addRelationships = (obj) => {
+  const Mo = obj.users[0].dataValues.id;
+  const Reina = obj.users[1].dataValues.id;
+  const Ashwin = obj.users[2].dataValues.id;
+
+  return Relationships.bulkCreate([
+    {
+      id: '121212',
+      type: 'connection',
+      user1Id: Mo,
+      user2Id: Reina,
+    },
+    {
+      id: '232323',
+      type: 'request',
+      user1Id: Mo,
+      user2Id: Ashwin,
+    },
+    {
+      id: '343434',
+      type: 'request',
+      user1Id: Ashwin,
+      user2Id: Reina,
+    },
+    {
+      id: '454545',
+      type: 'reject',
+      user1Id: Reina,
+      user2Id: Ashwin,
+    },
+  ]).then(r => storeResults('relationships', r));
 };
 
-module.exports.addLevels = () => {
-  return Levels.bulkCreate([
+module.exports.addLevels = () =>
+  Levels.bulkCreate([
     {
       id: 1,
       name: 'Beginner',
@@ -57,18 +90,16 @@ module.exports.addLevels = () => {
       name: 'Expert',
     },
   ]).then(r => storeResults('levels', r));
-};
 
-module.exports.addLanguages = () => {
-  return Languages.bulkCreate([
+module.exports.addLanguages = () =>
+  Languages.bulkCreate([
     { id: 1, name: 'English' },
     { id: 2, name: 'Spanish' },
     { id: 3, name: 'French' },
   ]).then(r => storeResults('languages', r));
-};
 
-module.exports.addLanguagesLevels = () => {
-  return LanguagesLevels.bulkCreate([
+module.exports.addLanguagesLevels = () =>
+  LanguagesLevels.bulkCreate([
     {
       language_id: 1,
       level_id: 1,
@@ -94,7 +125,6 @@ module.exports.addLanguagesLevels = () => {
       level_id: 3,
     },
   ]).then(r => storeResults('languagesLevels', r));
-};
 
 module.exports.addUsersLanguagesLevels = (obj) => {
   // Mo speaks English and wants to learn Spanish
@@ -114,12 +144,11 @@ module.exports.addUsersLanguagesLevels = (obj) => {
   return obj;
 };
 
-module.exports.addRooms = () => {
-  return Rooms.bulkCreate([
+module.exports.addRooms = () =>
+  Rooms.bulkCreate([
     { id: '3333', number_active_participants: 2 },
     { id: '5555', number_active_participants: 3 },
   ]).then(r => storeResults('rooms', r));
-};
 
 module.exports.addUsersRooms = (obj) => {
   obj.users.forEach(user => user.addRoom(obj.rooms[1]));
