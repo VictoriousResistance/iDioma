@@ -41,9 +41,12 @@ const mapDispatchToProps = (dispatch) => (
         },
       })
       .done((matches) => {
-
-        dispatch(addMatches([{firstName: 'Velvet', lastName: 'Underground', languages: { canTeach: [['English', 'native']], willLearn: [['German', 'advanced']] }, description: 'hi there', photoUrl: 'http://watchmojo.com/uploads/blipthumbs/M-RR-Top10-Velvet-Underground-Songs-480p30_480.jpg'}]));
-        dispatch(incrementOffset(20));
+        if (matches.statusCode === 200) {
+          dispatch(addMatches(JSON.parse(matches.body)));
+          dispatch(incrementOffset(20));
+        } else {
+          // TODO: handle error
+        }
       });
     },
   }
