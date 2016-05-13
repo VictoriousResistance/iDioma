@@ -19,7 +19,9 @@ const decorateOutputObj = (outputObj, userRoomObj, selfId) => {
     outputObj.userIds.push(userRoomObj.dataValues.user_id);
   }
   // last time user left room
-  outputObj.lastSeen = userRoomObj.dataValues.updatedAt;
+  if (userRoomObj.dataValues.user_id == selfId) {
+    outputObj.lastSeen = userRoomObj.dataValues.updatedAt;
+  }
 };
 
 const addRoomLastUpdated = (outputObj) => {
@@ -81,7 +83,7 @@ const getRoomIdsAndUserIdsGivenSelfId = (selfId) => {
               // push outputObj to outputArray
             });
           
-          Promise.all(outputArray).then((outputArray) => outputArray);
+          return Promise.all(outputArray);
 
         });
     })
