@@ -17,6 +17,10 @@ module.exports.seed = () =>
   ])
   .then((levels) => {
     const idToLevel = module.exports.idToLevel = {};
-    levels.forEach((level) => { idToLevel[level.dataValues.id] = level.dataValues.name; });
+    const levelToId = module.exports.levelToId = {};
+    levels.forEach((level) => { 
+      idToLevel[level.dataValues.id] = level.dataValues.name;
+      levelToId[level.dataValues.name] = level.dataValues.id;
+    });
     return idToLevel;
   });

@@ -8,8 +8,10 @@ module.exports.seed = () =>
   ])
   .then((languages) => {
     const idToLanguage = module.exports.idToLanguage = {};
+    const languageToId = module.exports.languageToId = {};
     languages.forEach(function(language) {
       idToLanguage[language.dataValues.id] = language.dataValues.name;
+      languageToId[language.dataValues.name] = language.dataValues.id;
     });
     return idToLanguage;
   });

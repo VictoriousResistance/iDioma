@@ -15,7 +15,10 @@ module.exports = (app, express) => {
       next();
     },
     getSelfProfile,
-    
+    // getRoomsList,
+    // getConnections,
+    // getMatches,
+    // getConnectionRequests,
     homeHandler);
 
   app.get('/login', (req, res) =>
