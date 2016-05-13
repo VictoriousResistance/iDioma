@@ -6,7 +6,6 @@ module.exports.pluckUser = (userResults) => {
     lastName: user.last_name,
     description: user.description,
     photoUrl: user.photo_url,
-    reached: true,
   };
 };
 
@@ -19,7 +18,6 @@ module.exports.pluckUsers = (multipleUserResults) =>
       lastName: user.last_name,
       description: user.description,
       photoUrl: user.photo_url,
-      reached: true,
     };
   });
 
