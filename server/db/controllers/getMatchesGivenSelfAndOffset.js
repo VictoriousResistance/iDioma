@@ -1,5 +1,6 @@
 const db = require('../db.js');
 const Sequelize = require('sequelize');
+const pluckMatches = require('./helpers.js').pluckMatches;
 
 module.exports = (self, offSet) => {
   const queryStr = `SELECT DISTINCT teach.teach_id, teach.teach_url, teach.teach_first, teach.teach_last, teach.teach_description FROM (
@@ -47,5 +48,6 @@ module.exports = (self, offSet) => {
                       LIMIT 20 
                       OFFSET ${offSet}
                     `;
-  return db.query(queryStr, { type: Sequelize.QueryTypes.SELECT });
+  return db.query(queryStr, { type: Sequelize.QueryTypes.SELECT })
+    .then(pluckMatches);
 };
