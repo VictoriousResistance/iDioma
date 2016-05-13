@@ -55,13 +55,15 @@ module.exports = function(req, res) {
       id: '1122067557855362',
       firstName: 'Lach',
       lastName: 'Zester',
-      canTeach: [
-        ['German', 'fluent'],
-        ['English', 'native'],
-      ],
-      willLearn: [
-        ['French', 'basic'],
-      ],
+      languages: {
+        canTeach: [
+          ['German', 'fluent'],
+          ['English', 'native'],
+        ],
+        willLearn: [
+          ['French', 'basic'],
+        ],
+      },
       description: 'Javascript is a language too.',
       photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
     },
@@ -70,12 +72,14 @@ module.exports = function(req, res) {
         id: '1556463314683658',
         firstName: 'Reina',
         lastName: 'IsNotHere',
-        canTeach: [
-          ['German', 'fluent'],
-        ],
-        willLearn: [
-          ['French', 'basic'],
-        ],
+        languages: {
+          canTeach: [
+            ['German', 'fluent'],
+          ],
+          willLearn: [
+            ['French', 'basic'],
+          ],
+        },
         description: 'hello, is there anybody in there? just nod if you can hear me. is there anyone home? if i make this longer, will it still work? imma make this really long and see what it looks like on the page and if the buttons still look good',
         photoUrl: 'https://e4292304444963bb9b1c-26c9e18a7a93639122506172dc90d702.ssl.cf2.rackcdn.com/gallery/img/t/golden-retriever-239058.jpg',
       },
@@ -83,12 +87,14 @@ module.exports = function(req, res) {
         id: 3,
         firstName: 'Isabelle',
         lastName: 'T',
-        canTeach: [
-          ['French', 'fluent'],
-        ],
-        willLearn: [
-          ['Ruby', 'basic'],
-        ],
+        languages: {
+          canTeach: [
+            ['French', 'fluent'],
+          ],
+          willLearn: [
+            ['Ruby', 'basic'],
+          ],
+        },
         description: 'there was a house in new orleans, they called the rising sun...',
         photoUrl: 'https://e4292304444963bb9b1c-26c9e18a7a93639122506172dc90d702.ssl.cf2.rackcdn.com/gallery/img/t/golden-retriever-239058.jpg',
       },
@@ -96,12 +102,14 @@ module.exports = function(req, res) {
         id: 4,
         firstName: 'Audrey',
         lastName: 'L',
-        canTeach: [
-          ['Python', 'native'],
-        ],
-        willLearn: [
-          ['French', 'basic'],
-        ],
+        languages: {
+          canTeach: [
+            ['Python', 'native'],
+          ],
+          willLearn: [
+            ['French', 'basic'],
+          ],
+        },
         description: 'making buttons is really fun. making buttons you can click on is super fun!',
         photoUrl: 'https://e4292304444963bb9b1c-26c9e18a7a93639122506172dc90d702.ssl.cf2.rackcdn.com/gallery/img/t/golden-retriever-239058.jpg',
       },
@@ -113,12 +121,14 @@ module.exports = function(req, res) {
           id: '123456',
           firstName: 'Maroon',
           lastName: '5',
-          canTeach: [
-            ['German', 'fluent'],
-          ],
-          willLearn: [
-            ['French', 'basic'],
-          ],
+          languages: {
+            canTeach: [
+              ['German', 'fluent'],
+            ],
+            willLearn: [
+              ['French', 'basic'],
+            ],
+          },
           description: 'i was so high i didnt recognize the fire burning in her eyes. this love is taking a toll on me. she said goodbye, too many times before.',
           photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
         },
@@ -126,12 +136,14 @@ module.exports = function(req, res) {
           id: '78910',
           firstName: 'Anna',
           lastName: 'Frozen',
-          canTeach: [
-            ['Polish', 'fluent'],
-          ],
-          willLearn: [
-            ['English', 'basic'],
-          ],
+          languages: {
+            canTeach: [
+              ['Polish', 'fluent'],
+            ],
+            willLearn: [
+              ['English', 'basic'],
+            ],
+          },
           description: 'do you wanna build a snowman, come on lets go and play',
           photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
         },
@@ -139,12 +151,14 @@ module.exports = function(req, res) {
           id: 7,
           firstName: 'Slim',
           lastName: 'Shady',
-          canTeach: [
-            ['English', 'fluent'],
-          ],
-          willLearn: [
-            ['French', 'basic'],
-          ],
+          languages: {
+            canTeach: [
+              ['English', 'fluent'],
+            ],
+            willLearn: [
+              ['French', 'basic'],
+            ],
+          },
           description: 'im beginning to feel like a rap god',
           photoUrl: 'http://www.amzocorp.com/AAWEBIMAGES/home.puppy.jpg',
         },
@@ -155,12 +169,14 @@ module.exports = function(req, res) {
         id: 8,
         firstName: 'Adele',
         lastName: 'Adkins',
-        canTeach: [
-          ['German', 'fluent'],
-        ],
-        willLearn: [
-          ['French', 'basic'],
-        ],
+        languages: {
+          canTeach: [
+            ['German', 'fluent'],
+          ],
+          willLearn: [
+            ['French', 'basic'],
+          ],
+        },
         description: 'theres a fire burning in my heart. we couldve had it all. rolling in the deep. you had my heart inside of your hand...',
         photoUrl: 'http://www.pvvcvets.com/_images//kitten.jpg',
       },
@@ -168,12 +184,14 @@ module.exports = function(req, res) {
         id: 9,
         firstName: 'Britney',
         lastName: 'S',
-        canTeach: [
-          ['German', 'fluent'],
-        ],
-        willLearn: [
-          ['French', 'basic'],
-        ],
+        languages: {
+          canTeach: [
+            ['German', 'fluent'],
+          ],
+          willLearn: [
+            ['French', 'basic'],
+          ],
+        },
         description: 'oops i did it again',
         photoUrl: 'http://www.pvvcvets.com/_images//kitten.jpg',
       },
@@ -181,12 +199,14 @@ module.exports = function(req, res) {
         id: 10,
         firstName: 'Genevieve',
         lastName: 'Morgana',
-        canTeach: [
-          ['German', 'fluent'],
-        ],
-        willLearn: [
-          ['French', 'basic'],
-        ],
+        languages: {
+          canTeach: [
+            ['German', 'fluent'],
+          ],
+          willLearn: [
+            ['French', 'basic'],
+          ],
+        },
         description: 'everyone put your hand out and close your eyes. your thumbs should be tucked. not down, tucked.',
         photoUrl: 'http://www.pvvcvets.com/_images//kitten.jpg',
       },
