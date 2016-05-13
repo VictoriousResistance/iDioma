@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
 var sockets = require('./routes/sockets.js');
+var auth = require('./auth/auth.js');
 
 require('./db/index.js')(launchServer);
 
@@ -23,7 +24,7 @@ function launchServer() {
 
   //router and sockets
   require('./routes/webRoutes.js')(app, express);
-  app.use('/api', require('./routes/apiRoutes.js'));
+  app.use('/api', auth.checkAuth, require('./routes/apiRoutes.js'));
 
   var server = require('http').Server(app);
   sockets(server);
