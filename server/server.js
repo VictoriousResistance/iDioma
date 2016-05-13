@@ -23,6 +23,8 @@ function launchServer() {
 
   //router and sockets
   require('./routes/webRoutes.js')(app, express);
+  app.use('/api', require('./routes/apiRoutes.js'));
+
   var server = require('http').Server(app);
   sockets(server);
 
