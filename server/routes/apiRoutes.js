@@ -118,10 +118,22 @@ apiRouter.route('/rooms')
 
 apiRouter.route('/messages')
   .get((req, res) => {
-
+    getMessages(req.body.roomId)
+      .then(messages => {
+        res.json(messages);
+      })
+      .catch(() => {
+        res.sendStatus(404);
+      });
   })
   .post((req, res) => {
-
+    postMessage(req.body.userId, req.body.roomId, req.body.message)
+      .then(() => {
+        res.sendStatus(201);
+      })
+      .catch(() => {
+        res.sendStatus(404);
+      });
   });
 
 module.exports = apiRouter;
