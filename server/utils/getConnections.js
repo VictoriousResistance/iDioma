@@ -1,14 +1,18 @@
-const getMatches = require('../db/controllers/getMatchesGivenSelfAndOffset');
+const getRelatedUserIds = require('../db/controllers/getUserIdsGivenSelfIdAndRelationshipType.js');
+
+const getBasicInfo = require('../db/controllers/getUserBasicInfoGivenUserId.js');
+const getLanguageInfo = require('../db/controllers/getUserLanguageInfoGivenUserId.js');
+const helpers = require('../db/controllers/helpers.js');
+
+
+const assignConnectionsToReq = (connections, req) =>
+  req.idioma.profile.connections = connections;
 
 module.exports = (req, res, next) => {
-  const self = req.idioma.profile;
-  const offSet = req.idioma.offSet; //need to agree on where to put offSet property in the state object
-  getMatches(self, offSet)
-  .then((matches) => {
-    req.idioma.matches = matches;
-    next();
-  })
-  .catch((error) => {
-    res.sendStatus(404);
-  });
+  const test = ['111213', '12345', '678910'];
+  getBasicInfo.bulk(test)
+  .then(helpers.pluckUsers)
+  .then(getLanguageInfo.bulk)
+  .then((connections) => assignConnectionsToReq(connections, req))
+  .then(next());
 };

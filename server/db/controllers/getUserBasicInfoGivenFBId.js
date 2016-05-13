@@ -5,4 +5,3 @@ module.exports = (facebookId) => {
   return db.query(query)
     .spread((results, metadata) => results);
 };
-
