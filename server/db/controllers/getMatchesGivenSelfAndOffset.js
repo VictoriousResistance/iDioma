@@ -1,6 +1,7 @@
 const db = require('../db.js');
 const Sequelize = require('sequelize');
 const pluckMatches = require('./helpers.js').pluckMatches;
+const getLanguages = require('./getUserLanguageInfoGivenUserId').bulk;
 
 module.exports = (self, offSet) => {
   const queryStr = `SELECT DISTINCT teach.teach_id, teach.teach_url, teach.teach_first, teach.teach_last, teach.teach_description FROM (
@@ -49,5 +50,6 @@ module.exports = (self, offSet) => {
                       OFFSET ${offSet}
                     `;
   return db.query(queryStr, { type: Sequelize.QueryTypes.SELECT })
-    .then(pluckMatches);
+    .then(pluckMatches)
+    .then(getLanguages);
 };
