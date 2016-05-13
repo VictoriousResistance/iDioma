@@ -1,6 +1,7 @@
 const db = require('../db.js');
 const languagesStore = require('../seed/languages.js').idToLanguage;
 const levelsStore = require('../seed/levels.js').idToLevel;
+const helpers = require('./helpers.js');
 
 const getLanguagesLevels = (userId, offerOrLearnArray) => {
   const queryMaker = (userId, offerOrLearn) =>
@@ -21,11 +22,20 @@ const getLanguagesLevels = (userId, offerOrLearnArray) => {
   );
 };
 
-module.exports = (userId) =>
-  getLanguagesLevels(userId, ['offer', 'learn'])
+const userLanguageInfo = module.exports = (userId) => {
+  console.log('reached');
+  return getLanguagesLevels(userId, ['offer', 'learn'])   // can add more elements in the array if we ever add more fields
   .then(results => results.map(offerOrLearn =>
     offerOrLearn.map(language_level =>
       [languagesStore[language_level.language_id], levelsStore[language_level.level_id]]
     )
   ));
+};
 
+module.exports.bulk = (arrayOfUserObjs) =>
+  Promise.all(arrayOfUserObjs.map(user => {
+    return userLanguageInfo(user.id).then(result => {
+      user.languages = helpers.pluckLanguages(result);
+      return user;
+    });
+  }));

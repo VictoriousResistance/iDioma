@@ -2,6 +2,7 @@ const auth = require('../auth/auth.js');
 const homeHandler = require('../utils/homeHandler.js');
 
 const getSelfProfile = require('../utils/getSelfProfile.js');
+const getConnections = require('../utils/getConnections.js');
 
 module.exports = (app, express) => {
 
@@ -16,7 +17,7 @@ module.exports = (app, express) => {
     },
     getSelfProfile,
     // getRoomsList,
-    // getConnections,
+    getConnections,
     // getMatches,
     // getConnectionRequests,
     homeHandler);
