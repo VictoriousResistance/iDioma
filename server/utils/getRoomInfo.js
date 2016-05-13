@@ -1,5 +1,5 @@
 const getRoomData = require('../db/controllers/getRoomIdsAndUserIdsGivenSelfId.js');
-const getRoomData = require('../db/controllers/getUserBasicInfoGivenUserId.js');
+const getUserInfo = require('../db/controllers/getUserBasicInfoGivenUserId.js');
 
 module.exports = (req, res, next) => {
   const selfId = req.idioma.profile.id;
