@@ -1,8 +1,17 @@
 const apiRouter = require('express').Router();
+const getMatches = require('../db/controllers/getMatchesGivenSelfAndOffset.js');
+const addToRequests = require('../db/controllers/moveMatchIntoRequests.js');
+const addToRejects = require('../db/controllers/moveMatchIntoRejects.js');
+const changeToConnectionFromRequest = require('../db/controllers/moveRequestIntoConnectionsGivenSelfIdAndRequestId.js');
+const changeToRejectFromRequest = require('../db/controllers/moveRequestIntoRejectsGivenSelfIdAndRequestId.js');
+const changeToRejectFromConnection = require('../db/controllers/moveConnectionIntoRejectsGivenSelfIdAndConnectionId.js');
 
 apiRouter.route('/matches')
   .get((req, res) => { // get matches
-
+    getMatches(req.body.id, req.body.offset)
+    .then(matches => {
+      res.json = matches;
+    });
   });
 
 apiRouter.route('/relationships')
