@@ -65,21 +65,21 @@ const profile = (state = {}, action) => {
 
     case 'REMOVE_LEARN':
       const newLearn = [];
-      state.willLearn.forEach((language) => {
+      state.languages.willLearn.forEach((language) => {
         if (language[0] !== action.language[0] || language[1] !== action.language[1]) {
           newLearn.push(language);
         }
       });
-      return Object.assign({}, state, { willLearn: newLearn }, { needUpdate: true });
+      return Object.assign({}, state, { languages: Object.assign({}, state.languages, { willLearn: newLearn }) }, { needUpdate: true });
 
     case 'REMOVE_TEACH':
       const newTeach = [];
-      state.canTeach.forEach((language) => {
+      state.languages.canTeach.forEach((language) => {
         if (language[0] !== action.language[0] || language[1] !== action.language[1]) {
           newTeach.push(language);
         }
       });
-      return Object.assign({}, state, { canTeach: newTeach }, { needUpdate: true });
+      return Object.assign({}, state, { languages: Object.assign({}, state.languages, { canTeach: newTeach }) }, { needUpdate: true });
 
     case 'UPDATE_DESCRIPTION':
       return Object.assign({}, state, { description: action.description }, { needUpdate: true });
