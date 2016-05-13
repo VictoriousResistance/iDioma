@@ -88,14 +88,14 @@ apiRouter.route('/relationships')
     return res.sendStatus(404);
   });
 
-apiRouter.route('/profile/:id')
+apiRouter.route('/profile')
   .put((req, res) => { // update profile
-    updateDescription(req.params.id, req.body.description)
+    updateDescription(req.body.id, req.body.description)
     .then(() => (
-      updateLanguages('learn', req.params.id, req.body.languages.willLearn)
+      updateLanguages('learn', req.body.id, req.body.languages.willLearn)
     ))
     .then(() => (
-      updateLanguages('offer', req.params.id, req.body.languages.canTeach)
+      updateLanguages('offer', req.body.id, req.body.languages.canTeach)
     ))
     .then(() => {
       res.sendStatus(200);
