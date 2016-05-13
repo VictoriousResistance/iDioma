@@ -14,13 +14,13 @@ const ConnectionRequest = ({ connectionRequest, onAcceptClick, onDeclineClick })
       <div>
         <span>{'Can offer: '}</span>
         <div className="languages">
-            {connectionRequest.canTeach.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
+            {connectionRequest.languages.canTeach.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
         </div>
       </div>
       <div>
         <span>{'Wants to learn: '}</span>
         <div className="languages">
-            {connectionRequest.willLearn.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
+            {connectionRequest.languages.willLearn.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
         </div>
       </div>
       <div className="button-container">

@@ -3,7 +3,7 @@ import CanTeach from '../components/CanTeach.jsx';
 import { addTeach, removeTeach } from '../actions/index.js';
 
 const mapStateToProps = (state) => ({
-  canTeach: state.profile.canTeach,
+  canTeach: state.profile.languages.canTeach,
 });
 
 const mapDispatchToProps = (dispatch) => ({

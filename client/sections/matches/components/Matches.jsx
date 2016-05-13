@@ -14,13 +14,13 @@ const Match = ({ match, onConnectClick, onHideClick }) => (
       <div>
         <span>{'Can offer: '}</span>
         <div className="languages">
-            {match.canTeach.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
+            {match.languages.canTeach.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
         </div>
       </div>
       <div>
         <span>{'Wants to learn: '}</span>
         <div className="languages">
-            {match.willLearn.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
+            {match.languages.willLearn.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
         </div>
       </div>
       <div className="button-container">
