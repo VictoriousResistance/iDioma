@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 import Matches from '../components/Matches.jsx';
 import { unmountMatch, removeMatch, incrementOffset, addMatches } from '../actions/index.js';
+import request from 'then-request';
 
 
 const mapStateToProps = (state) => (
   {
     matches: state.matches.values,
     offset: state.matches.offset,
-    selfId: state.profile.id,
+    self: state.profile,
   }
 );
 
@@ -31,10 +32,19 @@ const mapDispatchToProps = (dispatch) => (
         120
       );
     },
-    onLoadMoreClick: (selfId, offset) => {
+    onLoadMoreClick: (self, offset) => {
       //use the offset to get additional matches from db, then
-      dispatch(addMatches([{firstName: 'Velvet', lastName: 'Underground', canTeach: [['English', 'native']], willLearn: [['German', 'advanced']], description: 'hi there', photoUrl: 'http://watchmojo.com/uploads/blipthumbs/M-RR-Top10-Velvet-Underground-Songs-480p30_480.jpg'}]));
-      dispatch(incrementOffset(20));
+      request('GET', '/api/matches', {
+        qs: {
+          self,
+          offset,
+        },
+      })
+      .done((matches) => {
+
+        dispatch(addMatches([{firstName: 'Velvet', lastName: 'Underground', languages: { canTeach: [['English', 'native']], willLearn: [['German', 'advanced']] }, description: 'hi there', photoUrl: 'http://watchmojo.com/uploads/blipthumbs/M-RR-Top10-Velvet-Underground-Songs-480p30_480.jpg'}]));
+        dispatch(incrementOffset(20));
+      });
     },
   }
 );

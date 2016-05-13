@@ -17,13 +17,13 @@ const Connection = ({ connection, onRemoveClick }) =>
         <div>
           <span>{'Can offer: '}</span>
           <div className="languages">
-              {connection.canTeach.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
+              {connection.languages.canTeach.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
           </div>
         </div>
         <div>
           <span>{'Wants to learn: '}</span>
           <div className="languages">
-              {connection.willLearn.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
+              {connection.languages.willLearn.map((language, i) => (<Language key={i} level={language[1]} name={language[0]} />))}
           </div>
         </div>
         <div className="button-container">

@@ -3,7 +3,7 @@ import WillLearn from '../components/WillLearn.jsx';
 import { addLearn, removeLearn } from '../actions/index.js';
 
 const mapStateToProps = (state) => ({
-  willLearn: state.profile.willLearn,
+  willLearn: state.profile.languages.willLearn,
 });
 
 const mapDispatchToProps = (dispatch) => ({
