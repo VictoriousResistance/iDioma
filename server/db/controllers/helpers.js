@@ -28,3 +28,16 @@ module.exports.pluckLanguages = (offerOrLearnResults) =>
     canTeach: offerOrLearnResults[0],
     willLearn: offerOrLearnResults[1],
   });
+
+module.exports.pluckMatches = (matchesResults) => (
+  matchesResults.map(matchResult => (
+    {
+      id: matchResult.teach_id,
+      firstName: matchResult.teach_first,
+      lastName: matchResult.teach_last,
+      description: matchResult.teach_description,
+      photoUrl: matchResult.teach_url,
+    }
+  ))
+);
+
