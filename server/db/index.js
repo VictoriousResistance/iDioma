@@ -47,5 +47,5 @@ module.exports = function(launchServer) {
     .then(testDB.addRelationships)
     // end of tests
     .then(r => console.log(r))
-    .then(launchServer);
+    .then(() => launchServer());
 };
