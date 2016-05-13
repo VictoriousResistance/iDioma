@@ -4,17 +4,13 @@ const Sequelize = require('sequelize');
 const getUserIdsGivenSelfIdAndRelationshipType = (selfId, relationshipType) => {
   const queryStr = `
                     (
-                      SELECT relationships.user1Id as userid FROM users 
-                        INNER JOIN relationships 
-                          ON users.id = relationships.user2Id 
-                        WHERE users.id = '${selfId}' AND relationships.type = '${relationshipType}'
+                      SELECT user1Id as userid FROM relationships 
+                        WHERE user2Id = '${selfId}' AND type = '${relationshipType}'
                     )
                     UNION 
                     (
-                      SELECT relationships.user2Id as userid FROM users 
-                        INNER JOIN relationships 
-                          ON users.id = relationships.user1Id 
-                        WHERE users.id = '${selfId}' AND relationships.type = '${relationshipType}'
+                      SELECT user2Id as userid FROM relationships 
+                        WHERE user1Id = '${selfId}' AND type = '${relationshipType}'
                     )
                     `;
   return db.query(queryStr, { type: Sequelize.QueryTypes.SELECT });
