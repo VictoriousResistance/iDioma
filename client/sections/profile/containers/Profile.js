@@ -4,18 +4,18 @@ import { completeUpdate } from '../actions/index.js';
 import request from 'then-request';
 
 const mapStateToProps = (state) => ({
-  profile: {
-    id: state.profile.id,
-    languages: state.profile.languages,
-    description: state.profile.description,
-  },
+  profile: state.profile,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onUpdateClick: (profile) => {
     // send put request to server
     request('PUT', '/api/profile', {
-      json: profile,
+      json: {
+        id: profile.id,
+        languages: profile.languages,
+        description: profile.description,
+      },
     })
     .done(data => {
       if (data.statusCode === 200) {
