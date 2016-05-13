@@ -3,6 +3,9 @@ const homeHandler = require('../utils/homeHandler.js');
 
 const getSelfProfile = require('../utils/getSelfProfile.js');
 const getConnections = require('../utils/getConnections.js');
+const getMatches = require('../utils/getMatches.js');
+const getConnectionRequests = require('../utils/getConnectionRequests.js');
+const getRoomInfo = require('../utils/getRoomInfo.js');
 
 module.exports = (app, express) => {
 
@@ -20,6 +23,7 @@ module.exports = (app, express) => {
     getConnections,
     // getMatches,
     // getConnectionRequests,
+    // getRoomInfo,
     homeHandler);
 
   app.get('/login', (req, res) =>
