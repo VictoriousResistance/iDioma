@@ -1,5 +1,7 @@
 const db = require('../db.js');
 const Sequelize = require('sequelize');
+const pluckMatches = require('./helpers.js').pluckMatches;
+const getLanguages = require('./getUserLanguageInfoGivenUserId').bulk;
 
 module.exports = (self, offSet) => {
   const queryStr = `SELECT DISTINCT teach.teach_id, teach.teach_url, teach.teach_first, teach.teach_last, teach.teach_description FROM (
@@ -13,7 +15,7 @@ module.exports = (self, offSet) => {
                             ON languages_levels.language_id = languages.id 
                           INNER JOIN levels 
                             ON languages_levels.level_id = levels.id 
-                          WHERE languages.name IN ('${self.willLearn.map(language => language[0]).join("', '")}') AND levels.name IN ('fluent', 'native') 
+                          WHERE languages.name IN ('${self.languages.willLearn.map(language => language[0]).join("', '")}') AND levels.name IN ('fluent', 'native') 
                       ) AS teach 
                       INNER JOIN 
                       ( 
@@ -26,7 +28,7 @@ module.exports = (self, offSet) => {
                             ON languages_levels.language_id = languages.id 
                           INNER JOIN levels 
                             ON languages_levels.level_id = levels.id 
-                          WHERE languages.name IN ('${self.canTeach.map(language => language[0]).join("', '")}') AND levels.name IN ('basic', 'intermediate', 'advanced')
+                          WHERE languages.name IN ('${self.languages.canTeach.map(language => language[0]).join("', '")}') AND levels.name IN ('basic', 'intermediate', 'advanced')
                       ) AS learn 
                         ON teach.teach_id = learn.learn_id 
                       ) 
@@ -47,5 +49,7 @@ module.exports = (self, offSet) => {
                       LIMIT 20 
                       OFFSET ${offSet}
                     `;
-  return db.query(queryStr, { type: Sequelize.QueryTypes.SELECT });
+  return db.query(queryStr, { type: Sequelize.QueryTypes.SELECT })
+    .then(pluckMatches)
+    .then(getLanguages);
 };
