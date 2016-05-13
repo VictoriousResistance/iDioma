@@ -1,9 +1,9 @@
-const getRequests = require('../db/controllers/getUserIdsGivenSelfIdAndRelationshipType.js');
+const getRelationships = require('../db/controllers/getUserIdsGivenSelfIdAndRelationshipType.js');
 
 module.exports = (req, res, next) => {
   const selfId = req.idioma.profile.id;
  
-  getRequests(selfId)
+  getRelationships.getRequests(selfId)
   .then((requests) => {
     req.idioma.connectionRequests = requests;
     next();
