@@ -2,10 +2,14 @@ const getMatches = require('../db/controllers/getMatchesGivenSelfAndOffset');
 
 module.exports = (req, res, next) => {
   const self = req.idioma.profile;
-  const offSet = req.idioma.offSet; //need to agree on where to put offSet property in the state object
+
+  // set offset to 20 on req
+  req.idioma.matches.offSet = 20;
+  const offSet = req.idioma.matches.offSet;
+ 
   getMatches(self, offSet)
   .then((matches) => {
-    req.idioma.matches = matches;
+    req.idioma.matches.values = matches;
     next();
   })
   .catch((error) => {
