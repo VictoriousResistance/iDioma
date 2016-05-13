@@ -23,7 +23,7 @@ const postMessage = require('../db/controllers/postMessageGivenUserIdAndRoomId')
 
 apiRouter.route('/matches')
   .get((req, res) => { // get matches
-    getMatches(req.body.self, req.body.offset)
+    getMatches(req.query.self, req.query.offset)
     .then(matches => {
       res.json(matches);
     })
@@ -107,7 +107,7 @@ apiRouter.route('/profile/:id')
 
 apiRouter.route('/rooms')
   .get((req, res) => {
-    findRoom(req.body.selfId, req.body.otherId)
+    findRoom(req.query.selfId, req.query.otherId)
       .then(rooms => {
         res.json(rooms[0]);
       })
@@ -118,7 +118,7 @@ apiRouter.route('/rooms')
 
 apiRouter.route('/messages')
   .get((req, res) => {
-    getMessages(req.body.roomId)
+    getMessages(req.query.roomId)
       .then(messages => {
         res.json(messages);
       })
