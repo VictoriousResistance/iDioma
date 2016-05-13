@@ -2,7 +2,7 @@ const profile = (state = {}, action) => {
   switch (action.type) {
 
     case 'ADD_LEARN':
-      const willLearn = state.willLearn;
+      const willLearn = state.languages.willLearn;
       var duplicate;
       var halfDuplicate;
       var newWillLearn = []; 
@@ -28,9 +28,9 @@ const profile = (state = {}, action) => {
             newWillLearn.push(action.language);
           }
         }
-        return Object.assign({}, state, { willLearn: newWillLearn }, { needUpdate: true });
+        return Object.assign({}, state, { languages: Object.assign({}, state.languages, { willLearn: newWillLearn }) }, { needUpdate: true });
       }
-      return Object.assign({}, state, { willLearn: willLearn.concat([action.language]) }, { needUpdate: true });
+      return Object.assign({}, state, { languages: Object.assign({}, state.languages, { willLearn: willLearn.concat([action.language]) }) }, { needUpdate: true });
 
     case 'ADD_TEACH':
       const canTeach = state.canTeach;
