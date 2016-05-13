@@ -33,7 +33,7 @@ const profile = (state = {}, action) => {
       return Object.assign({}, state, { languages: Object.assign({}, state.languages, { willLearn: willLearn.concat([action.language]) }) }, { needUpdate: true });
 
     case 'ADD_TEACH':
-      const canTeach = state.canTeach;
+      const canTeach = state.languages.canTeach;
       var duplicate;
       var halfDuplicate;
       var newCanTeach = [];
@@ -59,9 +59,9 @@ const profile = (state = {}, action) => {
             newCanTeach.push(action.language);
           }
         }
-        return Object.assign({}, state, { canTeach: newCanTeach }, { needUpdate: true });
+        return Object.assign({}, state, { languages: Object.assign({}, state.languages, { canTeach: newCanTeach }) }, { needUpdate: true });
       }
-      return Object.assign({}, state, { canTeach: canTeach.concat([action.language]) }, { needUpdate: true });
+      return Object.assign({}, state, { languages: Object.assign({}, state.languages, { canTeach: canTeach.concat([action.language]) }) }, { needUpdate: true });
 
     case 'REMOVE_LEARN':
       const newLearn = [];
