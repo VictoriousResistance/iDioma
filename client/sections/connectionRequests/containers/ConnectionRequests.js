@@ -2,35 +2,65 @@ import { connect } from 'react-redux';
 import ConnectionRequests from '../components/ConnectionRequests.jsx';
 import { unmountRequest, removeRequest } from '../actions/index.js';
 import { addConnection } from '../../connections/actions/index.js';
+import request from 'then-request';
 
 
 const mapStateToProps = (state) => (
   {
     connectionRequests: state.connectionRequests,
+    selfId: state.profile.id,
   }
 );
 
 const mapDispatchToProps = (dispatch) => (
   {
-    onAcceptClick: (person) => {
-      dispatch(unmountRequest(person.id));
-      setTimeout(
-        () => {
-          dispatch(removeRequest(person.id));
-          dispatch(addConnection(person));
+    onAcceptClick: (selfId, person) => {
+      request('PUT', '/api/relationships', {
+        json: {
+          oldType: 'request',
+          newType: 'connection',
+          selfId,
+          requestId: person.id,
         },
-        120
-      );
+      })
+      .done(data => {
+        if (data.statusCode === 200) {
+          dispatch(unmountRequest(person.id));
+          setTimeout(
+            () => {
+              dispatch(removeRequest(person.id));
+              dispatch(addConnection(person));
+            },
+            120
+          );
+        } else {
+          // TODO: handle error
+        }
+      });
     },
 
-    onDeclineClick: (id) => {
-      dispatch(unmountRequest(id));
-      setTimeout(
-        () => {
-          dispatch(removeRequest(id));
+    onDeclineClick: (selfId, id) => {
+      request('PUT', '/api/relationships', {
+        json: {
+          oldType: 'request',
+          newType: 'reject',
+          selfId,
+          requestId: id,
         },
-        120
-      );
+      })
+      .done(data => {
+        if (data.statusCode === 200) {
+          dispatch(unmountRequest(id));
+          setTimeout(
+            () => {
+              dispatch(removeRequest(id));
+            },
+            120
+          );
+        } else {
+          // TODO: handle error
+        }
+      });
     },
   }
 );
