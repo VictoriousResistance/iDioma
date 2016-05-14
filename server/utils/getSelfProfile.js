@@ -2,10 +2,12 @@ const getBasicInfo = require('../db/controllers/getUserBasicInfoGivenFBId.js');
 const getLanguageInfo = require('../db/controllers/getUserLanguageInfoGivenUserId.js');
 const helpers = require('../db/controllers/helpers.js');
 
+const inspect = require('../db/controllers/helpers.js').inspect;
+
 module.exports = (req, res, next) => {
-  // const fbId = req.user.id;
+  const fbId = req.user.id;
   // ZACH: should send back 500 errors not 404
-  const fbId = '1556463314683658';
+  // const fbId = '1556463314683658';
   getBasicInfo(fbId)
   .then(helpers.pluckUser)
   .then(user => {
