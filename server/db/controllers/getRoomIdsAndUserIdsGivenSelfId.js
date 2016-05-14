@@ -16,7 +16,7 @@ const decorateOutputObj = (outputObj, userRoomObj, selfId) => {
   outputObj.roomId = userRoomObj.dataValues.room_id;
   // add userId to outputObj array property, only if not equal to selfId
   if (userRoomObj.dataValues.user_id !== selfId) {
-    outputObj.userIds.push(userRoomObj.dataValues.user_id);
+    outputObj.users.push(userRoomObj.dataValues.user_id);
   }
   // last time user left room
   if (userRoomObj.dataValues.user_id == selfId) {
@@ -73,7 +73,7 @@ const getRoomIdsAndUserIdsGivenSelfId = (selfId) => {
           
           sortedUserRoomArray.forEach(
             (userRoomSubarray) => {
-              var outputObj = { roomId: '', userIds: [] };
+              var outputObj = { roomId: '', users: [] };
               userRoomSubarray.forEach((singleUserRoom) => {
               // decorate output object using populateOutput function
                 decorateOutputObj(outputObj, singleUserRoom, selfId);
