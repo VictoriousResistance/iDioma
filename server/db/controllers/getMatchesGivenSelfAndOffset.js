@@ -49,8 +49,7 @@ module.exports = (self, offSet) => {
                       LIMIT 20 
                       OFFSET ${offSet}
                     `;
-
-                    console.log(queryStr);
+                    
   return db.query(queryStr, { type: Sequelize.QueryTypes.SELECT })
     .then(pluckMatches)
     .then(getLanguages);
