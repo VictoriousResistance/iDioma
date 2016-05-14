@@ -32,6 +32,7 @@ apiRouter.route('/matches')
     });
   });
 
+// ZACH: ideally users/userid/rejections/rejectedUserId
 apiRouter.route('/relationships')
   .post((req, res) => { // post to rejects and requests
     if (req.body.newType === 'request') {
@@ -46,6 +47,7 @@ apiRouter.route('/relationships')
     if (req.body.newType === 'reject') {
       return addToRejects(req.body.selfId, req.body.matchId)
         .then(() => {
+          // ZACH: ideally send back what was removed
           res.sendStatus(201);
         })
         .catch(() => {

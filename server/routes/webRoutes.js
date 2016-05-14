@@ -3,6 +3,8 @@ const homeHandler = require('../utils/homeHandler.js');
 
 const getSelfProfile = require('../utils/getSelfProfile.js');
 const getConnections = require('../utils/getConnections.js');
+const getMatches = require('../utils/getMatches.js');
+const getConnectionRequests = require('../utils/getConnectionRequests.js');
 
 module.exports = (app, express) => {
 
@@ -11,15 +13,18 @@ module.exports = (app, express) => {
   app.use(express.static(__dirname + '/../../client'));
 
   app.use('/home/*', auth.checkAuth,
+
+
+    // ZACH:  create an initial state file
     (req, res, next) => {
-      req.idioma = {};
+      req.idioma = { connections: {}, matches: {}, connectionRequests: {} };
       next();
     },
     getSelfProfile,
-    // getRoomsList,
     getConnections,
-    // getMatches,
-    // getConnectionRequests,
+    getMatches,
+    getConnectionRequests,
+    // getRoomsList,
     homeHandler);
 
   app.get('/login', (req, res) =>

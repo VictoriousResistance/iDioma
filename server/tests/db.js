@@ -50,7 +50,7 @@ module.exports.addRelationships = (obj) => {
   return Relationships.bulkCreate([
     {
       id: '121212',
-      type: 'connection',
+      type: 'request',
       user1Id: Mo,
       user2Id: Reina,
     },
@@ -68,7 +68,7 @@ module.exports.addRelationships = (obj) => {
     },
     {
       id: '454545',
-      type: 'reject',
+      type: 'request',
       user1Id: Reina,
       user2Id: Ashwin,
     },
@@ -108,26 +108,32 @@ module.exports.addLanguages = () =>
 
 module.exports.addLanguagesLevels = () =>
   LanguagesLevels.bulkCreate([
+    // 0. English Beginner
     {
       language_id: '1',
       level_id: '1',
     },
+    // 1. English Expert
     {
       language_id: '1',
       level_id: '3',
     },
+    // 2. Spanish Intermediate
     {
       language_id: '2',
       level_id: '2',
     },
+    // 3. Spanish Expert
     {
       language_id: '2',
       level_id: '3',
     },
+    // 4. French Beginner
     {
       language_id: '3',
       level_id: '1',
     },
+    // 5. French Expert
     {
       language_id: '3',
       level_id: '3',

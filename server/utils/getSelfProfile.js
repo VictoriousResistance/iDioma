@@ -3,7 +3,9 @@ const getLanguageInfo = require('../db/controllers/getUserLanguageInfoGivenUserI
 const helpers = require('../db/controllers/helpers.js');
 
 module.exports = (req, res, next) => {
-  const fbId = req.user.id;
+  // const fbId = req.user.id;
+  // ZACH: should send back 500 errors not 404
+  const fbId = '1556463314683658';
   getBasicInfo(fbId)
   .then(helpers.pluckUser)
   .then(user => {
@@ -15,5 +17,8 @@ module.exports = (req, res, next) => {
   .then(languagesObj => {
     req.idioma.profile.languages = languagesObj;
   })
-  .then(() => next());
+  .then(() => next())
+  .catch((error) => {
+    res.status(404).send(error);
+  });
 };

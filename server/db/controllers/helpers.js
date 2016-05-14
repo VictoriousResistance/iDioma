@@ -1,3 +1,9 @@
+module.exports.inspect = (i) => {
+  console.log('INSPECTOR');
+  console.log(i);
+  return i;
+};
+
 module.exports.pluckUser = (userResults) => {
   const user = userResults[0];
   return {
