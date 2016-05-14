@@ -2,7 +2,7 @@ const getRoomData = require('../db/controllers/getRoomIdsAndUserIdsGivenSelfId.j
 const getBasicInfo = require('../db/controllers/getUserBasicInfoGivenUserId.js');
 const helpers = require('../db/controllers/helpers.js');
 
-const cycleThroughRoomUsers = (roomObj) =>
+const getUsersInfoForRoom = (roomObj) =>
   getBasicInfo.bulk(roomObj.users)
   .then(helpers.pluckUsers)
   .then(users => {
@@ -10,14 +10,14 @@ const cycleThroughRoomUsers = (roomObj) =>
     return roomObj;
   });
 
-const cycleThroughRooms = (roomObjs) =>
-  Promise.all(roomObjs.map(roomObj => cycleThroughRoomUsers(roomObj)));
+const getUsersInfoForRooms = (roomObjs) =>
+  Promise.all(roomObjs.map(roomObj => getUsersInfoForRoom(roomObj)));
 
 module.exports = (req, res, next) => {
   const selfId = req.idioma.profile.id;
 
   getRoomData(selfId)
-  .then(cycleThroughRooms)
+  .then(getUsersInfoForRooms)
   .then(modifiedArray => req.idioma.rooms = modifiedArray)
   .then(() => next())
   .catch((error) => {
