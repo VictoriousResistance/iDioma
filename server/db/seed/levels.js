@@ -3,16 +3,24 @@ const Levels = require('../models/levelModel.js');
 module.exports.seed = () =>
   Levels.bulkCreate([
     {
-      id: 1,
-      name: 'Beginner',
+      id: '1',
+      name: 'beginner',
     },
     {
-      id: 2,
-      name: 'Intermerdiate',
+      id: '2',
+      name: 'intermediate',
     },
     {
-      id: 3,
-      name: 'Expert',
+      id: '3',
+      name: 'advanced',
+    },
+    {
+      id: '4',
+      name: 'native',
+    },
+    {
+      id: '5',
+      name: 'fluent',
     },
   ])
   .then((levels) => {
