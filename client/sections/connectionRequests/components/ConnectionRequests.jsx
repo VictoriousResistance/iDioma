@@ -36,7 +36,7 @@ const ConnectionRequest = ({ connectionRequest, onAcceptClick, onDeclineClick, s
 const ConnectionRequests = ({ connectionRequests, onAcceptClick, onDeclineClick, selfId }) => (
   <div>
     {connectionRequests.map((connectionRequest) => (
-      <ConnectionRequest key={connectionRequest.id} connectionRequest={connectionRequest} onAcceptClick={onAcceptClick} onDeclineClick={onDeclineClick}/>
+      <ConnectionRequest key={connectionRequest.id} connectionRequest={connectionRequest} onAcceptClick={onAcceptClick} onDeclineClick={onDeclineClick} selfId={selfId} />
     ))}
   </div>
 );
