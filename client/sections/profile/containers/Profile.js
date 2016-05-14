@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch) => ({
       json: {
         id: profile.id,
         languages: profile.languages,
-        description: profile.description,
+        description: profile.description || 'Click here to edit!',
       },
     })
     .done(data => {

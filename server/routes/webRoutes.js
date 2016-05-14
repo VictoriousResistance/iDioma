@@ -7,6 +7,8 @@ const getMatches = require('../utils/getMatches.js');
 const getConnectionRequests = require('../utils/getConnectionRequests.js');
 const getRoomsInfo = require('../utils/getRoomInfo.js');
 
+const path = require('path');
+
 module.exports = (app, express) => {
 
   const redirectHome = (req, res) => res.redirect('/home/');
@@ -28,9 +30,9 @@ module.exports = (app, express) => {
     getRoomsInfo,
     homeHandler);
 
-  app.get('/login', (req, res) =>
-    res.send('<a href="/auth/facebook">login</a>')
-  );
+  app.get('/login', (req, res) => {
+    res.sendFile(path.resolve('server', 'views', 'login.html'));
+  });
 
   app.get('/', redirectHome);
   app.get('/home', redirectHome);

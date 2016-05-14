@@ -1,11 +1,11 @@
 import React from 'react';
 import Language from '../../../components/Language.jsx';
 
-const Match = ({ match, onConnectClick, onHideClick }) => (
+const Match = ({ match, onConnectClick, onHideClick, self }) => (
   <div className={match.willUnmount ? "person animated fadeOut" : "person"}>
 
     <div className="profile-picture-container">
-      <img className="profile-picture" src={match.photoUrl}/>
+      <img className="profile-picture" src={match.photoUrl} />
     </div>
 
     <div className="text-container">
@@ -35,7 +35,7 @@ const Match = ({ match, onConnectClick, onHideClick }) => (
 const Matches = ({ matches, onConnectClick, onHideClick, offset, onLoadMoreClick, self }) => (
   <div>
     {matches.map((match) => (
-      <Match key={match.id} match={match} onConnectClick={onConnectClick} onHideClick={onHideClick} />
+      <Match key={match.id} match={match} onConnectClick={onConnectClick} onHideClick={onHideClick} self={self} />
     ))}
     <button href="#" className="load" onClick={() => { onLoadMoreClick(self, offset); }}>Load More</button>
   </div>
