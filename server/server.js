@@ -10,6 +10,11 @@ require('./db/index.js')(launchServer);
 function launchServer() {
   var app = express();
 
+
+
+
+// ZACH: have a routes file
+
   app.use(session({
     secret: 'victoriousresistance',
     resave: true,
@@ -26,9 +31,10 @@ function launchServer() {
   require('./routes/webRoutes.js')(app, express);
   app.use('/api', auth.checkAuth, require('./routes/apiRoutes.js'));
 
+// ZACH: sockets in a different file
   var server = require('http').Server(app);
   sockets(server);
-
+  
   var port = process.env.PORT || 3000;
 
   server.listen(port, function() {

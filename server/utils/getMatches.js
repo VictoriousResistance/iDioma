@@ -4,15 +4,15 @@ module.exports = (req, res, next) => {
   const self = req.idioma.profile;
 
   // set offset to 20 on req
-  req.idioma.matches.offSet = 20;
+  req.idioma.matches.offSet = 0;
   const offSet = req.idioma.matches.offSet;
- 
+
   getMatches(self, offSet)
   .then((matches) => {
     req.idioma.matches.values = matches;
-    next();
   })
+  .then(() => next())
   .catch((error) => {
-    res.sendStatus(404);
+    res.status(404).send(error);
   });
 };

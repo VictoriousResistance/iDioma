@@ -27,6 +27,7 @@ module.exports = function(launchServer) {
   Messages.belongsTo(Rooms, { foreignKey: 'room_id' });
   Messages.belongsTo(Users, { foreignKey: 'user_id' });
 
+  // ZACH: ideally call user1Id initiator and user2Id affected or soemthing
   Users.belongsToMany(Users, { as: 'User1', through: 'relationships', foreignKey: 'user1Id' });
   Users.belongsToMany(Users, { as: 'User2', through: 'relationships', foreignKey: 'user2Id' });
 
