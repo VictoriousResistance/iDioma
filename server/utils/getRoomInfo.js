@@ -15,9 +15,10 @@ module.exports = (req, res, next) => {
  
   getRoomData(selfId)
   .then((roomArray) => {
-    roomArray.forEach((room) => modifyOutputObj(room));
-    next();
+    roomArray.map((room) => modifyOutputObj(room));
   })
+  .then((modifiedArray) => req.rooms = modifiedArray)
+  .then(() => next())
   .catch((error) => {
     res.sendStatus(404);
   });
