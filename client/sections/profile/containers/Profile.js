@@ -9,22 +9,11 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onUpdateClick: (profile) => {
-    // send put request to server
-    let descriptionString = '';
-    if (profile.description) {
-      for (let i = 0; i < profile.description.length; i++) {
-        if (profile.description.charAt(i) === "'") {
-          descriptionString += '\\\'';
-        } else {
-          descriptionString += profile.description.charAt(i);
-        }
-      }
-    }
     request('PUT', '/api/profile', {
       json: {
         id: profile.id,
         languages: profile.languages,
-        description: profile.description ? descriptionString : 'No description added yet.',
+        description: profile.description ? profile.description.replace("'", '\\\'') : 'No description added yet.',
       },
     })
     .done(data => {
