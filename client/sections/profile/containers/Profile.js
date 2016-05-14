@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) => ({
       json: {
         id: profile.id,
         languages: profile.languages,
-        description: profile.description ? profile.description.replace("'", '\\\'') : 'No description added yet.',
+        description: profile.description ? profile.description.replace(/'/g, '\\\'').replace(/</g, '&lt;').replace(/>/g, '&gt;') : 'No description added yet.',
       },
     })
     .done(data => {
