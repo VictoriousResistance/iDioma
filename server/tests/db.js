@@ -60,18 +60,18 @@ module.exports.addRelationships = (obj) => {
       user1Id: Mo,
       user2Id: Ashwin,
     },
-    {
-      id: '343434',
-      type: 'request',
-      user1Id: Ashwin,
-      user2Id: Reina,
-    },
-    {
-      id: '454545',
-      type: 'request',
-      user1Id: Reina,
-      user2Id: Ashwin,
-    },
+    // {
+    //   id: '343434',
+    //   type: 'request',
+    //   user1Id: Ashwin,
+    //   user2Id: Reina,
+    // },
+    // {
+    //   id: '454545',
+    //   type: 'request',
+    //   user1Id: Reina,
+    //   user2Id: Ashwin,
+    // },
   ]).then(r => storeResults('relationships', r));
 };
 
@@ -113,10 +113,10 @@ module.exports.addLanguagesLevels = () =>
       language_id: '1',
       level_id: '1',
     },
-    // 1. English Expert
+    // 1. English Native
     {
       language_id: '1',
-      level_id: '3',
+      level_id: '4',
     },
     // 2. Spanish Intermediate
     {
@@ -126,7 +126,7 @@ module.exports.addLanguagesLevels = () =>
     // 3. Spanish Expert
     {
       language_id: '2',
-      level_id: '3',
+      level_id: '5',
     },
     // 4. French Beginner
     {
@@ -136,7 +136,7 @@ module.exports.addLanguagesLevels = () =>
     // 5. French Expert
     {
       language_id: '3',
-      level_id: '3',
+      level_id: '5',
     },
   ]).then(r => storeResults('languagesLevels', r));
 
