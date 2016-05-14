@@ -1,7 +1,7 @@
 import React from 'react';
 import Language from '../../../components/Language.jsx';
 
-const Connection = ({ connection, onRemoveClick }) =>
+const Connection = ({ connection, onRemoveClick, selfId }) =>
 {
   const chatroomUrl = '/chat/' + connection.id;
   return (
@@ -28,7 +28,7 @@ const Connection = ({ connection, onRemoveClick }) =>
         </div>
         <div className="button-container">
           <button className="action">Start Conversation</button>
-          <button className="action negative-action" onClick={() => { onRemoveClick(connection.id); }}>Remove</button>
+          <button className="action negative-action" onClick={() => { onRemoveClick(selfId, connection.id); }}>Remove</button>
         </div>
       </div>
 
@@ -37,10 +37,10 @@ const Connection = ({ connection, onRemoveClick }) =>
   );
 };
 
-const Connections = ({ connections, onRemoveClick }) => (
+const Connections = ({ connections, onRemoveClick, selfId }) => (
   <div>
     {connections.map((connection) => (
-      <Connection key={connection.id} connection={connection} onRemoveClick={onRemoveClick}/>
+      <Connection key={connection.id} connection={connection} onRemoveClick={onRemoveClick} selfId={selfId}/>
     ))}
   </div>
 );
