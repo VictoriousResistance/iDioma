@@ -83,7 +83,9 @@ npm start
   - __Product Owners__: Muhammad Naqvi, Reina Mei
   - __Scrum Master__: Ashwin Ravi
 
-## Current Build Health  [![Build Status](https://travis-ci.org/VictoriousResistance/iDioma.svg?branch=master)](https://travis-ci.org/VictoriousResistance/iDioma)
+## Current Build Health
+[![Build Status](https://travis-ci.org/VictoriousResistance/iDioma.svg?branch=master)](https://travis-ci.org/VictoriousResistance/iDioma) 
+
 View the build [history](https://travis-ci.org/VictoriousResistance/iDioma/builds) 
 
 ## Roadmap
