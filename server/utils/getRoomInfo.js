@@ -12,11 +12,22 @@ const something = (roomObj) =>
     return roomObj;
   });
 
+exports.convertUserIdsToNames = (arrayOfUserIds) => {
+
+  getUserInfo.bulk(arrayOfUserIds)
+    .then((userArray) => {
+      console.log('userArray.................', userArray);
+      return userArray.map((user) => user.first_name + ' ' + user.last_name);
+    })
+    .then((result) => console.log('result..................', result))
+};
+
+
 
 const cycleThroughRooms = (roomObjs) =>
   Promise.all(roomObjs.map(roomObj => something(roomObj)));
 
-module.exports = (req, res, next) => {
+exports.getRoomsInfo = (req, res, next) => {
   const selfId = req.idioma.profile.id;
 
   getRoomData(selfId)
