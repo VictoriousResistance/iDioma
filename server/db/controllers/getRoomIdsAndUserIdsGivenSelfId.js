@@ -19,7 +19,29 @@ const getRoomIds = (userRoomObjs) =>
 
 const getRoomsInfo = (roomIds) =>
   Promise.all(roomIds.map(roomId =>
-    Rooms.findAll({ where: { id: roomId } })
+    Rooms.findAll({
+      where: { id: roomId },
+    })
+  ));
+
+const pluckRooms = (rooms) =>
+  rooms.map(room => room[0].dataValues);
+
+// const sortRooms = (roomArray) =>
+//   roomArray.sort((a, b) =>
+//     a.updatedAt - b.updatedAt
+//   );
+
+const getUsersInRooms = (rooms, selfId) =>
+  Promise.all(rooms.map(roomId =>
+    UserRooms.findAll({
+      where: { 
+        room_id: roomId,
+        user_id: {
+          $ne: selfId
+        },
+      }
+    })
   ));
 
 const decorateOutputObj = (outputObj, userRoomObj, selfId) => {
@@ -41,59 +63,50 @@ const addRoomLastUpdated = (outputObj) => {
     outputObj.roomLastUpdated = roomObj.dataValues.updatedAt;
     return outputObj;
   });
-}
+};
 
 module.exports = (selfId) => {
-  // first find rooms that self is a participant
+  // find rooms that self is a participant
   return findSortedRoomsWithSelf(selfId)
     .then(getRoomIds)
-    // then return information about those rooms
-    .then((roomIdArray) => {
-      // first query room table to sort by last updated
-      const roomQueries = roomIdArray.map((roomId) => {
-        return Rooms.findAll({ where: { id: roomId } });
-      });
-      // sort room array by last updated room
-      return Promise.all(roomQueries)
-        .then((roomArray) => {
-          roomArray.sort((a, b) => {
-            return b[0].dataValues.updatedAt - a[0].dataValues.updatedAt;
-          });
-          return roomArray;
-        })
-        // return array of roomIds
-        .then((sortedRooms) => {
-          const roomIds = sortedRooms.map((room) => room[0].dataValues.id);
-          return roomIds;
-        })
-        // then map through room ids to set up userRoom query
-        .then((sortedRoomIdArray) => {
-          const userRoomQueries = sortedRoomIdArray.map((roomId) => {
-            return UserRooms.findAll({ where: { room_id: roomId } });
-          });
+    // return information about those rooms
+    .then(getRoomsInfo)
+    .then(pluckRooms)
+      // sort tables by last updated - unnecessary because of SQL query
+    // .then(sortRooms)
+    .then(inspect)
+    // get the ids of users associated with each room (but don't get own id)
+    .then(rooms => getUsersInRooms(rooms, selfId))
+    .then(inspect)
 
-          return Promise.all(userRoomQueries);
-        })
-        // map through results array to create single object for a room
-        .then((sortedUserRoomArray) => {
+    //     // then map through room ids to set up userRoom query
+    //     .then((sortedRoomIdArray) => {
+    //       const userRoomQueries = sortedRoomIdArray.map((roomId) => {
+    //         return UserRooms.findAll({ where: { room_id: roomId } });
+    //       });
 
-          const outputArray = [];
+    //       return Promise.all(userRoomQueries);
+    //     })
+    //     // map through results array to create single object for a room
+    //     .then((sortedUserRoomArray) => {
+
+    //       const outputArray = [];
           
-          sortedUserRoomArray.forEach(
-            (userRoomSubarray) => {
-              var outputObj = { roomId: '', users: [] };
-              userRoomSubarray.forEach((singleUserRoom) => {
-              // decorate output object using populateOutput function
-                decorateOutputObj(outputObj, singleUserRoom, selfId);
-              });
-              outputArray.push(addRoomLastUpdated(outputObj))
-                // .then((output) => output)
-              // push outputObj to outputArray
-            });
-          return Promise.all(outputArray);
+    //       sortedUserRoomArray.forEach(
+    //         (userRoomSubarray) => {
+    //           var outputObj = { roomId: '', users: [] };
+    //           userRoomSubarray.forEach((singleUserRoom) => {
+    //           // decorate output object using populateOutput function
+    //             decorateOutputObj(outputObj, singleUserRoom, selfId);
+    //           });
+    //           outputArray.push(addRoomLastUpdated(outputObj))
+    //             // .then((output) => output)
+    //           // push outputObj to outputArray
+    //         });
+    //       return Promise.all(outputArray);
 
-        });
-    })
+    //     });
+    // })
     .catch((error) => {
       console.log('ERROR: ', error);
     });
