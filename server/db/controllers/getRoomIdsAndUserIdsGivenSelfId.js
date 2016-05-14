@@ -1,15 +1,26 @@
 const UserRooms = require('../models/userRoomModel.js');
 const Rooms = require('../models/roomModel.js');
+const inspect = require('./helpers.js').inspect;
 
 // Helper functions:
-const findRoomsWithSelf = (selfId) => 
-  UserRooms.findAll({ where: { user_id: selfId } })
+const findSortedRoomsWithSelf = (selfId) =>
+  UserRooms.findAll({
+    where: {
+      user_id: selfId,
+      show: true,
+    },
+    order: [['updatedAt', 'DESC']],
+  });
 
-const filterForHiddenAndReturnRoomIds = (userRoomObjs) => {
-  const filteredResults = userRoomObjs.filter((userRoomObj) => userRoomObj.dataValues.show);
-  const roomIds = filteredResults.map((userRoomObj) => userRoomObj.dataValues.room_id);
-  return roomIds;
-}
+const getRoomIds = (userRoomObjs) =>
+  userRoomObjs.map(userRoomObj =>
+    userRoomObj.dataValues.room_id
+  );
+
+const getRoomsInfo = (roomIds) =>
+  Promise.all(roomIds.map(roomId =>
+    Rooms.findAll({ where: { id: roomId } })
+  ));
 
 const decorateOutputObj = (outputObj, userRoomObj, selfId) => {
   // roomId
@@ -25,22 +36,19 @@ const decorateOutputObj = (outputObj, userRoomObj, selfId) => {
 };
 
 const addRoomLastUpdated = (outputObj) => {
-  return Rooms.findOne({ where: {id: outputObj.roomId} })
+  return Rooms.findOne({ where: { id: outputObj.roomId } })
   .then((roomObj) => {
     outputObj.roomLastUpdated = roomObj.dataValues.updatedAt;
     return outputObj;
   });
 }
 
-
-const getRoomIdsAndUserIdsGivenSelfId = (selfId) => {
-  console.log('input.............', selfId);
+module.exports = (selfId) => {
   // first find rooms that self is a participant
-  findRoomsWithSelf(selfId)
-    .then((userRoomObjs) => filterForHiddenAndReturnRoomIds(userRoomObjs))
+  return findSortedRoomsWithSelf(selfId)
+    .then(getRoomIds)
     // then return information about those rooms
     .then((roomIdArray) => {
-      
       // first query room table to sort by last updated
       const roomQueries = roomIdArray.map((roomId) => {
         return Rooms.findAll({ where: { id: roomId } });
@@ -82,7 +90,6 @@ const getRoomIdsAndUserIdsGivenSelfId = (selfId) => {
                 // .then((output) => output)
               // push outputObj to outputArray
             });
-          
           return Promise.all(outputArray);
 
         });
@@ -92,5 +99,3 @@ const getRoomIdsAndUserIdsGivenSelfId = (selfId) => {
     });
 };
 
-
-module.exports = getRoomIdsAndUserIdsGivenSelfId;
