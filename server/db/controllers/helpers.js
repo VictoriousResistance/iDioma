@@ -1,5 +1,6 @@
+var num = 0;
 module.exports.inspect = (i) => {
-  console.log('INSPECTOR');
+  console.log('INSPECTOR #', ++num);
   console.log(i);
   return i;
 };

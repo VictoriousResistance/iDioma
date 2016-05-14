@@ -10,9 +10,6 @@ require('./db/index.js')(launchServer);
 function launchServer() {
   var app = express();
 
-
-
-
 // ZACH: have a routes file
 
   app.use(session({

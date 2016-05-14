@@ -23,7 +23,6 @@ const getLanguagesLevels = (userId, offerOrLearnArray) => {
 };
 
 const userLanguageInfo = module.exports = (userId) => {
-  console.log('reached');
   return getLanguagesLevels(userId, ['offer', 'learn'])   // can add more elements in the array if we ever add more fields
   .then(results => results.map(offerOrLearn =>
     offerOrLearn.map(language_level =>
