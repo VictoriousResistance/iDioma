@@ -13,11 +13,18 @@ const getUsersInfoForRoom = (roomObj) =>
 const getUsersInfoForRooms = (roomObjs) =>
   Promise.all(roomObjs.map(roomObj => getUsersInfoForRoom(roomObj)));
 
+const addMessagesToRooms = (rooms) =>
+  rooms.map(room => {
+    room.messages = room.messages || [];
+    return room;
+  });
+
 module.exports = (req, res, next) => {
   const selfId = req.idioma.profile.id;
 
   getRoomData(selfId)
   .then(getUsersInfoForRooms)
+  .then(addMessagesToRooms)
   .then(modifiedArray => req.idioma.rooms = modifiedArray)
   .then(() => next())
   .catch((error) => {
