@@ -3,7 +3,6 @@ import Matches from '../components/Matches.jsx';
 import { unmountMatch, removeMatch, incrementOffset, addMatches } from '../actions/index.js';
 import request from 'then-request';
 
-
 const mapStateToProps = (state) => (
   {
     matches: state.matches.values,
@@ -17,26 +16,52 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = (dispatch) => (
   {
-    onConnectClick: (id) => {
-      dispatch(unmountMatch(id));
-      setTimeout(
-        () => {
-          dispatch(removeMatch(id));
+    onConnectClick: (selfId, id) => {
+      request('POST', '/api/relationships', {
+        json: {
+          newType: 'request',
+          selfId,
+          matchId: id,
         },
-        120
-      );
+      })
+      .done(data => {
+        if (data.statusCode === 201) {
+          dispatch(unmountMatch(id));
+          setTimeout(
+            () => {
+              dispatch(removeMatch(id));
+            },
+            120
+          );
+        } else {
+          // TODO: handle error
+        }
+      });
     },
-    onHideClick: (id) => {
-      dispatch(unmountMatch(id));
-      setTimeout(
-        () => {
-          dispatch(removeMatch(id));
+    onHideClick: (selfId, id) => {
+      request('POST', '/api/relationships', {
+        json: {
+          newType: 'reject',
+          selfId,
+          matchId: id,
         },
-        120
-      );
+      })
+      .done(data => {
+        if (data.statusCode === 201) {
+          dispatch(unmountMatch(id));
+          setTimeout(
+            () => {
+              dispatch(removeMatch(id));
+            },
+            120
+          );
+        } else {
+          // TODO: handle error
+        }
+      });
     },
     onLoadMoreClick: (self, offset) => {
-      //use the offset to get additional matches from db, then
+      // use the offset to get additional matches from db, then
       request('GET', '/api/matches', {
         qs: {
           self,

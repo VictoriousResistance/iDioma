@@ -1,7 +1,7 @@
 import React from 'react';
 import Language from '../../../components/Language.jsx';
 
-const ConnectionRequest = ({ connectionRequest, onAcceptClick, onDeclineClick }) => (
+const ConnectionRequest = ({ connectionRequest, onAcceptClick, onDeclineClick, selfId }) => (
   <div className={connectionRequest.willUnmount ? "animated fadeOut person" : "person"}>
 
     <div className="profile-picture-container">
@@ -24,8 +24,8 @@ const ConnectionRequest = ({ connectionRequest, onAcceptClick, onDeclineClick })
         </div>
       </div>
       <div className="button-container">
-        <button className="action" onClick={() => { onAcceptClick(connectionRequest); }}>Accept</button>
-        <button className="action negative-action" onClick={() => { onDeclineClick(connectionRequest.id); }}>Decline</button>
+        <button className="action" onClick={() => { onAcceptClick(selfId, connectionRequest); }}>Accept</button>
+        <button className="action negative-action" onClick={() => { onDeclineClick(selfId, connectionRequest.id); }}>Decline</button>
       </div>
     </div>
 
@@ -33,10 +33,10 @@ const ConnectionRequest = ({ connectionRequest, onAcceptClick, onDeclineClick })
   </div>
 );
 
-const ConnectionRequests = ({ connectionRequests, onAcceptClick, onDeclineClick }) => (
+const ConnectionRequests = ({ connectionRequests, onAcceptClick, onDeclineClick, selfId }) => (
   <div>
     {connectionRequests.map((connectionRequest) => (
-      <ConnectionRequest key={connectionRequest.id} connectionRequest={connectionRequest} onAcceptClick={onAcceptClick} onDeclineClick={onDeclineClick}/>
+      <ConnectionRequest key={connectionRequest.id} connectionRequest={connectionRequest} onAcceptClick={onAcceptClick} onDeclineClick={onDeclineClick} selfId={selfId} />
     ))}
   </div>
 );
