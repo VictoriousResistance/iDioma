@@ -8,7 +8,10 @@ const mapStateToProps = (state) => (
   {
     matches: state.matches.values,
     offset: state.matches.offset,
-    self: state.profile,
+    self: {
+      id: state.profile.id,
+      languages: state.profile.languages,
+    },
   }
 );
 

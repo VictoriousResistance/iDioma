@@ -3,22 +3,30 @@ const Levels = require('../models/levelModel.js');
 module.exports.seed = () =>
   Levels.bulkCreate([
     {
-      id: 1,
-      name: 'Beginner',
+      id: '1',
+      name: 'basic',
     },
     {
-      id: 2,
-      name: 'Intermerdiate',
+      id: '2',
+      name: 'intermediate',
     },
     {
-      id: 3,
-      name: 'Expert',
+      id: '3',
+      name: 'advanced',
+    },
+    {
+      id: '4',
+      name: 'native',
+    },
+    {
+      id: '5',
+      name: 'fluent',
     },
   ])
   .then((levels) => {
     const idToLevel = module.exports.idToLevel = {};
     const levelToId = module.exports.levelToId = {};
-    levels.forEach((level) => { 
+    levels.forEach((level) => {
       idToLevel[level.dataValues.id] = level.dataValues.name;
       levelToId[level.dataValues.name] = level.dataValues.id;
     });

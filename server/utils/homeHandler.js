@@ -52,12 +52,11 @@ module.exports = function(req, res) {
       },
     ],
     profile: {
-      id: '1122067557855362',
+      id: '111213',
       firstName: 'Lach',
       lastName: 'Zester',
       languages: {
         canTeach: [
-          ['German', 'fluent'],
           ['English', 'native'],
         ],
         willLearn: [

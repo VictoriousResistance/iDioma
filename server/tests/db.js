@@ -78,51 +78,59 @@ module.exports.addRelationships = (obj) => {
 module.exports.addLevels = () =>
   Levels.bulkCreate([
     {
-      id: 1,
-      name: 'Beginner',
+      id: '1',
+      name: 'basic',
     },
     {
-      id: 2,
-      name: 'Intermerdiate',
+      id: '2',
+      name: 'intermediate',
     },
     {
-      id: 3,
-      name: 'Expert',
+      id: '3',
+      name: 'advanced',
+    },    
+    {
+      id: '4',
+      name: 'fluent',
+    },    
+    {
+      id: '5',
+      name: 'native',
     },
   ]).then(r => storeResults('levels', r));
 
 module.exports.addLanguages = () =>
   Languages.bulkCreate([
-    { id: 1, name: 'English' },
-    { id: 2, name: 'Spanish' },
-    { id: 3, name: 'French' },
+    { id: '1', name: 'English' },
+    { id: '2', name: 'Spanish' },
+    { id: '3', name: 'French' },
   ]).then(r => storeResults('languages', r));
 
 module.exports.addLanguagesLevels = () =>
   LanguagesLevels.bulkCreate([
     {
-      language_id: 1,
-      level_id: 1,
+      language_id: '1',
+      level_id: '1',
     },
     {
-      language_id: 1,
-      level_id: 3,
+      language_id: '1',
+      level_id: '3',
     },
     {
-      language_id: 2,
-      level_id: 2,
+      language_id: '2',
+      level_id: '2',
     },
     {
-      language_id: 2,
-      level_id: 3,
+      language_id: '2',
+      level_id: '3',
     },
     {
-      language_id: 3,
-      level_id: 1,
+      language_id: '3',
+      level_id: '1',
     },
     {
-      language_id: 3,
-      level_id: 3,
+      language_id: '3',
+      level_id: '3',
     },
   ]).then(r => storeResults('languagesLevels', r));
 

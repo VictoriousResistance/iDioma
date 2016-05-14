@@ -23,7 +23,7 @@ module.exports = (type, userId, languageLevels) => ( // languageLevels is an arr
     return Promise.all(languageLevelQueries)
       .then(lls => {
         const addQueries = lls.map(ll => (
-          user.addLanguagesLevels(ll, { offer_or_learn: type })
+          user.addLanguages_level(ll, { offer_or_learn: type })
         ));
         return Promise.all(addQueries);
       });
