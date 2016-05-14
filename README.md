@@ -4,17 +4,23 @@ An app that connects language learners
 
 
 1. [Usage](#usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-    1. [Installing Dependencies](#installing-dependencies)
-1. [Team](#team)
-1. [Current Build Health](#current-build-health)
-1. [Roadmap](#roadmap)
+2. [Requirements](#requirements)
+3. [Tech Stack](#tech-stack)
+4. [Schema](#schema)
+5. [Development](#development)
+    1. [Setting up MySQL database](#setting-up-mysql-database)
+    2. [Adding MySQL password](#adding-mysql-password)
+    3. [Adding Facebook OAuth configuration](#adding-facebook-oauth-configuration)
+    4. [Installing Dependencies](#installing-dependencies)
+    5. [Starting MySQL server](#starting-mysql-server)
+    6. [Starting server locally](#starting-server-locally)
+6. [Team](#team)
+7. [Current Build Health](#current-build-health)
+8. [Roadmap](#roadmap)
 
 
 ## Usage
-
-
+See the app in action [here](http://idioma.live/).
 
 ## Requirements
 
@@ -27,19 +33,49 @@ MySQL
 - [Node](https://nodejs.org/en/) and [Express](http://expressjs.com/)
 - [Sequelize ORM](http://docs.sequelizejs.com/en/latest/) and [MySQL](https://www.mysql.com/)
 
-### Schema 
+## Schema 
 <img src="http://imgur.com/cC8MQUs.png" width="550px"/>
 
 ## Development
 
+### Setting up MySQL database
+(If you don't have Homebrew installed, go to http://brew.sh/ to install Homebrew.)
+```sh
+brew install mysql
+mysql -u root
+CREATE DATABASE idioma
+```
 
+### Adding MySQL password
+
+Navigate to server/db, add a `config.js` file and export your mysql root user password as a string. This file is git ignored.
+Format: `module.exports = 'password';`
+
+### Adding Facebook OAuth configuration
+
+Navigate to server/auth, add a `config.js` file and export your facebook OAuth client ID and secret in an object. This file is git ignored.
+Format: `module.exports = {ID: 'id', SECRET: 'secret'};`
 
 ### Installing Dependencies
 
 From within the root directory:
 
 ```sh
+brew install node
+npm install -g webpack
 npm install
+```
+
+### Starting MySQL server
+
+```sh
+mysql.server start
+```
+
+### Starting server locally
+
+```
+npm start
 ```
 
 ## Team
@@ -47,7 +83,7 @@ npm install
   - __Product Owners__: Muhammad Naqvi, Reina Mei
   - __Scrum Master__: Ashwin Ravi
 
-## Current Build Health [![Build Status](https://travis-ci.org/VictoriousResistance/iDioma.svg?branch=master)](https://travis-ci.org/VictoriousResistance/iDioma)
+## Current Build Health  [![Build Status](https://travis-ci.org/VictoriousResistance/iDioma.svg?branch=master)](https://travis-ci.org/VictoriousResistance/iDioma)
 View the build [history](https://travis-ci.org/VictoriousResistance/iDioma/builds) 
 
 ## Roadmap
