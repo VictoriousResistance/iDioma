@@ -1,6 +1,6 @@
 const getRoomData = require('../db/controllers/getRoomIdsAndUserIdsGivenSelfId.js');
-const getUserInfo = require('../db/controllers/getUserBasicInfoGivenUserId.js');
-const inspect = require('../db/controllers/helpers.js').inspect;
+const getBasicInfo = require('../db/controllers/getUserBasicInfoGivenUserId.js');
+const helpers = require('../db/controllers/helpers.js');
 
 const convertUserIdsToNames = (arrayOfUserIds) => {
   console.log('reached')
@@ -15,21 +15,36 @@ const modifyOutputObj = (inputObj) => {
   inputObj.users = convertUserIdsToNames(inputObj.users);
 };
 
+const something = (roomObj) =>
+  Promise.all(roomObj.users.map(id =>
+    getBasicInfo(id)
+  ))
+  .then(helpers.pluckUsers)
+  .then(arrayOfUsers => {
+    roomObj.users = arrayOfUsers;
+    return roomObj;
+  });
+
+
+const cycleThroughRooms = (roomObjs) => {
+  Promise.all(roomObjs.map(roomObj => something(roomObj)))
+  .then(helpers.inspect);
+};
+
 module.exports = (req, res, next) => {
   const selfId = req.idioma.profile.id;
 
   getRoomData(selfId)
-  // .then(inspect)
-  .then(Promise.all((roomArray) =>
-    roomArray.map((room) => {
-      console.log(room);
-      modifyOutputObj(room);
-    })
-  ))
-  // .then(inspect)
-  .then((modifiedArray) => req.idioma.rooms = modifiedArray)
+  .then(helpers.inspect)
+  .then(cycleThroughRooms)
+  .then(helpers.inspect)
+
+
+  // // .then(helpers.pluckUsers)
+  // // .then(helpers.inspect)
+  // .then(modifiedArray => req.idioma.rooms = modifiedArray)
   .then(() => next())
   .catch((error) => {
-    res.sendStatus(404);
+    res.status(404).send(error);
   });
 };

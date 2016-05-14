@@ -5,28 +5,17 @@ module.exports.inspect = (i) => {
   return i;
 };
 
-module.exports.pluckUser = (userResults) => {
-  const user = userResults[0];
-  return {
+const pluckUser = module.exports.pluckUser = (user) =>
+  ({
     id: user.id,
     firstName: user.first_name,
     lastName: user.last_name,
     description: user.description,
     photoUrl: user.photo_url,
-  };
-};
-
-module.exports.pluckUsers = (multipleUserResults) =>
-  multipleUserResults.map((userResults) => {
-    const user = userResults[0];
-    return {
-      id: user.id,
-      firstName: user.first_name,
-      lastName: user.last_name,
-      description: user.description,
-      photoUrl: user.photo_url,
-    };
   });
+
+module.exports.pluckUsers = (users) =>
+  users.map((user) => pluckUser(user));
 
 module.exports.pluckLanguages = (offerOrLearnResults) =>
   ({
