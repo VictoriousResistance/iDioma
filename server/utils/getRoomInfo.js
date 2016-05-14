@@ -14,10 +14,10 @@ module.exports = (req, res, next) => {
   const selfId = req.idioma.profile.id;
  
   getRoomData(selfId)
-  .then((roomArray) => {
-    roomArray.map((room) => modifyOutputObj(room));
-  })
-  .then((modifiedArray) => req.rooms = modifiedArray)
+  .then((roomArray) =>
+    roomArray.map((room) => modifyOutputObj(room))
+  )
+  .then((modifiedArray) => req.idioma.rooms = modifiedArray)
   .then(() => next())
   .catch((error) => {
     res.sendStatus(404);
