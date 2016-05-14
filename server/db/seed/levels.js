@@ -4,7 +4,7 @@ module.exports.seed = () =>
   Levels.bulkCreate([
     {
       id: '1',
-      name: 'beginner',
+      name: 'basic',
     },
     {
       id: '2',
@@ -26,7 +26,7 @@ module.exports.seed = () =>
   .then((levels) => {
     const idToLevel = module.exports.idToLevel = {};
     const levelToId = module.exports.levelToId = {};
-    levels.forEach((level) => { 
+    levels.forEach((level) => {
       idToLevel[level.dataValues.id] = level.dataValues.name;
       levelToId[level.dataValues.name] = level.dataValues.id;
     });
