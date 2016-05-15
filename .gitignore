@@ -43,3 +43,6 @@ server/db/config.js
 
 # Database config
 client/tests/*
+
+# Environment variables
+.env
