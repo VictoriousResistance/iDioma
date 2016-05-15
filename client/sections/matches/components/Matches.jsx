@@ -32,13 +32,16 @@ const Match = ({ match, onConnectClick, onHideClick, self }) => (
   </div>
 );
 
-const Matches = ({ matches, onConnectClick, onHideClick, offset, onLoadMoreClick, self }) => (
-  <div>
-    {matches.map((match) => (
-      <Match key={match.id} match={match} onConnectClick={onConnectClick} onHideClick={onHideClick} self={self} />
-    ))}
-    <button href="#" className="load" onClick={() => { onLoadMoreClick(self, offset); }}>Load More</button>
-  </div>
-);
+const Matches = ({ matches, onConnectClick, onHideClick, offset, onLoadMoreClick, self }) => {
+  const loadMore = offset > matches.length ? null : (<button href="#" className="load" onClick={() => { onLoadMoreClick(self, offset); }}>Load More</button>); 
+  return (
+    <div>
+      {matches.map((match) => (
+        <Match key={match.id} match={match} onConnectClick={onConnectClick} onHideClick={onHideClick} self={self} />
+      ))}
+      {loadMore}
+    </div>
+  );
+};
 
 export default Matches;
