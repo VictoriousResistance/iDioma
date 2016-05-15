@@ -8,7 +8,7 @@ const mapStateToProps = (state) => (
     user: state.profile,
     rooms: state.rooms,
     inputText: state.inputText,
-    isInVideo: state.rooms.isInVideo,
+    isInVideo: state.video.isInVideo,
   }
 );
 

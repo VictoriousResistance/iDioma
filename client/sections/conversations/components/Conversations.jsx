@@ -7,7 +7,7 @@ import VideoRequestOrDisconnectButton from './VideoRequestOrDisconnectButton.jsx
 
 // FIXME add handleOnVideo
 // current room will always be the first object in rooms (i.e. rooms[0])
-const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInput, handleOnSend, handleVideoRequestClick, handleVideoDisconnectClick }) => {
+const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInput, handleOnSend, handleVideoRequestClick, handleVideoDisconnectClick, isInVideo }) => {
   const currRoom = rooms[0] || { id: 0, messages: [], users: [] };
   const msgTemplate = {
     roomId: currRoom.id,
@@ -26,10 +26,13 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInp
         </div>
         <Input msgTemplate={msgTemplate} inputText={inputText} handleOnSend={handleOnSend} handleTextInput={handleTextInput} />
         <Button msgTemplate={msgTemplate} inputText={inputText} handleOnSend={handleOnSend} />
-        <VideoRequestOrDisconnectButton handleVideoRequestClick={handleVideoRequestClick} handleVideoDisconnectClick={handleVideoDisconnectClick} otherId={rooms[0].users[0].id} />
+        <VideoRequestOrDisconnectButton handleVideoRequestClick={handleVideoRequestClick} handleVideoDisconnectClick={handleVideoDisconnectClick} otherId={rooms[0].users[0].id} isInVideo={isInVideo} />
       </div>
       <div id="video">
         placeholder for video component. id is "video"
+      </div>
+      <div id="invite message button">
+        placeholder for incoming invites
       </div>
     </div>
   );
