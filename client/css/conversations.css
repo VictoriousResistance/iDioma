@@ -18,11 +18,13 @@
 .message-section {
   float: right;
   width: 65%;
+  background-color: #fff;
 }
 
 .thread-section {
   float: left;
   width: 32.5%;
+  background-color: #fff;
 }
 
 .message-thread-heading,
@@ -34,20 +36,22 @@
 .message-list-item, .thread-list-item {
   list-style: none;
   padding: 12px 14px 14px;
+  display: block;
 }
 
 .thread-list-item {
   border-bottom: 1px solid #ccc;
   cursor: pointer;
+  display: block;
 }
 
 .thread-list:hover .thread-list-item:hover {
   background-color: #f8f8ff;
 }
 
-.thread-list:hover .thread-list-item {
+/*.thread-list:hover .thread-list-item {
   background-color: #fff;
-}
+}*/
 
 .thread-list-item.active,
 .thread-list:hover .thread-list-item.active,
@@ -62,6 +66,8 @@
   float: left;
   font-size: 13px;
   margin: 0;
+  display: block;
+  font-weight: 800;
 }
 
 .message-time, .thread-time {
@@ -74,6 +80,7 @@
   clear: both;
   font-size: 14px;
   padding-top: 10px;
+  display: block;
 }
 
 .message-composer {

@@ -2,6 +2,7 @@ import React from 'react';
 
 const Input = ({ msgTemplate, inputText, handleTextInput, handleOnSend }) => (
   <input
+    className="message-composer"
     type="text"
     value={inputText.value}
     onChange={handleTextInput}

@@ -15,7 +15,7 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInp
   };
 
   return (
-    <div>
+    <div className="chatapp">
       <div className="col-1-3" >
         <Rooms rooms={rooms} currentRoom={currRoom} handleRoomChange={handleRoomChange} />
       </div>
