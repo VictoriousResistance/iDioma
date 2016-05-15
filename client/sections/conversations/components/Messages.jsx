@@ -13,4 +13,4 @@ const Messages = ({ messages }) => (
 
 export default Messages;
 
-// Add heading for conversation participants?
+// TODO Add heading for conversation participants?

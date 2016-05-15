@@ -4,6 +4,7 @@ const Message = ({ message }) => (
   <div className="message-list-item">
     <span className="message-author-name">
       {message.from}:&nbsp;
+      {`${message.from.firstName} ${message.from.lastName}: `}
     </span>
     <span className="message-text">
       {message.body}

@@ -10,7 +10,7 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInp
   const currRoom = rooms[0];
   const msgTemplate = {
     roomId: currRoom.id,
-    from: user.id,
+    from: { firstName: user.firstName, lastName: user.lastName },
     body: '',
   };
 
