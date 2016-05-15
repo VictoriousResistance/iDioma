@@ -14,6 +14,7 @@ module.exports = function(launchServer) {
 
   const languagesData = require('./seed/languages.js');
   const levelsData = require('./seed/levels.js');
+  const test = require('../utils/getRoomInfo.js')
 
   Languages.belongsToMany(Levels, { through: 'languages_levels', foreignKey: 'language_id' });
   Levels.belongsToMany(Languages, { through: 'languages_levels', foreignKey: 'level_id' });
@@ -47,6 +48,7 @@ module.exports = function(launchServer) {
     .then(testDB.addMessages)
     .then(testDB.addRelationships)
     // end of tests
-    .then(r => console.log(r))
+    // .then(r => console.log(r))
+    .then(() => test.convertUserIdsToNames(['111213', '678910', '12345']))
     .then(() => launchServer());
 };
