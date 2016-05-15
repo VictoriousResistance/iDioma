@@ -1,6 +1,6 @@
-const React, { Component } = require('react');
+import React, { Component } from 'react';
 
-module.exports = class ConversationContainer extends Component {
+module.exports = class Video extends Component {
 
   componentDidMount() {
     const conversation = this.props.conversation;
@@ -25,4 +25,4 @@ module.exports = class ConversationContainer extends Component {
       </div>
     );
   }
-}
+};
