@@ -1,7 +1,7 @@
 import React from 'react';
 
-const VideoRequestButton = () => (
-  <button className="action">
+const VideoRequestButton = ({ handleVideoRequestClick, otherId }) => (
+  <button className="action" onClick={() => { handleVideoRequestClick(otherId); }}>
     Video Call
   </button>
 );

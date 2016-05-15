@@ -29,6 +29,10 @@ const mapDispatchToProps = (dispatch) => (
     handleTextInput: (event) => {
       dispatch(changeInputText(event.target.value));
     },
+
+    handleVideoRequestClick: (otherId) => {
+
+    },
   }
 );
 
