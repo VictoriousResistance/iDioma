@@ -8,6 +8,7 @@ const mapStateToProps = (state) => (
     user: state.profile,
     rooms: state.rooms,
     inputText: state.inputText,
+    isInVideo: state.rooms.isInVideo,
   }
 );
 
@@ -31,6 +32,10 @@ const mapDispatchToProps = (dispatch) => (
     },
 
     handleVideoRequestClick: (otherId) => {
+
+    },
+
+    handleVideoDisconnectClick: (otherId) => {
 
     },
   }
