@@ -1,5 +1,13 @@
 import React from 'react';
-var classNames = require('classnames');
+import classNames from 'classnames';
+
+const nameMaker = (users) =>
+  (users.length === 0) ? 'Empty' :
+    users.map((user, i, arr) => {
+      const last = arr.length - 1;
+      let join = (i === 0) ? '' : ((i === last) ? ' & ' : ', ');
+      return `${join}${user.firstName} ${user.lastName}`;
+    });
 
 const Room = ({ room, handleRoomChange, index }) => (
   <a
@@ -14,15 +22,15 @@ const Room = ({ room, handleRoomChange, index }) => (
     }}
   >
     <div id={index} className="room">
-      <div className="thread-name">{room.name}</div>
+      <div className="thread-name">{nameMaker(room.users)}</div>
+      <div>{room.name}</div>
     </div>
   </a>
 );
+//TODO
 /* need to update room properties above to conform to new room obj */
 /* add time last updated?? */
 /* display last message text? */
-
-
 
 const Rooms = ({ rooms, handleRoomChange }) => (
   <div className="thread-section">

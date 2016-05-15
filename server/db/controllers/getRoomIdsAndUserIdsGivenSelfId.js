@@ -1,6 +1,5 @@
 const UserRooms = require('../models/userRoomModel.js');
 const Rooms = require('../models/roomModel.js');
-const inspect = require('./helpers.js').inspect;
 
 // Helper functions:
 const findSortedRoomsWithSelf = (selfId) =>
@@ -19,81 +18,56 @@ const getRoomIds = (userRoomObjs) =>
 
 const getRoomsInfo = (roomIds) =>
   Promise.all(roomIds.map(roomId =>
-    Rooms.findAll({ where: { id: roomId } })
+    Rooms.findAll({
+      where: { id: roomId },
+    })
   ));
 
-const decorateOutputObj = (outputObj, userRoomObj, selfId) => {
-  // roomId
-  outputObj.roomId = userRoomObj.dataValues.room_id;
-  // add userId to outputObj array property, only if not equal to selfId
-  if (userRoomObj.dataValues.user_id !== selfId) {
-    outputObj.users.push(userRoomObj.dataValues.user_id);
-  }
-  // last time user left room
-  if (userRoomObj.dataValues.user_id == selfId) {
-    outputObj.lastSeen = userRoomObj.dataValues.updatedAt;
-  }
-};
+const pluckRooms = (rooms) =>
+  rooms.map(room => room[0].dataValues);
 
-const addRoomLastUpdated = (outputObj) => {
-  return Rooms.findOne({ where: { id: outputObj.roomId } })
-  .then((roomObj) => {
-    outputObj.roomLastUpdated = roomObj.dataValues.updatedAt;
-    return outputObj;
-  });
-}
+// const sortRooms = (roomArray) =>
+//   roomArray.sort((a, b) =>
+//     a.updatedAt - b.updatedAt
+//   );
+
+const getUsersInRooms = (rooms, selfId) =>
+  // get an array of arrays -- array of users inside each room (each room is in the master array)
+  Promise.all(rooms.map(room =>
+    UserRooms.findAll({
+      where: {
+        room_id: room.id,
+        user_id: {
+          $ne: selfId,
+        },
+      },
+    })
+  ))
+  // go through the array of arrays and turn the returned UserRooms object into just user ids
+  .then(usersInRooms => usersInRooms.map(usersInRoom =>
+    usersInRoom.map(user =>
+      user.dataValues.user_id
+    )
+  ))
+  //assign the returned arrays to the corresponding rooms and return the rooms
+  .then(usersInRooms => usersInRooms.map((usersInRoom, i) => {
+    rooms[i].users = usersInRoom;
+    return rooms[i];
+  }));
 
 module.exports = (selfId) => {
-  // first find rooms that self is a participant
+  // find rooms that self is a participant
   return findSortedRoomsWithSelf(selfId)
     .then(getRoomIds)
-    // then return information about those rooms
-    .then((roomIdArray) => {
-      // first query room table to sort by last updated
-      const roomQueries = roomIdArray.map((roomId) => {
-        return Rooms.findAll({ where: { id: roomId } });
-      });
-      // sort room array by last updated room
-      return Promise.all(roomQueries)
-        .then((roomArray) => {
-          roomArray.sort((a, b) => {
-            return b[0].dataValues.updatedAt - a[0].dataValues.updatedAt;
-          });
-          return roomArray;
-        })
-        // return array of roomIds
-        .then((sortedRooms) => {
-          const roomIds = sortedRooms.map((room) => room[0].dataValues.id);
-          return roomIds;
-        })
-        // then map through room ids to set up userRoom query
-        .then((sortedRoomIdArray) => {
-          const userRoomQueries = sortedRoomIdArray.map((roomId) => {
-            return UserRooms.findAll({ where: { room_id: roomId } });
-          });
+    // return information about those rooms
+    .then(getRoomsInfo)
+    .then(pluckRooms)
 
-          return Promise.all(userRoomQueries);
-        })
-        // map through results array to create single object for a room
-        .then((sortedUserRoomArray) => {
+      // sort tables by last updated - unnecessary because of SQL query
+    // .then(sortRooms)
 
-          const outputArray = [];
-          
-          sortedUserRoomArray.forEach(
-            (userRoomSubarray) => {
-              var outputObj = { roomId: '', users: [] };
-              userRoomSubarray.forEach((singleUserRoom) => {
-              // decorate output object using populateOutput function
-                decorateOutputObj(outputObj, singleUserRoom, selfId);
-              });
-              outputArray.push(addRoomLastUpdated(outputObj))
-                // .then((output) => output)
-              // push outputObj to outputArray
-            });
-          return Promise.all(outputArray);
-
-        });
-    })
+    // get the ids of users associated with each room (but don't get own id)
+    .then(rooms => getUsersInRooms(rooms, selfId))
     .catch((error) => {
       console.log('ERROR: ', error);
     });
