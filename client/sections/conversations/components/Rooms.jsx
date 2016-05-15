@@ -32,8 +32,6 @@ const Room = ({ room, handleRoomChange, index }) => (
 /* add time last updated?? */
 /* display last message text? */
 
-
-
 const Rooms = ({ rooms, handleRoomChange }) => (
   <div className="thread-section">
     <div className="thread-list">

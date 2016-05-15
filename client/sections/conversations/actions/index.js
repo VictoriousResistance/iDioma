@@ -1,8 +1,8 @@
-export const addMsg = (msg, self) => (
+export const addMsg = (msg, activeRoom) => (
   {
     type: 'ADD_MESSAGE_TO_ROOM',
     msg,
-    self,
+    activeRoom,
   }
 );
 

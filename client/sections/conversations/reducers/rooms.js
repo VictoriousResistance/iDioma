@@ -11,8 +11,8 @@ const rooms = (state = [], action) => {
     }
 
     case 'ADD_MESSAGE_TO_ROOM': {
-      const { msg, self } = action;
-      const roomNum = self ? 0 : state.reduce((cum, curr, i) => ((curr.id === msg.roomId) ? i : cum), 'N/A'); // TODO: what if nothing is found?
+      const { msg, activeRoom } = action;
+      const roomNum = activeRoom ? 0 : state.reduce((cum, curr, i) => ((curr.id === msg.roomId) ? i : cum), 'N/A'); // TODO: what if nothing is found?
       const room = state[roomNum];
       return [
         ...state.slice(0, roomNum),

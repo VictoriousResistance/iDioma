@@ -7,7 +7,7 @@ import Button from './Button.jsx';
 // FIXME add handleOnVideo
 // current room will always be the first object in rooms (i.e. rooms[0])
 const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInput, handleOnSend }) => {
-  const currRoom = rooms[0] || { id: '0', users: [], messages: [] };
+  const currRoom = rooms[0] || { id: 0, messages: [], users: [] };
   const msgTemplate = {
     roomId: currRoom.id,
     from: { firstName: user.firstName, lastName: user.lastName },
@@ -16,10 +16,10 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInp
 
   return (
     <div className="chatapp">
-      <div className="col-1-3" >
+      <div>
         <Rooms rooms={rooms} currentRoom={currRoom} handleRoomChange={handleRoomChange} />
       </div>
-      <div className="col-2-3" >
+      <div>
         <div>
           <Messages messages={currRoom.messages} />
         </div>
