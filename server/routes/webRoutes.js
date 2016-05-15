@@ -27,7 +27,7 @@ module.exports = (app, express) => {
     getConnections,
     getMatches,
     getConnectionRequests,
-    getRoomsInfo,
+    // getRoomsInfo,
     homeHandler);
 
   app.get('/login', (req, res) => {
