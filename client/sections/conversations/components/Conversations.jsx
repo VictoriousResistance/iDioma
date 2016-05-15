@@ -7,7 +7,7 @@ import Button from './Button.jsx';
 // FIXME add handleOnVideo
 // current room will always be the first object in rooms (i.e. rooms[0])
 const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInput, handleOnSend }) => {
-  const currRoom = rooms[0];
+  const currRoom = rooms[0] || { id: '0', users: [], messages: [] };
   const msgTemplate = {
     roomId: currRoom.id,
     from: { firstName: user.firstName, lastName: user.lastName },

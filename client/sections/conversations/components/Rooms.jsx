@@ -1,5 +1,5 @@
 import React from 'react';
-var classNames = require('classnames');
+import classNames from 'classnames';
 
 const nameMaker = (users) =>
   (users.length === 0) ? 'Empty' :
