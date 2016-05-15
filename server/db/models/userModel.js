@@ -22,7 +22,7 @@ const Users = db.define('users',
     },
     description: {
       type: Sequelize.STRING(256),
-      defaultValue: 'Click here to edit!',
+      defaultValue: 'No description added yet.',
     },
     // would like to add counter cache for request count and connection count
   },

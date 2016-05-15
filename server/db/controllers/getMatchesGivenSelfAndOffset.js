@@ -32,7 +32,7 @@ module.exports = (self, offSet) => {
                       ) AS learn 
                         ON teach.teach_id = learn.learn_id 
                       ) 
-                      WHERE teach.teach_id NOT IN  
+                      WHERE teach.teach_id NOT IN ('${self.id}') AND teach.teach_id NOT IN  
                         (SELECT * from ((
                           SELECT relationships.user1Id as userid FROM users 
                             INNER JOIN relationships 
