@@ -41,4 +41,4 @@ const renderApp = () => {
   ), document.getElementById('app'));
 };
 
-twilioSetup(store, renderApp);
+twilioSetup.twilioSetup(store, renderApp);

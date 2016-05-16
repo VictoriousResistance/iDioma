@@ -14,10 +14,9 @@ if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
   console.log('WebRTC is not available in your browser.');
 }
 
+const exportObj = {};
 
-
-
-export default (store, renderApp) => {
+const twilioSetup = (store, renderApp) => {
   // Conversation is live
   const conversationStarted = (conversation) => {
       store.dispatch(toggleVideoConnected());
@@ -67,14 +66,25 @@ export default (store, renderApp) => {
     // Create a Conversations Client and connect to Twilio
     conversationsClient = new Twilio.Conversations.Client(accessManager);
     conversationsClient.listen().then(() => {
+      window.conversationsClient = conversationsClient;
+      // console.log('exportObj', exportObj);
+      console.log('exportObj.conversationsClient', exportObj.conversationsClient);
+
+      conversationsClient.on('invite', function (invite) {
+        invite.accept().then(conversationStarted);
+      });
       return renderApp();
-    }, function (error) {
+    }, (error) => {
       console.log('Could not connect to Twilio: ' + error.message);
-      renderApp();
+      // renderApp();
     });
   });
-
 };
 
-// module.exports.conversationStarted = conversationStarted;
-// module.exports.clientConnected = clientConnected;
+console.log('exportObj', exportObj);
+console.log('exportObj.conversationsClient right before exporting', exportObj.conversationsClient);
+
+
+exportObj.twilioSetup = twilioSetup;
+
+export default exportObj;
