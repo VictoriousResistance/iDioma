@@ -32,8 +32,10 @@ const getExistingRoomsInCommon = (user1Id, user2Id) => { //user1 is the one tryi
   return db.query(queryStr).spread((results, metadata) => results[0]); // should only ever be 1 room where those 2 people are exclusively chatting
 };
 
-const pluckRoom = roomResults =>
-  roomResults.dataValues;
+const pluckRoom = roomResults => {
+  roomResults.dataValues.messages = [];
+  return roomResults.dataValues;
+};
 
 const createOrReturnRoomInCommon = (room, user1Id, user2Id) => {
   const updateRoomToBeVisibleForBothUsers = (roomId, userId) => {
@@ -69,7 +71,8 @@ const createOrReturnRoomInCommon = (room, user1Id, user2Id) => {
 
   if (room) {
     return updateRoomToBeVisibleForBothUsers(room.id, user1Id)
-      .then(() => room);
+      .then(() => room.messages = []) // TODO add actual messages from person
+      .then(() => room); 
   } else {
     return createRoomWithBothUsers(user1Id, user2Id);
   }

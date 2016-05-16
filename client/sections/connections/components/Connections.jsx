@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import Language from '../../../components/Language.jsx';
 
-const Connection = ({ connection, onRemoveClick, selfId }) => (
+const Connection = ({ connection, onRemoveClick, selfId, rooms, onNewConvo }) => (
   <div className="person">
     <div className="profile-picture-container">
       <img className="profile-picture" src={connection.photoUrl}/>
@@ -24,18 +24,18 @@ const Connection = ({ connection, onRemoveClick, selfId }) => (
         </div>
       </div>
       <div className="button-container">
-        <button className="action" onClick={() => console.log('')}><Link to="/home/conversations">Start Conversation</Link></button>
-        <button className="action negative-action" onClick={() => { onRemoveClick(selfId, connection.id); }}>Remove</button>
+        <button className="action" onClick={() => onNewConvo(selfId, connection, rooms)}><Link to="/home/conversations">Start Conversation</Link></button>
+        <button className="action negative-action" onClick={() => onRemoveClick(selfId, connection.id)}>Remove</button>
       </div>
     </div>
   </div>
 );
 
 
-const Connections = ({ connections, onRemoveClick, selfId }) => (
+const Connections = ({ connections, selfId, rooms, onRemoveClick, onNewConvo }) => (
   <div>
     {connections.map((connection) => (
-      <Connection key={connection.id} connection={connection} onRemoveClick={onRemoveClick} selfId={selfId}/>
+      <Connection key={connection.id} connection={connection} selfId={selfId} onNewConvo={onNewConvo} onRemoveClick={onRemoveClick} rooms={rooms} />
     ))}
   </div>
 );

@@ -20,6 +20,7 @@ export const changeCurrentRoom = (index) => (
   }
 );
 
+<<<<<<< 4a81601e24f49796e85a89c92b3ef061ccfb270e
 export const toggleIsInVideo = () => (
   {
     type: 'TOGGLE_IS_IN_VIDEO',
@@ -40,3 +41,13 @@ export const toggleIsWaiting = (invite) => (
     invite,
   }
 );
+=======
+export const addRoom = (room, connection) => (
+  {
+    type: 'ADD_NEW_ROOM',
+    room,
+    connection,
+  }
+);
+
+>>>>>>> Working rooms from connections tab

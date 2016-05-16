@@ -18,12 +18,10 @@ const Room = ({ room, handleRoomChange, index }) => (
     })}
     onClick={(e) => {
       handleRoomChange(e);
-      e.stopPropagation();
     }}
   >
     <div id={index} className="room">
       <div className="thread-name">{nameMaker(room.users)}</div>
-      <div>{room.name}</div>
     </div>
   </a>
 );

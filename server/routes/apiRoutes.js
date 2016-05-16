@@ -58,11 +58,10 @@ apiRouter.route('/relationships')
         });
     }
 
-    if (req.body.newType === 'connection') {
+    if (req.body.newType === 'conversation') {
       return findOrCreateRoom(req.body.selfId, req.body.connectionId)
         .then((data) => {
-          console.log(data);
-          res.status(201).send();
+          res.status(201).send(data);
         })
         .catch(() => {
           res.sendStatus(404);
