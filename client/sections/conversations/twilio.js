@@ -5,7 +5,7 @@ const request = require('then-request');
 import Video from './components/Video.jsx';
 import IncomingVideoCallBanner from './components/IncomingVideoCallBanner.jsx';
 
-import { toggleVideoConnected } from './actions/index.js';
+import { toggleIsInVideo } from './actions/index.js';
 
 // Check for WebRTC
 if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
@@ -14,10 +14,10 @@ if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
 
 const twilioSetup = (store, renderApp) => {
   const conversationStarted = (conversation) => {
-    store.dispatch(toggleVideoConnected());
+    store.dispatch(toggleIsInVideo());
     ReactDOM.render(<Video conversation={conversation} />, document.getElementById('video'));
     conversation.on('disconnected', () => {
-      store.dispatch(toggleVideoConnected());
+      store.dispatch(toggleIsInVideo());
       ReactDOM.unmountComponentAtNode(document.getElementById('video'));
     });
   };

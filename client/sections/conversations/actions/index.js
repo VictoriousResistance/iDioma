@@ -20,8 +20,8 @@ export const changeCurrentRoom = (index) => (
   }
 );
 
-export const toggleVideoConnected = () => (
+export const toggleIsInVideo = () => (
   {
-    type: 'TOGGLE_VIDEO_CONNECTED',
+    type: 'TOGGLE_IS_IN_VIDEO',
   }
 );
