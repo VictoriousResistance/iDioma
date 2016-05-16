@@ -30,7 +30,7 @@ exports.getRequests = (selfId) => {
                     SELECT relationships.user1Id AS userid FROM users
                       INNER JOIN relationships 
                         ON users.id = relationships.user2Id 
-                      WHERE users.id = ${selfId} AND relationships.type = 'request'
+                      WHERE users.id = '${selfId}' AND relationships.type = 'request'
                     `;
   return db.query(queryStr, { type: Sequelize.QueryTypes.SELECT }).then(pluckUserIds);
 };
