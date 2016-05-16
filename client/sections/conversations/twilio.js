@@ -2,7 +2,6 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const Video = require('./components/Video.jsx');
 const request = require('then-request');
-// const Twilio = require('twilio');
 
 import { toggleVideoConnected } from './actions/index.js';
 
@@ -19,7 +18,6 @@ if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
 
 
 export default (store, renderApp) => {
-  console.log('identity', store.getState().profile.id);
   // Conversation is live
   const conversationStarted = (conversation) => {
       store.dispatch(toggleVideoConnected());
@@ -65,15 +63,14 @@ export default (store, renderApp) => {
 
     // Check the browser console to see your generated identity. 
     // Send an invite to yourself if you want! 
-    console.log(identity);
 
     // Create a Conversations Client and connect to Twilio
-    console.log('Twilio', Twilio);
     conversationsClient = new Twilio.Conversations.Client(accessManager);
     conversationsClient.listen().then(() => {
       return renderApp();
     }, function (error) {
       console.log('Could not connect to Twilio: ' + error.message);
+      renderApp();
     });
   });
 
