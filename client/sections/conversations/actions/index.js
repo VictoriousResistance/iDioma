@@ -20,3 +20,8 @@ export const changeCurrentRoom = (index) => (
   }
 );
 
+export const toggleVideoConnected = () => (
+  {
+    type: 'TOGGLE_VIDEO_CONNECTED',
+  }
+);

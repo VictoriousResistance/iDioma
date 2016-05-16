@@ -1,13 +1,22 @@
 import { connect } from 'react-redux';
 import Conversations from '../components/Conversations.jsx';
-import { emitMsg, addMsg, changeInputText, changeCurrentRoom } from '../actions/index.js';
+import { emitMsg, addMsg, changeInputText, changeCurrentRoom, toggleVideoConnected } from '../actions/index.js';
 import { socket } from '../sockets.js';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Video from '../components/Video.jsx';
+
+// const conversationsClient = exportObj.conversationsClient;
+
+// console.log('exportObj', exportObj);
+// console.log('exportObj.conversationsClient', exportObj.conversationsClient);
 
 const mapStateToProps = (state) => (
   {
     user: state.profile,
     rooms: state.rooms,
     inputText: state.inputText,
+    isInVideo: state.video.isInVideo,
   }
 );
 
@@ -28,6 +37,25 @@ const mapDispatchToProps = (dispatch) => (
 
     handleTextInput: (event) => {
       dispatch(changeInputText(event.target.value));
+    },
+
+    handleVideoRequestClick: (otherId) => {
+      conversationsClient.inviteToConversation(otherId).then(conversation => {
+        console.log('conversation object..........', conversation)
+        dispatch(toggleVideoConnected());
+        ReactDOM.render(<Video conversation={conversation} />, document.getElementById('video'));
+        conversation.on('disconnected', () => {
+          ReactDOM.unmountComponentAtNode(document.getElementById('video'));
+          dispatch(toggleVideoConnected());
+  
+        });
+      }, error => {
+          console.error('Unable to create conversation', error);
+      });
+    },
+
+    handleVideoDisconnectClick: () => {
+      ReactDOM.unmountComponentAtNode(document.getElementById('video'));
     },
   }
 );

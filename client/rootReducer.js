@@ -5,6 +5,7 @@ import matches from './sections/matches/reducers/matches.js';
 import profile from './sections/profile/reducers/profile.js';
 import rooms from './sections/conversations/reducers/rooms.js';
 import inputText from './sections/conversations/reducers/inputText.js';
+import video from './sections/conversations/reducers/video.js';
 
 const rootReducer = combineReducers({
   inputText,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   connectionRequests,
   matches,
   profile,
+  video,
 });
 
 export default rootReducer;

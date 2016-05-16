@@ -31,6 +31,9 @@ function launchServer() {
 // ZACH: sockets in a different file
   var server = require('http').Server(app);
   sockets(server);
+
+  //twilio
+  require('./routes/twilio.js')(app);
   
   var port = process.env.PORT || 3000;
 

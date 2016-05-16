@@ -8,6 +8,7 @@ import {
 
 import rootReducer from './rootReducer.js';
 import socketIO from './sections/conversations/sockets.js';
+import twilioSetup from './sections/conversations/twilio.js';
 
 import App from './components/App.jsx';
 import Connections from './sections/connections/containers/Connections.js';
@@ -22,18 +23,22 @@ const store = createStore(rootReducer, initialState);
 
 socketIO(store);
 
-render((
-  <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path="home" component={App}>
-        <IndexRoute component={Profile} />
-        <Route path="requests" component={ConnectionRequests} />
-        <Route path="connections" component={Connections} />
-        <Route path="matches" component={Matches} />
-        <Route path="profile" component={Profile} />
-        <Route path="conversations" component={Conversations} />
-        <Route path="*" component={Matches} />
-      </Route>
-    </Router>
-  </Provider>
-), document.getElementById('app'));
+const renderApp = () => {
+  render((
+    <Provider store={store}>
+      <Router history={browserHistory}>
+        <Route path="home" component={App}>
+          <IndexRoute component={Profile} />
+          <Route path="requests" component={ConnectionRequests} />
+          <Route path="connections" component={Connections} />
+          <Route path="matches" component={Matches} />
+          <Route path="profile" component={Profile} />
+          <Route path="conversations" component={Conversations} />
+          <Route path="*" component={Matches} />
+        </Route>
+      </Router>
+    </Provider>
+  ), document.getElementById('app'));
+};
+
+twilioSetup(store, renderApp);
