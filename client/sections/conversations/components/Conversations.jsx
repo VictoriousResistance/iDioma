@@ -7,13 +7,21 @@ import VideoRequestOrDisconnectButton from './VideoRequestOrDisconnectButton.jsx
 
 // FIXME add handleOnVideo
 // current room will always be the first object in rooms (i.e. rooms[0])
-const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInput, handleOnSend, handleVideoRequestClick, handleVideoDisconnectClick, isInVideo }) => {
+const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInput, handleOnSend, handleVideoRequestClick, handleVideoDisconnectClick, handleToggleHasError, isInVideo, isWaiting, hasError, errorMessage }) => {
   const currRoom = rooms[0] || { id: 0, messages: [], users: [] };
   const msgTemplate = {
     roomId: currRoom.id,
     from: { firstName: user.firstName, lastName: user.lastName },
     body: '',
   };
+  const waitingMessage = isWaiting ? <div> Waiting for response... </div> : null;
+  const errorMessageHolder = hasError ? 
+    <div> 
+    {errorMessage}  
+    <button className="x" onClick={() => { handleToggleHasError(); }}>x</button>
+    </div> 
+
+    : null;
 
   return (
     <div className="chatapp">
@@ -28,8 +36,8 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInp
         <Button msgTemplate={msgTemplate} inputText={inputText} handleOnSend={handleOnSend} />
         <VideoRequestOrDisconnectButton handleVideoRequestClick={handleVideoRequestClick} handleVideoDisconnectClick={handleVideoDisconnectClick} otherId={rooms[0].users[0].id + '+' + rooms[0].users[0].firstName + '+' + rooms[0].users[0].lastName} isInVideo={isInVideo} />
       </div>
-      <div id="waiting"></div>
-      <div id="errorMessage"></div>
+      {waitingMessage}
+      {errorMessageHolder}
     </div>
   );
 };

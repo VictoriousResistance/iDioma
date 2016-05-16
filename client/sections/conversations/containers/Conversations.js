@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Conversations from '../components/Conversations.jsx';
-import { emitMsg, addMsg, changeInputText, changeCurrentRoom, toggleIsInVideo } from '../actions/index.js';
+import { emitMsg, addMsg, changeInputText, changeCurrentRoom, toggleIsInVideo, toggleIsWaiting, toggleHasError } from '../actions/index.js';
 import { socket } from '../sockets.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -19,6 +19,7 @@ const mapStateToProps = (state) => (
     isInVideo: state.video.isInVideo,
     hasError: state.video.hasError,
     isWaiting: state.video.isWaiting,
+    errorMessage: state.video.errorMessage,
   }
 );
 
@@ -42,10 +43,10 @@ const mapDispatchToProps = (dispatch) => (
     },
 
     handleVideoRequestClick: (otherId) => {
-      ReactDOM.render(<div>Waiting for response...</div>, document.getElementById('waiting'));
+      dispatch(toggleIsWaiting());
       conversationsClient.inviteToConversation(otherId).then(conversation => {
-        ReactDOM.unmountComponentAtNode(document.getElementById('waiting'));
-        
+        dispatch(toggleIsWaiting());
+
         dispatch(toggleIsInVideo());
         ReactDOM.render(<Video conversation={conversation} />, document.getElementById('video'));
         conversation.on('disconnected', () => {
@@ -54,10 +55,14 @@ const mapDispatchToProps = (dispatch) => (
   
         });
       }, error => {
-          ReactDOM.unmountComponentAtNode(document.getElementById('waiting'));
-          ReactDOM.render(<div> {error._errorData.message} </div>, document.getElementById('errorMessage'));
+          dispatch(toggleIsWaiting());
+          dispatch(toggleHasError(error._errorData.message));
           console.error('Unable to create conversation', error);
       });
+    },
+
+    handleToggleHasError: () => {
+      dispatch(toggleHasError());
     },
 
     handleVideoDisconnectClick: () => {
