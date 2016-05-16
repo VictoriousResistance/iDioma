@@ -11,7 +11,7 @@ parameter.
 
 module.exports = (app) => {
   app.get('/token', (req, res) => {
-    const identity = req.body.identity;
+    const identity = req.query.identity;
     // containing the grant we just created
     const token = new AccessToken(
         process.env.TWILIO_ACCOUNT_SID,
@@ -28,7 +28,7 @@ module.exports = (app) => {
     token.addGrant(grant);
 
     // Serialize the token to a JWT string and include it in a JSON response
-    res.send({
+    res.json({
       identity,
       token: token.toJwt(),
     });
