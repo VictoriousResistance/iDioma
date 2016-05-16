@@ -41,22 +41,21 @@ const mapDispatchToProps = (dispatch) => (
 
     handleVideoRequestClick: (otherId) => {
       conversationsClient.inviteToConversation(otherId).then(conversation => {
+        console.log('conversation object..........', conversation)
         dispatch(toggleVideoConnected());
-        // Draw local video, if not already previewing
         ReactDOM.render(<Video conversation={conversation} />, document.getElementById('video'));
-
-        // When the conversation ends, stop capturing local video
         conversation.on('disconnected', () => {
-          dispatch(toggleVideoConnected());
           ReactDOM.unmountComponentAtNode(document.getElementById('video'));
+          dispatch(toggleVideoConnected());
+  
         });
       }, error => {
           console.error('Unable to create conversation', error);
       });
     },
 
-    handleVideoDisconnectClick: (otherId) => {
-
+    handleVideoDisconnectClick: () => {
+      ReactDOM.unmountComponentAtNode(document.getElementById('video'));
     },
   }
 );

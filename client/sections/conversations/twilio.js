@@ -12,11 +12,12 @@ if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
 
 const twilioSetup = (store, renderApp) => {
   const conversationStarted = (conversation) => {
+    console.log('store.dispatch', store.dispatch);
     store.dispatch(toggleVideoConnected());
     ReactDOM.render(<Video conversation={conversation} />, document.getElementById('video'));
     conversation.on('disconnected', () => {
       store.dispatch(toggleVideoConnected());
-        ReactDOM.unmountComponentAtNode(document.getElementById('video'));
+      ReactDOM.unmountComponentAtNode(document.getElementById('video'));
     });
   };
 
