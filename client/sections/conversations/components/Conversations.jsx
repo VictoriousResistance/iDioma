@@ -28,12 +28,6 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInp
         <Button msgTemplate={msgTemplate} inputText={inputText} handleOnSend={handleOnSend} />
         <VideoRequestOrDisconnectButton handleVideoRequestClick={handleVideoRequestClick} handleVideoDisconnectClick={handleVideoDisconnectClick} otherId={rooms[0].users[0].id} isInVideo={isInVideo} />
       </div>
-      <div id="video">
-        placeholder for video component. id is "video"
-      </div>
-      <div id="invite message button">
-        placeholder for incoming invites
-      </div>
     </div>
   );
 };

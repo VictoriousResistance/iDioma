@@ -29,7 +29,6 @@ module.exports = (app) => {
 
     // Serialize the token to a JWT string and include it in a JSON response
     res.json({
-      identity,
       token: token.toJwt(),
     });
   });

@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import Conversations from '../components/Conversations.jsx';
 import { emitMsg, addMsg, changeInputText, changeCurrentRoom, toggleVideoConnected } from '../actions/index.js';
 import { socket } from '../sockets.js';
-import exportObj from '../twilio.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Video from '../components/Video.jsx';
@@ -45,10 +44,9 @@ const mapDispatchToProps = (dispatch) => (
         dispatch(toggleVideoConnected());
         // Draw local video, if not already previewing
         ReactDOM.render(<Video conversation={conversation} />, document.getElementById('video'));
-        
 
         // When the conversation ends, stop capturing local video
-        conversation.on('disconnected', conversation => {
+        conversation.on('disconnected', () => {
           dispatch(toggleVideoConnected());
           ReactDOM.unmountComponentAtNode(document.getElementById('video'));
         });

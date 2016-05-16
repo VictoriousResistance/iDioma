@@ -5,50 +5,19 @@ const request = require('then-request');
 
 import { toggleVideoConnected } from './actions/index.js';
 
-
-var conversationsClient;
-var identity;
-
 // Check for WebRTC
 if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
   console.log('WebRTC is not available in your browser.');
 }
 
-const exportObj = {};
-
 const twilioSetup = (store, renderApp) => {
-  // Conversation is live
   const conversationStarted = (conversation) => {
+    store.dispatch(toggleVideoConnected());
+    ReactDOM.render(<Video conversation={conversation} />, document.getElementById('video'));
+    conversation.on('disconnected', () => {
       store.dispatch(toggleVideoConnected());
-      // Draw local video, if not already previewing
-      ReactDOM.render(<Video conversation={conversation} />, document.getElementById('video'));
-      
-
-      // When the conversation ends, stop capturing local video
-      conversation.on('disconnected', function (conversation) {
-        store.dispatch(toggleVideoConnected());
-          ReactDOM.unmountComponentAtNode(document.getElementById('local-conversation'));
-      });
-  };
-
-  // Successfully connected!
-  const clientConnected = () => {
-
-
-      conversationsClient.on('invite', function (invite) {
-          invite.accept().then(conversationStarted);
-      });
-
-      // Bind button to create conversation
-      document.getElementById('button-invite').onclick = function () {
-                        // Create a conversation
-              var options = {};
-             
-              conversationsClient.inviteToConversation(inviteTo, options).then(conversationStarted, function (error) {
-                  console.error('Unable to create conversation', error);
-              });
-          
-      };
+        ReactDOM.unmountComponentAtNode(document.getElementById('video'));
+    });
   };
 
   request('GET', '/token', {
@@ -57,18 +26,10 @@ const twilioSetup = (store, renderApp) => {
     },
   })
   .done(data => {
-    identity = JSON.parse(data.body).identity;
-    var accessManager = new Twilio.AccessManager(JSON.parse(data.body).token);
-
-    // Check the browser console to see your generated identity. 
-    // Send an invite to yourself if you want! 
-
-    // Create a Conversations Client and connect to Twilio
-    conversationsClient = new Twilio.Conversations.Client(accessManager);
+    const accessManager = new Twilio.AccessManager(JSON.parse(data.body).token);
+    const conversationsClient = new Twilio.Conversations.Client(accessManager);
     conversationsClient.listen().then(() => {
       window.conversationsClient = conversationsClient;
-      // console.log('exportObj', exportObj);
-      console.log('exportObj.conversationsClient', exportObj.conversationsClient);
 
       conversationsClient.on('invite', function (invite) {
         invite.accept().then(conversationStarted);
@@ -81,10 +42,4 @@ const twilioSetup = (store, renderApp) => {
   });
 };
 
-console.log('exportObj', exportObj);
-console.log('exportObj.conversationsClient right before exporting', exportObj.conversationsClient);
-
-
-exportObj.twilioSetup = twilioSetup;
-
-export default exportObj;
+export default twilioSetup;
