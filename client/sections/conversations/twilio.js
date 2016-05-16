@@ -37,6 +37,9 @@ const twilioSetup = (store, renderApp) => {
 
         const sender = invite.from.split('+').slice(1).join(' ');
         ReactDOM.render(<IncomingVideoCallBanner invite={invite} handleConversationStarted={conversationStarted} sender={sender}/>, document.getElementById('invite'));
+        invite.on('canceled', () => {
+          ReactDOM.unmountComponentAtNode(document.getElementById('invite'));
+        });
       });
       return renderApp();
     }, (error) => {
