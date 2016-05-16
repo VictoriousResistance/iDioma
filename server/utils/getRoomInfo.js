@@ -21,7 +21,7 @@ const addMessagesToRooms = (rooms) =>
 
 module.exports = (req, res, next) => {
   const selfId = req.idioma.profile.id;
-  console.log(selfId);
+
   getRoomData(selfId)
   .then(getUsersInfoForRooms)
   .then(addMessagesToRooms)
