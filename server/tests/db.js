@@ -20,11 +20,11 @@ const storeResults = module.exports.storeResults = (key, value) => {
 module.exports.addUsers = () =>
   Users.bulkCreate([
     {
-      id: '111213',
-      facebook_id: '10106480085987553',
-      last_name: 'Ravi',
-      first_name: 'Ashwin',
-      photo_url: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/10474675_10104083394007493_4059254427085666486_n.jpg?oh=d92cf7d27951e313eba87dfc7bfa9dc3&oe=57A317B2',
+      id: '12345',
+      facebook_id: '1122067557855362',
+      last_name: 'Naqvi',
+      first_name: 'Muhammad',
+      photo_url: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/12650879_1057351587660293_1561191701422265647_n.jpg?oh=1c2c208ef646239f6cedb8a79f582572&oe=57996888',
     },
     {
       id: '678910',
@@ -34,11 +34,11 @@ module.exports.addUsers = () =>
       photo_url: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/9448_1385754095087915_416072552572854900_n.jpg?oh=f3539c78e31e25039e3b678759a962ce&oe=57D8D7B9',
     },
     {
-      id: '12345',
-      facebook_id: '1122067557855362',
-      last_name: 'Naqvi',
-      first_name: 'Muhammad',
-      photo_url: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/12650879_1057351587660293_1561191701422265647_n.jpg?oh=1c2c208ef646239f6cedb8a79f582572&oe=57996888',
+      id: '111213',
+      facebook_id: '10106480085987553',
+      last_name: 'Ravi',
+      first_name: 'Ashwin',
+      photo_url: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/10474675_10104083394007493_4059254427085666486_n.jpg?oh=d92cf7d27951e313eba87dfc7bfa9dc3&oe=57A317B2',
     },
   ]).then(r => storeResults('users', r));
 
@@ -50,15 +50,15 @@ module.exports.addRelationships = (obj) => {
   return Relationships.bulkCreate([
     {
       id: '121212',
-      type: 'request',
+      type: 'connection',
       user1Id: Mo,
       user2Id: Reina,
     },
     {
       id: '232323',
       type: 'request',
-      user1Id: Mo,
-      user2Id: Ashwin,
+      user1Id: Ashwin,
+      user2Id: Mo,
     },
     // {
     //   id: '343434',
@@ -160,16 +160,18 @@ module.exports.addUsersLanguagesLevels = (obj) => {
 
 module.exports.addRooms = () =>
   Rooms.bulkCreate([
-    { id: '3333', number_active_participants: 2 },
-    { id: '5555', number_active_participants: 3 },
+    { id: '3333', number_active_participants: 3 },
+    { id: '5555', number_active_participants: 2 },
   ]).then(r => storeResults('rooms', r));
 
 module.exports.addUsersRooms = (obj) =>
-  // Promise.all(obj.users.map(
-  //   user => user.addRoom(obj.rooms[1])
-  // ))
-  // .then(() => obj.users[0].addRoom(obj.rooms[0]))
-  Promise.all([obj.users[0].addRoom(obj.rooms[0]), obj.users[1].addRoom(obj.rooms[0])])
+  // add everyone into 1 shared room
+  Promise.all(obj.users.map(
+    user => user.addRoom(obj.rooms[0])
+  ))
+  // add mo and reina into another room
+  .then(() => obj.users[0].addRoom(obj.rooms[1]))
+  .then(() => obj.users[1].addRoom(obj.rooms[1]))
   .then(() => obj);
 
 module.exports.addMessages = (obj) => {
@@ -184,7 +186,7 @@ module.exports.addMessages = (obj) => {
     { body: 'Mo, please stop you\'re making me uncomfortable', room_id: room0, user_id: Ashwin },
     { body: 'Really, you\'re creeping me out', room_id: room0, user_id: Ashwin },
     { body: 'I thought this was a place to learn, put that thing away', room_id: room0, user_id: Ashwin },
-    { body: 'Thats it, I\'m reporting you', room_id: room0, user_id: Ashwin },
+    { body: 'Thats it, I\'m reporting you', room_id: room0, user_id: Reina },
 
     { body: 'Hi Mo', room_id: room1, user_id: Reina },
     { body: 'Hi Reina', room_id: room1, user_id: Mo },
