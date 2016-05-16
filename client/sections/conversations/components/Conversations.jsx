@@ -28,6 +28,8 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInp
         <Button msgTemplate={msgTemplate} inputText={inputText} handleOnSend={handleOnSend} />
         <VideoRequestOrDisconnectButton handleVideoRequestClick={handleVideoRequestClick} handleVideoDisconnectClick={handleVideoDisconnectClick} otherId={rooms[0].users[0].id + '+' + rooms[0].users[0].firstName + '+' + rooms[0].users[0].lastName} isInVideo={isInVideo} />
       </div>
+      <div id="waiting"></div>
+      <div id="errorMessage"></div>
     </div>
   );
 };

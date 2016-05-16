@@ -40,8 +40,10 @@ const mapDispatchToProps = (dispatch) => (
     },
 
     handleVideoRequestClick: (otherId) => {
+      ReactDOM.render(<div>Waiting for response...</div>, document.getElementById('waiting'));
       conversationsClient.inviteToConversation(otherId).then(conversation => {
-        console.log('conversation object..........', conversation)
+        ReactDOM.unmountComponentAtNode(document.getElementById('waiting'));
+        
         dispatch(toggleVideoConnected());
         ReactDOM.render(<Video conversation={conversation} />, document.getElementById('video'));
         conversation.on('disconnected', () => {
@@ -50,6 +52,8 @@ const mapDispatchToProps = (dispatch) => (
   
         });
       }, error => {
+          ReactDOM.unmountComponentAtNode(document.getElementById('waiting'));
+          ReactDOM.render(<div> {error._errorData.message} </div>, document.getElementById('errorMessage'));
           console.error('Unable to create conversation', error);
       });
     },

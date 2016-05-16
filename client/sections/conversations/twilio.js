@@ -34,8 +34,7 @@ const twilioSetup = (store, renderApp) => {
       window.conversationsClient = conversationsClient;
 
       conversationsClient.on('invite', function (invite) {
-        console.log('invite......', invite);
-        console.log('invite from......', invite.from);
+
         const sender = invite.from.split('+').slice(1).join(' ');
         ReactDOM.render(<IncomingVideoCallBanner invite={invite} handleConversationStarted={conversationStarted} sender={sender}/>, document.getElementById('invite'));
       });
