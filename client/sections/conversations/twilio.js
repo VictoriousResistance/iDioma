@@ -34,10 +34,7 @@ const twilioSetup = (store, renderApp) => {
       window.conversationsClient = conversationsClient;
 
       conversationsClient.on('invite', function (invite) {
-        console.log('invite....', invite);
-        console.log('conversationStarted......', conversationStarted)
         ReactDOM.render(<IncomingVideoCallBanner invite={invite} handleConversationStarted={conversationStarted} />, document.getElementById('invite'));
-        // unmount on decline
       });
       return renderApp();
     }, (error) => {
