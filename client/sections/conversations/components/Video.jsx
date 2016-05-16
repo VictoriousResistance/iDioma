@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-module.exports = class Video extends Component {
+class Video extends Component {
 
   componentDidMount() {
     const conversation = this.props.conversation;
@@ -26,3 +26,5 @@ module.exports = class Video extends Component {
     );
   }
 };
+
+export default Video;

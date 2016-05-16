@@ -1,7 +1,9 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const Video = require('./components/Video.jsx');
 const request = require('then-request');
+
+import Video from './components/Video.jsx';
+import IncomingVideoCallBanner from './components/IncomingVideoCallBanner.jsx';
 
 import { toggleVideoConnected } from './actions/index.js';
 
@@ -12,7 +14,6 @@ if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
 
 const twilioSetup = (store, renderApp) => {
   const conversationStarted = (conversation) => {
-    console.log('store.dispatch', store.dispatch);
     store.dispatch(toggleVideoConnected());
     ReactDOM.render(<Video conversation={conversation} />, document.getElementById('video'));
     conversation.on('disconnected', () => {
@@ -33,12 +34,15 @@ const twilioSetup = (store, renderApp) => {
       window.conversationsClient = conversationsClient;
 
       conversationsClient.on('invite', function (invite) {
-        invite.accept().then(conversationStarted);
+        console.log('invite....', invite);
+        console.log('conversationStarted......', conversationStarted)
+        ReactDOM.render(<IncomingVideoCallBanner invite={invite} handleConversationStarted={conversationStarted} />, document.getElementById('invite'));
+        // unmount on decline
       });
       return renderApp();
     }, (error) => {
       console.log('Could not connect to Twilio: ' + error.message);
-      // renderApp();
+      renderApp();
     });
   });
 };

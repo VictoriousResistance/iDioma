@@ -57,6 +57,7 @@ const mapDispatchToProps = (dispatch) => (
     handleVideoDisconnectClick: () => {
       ReactDOM.unmountComponentAtNode(document.getElementById('video'));
     },
+
   }
 );
 
