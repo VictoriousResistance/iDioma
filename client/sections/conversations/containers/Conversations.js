@@ -65,9 +65,9 @@ const mapDispatchToProps = (dispatch) => (
       dispatch(toggleHasError());
     },
 
-    handleVideoDisconnectClick: () => {
-      ReactDOM.unmountComponentAtNode(document.getElementById('video'));
-    },
+    // handleVideoDisconnectClick: () => {
+    //   ReactDOM.unmountComponentAtNode(document.getElementById('video'));
+    // },
 
   }
 );
