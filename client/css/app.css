@@ -297,6 +297,55 @@ button:disabled {
   min-height: 4em;
 }
 
+
+
+/****************************** Video Component related ******************************/\
+
+.video-container {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
+.self-media-container {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 80px;
+  height: auto;
+  z-index: 2;
+  border-radius: 5px
+}
+
+.other-media-container {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  height: auto;
+}
+
+.self-media-container video, .other-media-container video {
+  border: 2px #004080 solid;
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+}
+
+.disconnect {
+  position: fixed;
+  bottom: 230px;
+  right: -5px;
+}
+
+.banner {
+  position: fixed;
+  right: 5px;
+  bottom: 5px;
+  border: 2px #004080 solid;
+  border-radius: 5px;
+  /*padding: 1px 5px;*/
+}
+
 @media handheld, only screen and (max-width: 767px) {
 
   /****************************** Top Bar ******************************/

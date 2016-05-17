@@ -14,7 +14,6 @@ if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
 
 const twilioSetup = (store, renderApp) => {
   const conversationStarted = (conversation) => {
-    store.dispatch(toggleIsInVideo());
     ReactDOM.render(<Video conversation={conversation} handleVideoDisconnectClick={() => { ReactDOM.unmountComponentAtNode(document.getElementById('video')); }} />, document.getElementById('video'));
     conversation.on('disconnected', () => {
       store.dispatch(toggleIsInVideo());
@@ -32,8 +31,7 @@ const twilioSetup = (store, renderApp) => {
     const conversationsClient = new Twilio.Conversations.Client(accessManager);
     conversationsClient.listen().then(() => {
       window.conversationsClient = conversationsClient;
-
-      conversationsClient.on('invite', function (invite) {
+      conversationsClient.on('invite', invite => {
         store.dispatch(toggleIsInVideo());
         const sender = invite.from.split('+').slice(1).join(' ');
         ReactDOM.render(<IncomingVideoCallBanner invite={invite} handleConversationStarted={conversationStarted} sender={sender} handleToggleIsInVideo={() => { store.dispatch(toggleIsInVideo()); }} />, document.getElementById('invite'));
