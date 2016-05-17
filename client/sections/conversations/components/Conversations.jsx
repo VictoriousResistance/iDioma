@@ -14,7 +14,9 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInp
     from: { firstName: user.firstName, lastName: user.lastName },
     body: '',
   };
-  const waitingMessage = isWaiting ? <div> Waiting for response... </div> : null;
+  const waitingMessage = isWaiting ?
+    <div>Waiting for response...</div>
+    : null;
   const errorMessageHolder = hasError ?
     <div>
       {errorMessage}

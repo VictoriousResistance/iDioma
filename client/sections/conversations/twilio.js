@@ -15,7 +15,7 @@ if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
 const twilioSetup = (store, renderApp) => {
   const conversationStarted = (conversation) => {
     store.dispatch(toggleIsInVideo());
-    ReactDOM.render(<Video conversation={conversation} handleVideoDisconnectClick={() => { ReactDOM.unmountComponentAtNode(document.getElementById('video')); }}/>, document.getElementById('video'));
+    ReactDOM.render(<Video conversation={conversation} handleVideoDisconnectClick={() => { ReactDOM.unmountComponentAtNode(document.getElementById('video')); }} />, document.getElementById('video'));
     conversation.on('disconnected', () => {
       store.dispatch(toggleIsInVideo());
       ReactDOM.unmountComponentAtNode(document.getElementById('video'));
@@ -24,7 +24,7 @@ const twilioSetup = (store, renderApp) => {
 
   request('GET', '/token', {
     qs: {
-      identity: store.getState().profile.id + '+' + store.getState().profile.firstName + '+' + store.getState().profile.lastName, 
+      identity: store.getState().profile.id + '+' + store.getState().profile.firstName + '+' + store.getState().profile.lastName,
     },
   })
   .done(data => {
@@ -43,8 +43,8 @@ const twilioSetup = (store, renderApp) => {
         });
       });
       return renderApp();
-    }, (error) => {
-      console.log('Could not connect to Twilio: ' + error.message);
+    }, error => {
+      console.error('Could not connect to Twilio: ' + error.message);
       renderApp();
     });
   });
