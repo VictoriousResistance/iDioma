@@ -387,7 +387,7 @@ button:disabled {
   .button-container {
     position: absolute;
     left: 1em;
-    bottom: -3em;
+    bottom: -2em;
   }
 
   .person {
