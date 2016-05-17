@@ -24,14 +24,14 @@ const Connection = ({ connection, onRemoveClick, self, rooms, onNewConvo }) => (
         </div>
       </div>
       <div className="button-container">
-        <button className="action" onClick={() => onNewConvo(selfId, connection, rooms)}><Link to="/home/conversations">Start Conversation</Link></button>
-        <button className="action negative-action" onClick={() => onRemoveClick(selfId, connection.id)}>Unpair</button>
+        <button className="action" onClick={() => onNewConvo(self, connection, rooms)}><Link to="/home/conversations">Start Conversation</Link></button>
+        <button className="action negative-action" onClick={() => onRemoveClick(self.id, connection.id)}>Unpair</button>
       </div>
     </div>
   </div>
 );
 
-const Connections = ({ connections, selfId, rooms, onRemoveClick, onNewConvo }) => {
+const Connections = ({ connections, self, rooms, onRemoveClick, onNewConvo }) => {
   if (connections.length === 0) {
     return (
       <div className="empty-tab-message">You haven't paired with other language learners yet. Check out your matches?</div>
@@ -40,7 +40,7 @@ const Connections = ({ connections, selfId, rooms, onRemoveClick, onNewConvo }) 
   return (
     <div>
       {connections.map((connection) => (
-        <Connection key={connection.id} connection={connection} selfId={selfId} onNewConvo={onNewConvo} onRemoveClick={onRemoveClick} rooms={rooms} />
+        <Connection key={connection.id} connection={connection} self={self} onNewConvo={onNewConvo} onRemoveClick={onRemoveClick} rooms={rooms} />
       ))}
     </div>
   );
