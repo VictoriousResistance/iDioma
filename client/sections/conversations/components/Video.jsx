@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-module.exports = class Video extends Component {
+class Video extends Component {
 
   componentDidMount() {
     const conversation = this.props.conversation;
@@ -18,11 +18,15 @@ module.exports = class Video extends Component {
   }
 
   render() {
+    const { handleVideoDisconnectClick } = this.props;
     return (
       <div>
         <div ref='remoteMedia' className='media-container'></div>
         <div ref='localMedia' className='media-container'></div>
+        <button className="action" onClick={() => { handleVideoDisconnectClick(); }}>Disconnect</button>
       </div>
     );
   }
 };
+
+export default Video;

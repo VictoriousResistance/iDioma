@@ -1,9 +1,11 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const Video = require('./components/Video.jsx');
 const request = require('then-request');
 
-import { toggleVideoConnected } from './actions/index.js';
+import Video from './components/Video.jsx';
+import IncomingVideoCallBanner from './components/IncomingVideoCallBanner.jsx';
+
+import { toggleIsInVideo } from './actions/index.js';
 
 // Check for WebRTC
 if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
@@ -12,18 +14,17 @@ if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
 
 const twilioSetup = (store, renderApp) => {
   const conversationStarted = (conversation) => {
-    console.log('store.dispatch', store.dispatch);
-    store.dispatch(toggleVideoConnected());
-    ReactDOM.render(<Video conversation={conversation} />, document.getElementById('video'));
+    store.dispatch(toggleIsInVideo());
+    ReactDOM.render(<Video conversation={conversation} handleVideoDisconnectClick={() => { ReactDOM.unmountComponentAtNode(document.getElementById('video')); }}/>, document.getElementById('video'));
     conversation.on('disconnected', () => {
-      store.dispatch(toggleVideoConnected());
+      store.dispatch(toggleIsInVideo());
       ReactDOM.unmountComponentAtNode(document.getElementById('video'));
     });
   };
 
   request('GET', '/token', {
     qs: {
-      identity: store.getState().profile.id,
+      identity: store.getState().profile.id + '+' + store.getState().profile.firstName + '+' + store.getState().profile.lastName, 
     },
   })
   .done(data => {
@@ -33,12 +34,17 @@ const twilioSetup = (store, renderApp) => {
       window.conversationsClient = conversationsClient;
 
       conversationsClient.on('invite', function (invite) {
-        invite.accept().then(conversationStarted);
+
+        const sender = invite.from.split('+').slice(1).join(' ');
+        ReactDOM.render(<IncomingVideoCallBanner invite={invite} handleConversationStarted={conversationStarted} sender={sender}/>, document.getElementById('invite'));
+        invite.on('canceled', () => {
+          ReactDOM.unmountComponentAtNode(document.getElementById('invite'));
+        });
       });
       return renderApp();
     }, (error) => {
       console.log('Could not connect to Twilio: ' + error.message);
-      // renderApp();
+      renderApp();
     });
   });
 };

@@ -20,8 +20,22 @@ export const changeCurrentRoom = (index) => (
   }
 );
 
-export const toggleVideoConnected = () => (
+export const toggleIsInVideo = () => (
   {
-    type: 'TOGGLE_VIDEO_CONNECTED',
+    type: 'TOGGLE_IS_IN_VIDEO',
+  }
+);
+
+
+export const toggleHasError = (errorMessage = '') => (
+  {
+    type: 'TOGGLE_HAS_ERROR',
+    errorMessage,
+  }
+);
+
+export const toggleIsWaiting = () => (
+  {
+    type: 'TOGGLE_IS_WAITING',
   }
 );

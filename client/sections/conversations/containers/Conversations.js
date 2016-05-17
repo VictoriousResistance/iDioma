@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Conversations from '../components/Conversations.jsx';
-import { emitMsg, addMsg, changeInputText, changeCurrentRoom, toggleVideoConnected } from '../actions/index.js';
+import { emitMsg, addMsg, changeInputText, changeCurrentRoom, toggleIsInVideo, toggleIsWaiting, toggleHasError } from '../actions/index.js';
 import { socket } from '../sockets.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -17,6 +17,9 @@ const mapStateToProps = (state) => (
     rooms: state.rooms,
     inputText: state.inputText,
     isInVideo: state.video.isInVideo,
+    hasError: state.video.hasError,
+    isWaiting: state.video.isWaiting,
+    errorMessage: state.video.errorMessage,
   }
 );
 
@@ -40,23 +43,29 @@ const mapDispatchToProps = (dispatch) => (
     },
 
     handleVideoRequestClick: (otherId) => {
+      dispatch(toggleIsWaiting());
+
       conversationsClient.inviteToConversation(otherId).then(conversation => {
-        console.log('conversation object..........', conversation)
-        dispatch(toggleVideoConnected());
-        ReactDOM.render(<Video conversation={conversation} />, document.getElementById('video'));
+        dispatch(toggleIsWaiting());
+        
+        dispatch(toggleIsInVideo());
+        ReactDOM.render(<Video conversation={conversation} handleVideoDisconnectClick={() => { ReactDOM.unmountComponentAtNode(document.getElementById('video')); }}/>, document.getElementById('video'));
         conversation.on('disconnected', () => {
           ReactDOM.unmountComponentAtNode(document.getElementById('video'));
-          dispatch(toggleVideoConnected());
+          dispatch(toggleIsInVideo());
   
         });
       }, error => {
+          dispatch(toggleIsWaiting());
+          dispatch(toggleHasError(error._errorData.message));
           console.error('Unable to create conversation', error);
       });
     },
 
-    handleVideoDisconnectClick: () => {
-      ReactDOM.unmountComponentAtNode(document.getElementById('video'));
+    handleToggleHasError: () => {
+      dispatch(toggleHasError());
     },
+
   }
 );
 
