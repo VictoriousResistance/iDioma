@@ -24,8 +24,8 @@ const Match = ({ match, onConnectClick, onHideClick, self }) => (
         </div>
       </div>
       <div className="button-container">
-        <button className="action" onClick={() => { onConnectClick(self.id, match.id); }}>Connect</button>
-        <button className="action negative-action" onClick={() => { onHideClick(self.id, match.id); }}>Hide</button>
+        <button className="action" onClick={() => { onConnectClick(self.id, match.id); }}>Send Pair Request</button>
+        <button className="action negative-action" onClick={() => { onHideClick(self.id, match.id); }}>Don't Show Again</button>
       </div>
     </div>
     
@@ -33,6 +33,19 @@ const Match = ({ match, onConnectClick, onHideClick, self }) => (
 );
 
 const Matches = ({ matches, onConnectClick, onHideClick, offset, onLoadMoreClick, self }) => {
+  if (matches.length === 0) {
+    if (self.languages.canTeach.length === 0 || self.languages.willLearn.length === 0) {
+      return (
+        <div className="empty-tab-message">
+          <p>We need more information from you to pair you with other language learners. Go to your profile to add:</p>
+          <p>1) language(s) you want to learn</p>
+          <p>2) language(s) you can offer to teach someone else</p>
+          <p>So we can show you some potential pairs!</p>
+        </div>
+      );
+    }
+    return <div className="empty-tab-message">You don't have any matches yet. Come back later and check again!</div>;
+  }
   const loadMore = offset > matches.length ? null : (<button href="#" className="load" onClick={() => { onLoadMoreClick(self, offset); }}>Load More</button>); 
   return (
     <div>
