@@ -50,6 +50,7 @@ button:disabled {
   font-weight: bold;
   margin-bottom: 2.5em;
   border-bottom: 1em #132A6C solid;
+  z-index: 3;
 }
 
 .main-nav-item, .right-nav-item {
@@ -94,6 +95,10 @@ button:disabled {
   border-bottom: 1.5px grey solid;
 }
 
+.person:last-child {
+  border-bottom: transparent;
+}
+
 .person-name {
   font-size: 1.1em;
   font-weight: bold;
@@ -106,6 +111,7 @@ button:disabled {
 .person-description {
   margin-left: .5em;
   font-style: italic;
+  margin-bottom: .3em;
 }
 
 .profile-picture-container {
@@ -388,6 +394,10 @@ button:disabled {
     margin: 0 6% 5em 6%;
     border-bottom: transparent;
     border-top: 1.5px grey solid;
+  }
+
+  .person:first-child {
+    border-top: transparent;
   }
 
   .text-container {
