@@ -341,6 +341,9 @@ button:disabled {
   position: fixed;
   right: 5px;
   bottom: 5px;
+  border: 2px #004080 solid;
+  border-radius: 5px;
+  /*padding: 1px 5px;*/
 }
 
 @media handheld, only screen and (max-width: 767px) {
