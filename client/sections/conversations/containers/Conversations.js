@@ -22,8 +22,8 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = (dispatch) => (
   {
-    handleRoomChange: (event) => {
-      dispatch(changeCurrentRoom(event.target.parentElement.id));
+    handleRoomChange: (roomId) => {
+      dispatch(changeCurrentRoom(roomId));
     },
 
     handleOnSend: (msg) => {

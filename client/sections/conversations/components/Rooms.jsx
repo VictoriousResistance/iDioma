@@ -12,19 +12,10 @@ const nameMaker = (users) => {
 };
 
 const Room = ({ room, handleRoomChange, index }) => (
-  <a
-    href="#"
-    className={classNames({
-      'thread-list-item': true,
-      active: false, /* change this to be responsive using current room */
-    })}
-    onClick={(e) => {
-      handleRoomChange(e);
-    }}
-  >
-    <div id={index} className="room">
+  <a href="#" onClick={() => handleRoomChange(index)}>
+    <div className="room">
       <div className="thread-name">{nameMaker(room.users)}</div>
-      <Button label='Delete' type='action' />
+      <Button label='Delete' type='action' onClick={() => console.log(room.id)} />
     </div>
   </a>
 );
@@ -37,7 +28,7 @@ const Rooms = ({ rooms, handleRoomChange }) => (
   <div className="thread-section">
     <div className="thread-list">
       {rooms.map((room, i, roomsState) => (
-        <Room index={i} key={room.id} room={room} handleRoomChange={handleRoomChange} />
+        <Room index={i} room={room} handleRoomChange={handleRoomChange} />
       ))}
     </div>
   </div>
