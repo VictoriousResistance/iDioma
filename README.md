@@ -58,7 +58,7 @@ Format: `module.exports = {ID: 'id', SECRET: 'secret'};`
 
 ### Adding Twilio credentials
 
-Navigate to root directory, add a `.env` file and add Twilio Account SID, Video Configuration SID, API Key, and API Secret. Reference this repo for links to generate these credentials if you do not alreay have them.  This file is git ignored.
+Navigate to root directory, add a `.env` file and add Twilio Account SID, Video Configuration SID, API Key, and API Secret. Reference this repo (https://github.com/TwilioDevEd/video-quickstart-node) for links to generate these credentials if you do not alreay have them.  This file is git ignored.
 Format: 
 ```
 TWILIO_ACCOUNT_SID=
