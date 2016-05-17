@@ -9,6 +9,7 @@ const addToRejects = require('../db/controllers/moveMatchIntoRejectsGivenSelfIdA
 const changeToRejectFromConnection = require('../db/controllers/moveConnectionIntoRejectsGivenSelfIdAndConnectionId.js');
 const changeToConnectionFromRequest = require('../db/controllers/moveRequestIntoConnectionsGivenSelfIdAndRequestId.js');
 const changeToRejectFromRequest = require('../db/controllers/moveRequestIntoRejectsGivenSelfIdAndRequestId.js');
+const findOrCreateRoom = require('../db/controllers/findOrCreateRoomGivenUserIds.js');
 
 // controllers for /profile/:id
 const updateDescription = require('../db/controllers/updateDescriptionGivenBodyAndUserId.js');
@@ -44,6 +45,7 @@ apiRouter.route('/relationships')
           res.sendStatus(404);
         });
     }
+
     if (req.body.newType === 'reject') {
       return addToRejects(req.body.selfId, req.body.matchId)
         .then(() => {
@@ -54,8 +56,12 @@ apiRouter.route('/relationships')
           res.sendStatus(404);
         });
     }
+
     return res.sendStatus(404);
   })
+
+
+
   .put((req, res) => { // change relationship type
     if (req.body.oldType === 'connection') {
       return changeToRejectFromConnection(req.body.selfId, req.body.connectionId)
@@ -116,7 +122,16 @@ apiRouter.route('/rooms')
       .catch(() => {
         res.sendStatus(404);
       });
-  });
+  })
+  .post((req, res) =>
+    findOrCreateRoom(req.body.selfId, req.body.connectionId)
+      .then((data) => {
+        res.status(201).send(data);
+      })
+      .catch(() => {
+        res.sendStatus(404);
+      })
+  );
 
 apiRouter.route('/messages')
   .get((req, res) => {
@@ -129,7 +144,7 @@ apiRouter.route('/messages')
       });
   })
   .post((req, res) => {
-    postMessage(req.body.userId, req.body.roomId, req.body.message)
+    postMessage(req.body.senderId, req.body.roomId, req.body.body)
       .then(() => {
         res.sendStatus(201);
       })

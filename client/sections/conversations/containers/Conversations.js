@@ -1,15 +1,11 @@
 import { connect } from 'react-redux';
 import Conversations from '../components/Conversations.jsx';
-import { emitMsg, addMsg, changeInputText, changeCurrentRoom, toggleIsInVideo, toggleIsWaiting, toggleHasError } from '../actions/index.js';
+import { addMsg, changeInputText, changeCurrentRoom, toggleIsInVideo, toggleIsWaiting, toggleHasError } from '../actions/index.js';
 import { socket } from '../sockets.js';
+import request from 'then-request';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Video from '../components/Video.jsx';
-
-// const conversationsClient = exportObj.conversationsClient;
-
-// console.log('exportObj', exportObj);
-// console.log('exportObj.conversationsClient', exportObj.conversationsClient);
 
 const mapStateToProps = (state) => (
   {
@@ -37,6 +33,16 @@ const mapDispatchToProps = (dispatch) => (
       dispatch(addMsg(msg, true));
       // clear Input
       dispatch(changeInputText(''));
+      // add message to database
+      request('POST', '/api/messages', {
+        json: msg,
+      })
+      .done(data => {
+        console.log('client', data);
+        if (data.statusCode !== 201) {
+          // TODO: handle error
+        }
+      });
     },
 
     handleTextInput: (event) => {

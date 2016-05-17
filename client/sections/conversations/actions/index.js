@@ -40,3 +40,11 @@ export const toggleIsWaiting = (invite) => (
     invite,
   }
 );
+
+export const addRoom = (room, connection) => (
+  {
+    type: 'ADD_NEW_ROOM',
+    room,
+    connection,
+  }
+);
