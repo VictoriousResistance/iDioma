@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Message = ({ message }) => (
+const Message = ({ sender, message }) => (
   <div className="message-list-item">
     <span className="message-author-name">
-      {`${message.from.firstName} ${message.from.lastName}: `}
+      {`${sender}: `}
     </span>
     <span className="message-text">
       {message.body}
@@ -13,4 +13,4 @@ const Message = ({ message }) => (
 
 export default Message;
 
-// add message time??
+// TODO: add message time??

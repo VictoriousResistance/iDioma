@@ -1,20 +1,21 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const nameMaker = (users) =>
-  (users.length === 0) ? 'Empty' :
-    users.map((user, i, arr) => {
-      const last = arr.length - 1;
-      let join = (i === 0) ? '' : ((i === last) ? ' & ' : ', ');
-      return `${join}${user.firstName} ${user.lastName}`;
-    });
+const nameMaker = (users) => {
+  const last = users.length - 1;
+  return users
+  .map(user => `${user.firstName} ${user.lastName}`)
+  .reduce((names, currName, i) =>
+    names + (i === last ? ' & ' : ', ') + currName
+  );
+};
 
 const Room = ({ room, handleRoomChange, index }) => (
   <a
     href="#"
     className={classNames({
       'thread-list-item': true,
-      'active': false /* change this to be responsive using current room */
+      active: false, /* change this to be responsive using current room */
     })}
     onClick={(e) => {
       handleRoomChange(e);
@@ -25,8 +26,8 @@ const Room = ({ room, handleRoomChange, index }) => (
     </div>
   </a>
 );
-//TODO
-/* need to update room properties above to conform to new room obj */
+
+// TODO
 /* add time last updated?? */
 /* display last message text? */
 

@@ -1,31 +1,23 @@
 const Messages = require('../models/messageModel.js');
 
-const conformMessageObj = (messageObj) => {
-  // set up message object structure
-  var outputObj = {
-    roomId: '',
-    senderId: '',
-    body: '',
-    timestamp: '',
-  };
+const pluckMessage = (messageObj) =>
+  ({
+    roomId: messageObj.dataValues.room_id,
+    senderId: messageObj.dataValues.user_id,
+    body: messageObj.dataValues.body,
+    timestamp: messageObj.dataValues.createdAt,
+  });
 
-  outputObj.roomId = messageObj.dataValues.room_id;
-  outputObj.senderId = messageObj.dataValues.user_id;
-  outputObj.body = messageObj.dataValues.body;
-  outputObj.timestamp = messageObj.dataValues.createdAt;
+const getMessagesGivenRoomId = module.exports = (roomId) =>
+  Messages.findAll({ where: { room_id: roomId } })
+  .then(messages => messages.map(message =>
+    pluckMessage(message))
+  );
 
-  return outputObj;
-};
-
-const getMessagesGivenRoomId = (roomId) => {
-
-  return Messages.findAll({ where: { room_id: roomId } })
-    .then((messages) => {
-      return messages.map((message) => conformMessageObj(message));
+module.exports.bulk = arrayOfRoomObjs =>
+  Promise.all(arrayOfRoomObjs.map(room =>
+    getMessagesGivenRoomId(room.id).then(messages => {
+      room.messages = messages;
+      return room;
     })
-    .then((result) => console.log('result..............', result))
-
-};
-
-module.exports = getMessagesGivenRoomId;
-
+  ));

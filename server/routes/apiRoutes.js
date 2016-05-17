@@ -36,7 +36,6 @@ apiRouter.route('/matches')
 // ZACH: ideally users/userid/rejections/rejectedUserId
 apiRouter.route('/relationships')
   .post((req, res) => { // post to rejects and requests
-    console.log(req);
     if (req.body.newType === 'request') {
       return addToRequests(req.body.selfId, req.body.matchId)
         .then(() => {
@@ -146,7 +145,7 @@ apiRouter.route('/messages')
       });
   })
   .post((req, res) => {
-    postMessage(req.body.userId, req.body.roomId, req.body.message)
+    postMessage(req.body.senderId, req.body.roomId, req.body.body)
       .then(() => {
         res.sendStatus(201);
       })

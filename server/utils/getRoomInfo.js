@@ -1,29 +1,45 @@
 const getRoomData = require('../db/controllers/getRoomIdsAndUserIdsGivenSelfId.js');
 const getBasicInfo = require('../db/controllers/getUserBasicInfoGivenUserId.js');
+const getMessagesForRoom = require('../db/controllers/getMessagesGivenRoomId.js'); // TODO: get only the current room's messages?
 const helpers = require('../db/controllers/helpers.js');
 
-const getUsersInfoForRoom = (roomObj) =>
+const hashUsers = (arrayOfUsers, self) => {
+  const usersIncludingSelf = {};
+  usersIncludingSelf[self.id] = self;
+
+  return arrayOfUsers.reduce((cum, curr) => {
+    cum[curr.id] = curr;
+    return cum;
+  }
+  , usersIncludingSelf);
+};
+
+const getUsersInfoForRoom = (roomObj, self) =>
   getBasicInfo.bulk(roomObj.users)
   .then(helpers.pluckUsers)
   .then(users => {
-    roomObj.users = users;
+    roomObj.users = users; // TODO: need this? maybe just put keys in array to save duplicated space
+    return users;
+  })
+  .then(users => hashUsers(users, self))
+  .then(hashedUsers => {
+    roomObj.usersKey = hashedUsers;
     return roomObj;
   });
 
-const getUsersInfoForRooms = (roomObjs) =>
-  Promise.all(roomObjs.map(roomObj => getUsersInfoForRoom(roomObj)));
+const getUsersInfoForRooms = (roomObjs, self) =>
+  Promise.all(roomObjs.map(roomObj => getUsersInfoForRoom(roomObj, self)));
 
 const addMessagesToRooms = (rooms) =>
-  rooms.map(room => {
-    room.messages = room.messages || [];
-    return room;
-  });
+  getMessagesForRoom.bulk(rooms);
+
 
 module.exports = (req, res, next) => {
-  const selfId = req.idioma.profile.id;
+  const self = req.idioma.profile;
 
-  getRoomData(selfId)
-  .then(getUsersInfoForRooms)
+  getRoomData(self.id)
+  .then(helpers.inspect)
+  .then(rooms => getUsersInfoForRooms(rooms, self))
   .then(addMessagesToRooms)
   .then(modifiedArray => req.idioma.rooms = modifiedArray)
   .then(() => next())

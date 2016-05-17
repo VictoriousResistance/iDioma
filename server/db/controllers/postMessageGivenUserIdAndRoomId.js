@@ -25,10 +25,9 @@ const updateAllUsersToShowRoom = (roomId) =>
   );
 
 
-const postMessageGivenUserIdAndRoomId = (userId, roomId, body) => {
+const postMessageGivenUserIdAndRoomId = (userId, roomId, body) =>
   createMessage(userId, roomId, body)
   .then(updateRoom)
   .then(() => updateAllUsersToShowRoom(roomId));
-};
 
 module.exports = postMessageGivenUserIdAndRoomId;

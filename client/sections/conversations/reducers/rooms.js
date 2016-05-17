@@ -15,9 +15,10 @@ const rooms = (state = [], action) => {
       const { msg, activeRoom } = action;
       const roomNum = activeRoom ? 0 : state.reduce((cum, curr, i) => ((curr.id === msg.roomId) ? i : cum), 'N/A'); // TODO: what if nothing is found?
       const room = state[roomNum];
+      const messages = room.messages || [];
       return [
         ...state.slice(0, roomNum),
-        Object.assign({}, room, { messages: room.messages.concat(action.msg) }),
+        Object.assign({}, room, { messages: messages.concat(action.msg) }),
         ...state.slice(roomNum + 1),
       ];
     }

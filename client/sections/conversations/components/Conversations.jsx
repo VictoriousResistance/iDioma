@@ -5,12 +5,13 @@ import Input from './Input.jsx';
 import Button from './Button.jsx';
 import VideoRequestButton from './VideoRequestButton.jsx';
 
-// FIXME add handleOnVideo
 // current room will always be the first object in rooms (i.e. rooms[0])
 const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInput, handleOnSend, handleVideoRequestClick, handleVideoDisconnectClick, handleToggleHasError, isInVideo, isWaiting, hasError, errorMessage, invite }) => {
   const currRoom = rooms[0] || { id: 0, messages: [], users: [] };
+
   const msgTemplate = {
     roomId: currRoom.id,
+    senderId: user.id,
     from: { firstName: user.firstName, lastName: user.lastName },
     body: '',
   };
@@ -34,7 +35,7 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInp
       </div>
       <div>
         <div>
-          <Messages messages={currRoom.messages} />
+          <Messages usersKey={currRoom.usersKey} messages={currRoom.messages || []} />
         </div>
         <Input msgTemplate={msgTemplate} inputText={inputText} handleOnSend={handleOnSend} handleTextInput={handleTextInput} />
         <Button msgTemplate={msgTemplate} inputText={inputText} handleOnSend={handleOnSend} />

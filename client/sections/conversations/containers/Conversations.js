@@ -38,6 +38,16 @@ const mapDispatchToProps = (dispatch) => (
       dispatch(addMsg(msg, true));
       // clear Input
       dispatch(changeInputText(''));
+      // add message to database
+      request('POST', '/api/messages', {
+        json: msg,
+      })
+      .done(data => {
+        console.log('client', data);
+        if (data.statusCode !== 201) {
+          // TODO: handle error
+        }
+      });
     },
 
     handleTextInput: (event) => {
