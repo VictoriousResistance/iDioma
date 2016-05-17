@@ -7,7 +7,7 @@ const video = (state = {}, action) => {
       return Object.assign({}, state, { hasError: !state.hasError, errorMessage: action.errorMessage });
     }
     case 'TOGGLE_IS_WAITING': {
-      return Object.assign({}, state, { isWaiting: !state.isWaiting });
+      return Object.assign({}, state, { isWaiting: !state.isWaiting }, { invite: action.invite });
     }
     default:
       return state;

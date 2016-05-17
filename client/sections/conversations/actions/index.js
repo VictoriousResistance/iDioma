@@ -34,8 +34,9 @@ export const toggleHasError = (errorMessage = '') => (
   }
 );
 
-export const toggleIsWaiting = () => (
+export const toggleIsWaiting = (invite) => (
   {
     type: 'TOGGLE_IS_WAITING',
+    invite,
   }
 );

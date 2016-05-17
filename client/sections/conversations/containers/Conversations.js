@@ -20,6 +20,7 @@ const mapStateToProps = (state) => (
     hasError: state.video.hasError,
     isWaiting: state.video.isWaiting,
     errorMessage: state.video.errorMessage,
+    invite: state.video.invite,
   }
 );
 
@@ -43,22 +44,19 @@ const mapDispatchToProps = (dispatch) => (
     },
 
     handleVideoRequestClick: (otherId) => {
-      dispatch(toggleIsWaiting());
-
-      conversationsClient.inviteToConversation(otherId).then(conversation => {
-        dispatch(toggleIsWaiting());
-        
+      const invite = conversationsClient.inviteToConversation(otherId);
+      dispatch(toggleIsWaiting(invite));
+      invite.then(conversation => {
+        dispatch(toggleIsWaiting(null));
         dispatch(toggleIsInVideo());
         ReactDOM.render(<Video conversation={conversation} handleVideoDisconnectClick={() => { ReactDOM.unmountComponentAtNode(document.getElementById('video')); }}/>, document.getElementById('video'));
         conversation.on('disconnected', () => {
           ReactDOM.unmountComponentAtNode(document.getElementById('video'));
           dispatch(toggleIsInVideo());
-  
         });
       }, error => {
-          dispatch(toggleIsWaiting());
-          dispatch(toggleHasError(error._errorData.message));
-          console.error('Unable to create conversation', error);
+        dispatch(toggleIsWaiting(null));
+        dispatch(toggleHasError(error._errorData.message));
       });
     },
 

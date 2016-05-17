@@ -15,7 +15,7 @@ if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
 const twilioSetup = (store, renderApp) => {
   const conversationStarted = (conversation) => {
     store.dispatch(toggleIsInVideo());
-    ReactDOM.render(<Video conversation={conversation} handleVideoDisconnectClick={() => { ReactDOM.unmountComponentAtNode(document.getElementById('video')); }}/>, document.getElementById('video'));
+    ReactDOM.render(<Video conversation={conversation} handleVideoDisconnectClick={() => { ReactDOM.unmountComponentAtNode(document.getElementById('video')); }} />, document.getElementById('video'));
     conversation.on('disconnected', () => {
       store.dispatch(toggleIsInVideo());
       ReactDOM.unmountComponentAtNode(document.getElementById('video'));
@@ -24,7 +24,7 @@ const twilioSetup = (store, renderApp) => {
 
   request('GET', '/token', {
     qs: {
-      identity: store.getState().profile.id + '+' + store.getState().profile.firstName + '+' + store.getState().profile.lastName, 
+      identity: store.getState().profile.id + '+' + store.getState().profile.firstName + '+' + store.getState().profile.lastName,
     },
   })
   .done(data => {
@@ -34,16 +34,17 @@ const twilioSetup = (store, renderApp) => {
       window.conversationsClient = conversationsClient;
 
       conversationsClient.on('invite', function (invite) {
-
+        store.dispatch(toggleIsInVideo());
         const sender = invite.from.split('+').slice(1).join(' ');
-        ReactDOM.render(<IncomingVideoCallBanner invite={invite} handleConversationStarted={conversationStarted} sender={sender}/>, document.getElementById('invite'));
+        ReactDOM.render(<IncomingVideoCallBanner invite={invite} handleConversationStarted={conversationStarted} sender={sender} handleToggleIsInVideo={() => { store.dispatch(toggleIsInVideo()); }} />, document.getElementById('invite'));
         invite.on('canceled', () => {
           ReactDOM.unmountComponentAtNode(document.getElementById('invite'));
+          store.dispatch(toggleIsInVideo());
         });
       });
       return renderApp();
-    }, (error) => {
-      console.log('Could not connect to Twilio: ' + error.message);
+    }, error => {
+      console.error('Could not connect to Twilio: ' + error.message);
       renderApp();
     });
   });
