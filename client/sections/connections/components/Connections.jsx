@@ -34,7 +34,7 @@ const Connection = ({ connection, onRemoveClick, self, rooms, onNewConvo }) => (
 const Connections = ({ connections, selfId, rooms, onRemoveClick, onNewConvo }) => {
   if (connections.length === 0) {
     return (
-      <div className="empty-tab-message">You haven't paired with other language learners yet. Complete your profile and check out your matches!</div>
+      <div className="empty-tab-message">You haven't paired with other language learners yet. Check out your matches?</div>
     );
   }
   return (
