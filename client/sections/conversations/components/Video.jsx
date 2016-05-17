@@ -21,8 +21,8 @@ class Video extends Component {
     const { handleVideoDisconnectClick } = this.props;
     return (
       <div>
-        <div ref='remoteMedia' className='media-container'></div>
-        <div ref='localMedia' className='media-container'></div>
+        <div ref='remoteMedia' className='other-media-container'></div>
+        <div ref='localMedia' className='self-media-container'></div>
         <button className="action" onClick={() => { handleVideoDisconnectClick(); }}>Disconnect</button>
       </div>
     );
