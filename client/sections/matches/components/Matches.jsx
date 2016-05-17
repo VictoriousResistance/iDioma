@@ -44,7 +44,11 @@ const Matches = ({ matches, onConnectClick, onHideClick, offset, onLoadMoreClick
         </div>
       );
     }
-    return <div className="empty-tab-message">You don't have any matches at the moment. Come back later and check again!</div>;
+    return (
+      <div className="empty-tab-message">
+        <p>You don't have any matches at the moment. Come back later and check again!</p>
+      </div>
+    );
   }
   const loadMore = offset > matches.length ? null : (<button href="#" className="load" onClick={() => { onLoadMoreClick(self, offset); }}>Load More</button>); 
   return (
