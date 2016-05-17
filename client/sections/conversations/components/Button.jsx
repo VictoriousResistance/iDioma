@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Button = ({ msgTemplate, inputText, handleOnSend, label, class }) => (
+const Button = ({ msgTemplate, inputText, handleOnSend, label, type }) => (
   <button
-    className={class}
+    className={type}
     onClick={() => { handleOnSend(Object.assign({}, msgTemplate, { body: inputText.value })); }}
   >
-    {type}
+    {label}
   </button>
 );
 
