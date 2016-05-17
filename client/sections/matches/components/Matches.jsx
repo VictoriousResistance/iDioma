@@ -33,6 +33,20 @@ const Match = ({ match, onConnectClick, onHideClick, self }) => (
 );
 
 const Matches = ({ matches, onConnectClick, onHideClick, offset, onLoadMoreClick, self }) => {
+  if (matches.length === 0) {
+    if (self.languages.canTeach.length === 0 || self.languages.willLearn.length === 0) {
+      return (
+        <div className="empty-tab-message">
+          {`Go to your profile to add:\n  
+            1) Languages you want to learn\n   
+            2) Languages you can offer to teach someone else\n   
+            So we can show you some potential pairs!
+          `}
+        </div>
+      );
+    }
+    return <div className="empty-tab-message">You don't have any matches yet. Come back later and check again!</div>;
+  }
   const loadMore = offset > matches.length ? null : (<button href="#" className="load" onClick={() => { onLoadMoreClick(self, offset); }}>Load More</button>); 
   return (
     <div>
