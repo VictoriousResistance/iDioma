@@ -331,6 +331,12 @@ button:disabled {
   width: 100%;
 }
 
+.disconnect {
+  position: fixed;
+  bottom: 230px;
+  right: -5px;
+}
+
 @media handheld, only screen and (max-width: 767px) {
 
   /****************************** Top Bar ******************************/

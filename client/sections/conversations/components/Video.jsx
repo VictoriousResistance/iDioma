@@ -23,7 +23,7 @@ class Video extends Component {
       <div className="video-container">
         <div ref="remoteMedia" className="other-media-container"></div>
         <div ref="localMedia" className="self-media-container"></div>
-        <button className="action" onClick={() => { handleVideoDisconnectClick(); }}>Disconnect</button>
+        <button className="action disconnect" onClick={() => { handleVideoDisconnectClick(); }}>Disconnect</button>
       </div>
     );
   }
