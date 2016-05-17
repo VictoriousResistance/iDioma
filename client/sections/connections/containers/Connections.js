@@ -23,7 +23,6 @@ const mapDispatchToProps = (dispatch) => (
       })
       .done(data => {
         if (data.statusCode === 201) {
-          console.log(data);
           const returnedRoom = JSON.parse(data.body);
           const dupIndex = currentRooms.reduce((cum, currentRoom, i) =>
             (currentRoom.id === returnedRoom.id) ? i : cum, -1);
