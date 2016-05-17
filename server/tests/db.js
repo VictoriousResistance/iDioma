@@ -81,7 +81,7 @@ module.exports.addRelationships = (obj) => {
       user2Id: Mo,
     },
     {
-      id: '454545',
+      id: '565656',
       type: 'reject',
       user1Id: Ashwin,
       user2Id: Rswhin,
@@ -102,11 +102,11 @@ module.exports.addLevels = () =>
     {
       id: '3',
       name: 'advanced',
-    },    
+    },
     {
       id: '4',
       name: 'fluent',
-    },    
+    },
     {
       id: '5',
       name: 'native',
@@ -169,12 +169,16 @@ module.exports.addUsersLanguagesLevels = (obj) => {
   obj.users[2].addLanguages_level(obj.languagesLevels[0], { offer_or_learn: 'learn' });
   obj.users[2].addLanguages_level(obj.languagesLevels[2], { offer_or_learn: 'learn' });
 
+  // Rshwin speaks Spanish and wants to learn English
+  obj.users[3].addLanguages_level(obj.languagesLevels[3], { offer_or_learn: 'learn' });
+  obj.users[3].addLanguages_level(obj.languagesLevels[0], { offer_or_learn: 'learn' });
+
   return obj;
 };
 
 module.exports.addRooms = () =>
   Rooms.bulkCreate([
-    { id: '3333', number_active_participants: 3 },
+    { id: '3333', number_active_participants: 4 },
     { id: '5555', number_active_participants: 2 },
   ]).then(r => storeResults('rooms', r));
 
