@@ -305,7 +305,9 @@ button:disabled {
   min-height: 4em;
 }
 
-
+.tip {
+  margin-top: 1em;
+}
 
 /****************************** Video Component related ******************************/\
 
