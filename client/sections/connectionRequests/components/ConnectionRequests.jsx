@@ -33,12 +33,21 @@ const ConnectionRequest = ({ connectionRequest, onAcceptClick, onDeclineClick, s
   </div>
 );
 
-const ConnectionRequests = ({ connectionRequests, onAcceptClick, onDeclineClick, selfId }) => (
-  <div>
-    {connectionRequests.map((connectionRequest) => (
-      <ConnectionRequest key={connectionRequest.id} connectionRequest={connectionRequest} onAcceptClick={onAcceptClick} onDeclineClick={onDeclineClick} selfId={selfId} />
-    ))}
-  </div>
-);
+const ConnectionRequests = ({ connectionRequests, onAcceptClick, onDeclineClick, selfId }) => {
+  if (connectionRequests.length === 0) {
+    return (
+      <div className="empty-tab-message">
+        You don't have any incoming pair requests at the moment. Make sure your profile is complete so other language learners can find you!
+      </div>
+    );
+  }
+  return (
+    <div>
+      {connectionRequests.map((connectionRequest) => (
+        <ConnectionRequest key={connectionRequest.id} connectionRequest={connectionRequest} onAcceptClick={onAcceptClick} onDeclineClick={onDeclineClick} selfId={selfId} />
+      ))}
+    </div>
+  );
+};
 
 export default ConnectionRequests;
