@@ -24,8 +24,8 @@ const Connection = ({ connection, onRemoveClick, self, rooms, onNewConvo }) => (
         </div>
       </div>
       <div className="button-container">
-        <button className="action" onClick={() => onNewConvo(self, connection, rooms)}><Link to="/home/conversations">Start Conversation</Link></button>
-        <button className="action negative-action" onClick={() => onRemoveClick(self.id, connection.id)}>Remove</button>
+        <button className="action" onClick={() => onNewConvo(selfId, connection, rooms)}><Link to="/home/conversations">Start Conversation</Link></button>
+        <button className="action negative-action" onClick={() => onRemoveClick(selfId, connection.id)}>Unpair</button>
       </div>
     </div>
   </div>
