@@ -1,11 +1,6 @@
 import { connect } from 'react-redux';
 import Conversations from '../components/Conversations.jsx';
-import {
-  addMsg,
-  changeInputText,
-  changeCurrentRoom,
-  }
-  from '../actions/index.js';
+import { addMsg, changeInputText, changeCurrentRoom, toggleIsInVideo, toggleIsWaiting, toggleHasError } from '../actions/index.js';
 import { socket } from '../sockets.js';
 import request from 'then-request';
 import React from 'react';
