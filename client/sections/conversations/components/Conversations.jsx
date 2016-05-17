@@ -38,6 +38,7 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInp
         <Input msgTemplate={msgTemplate} inputText={inputText} handleOnSend={handleOnSend} handleTextInput={handleTextInput} />
         <Button msgTemplate={msgTemplate} inputText={inputText} handleOnSend={handleOnSend} />
         {videoRequestButton}
+
       </div>
       {waitingMessage}
       {errorMessageHolder}
