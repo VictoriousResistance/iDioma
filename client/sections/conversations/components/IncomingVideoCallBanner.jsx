@@ -8,7 +8,7 @@ const unmountComponent = () => {
 const IncomingVideoCallBanner = ({ invite, handleConversationStarted, sender }) => {
   return (
     <div>
-      <div> Incoming call from {sender} </div>
+      <div> Incoming Video Call from {sender} </div>
       <button className="action" onClick={() => { invite.accept().then(handleConversationStarted); unmountComponent(); }}> Accept </button>
       <button className="action" onClick={() => { invite.reject(); unmountComponent(); }}> Decline </button>
     </div>

@@ -22,7 +22,10 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInp
     </div> 
 
     : null;
-
+  const videoRequestButton = !isInVideo ?
+    <VideoRequestButton handleVideoRequestClick={handleVideoRequestClick} otherId={rooms[0].users[0].id + '+' + rooms[0].users[0].firstName + '+' + rooms[0].users[0].lastName} />
+    : null;
+    
   return (
     <div className="chatapp">
       <div>
@@ -34,7 +37,7 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInp
         </div>
         <Input msgTemplate={msgTemplate} inputText={inputText} handleOnSend={handleOnSend} handleTextInput={handleTextInput} />
         <Button msgTemplate={msgTemplate} inputText={inputText} handleOnSend={handleOnSend} />
-        <VideoRequestButton handleVideoRequestClick={handleVideoRequestClick} otherId={rooms[0].users[0].id + '+' + rooms[0].users[0].firstName + '+' + rooms[0].users[0].lastName} />
+        {videoRequestButton}
       </div>
       {waitingMessage}
       {errorMessageHolder}
