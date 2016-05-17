@@ -20,7 +20,9 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInp
     : null;
   const errorMessageHolder = hasError ?
     <div>
-      {errorMessage}
+      <div className="language">
+        {errorMessage}
+      </div>
       <button className="x" onClick={() => { handleToggleHasError(); }}>x</button>
     </div>
     : null;
