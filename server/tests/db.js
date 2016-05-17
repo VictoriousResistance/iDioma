@@ -60,18 +60,18 @@ module.exports.addRelationships = (obj) => {
       user1Id: Ashwin,
       user2Id: Mo,
     },
-    // {
-    //   id: '343434',
-    //   type: 'request',
-    //   user1Id: Ashwin,
-    //   user2Id: Reina,
-    // },
-    // {
-    //   id: '454545',
-    //   type: 'request',
-    //   user1Id: Reina,
-    //   user2Id: Ashwin,
-    // },
+    {
+      id: '343434',
+      type: 'request',
+      user1Id: Ashwin,
+      user2Id: Reina,
+    },
+    {
+      id: '454545',
+      type: 'reject',
+      user1Id: Reina,
+      user2Id: Ashwin,
+    },
   ]).then(r => storeResults('relationships', r));
 };
 
