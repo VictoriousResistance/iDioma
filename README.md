@@ -60,12 +60,12 @@ Format: `module.exports = {ID: 'id', SECRET: 'secret'};`
 
 Navigate to root directory, add a `.env` file and add Twilio Account SID, Video Configuration SID, API Key, and API Secret. Reference this repo for links to generate these credentials if you do not alreay have them.  This file is git ignored.
 Format: 
-`
+```
 TWILIO_ACCOUNT_SID=
 TWILIO_API_KEY=
 TWILIO_API_SECRET=
 TWILIO_CONFIGURATION_SID=
-`
+```
 
 ### Installing Dependencies
 
