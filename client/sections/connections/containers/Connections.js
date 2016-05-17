@@ -15,7 +15,7 @@ const mapStateToProps = (state) => (
 const mapDispatchToProps = (dispatch) => (
   {
     onNewConvo: (selfId, connection, currentRooms) => {
-      request('POST', '/api/relationships', {
+      request('POST', '/api/rooms', {
         json: {
           selfId,
           connectionId: connection.id,
