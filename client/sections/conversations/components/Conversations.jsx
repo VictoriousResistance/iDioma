@@ -29,6 +29,10 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInp
     from: { firstName: user.firstName, lastName: user.lastName },
     body: '',
   };
+
+  const submitMsg = () =>
+    handleOnSend(Object.assign({}, msgTemplate, { body: inputText.value }));
+
   const waitingMessage = isWaiting ?
     <div>Waiting for response...</div>
     : null;
@@ -53,8 +57,8 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInp
         <div>
           <Messages usersKey={currRoom.usersKey} messages={currRoom.messages || []} />
         </div>
-        <Input msgTemplate={msgTemplate} inputText={inputText} handleOnSend={handleOnSend} handleTextInput={handleTextInput} />
-        <Button msgTemplate={msgTemplate} inputText={inputText} handleOnSend={handleOnSend} label='Send' type='action'/>
+        <Input msgTemplate={msgTemplate} inputText={inputText} clickHandler={submitMsg} handleTextInput={handleTextInput} />
+        <Button msgTemplate={msgTemplate} inputText={inputText} clickHandler={submitMsg} label='Send' type='action'/>
         {videoRequestButton}
       </div>
       {waitingMessage}
