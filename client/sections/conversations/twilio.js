@@ -34,11 +34,12 @@ const twilioSetup = (store, renderApp) => {
       window.conversationsClient = conversationsClient;
 
       conversationsClient.on('invite', function (invite) {
-
+        store.dispatch(toggleIsInVideo());
         const sender = invite.from.split('+').slice(1).join(' ');
-        ReactDOM.render(<IncomingVideoCallBanner invite={invite} handleConversationStarted={conversationStarted} sender={sender}/>, document.getElementById('invite'));
+        ReactDOM.render(<IncomingVideoCallBanner invite={invite} handleConversationStarted={conversationStarted} sender={sender} handleToggleIsInVideo={() => { store.dispatch(toggleIsInVideo()); }} />, document.getElementById('invite'));
         invite.on('canceled', () => {
           ReactDOM.unmountComponentAtNode(document.getElementById('invite'));
+          store.dispatch(toggleIsInVideo());
         });
       });
       return renderApp();

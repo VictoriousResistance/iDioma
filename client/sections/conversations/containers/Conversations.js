@@ -46,8 +46,6 @@ const mapDispatchToProps = (dispatch) => (
     handleVideoRequestClick: (otherId) => {
       const invite = conversationsClient.inviteToConversation(otherId);
       dispatch(toggleIsWaiting(invite));
-      console.log('invite');
-      console.dir(invite.cancel);
       invite.then(conversation => {
         dispatch(toggleIsWaiting());
         dispatch(toggleIsInVideo());
