@@ -37,9 +37,9 @@ const Matches = ({ matches, onConnectClick, onHideClick, offset, onLoadMoreClick
     if (self.languages.canTeach.length === 0 || self.languages.willLearn.length === 0) {
       return (
         <div className="empty-tab-message">
-          <p>Go to your profile to add:</p>
-          <p>1) Languages you want to learn</p>
-          <p>2) Languages you can offer to teach someone else</p>
+          <p>We need more information from you to pair you with other language learners. Go to your profile to add:</p>
+          <p>1) language(s) you want to learn</p>
+          <p>2) language(s) you can offer to teach someone else</p>
           <p>So we can show you some potential pairs!</p>
         </div>
       );
