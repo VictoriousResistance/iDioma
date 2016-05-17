@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './Button.jsx';
 import classNames from 'classnames';
 
 const nameMaker = (users) => {
@@ -23,6 +24,7 @@ const Room = ({ room, handleRoomChange, index }) => (
   >
     <div id={index} className="room">
       <div className="thread-name">{nameMaker(room.users)}</div>
+      <Button label='Delete' type='action' />
     </div>
   </a>
 );
