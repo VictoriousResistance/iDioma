@@ -31,13 +31,19 @@ const Connection = ({ connection, onRemoveClick, self, rooms, onNewConvo }) => (
   </div>
 );
 
-
-const Connections = ({ connections, self, rooms, onRemoveClick, onNewConvo }) => (
-  <div>
-    {connections.map((connection) => (
-      <Connection key={connection.id} connection={connection} self={self} onNewConvo={onNewConvo} onRemoveClick={onRemoveClick} rooms={rooms} />
-    ))}
-  </div>
-);
+const Connections = ({ connections, selfId, rooms, onRemoveClick, onNewConvo }) => {
+  if (connections.length === 0) {
+    return (
+      <div className="empty-tab-message">You haven't paired with other language learners yet. Complete your profile and check out your matches!</div>
+    );
+  }
+  return (
+    <div>
+      {connections.map((connection) => (
+        <Connection key={connection.id} connection={connection} selfId={selfId} onNewConvo={onNewConvo} onRemoveClick={onRemoveClick} rooms={rooms} />
+      ))}
+    </div>
+  );
+};
 
 export default Connections;
