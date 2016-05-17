@@ -7,7 +7,7 @@ import VideoRequestButton from './VideoRequestButton.jsx';
 
 // FIXME add handleOnVideo
 // current room will always be the first object in rooms (i.e. rooms[0])
-const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInput, handleOnSend, handleVideoRequestClick, handleVideoDisconnectClick, handleToggleHasError, isInVideo, isWaiting, hasError, errorMessage }) => {
+const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInput, handleOnSend, handleVideoRequestClick, handleVideoDisconnectClick, handleToggleHasError, isInVideo, isWaiting, hasError, errorMessage, invite }) => {
   const currRoom = rooms[0] || { id: 0, messages: [], users: [] };
   const msgTemplate = {
     roomId: currRoom.id,
@@ -15,15 +15,14 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInp
     body: '',
   };
   const waitingMessage = isWaiting ? <div> Waiting for response... </div> : null;
-  const errorMessageHolder = hasError ? 
-    <div> 
-    {errorMessage}  
-    <button className="x" onClick={() => { handleToggleHasError(); }}>x</button>
-    </div> 
-
+  const errorMessageHolder = hasError ?
+    <div>
+      {errorMessage}
+      <button className="x" onClick={() => { handleToggleHasError(); }}>x</button>
+    </div>
     : null;
   const videoRequestButton = !isInVideo ?
-    <VideoRequestButton handleVideoRequestClick={handleVideoRequestClick} otherId={rooms[0].users[0].id + '+' + rooms[0].users[0].firstName + '+' + rooms[0].users[0].lastName} />
+    <VideoRequestButton handleVideoRequestClick={handleVideoRequestClick} isWaiting={isWaiting} invite={invite} otherId={rooms[0].users[0].id + '+' + rooms[0].users[0].firstName + '+' + rooms[0].users[0].lastName} />
     : null;
     
   return (
@@ -38,7 +37,6 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInp
         <Input msgTemplate={msgTemplate} inputText={inputText} handleOnSend={handleOnSend} handleTextInput={handleTextInput} />
         <Button msgTemplate={msgTemplate} inputText={inputText} handleOnSend={handleOnSend} />
         {videoRequestButton}
-
       </div>
       {waitingMessage}
       {errorMessageHolder}

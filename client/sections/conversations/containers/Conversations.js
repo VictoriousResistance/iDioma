@@ -20,6 +20,7 @@ const mapStateToProps = (state) => (
     hasError: state.video.hasError,
     isWaiting: state.video.isWaiting,
     errorMessage: state.video.errorMessage,
+    invite: state.video.invite,
   }
 );
 
@@ -43,9 +44,8 @@ const mapDispatchToProps = (dispatch) => (
     },
 
     handleVideoRequestClick: (otherId) => {
-      dispatch(toggleIsWaiting());
-
       const invite = conversationsClient.inviteToConversation(otherId);
+      dispatch(toggleIsWaiting(invite));
       console.log('invite');
       console.dir(invite.cancel);
       invite.then(conversation => {

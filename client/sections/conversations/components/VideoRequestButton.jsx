@@ -1,8 +1,8 @@
 import React from 'react';
 
-const VideoRequestButton = ({ handleVideoRequestClick, otherId, isWaiting }) => {
+const VideoRequestButton = ({ handleVideoRequestClick, otherId, isWaiting, invite }) => {
   if (isWaiting) {
-    return null;
+    return <button className="action" onClick={() => { invite.cancel(); }}>Cancel Call</button>;
   }
   return (
     <button className="action" onClick={() => { handleVideoRequestClick(otherId); }} >
