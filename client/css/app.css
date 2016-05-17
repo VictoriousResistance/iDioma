@@ -369,6 +369,10 @@ button:disabled {
 
   /****************************** Top Bar ******************************/
 
+  .content {
+    margin-top: 11em;
+  }
+
   .right-nav {
     display: block;
     position: static;
@@ -376,12 +380,12 @@ button:disabled {
   /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
   .button-container {
     position: absolute;
-    left: 0;
+    left: 1em;
     bottom: -3em;
   }
 
   .person {
-    margin: 0 8% 5em 8%;
+    margin: 0 6% 5em 6%;
     border-bottom: transparent;
     border-top: 1.5px grey solid;
   }
