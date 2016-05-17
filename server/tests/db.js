@@ -40,12 +40,20 @@ module.exports.addUsers = () =>
       first_name: 'Ashwin',
       photo_url: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/10474675_10104083394007493_4059254427085666486_n.jpg?oh=d92cf7d27951e313eba87dfc7bfa9dc3&oe=57A317B2',
     },
+    {
+      id: '666999',
+      facebook_id: '10106480085987553',
+      last_name: 'Rshwin',
+      first_name: 'Aavi',
+      photo_url: 'http://www.slate.com/content/dam/slate/articles/health_and_science/science/2015/07/150730_SCI_Cecil_lion.jpg.CROP.promo-xlarge2.jpg',
+    },
   ]).then(r => storeResults('users', r));
 
 module.exports.addRelationships = (obj) => {
   const Mo = obj.users[0].dataValues.id;
   const Reina = obj.users[1].dataValues.id;
   const Ashwin = obj.users[2].dataValues.id;
+  const Rswhin = obj.users[3].dataValues.id;
 
   return Relationships.bulkCreate([
     {
@@ -68,9 +76,15 @@ module.exports.addRelationships = (obj) => {
     },
     {
       id: '454545',
+      type: 'request',
+      user1Id: Rswhin,
+      user2Id: Mo,
+    },
+    {
+      id: '454545',
       type: 'reject',
-      user1Id: Reina,
-      user2Id: Ashwin,
+      user1Id: Ashwin,
+      user2Id: Rswhin,
     },
   ]).then(r => storeResults('relationships', r));
 };
