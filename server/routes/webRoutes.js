@@ -12,7 +12,7 @@ const path = require('path');
 module.exports = (app, express) => {
 
   const redirectHome = (req, res) => res.redirect('/home/');
-
+  
   app.use(express.static(__dirname + '/../../client'));
 
   app.use('/home/*', auth.checkAuth,

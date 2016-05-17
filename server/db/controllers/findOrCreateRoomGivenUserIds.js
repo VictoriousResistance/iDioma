@@ -2,7 +2,30 @@ const db = require('../db.js');
 const Rooms = require('../models/roomModel.js');
 const UsersRooms = require('../models/userRoomModel.js');
 
-const getExistingRoomsInCommon = (user1Id, user2Id) => { //user1 is the one trying to start a conversation
+const getMessagesForRoom = require('../controllers/getMessagesGivenRoomId.js');
+
+const pluckRoom = roomResults => {
+  roomResults.dataValues.messages = []; // no need to get room messages if it's a new room
+  return roomResults.dataValues;
+};
+
+const createRoom = () =>
+  Rooms.create({
+    number_active_participants: 2,
+  })
+  .then(pluckRoom);
+
+const updateRoomToBeVisible = (room, userId) => {
+  const query =
+    `UPDATE users_rooms 
+    SET \`show\` = true 
+    WHERE room_id = '${room.id}' AND user_id = '${userId}'`;
+
+  return db.query(query)
+    .then(() => room);
+};
+
+const getExistingRoomsInCommon = (user1Id, user2Id) => {
   const queryStr =
     `SELECT * FROM ( 
       (
@@ -29,56 +52,49 @@ const getExistingRoomsInCommon = (user1Id, user2Id) => { //user1 is the one tryi
       ON ur_1.ur1_id = all_rooms.id
     )`;
 
-  return db.query(queryStr).spread((results, metadata) => results[0]); // should only ever be 1 room where those 2 people are exclusively chatting
+  return db.query(queryStr)
+    .spread((results, metadata) => results[0]) // should only ever be 1 room where those 2 people are exclusively chatting
+    .then(room =>
+      room ?
+      updateRoomToBeVisible(room.id, user1Id) :
+      false
+    );
 };
 
-const pluckRoom = roomResults => {
-  roomResults.dataValues.messages = [];
-  return roomResults.dataValues;
-};
+const addUsersToRoom = (room, user1Id, user2Id) =>
+  // if it has an messages array already, it's a new room
+  room.messages ?
+    UsersRooms.bulkCreate([
+      {
+        user_id: user1Id,
+        room_id: room.id,
+        show: true,
+      },
+      {
+        user_id: user2Id,
+        room_id: room.id,
+        show: true,
+      },
+    ]).then(() => room) :
+    room;
 
-const createOrReturnRoomInCommon = (room, user1Id, user2Id) => {
-  const updateRoomToBeVisibleForBothUsers = (roomId, userId) => {
-    const query =
-      `UPDATE users_rooms 
-      SET \`show\` = true 
-      WHERE room_id = '${roomId}' AND user_id = '${userId}'`;
+const createOrReturnRoomInCommon = (room) =>
+  room ?
+  room :
+  createRoom();
 
-    return db.query(query);
-  };
-
-  const createRoomWithBothUsers = (user1Id, user2Id) => {
-    const addUsersToRoom = (room, user1Id, user2Id) =>
-      UsersRooms.bulkCreate([
-        {
-          user_id: user1Id,
-          room_id: room.id,
-          show: true,
-        },
-        {
-          user_id: user2Id,
-          room_id: room.id,
-          show: true,
-        },
-      ]).then(() => room);
-
-    return Rooms.create({
-      number_active_participants: 2,
-    })
-    .then(pluckRoom)
-    .then(room => addUsersToRoom(room, user1Id, user2Id));
-  };
-
-  if (room) {
-    return updateRoomToBeVisibleForBothUsers(room.id, user1Id)
-      .then(() => room.messages = []) // TODO add actual messages from person
-      .then(() => room); 
-  } else {
-    return createRoomWithBothUsers(user1Id, user2Id);
-  }
-};
+const getMessages = (room) =>
+  room.messages ?
+  room :
+  getMessagesForRoom(room.id)
+  .then(messages => {
+    room.messages = messages;
+    return room;
+  });
 
 module.exports = (user1Id, user2Id) =>
   // check if they already have a room in common (only when they are the only 2 or less people in the room)
   getExistingRoomsInCommon(user1Id, user2Id)
-  .then(roomInCommon => createOrReturnRoomInCommon(roomInCommon, user1Id, user2Id));
+  .then(createOrReturnRoomInCommon)
+  .then(room => addUsersToRoom(room, user1Id, user2Id)) // no need to send back user data since client has it already
+  .then(getMessages);

@@ -3,7 +3,6 @@ const rooms = (state = [], action) => {
     case 'PUSH_ROOM_TO_TOP': {
       const i = isNaN(parseInt(action.index, 10)) ? 0 : parseInt(action.index, 10);
       // same as: return [state[i]].concat(state.slice(0, i)).concat(state.slice(i + 1));
-      console.log(i);
       return [
         state[i],
         ...state.slice(0, i),
@@ -24,9 +23,22 @@ const rooms = (state = [], action) => {
     }
 
     case 'ADD_NEW_ROOM': {
-      const { room, connection } = action;
+      const { room, self, connections } = action;
+      const selfKey = {};
+      selfKey[self.id] = self;
+      const usersKey = connections.reduce((cum, curr) => {
+        cum[curr.id] = curr;
+        return cum;
+      }
+      , selfKey);
+
       return [
-        Object.assign({ messages: [], users: [connection] }, room),
+        Object.assign({
+          messages: [],
+          users: connections,
+          usersKey,
+        }
+        , room),
         ...state,
       ];
     }
