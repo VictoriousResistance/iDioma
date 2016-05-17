@@ -299,7 +299,7 @@ button:disabled {
 
 
 
-/****************************** Video Component ******************************/\
+/****************************** Video Component related ******************************/\
 
 .video-container {
   position: fixed;
@@ -335,6 +335,12 @@ button:disabled {
   position: fixed;
   bottom: 230px;
   right: -5px;
+}
+
+.banner {
+  position: fixed;
+  right: 5px;
+  bottom: 5px;
 }
 
 @media handheld, only screen and (max-width: 767px) {
