@@ -7,12 +7,8 @@ const App = ({ children }) => (
     <div className="content">
       {children}
     </div>
-    <div id="video">
-      placeholder for video component. id is "video"
-    </div>
-    <div id="invite">
-      placeholder for incoming invites
-    </div>
+    <div id="video"></div>
+    <div id="invite"></div>
   </div>
 );
 
