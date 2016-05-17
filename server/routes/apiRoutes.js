@@ -123,14 +123,16 @@ apiRouter.route('/rooms')
         res.sendStatus(404);
       });
   })
-  .post((req, res) =>
+  .post((req, res) => {
     findOrCreateRoom(req.body.selfId, req.body.connectionId)
       .then((data) => {
+        console.log(data);
         res.status(201).send(data);
       })
       .catch(() => {
         res.sendStatus(404);
-      })
+      });
+  }
   );
 
 apiRouter.route('/messages')

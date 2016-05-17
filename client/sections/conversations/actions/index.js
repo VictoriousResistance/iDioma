@@ -41,10 +41,11 @@ export const toggleIsWaiting = (invite) => (
   }
 );
 
-export const addRoom = (room, connection) => (
+export const addNewRoom = (room, self, connections) => (
   {
     type: 'ADD_NEW_ROOM',
     room,
-    connection,
+    self,
+    connections,
   }
 );

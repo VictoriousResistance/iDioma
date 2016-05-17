@@ -38,7 +38,6 @@ module.exports = (req, res, next) => {
   const self = req.idioma.profile;
 
   getRoomData(self.id)
-  .then(helpers.inspect)
   .then(rooms => getUsersInfoForRooms(rooms, self))
   .then(addMessagesToRooms)
   .then(modifiedArray => req.idioma.rooms = modifiedArray)
@@ -47,4 +46,3 @@ module.exports = (req, res, next) => {
     res.status(404).send(error);
   });
 };
-

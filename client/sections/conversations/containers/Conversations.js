@@ -36,13 +36,12 @@ const mapDispatchToProps = (dispatch) => (
       // add message to database
       request('POST', '/api/messages', {
         json: msg,
-      })
-      .done(data => {
-        console.log('client', data);
-        if (data.statusCode !== 201) {
-          // TODO: handle error
-        }
       });
+      // .done(data => {
+      //   if (data.statusCode !== 201) {
+      //     // TODO: handle error
+      //   }
+      // });
     },
 
     handleTextInput: (event) => {
