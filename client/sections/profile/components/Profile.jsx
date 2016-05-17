@@ -21,6 +21,7 @@ const Profile = ({ profile, onUpdateClick }) => {
         <WillLearn /> {/*className is "profile-section"*/}
         <Description /> {/*className is "profile-section"*/}
         {button}
+        <div className="tip">Tip: Click the "Add" button to add a language.</div>
       </div>
 
     </div>

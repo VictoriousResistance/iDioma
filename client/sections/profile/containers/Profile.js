@@ -19,6 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
     .done(data => {
       if (data.statusCode === 200) {
         dispatch(completeUpdate());
+        window.location.reload();
       }
     });
   },

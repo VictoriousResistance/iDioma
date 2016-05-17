@@ -7,6 +7,20 @@ import VideoRequestButton from './VideoRequestButton.jsx';
 
 // current room will always be the first object in rooms (i.e. rooms[0])
 const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInput, handleOnSend, handleVideoRequestClick, handleVideoDisconnectClick, handleToggleHasError, isInVideo, isWaiting, hasError, errorMessage, invite }) => {
+  if (rooms.length === 0) {
+    return (
+      <div className="empty-tab-message">
+        <p>You haven't had a conversation with a pair yet. Break the ice?</p>
+        <p>Potential conversation starters:</p>
+        <p>1) Exchange a simple greeting in a language you and your pair both know.</p>
+        <p>2) Share an interesting cultural anecdote.</p>
+        <p>3) Introduce a song you like.</p>
+        <p>4) Introduce a movie you recently watched.</p>
+        <p>Be open and creative!</p>
+      </div>
+    );
+  }
+
   const currRoom = rooms[0] || { id: 0, messages: [], users: [] };
 
   const msgTemplate = {

@@ -163,6 +163,14 @@ button:disabled {
   color: #004080;
 }
 
+.empty-tab-message {
+  width: 50%;
+  margin: 0 auto;
+  font-style: italic;
+  font-weight: bold;
+  color: grey;
+}
+
 /****************************** Language Component ******************************/
 
 .language {
@@ -297,7 +305,9 @@ button:disabled {
   min-height: 4em;
 }
 
-
+.tip {
+  margin-top: 1em;
+}
 
 /****************************** Video Component related ******************************/\
 
@@ -373,6 +383,10 @@ button:disabled {
   .text-container {
     display: block;
     position: static;
+  }
+
+  .empty-tab-message {
+    width: 80%;
   }
 
   /****************************** Profile Tab ******************************/
