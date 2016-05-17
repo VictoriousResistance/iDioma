@@ -4,20 +4,20 @@ import { Link } from 'react-router';
 const TopBar = () => (
   <div className="topbar">
     <div className="logo">
-      <a href="/home">iDioma</a>
+      <a href="/home/matches">iDioma</a>
     </div>
     <ul className="main-nav">
       <li className="main-nav-item">
-        <Link to="/home/connections">My Connections</Link>
+        <Link to="/home/matches">Browse Matches</Link>
       </li>
       <li className="main-nav-item">
-        <Link to="/home/matches">My Matches</Link>
+        <Link to="/home/requests">Pair Requests</Link>
       </li>
       <li className="main-nav-item">
-        <Link to="/home/requests">Connection Requests</Link>
+        <Link to="/home/connections">My Pairs</Link>
       </li>
       <li className="main-nav-item">
-        <Link to="/home/conversations">Conversations</Link>
+        <Link to="/home/conversations">My Conversations</Link>
       </li>
     </ul>
     <ul className="right-nav">
