@@ -35,10 +35,16 @@ button:disabled {
   cursor: auto;
 }
 
+.content {
+  margin-top: 8em;
+}
+
 /****************************** Top Bar ******************************/
 
 .topbar {
-  position: relative;
+  position: fixed;
+  top: 0;
+  width: 100%;
   padding: 1% 8% 0 8%;
   background-color: #004080;
   font-weight: bold;
