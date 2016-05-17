@@ -17,7 +17,6 @@ const mapDispatchToProps = (dispatch) => (
     onNewConvo: (selfId, connection, currentRooms) => {
       request('POST', '/api/relationships', {
         json: {
-          newType: 'conversation',
           selfId,
           connectionId: connection.id,
         },
