@@ -44,11 +44,12 @@ const mapDispatchToProps = (dispatch) => (
 
     handleVideoRequestClick: (otherId) => {
       dispatch(toggleIsWaiting());
+
       conversationsClient.inviteToConversation(otherId).then(conversation => {
         dispatch(toggleIsWaiting());
-
+        
         dispatch(toggleIsInVideo());
-        ReactDOM.render(<Video conversation={conversation} />, document.getElementById('video'));
+        ReactDOM.render(<Video conversation={conversation} handleVideoDisconnectClick={() => { ReactDOM.unmountComponentAtNode(document.getElementById('video')); }}/>, document.getElementById('video'));
         conversation.on('disconnected', () => {
           ReactDOM.unmountComponentAtNode(document.getElementById('video'));
           dispatch(toggleIsInVideo());
@@ -64,10 +65,6 @@ const mapDispatchToProps = (dispatch) => (
     handleToggleHasError: () => {
       dispatch(toggleHasError());
     },
-
-    // handleVideoDisconnectClick: () => {
-    //   ReactDOM.unmountComponentAtNode(document.getElementById('video'));
-    // },
 
   }
 );
