@@ -383,6 +383,10 @@ button:disabled {
     position: static;
   }
 
+  .empty-tab-message {
+    width: 80%;
+  }
+
   /****************************** Profile Tab ******************************/
   .profile {
     margin-left: 10%;
