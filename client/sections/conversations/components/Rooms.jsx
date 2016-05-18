@@ -15,7 +15,6 @@ const Room = ({ selfId, room, handleRoomChange, roomDeleter, index }) => (
   <a href="#" onClick={(e) => handleRoomChange(e, index)}>
     <div className="room">
       <div className="thread-name">{nameMaker(room.users)}</div>
-
     </div>
   </a>
 );
@@ -37,3 +36,5 @@ const Rooms = ({ selfId, rooms, handleRoomChange, roomDeleter }) => (
 export default Rooms;
 
 // <Button label='Delete' type='action' clickHandler={(e) => roomDeleter(e, index, selfId, room.id)} />
+      // <div className="thread-name">{room.onlineNow ? 'Online now!' : ''}</div>
+      // <Button label='Delete' type='action' clickHandler={(e) => roomDeleter(e, index, selfId, room.id)} />

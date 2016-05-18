@@ -25,7 +25,7 @@ const rooms = (state = [], action) => {
       const messages = room.messages || [];
       return [
         ...state.slice(0, roomNum),
-        Object.assign({}, room, { messages: messages.concat(action.msg) }),
+        Object.assign({}, room, { messages: messages.concat(action.msg), onlineNow: true }),
         ...state.slice(roomNum + 1),
       ];
     }
