@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Conversations from '../components/Conversations.jsx';
-import { addMsg, changeInputText, changeCurrentRoom, toggleIsInVideo, toggleIsWaiting, toggleHasError } from '../actions/index.js';
+import { addMsg, changeInputText, changeCurrentRoom, deleteRoom, toggleIsInVideo, toggleIsWaiting, toggleHasError } from '../actions/index.js';
 import { socket } from '../sockets.js';
 import request from 'then-request';
 import React from 'react';
@@ -22,8 +22,13 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = (dispatch) => (
   {
-    handleRoomChange: (roomId) => {
-      dispatch(changeCurrentRoom(roomId));
+    handleRoomChange: (roomIndex) => {
+      dispatch(changeCurrentRoom(roomIndex));
+    },
+
+    roomDeleter: (e, roomIndex) => {
+      dispatch(deleteRoom(roomIndex));
+      e.stopPropagation();
     },
 
     handleOnSend: (msg) => {
