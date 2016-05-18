@@ -31,6 +31,7 @@ module.exports.pluckMatches = (matchesResults) => (
       lastName: matchResult.teach_last,
       description: matchResult.teach_description,
       photoUrl: matchResult.teach_url,
+      fbId: matchResult.teach_facebook_id,
     }
   ))
 );
