@@ -5,6 +5,7 @@ var passport = require('passport');
 var sockets = require('./routes/sockets.js');
 var auth = require('./auth/auth.js');
 var fs = require('fs');
+var path = require('path');
 
 require('./db/index.js')(launchServer);
 
@@ -34,8 +35,8 @@ function launchServer() {
 // ZACH: sockets in a different file
   var server = require('https').createServer(
     {
-      key: fs.readFileSync('./tls/key.pem'),
-      cert: fs.readFileSync('./tls/cert.pem'),
+      key: fs.readFileSync(path.resolve(__dirname, 'tls', 'privkey.pem')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'tls', 'cert.pem')),
     },
     app);
   sockets(server);
