@@ -4,6 +4,7 @@ var session = require('express-session');
 var passport = require('passport');
 var sockets = require('./routes/sockets.js');
 var auth = require('./auth/auth.js');
+var fs = require('fs');
 
 require('./db/index.js')(launchServer);
 
@@ -31,7 +32,12 @@ function launchServer() {
     require('./routes/apiRoutes.js'));
 
 // ZACH: sockets in a different file
-  var server = require('https').createServer(app);
+  var server = require('https').createServer(
+    {
+      key: fs.readFileSync('./tls/key.pem'),
+      cert: fs.readFileSync('./tls/cert.pem'),
+    },
+    app);
   sockets(server);
 
   //twilio
@@ -42,6 +48,8 @@ function launchServer() {
   server.listen(ports[1], function() {
     console.log('iDioma listening on port: ' + ports[1]);
   });
-  app.listen(ports[0]);
+  app.listen(ports[0], function() {
+    console.log('iDioma listening on port: ' + ports[0]);
+  });
 }
 
