@@ -1,7 +1,7 @@
 import * as actions from './actions/';
 import io from 'socket.io-client';
 
-export const socket = io();
+export const socket = io.connect('https://idioma.live', { secure: true });
 
 socket.emitMsg = (msg) => {
   socket.emit('new message', msg);
