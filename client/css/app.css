@@ -276,12 +276,14 @@ button:disabled {
   display: inline-block;
   width: 50%;
   font-weight: bold;
+  margin-top: .5em;
 }
 
 .level-label {
   display: inline-block;
   width: 35%;
   font-weight: bold;
+  margin-top: .5em;
 }
 
 .x {
