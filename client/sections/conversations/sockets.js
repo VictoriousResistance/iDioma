@@ -1,4 +1,6 @@
-import * as actions from './actions/';
+import * as conversationActions from './actions/';
+import * as connectionsActions from '../connections/actions/';
+import * as connectionRequestsActions from '../connectionRequests/actions/';
 import io from 'socket.io-client';
 
 let socketIO;
@@ -27,12 +29,13 @@ export default function (store) {
 
   // add socket listeners
   socket.on('new message', msg => {
-    dispatch(actions.addMsg(msg));
+    dispatch(conversationActions.addMsg(msg));
   });
 
-  socket.on('online now', roomId => {
-    console.log('got it');
-    dispatch(actions.incrementOnlineNow(roomId));
+  socket.on('online now', data => {
+    dispatch(conversationActions.incrementOnlineNow(data.roomId));
+    dispatch(connectionsActions.showOnlineNow(data.userId));
+    dispatch(connectionRequestsActions.showOnlineNow(data.userId));
   });
 }
 
@@ -42,6 +45,5 @@ export const socket = socketIO;
 TODO: join new room
 new message incoming should open new room
 leave room
-online now
 */
 

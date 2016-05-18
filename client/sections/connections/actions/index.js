@@ -7,3 +7,8 @@ export const removeConnection = (id) => ({
   type: 'REMOVE_CONNECTION',
   id,
 });
+
+export const showOnlineNow = (id) => ({
+  type: 'SHOW_ONLINE_NOW',
+  id,
+});
