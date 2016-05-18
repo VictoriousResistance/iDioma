@@ -128,7 +128,6 @@ apiRouter.route('/rooms')
   .post((req, res) => {
     findOrCreateRoom(req.body.selfId, req.body.connectionId)
       .then((data) => {
-        console.log(data);
         res.status(201).send(data);
       })
       .catch(() => {
