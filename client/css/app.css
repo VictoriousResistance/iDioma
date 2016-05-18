@@ -35,15 +35,22 @@ button:disabled {
   cursor: auto;
 }
 
+.content {
+  margin-top: 8em;
+}
+
 /****************************** Top Bar ******************************/
 
 .topbar {
-  position: relative;
+  position: fixed;
+  top: 0;
+  width: 100%;
   padding: 1% 8% 0 8%;
   background-color: #004080;
   font-weight: bold;
   margin-bottom: 2.5em;
   border-bottom: 1em #132A6C solid;
+  z-index: 3;
 }
 
 .main-nav-item, .right-nav-item {
@@ -88,6 +95,10 @@ button:disabled {
   border-bottom: 1.5px grey solid;
 }
 
+.person:last-child {
+  border-bottom: transparent;
+}
+
 .person-name {
   font-size: 1.1em;
   font-weight: bold;
@@ -100,6 +111,7 @@ button:disabled {
 .person-description {
   margin-left: .5em;
   font-style: italic;
+  margin-bottom: .3em;
 }
 
 .profile-picture-container {
@@ -264,12 +276,14 @@ button:disabled {
   display: inline-block;
   width: 50%;
   font-weight: bold;
+  margin-top: .5em;
 }
 
 .level-label {
   display: inline-block;
   width: 35%;
   font-weight: bold;
+  margin-top: .5em;
 }
 
 .x {
@@ -335,7 +349,7 @@ button:disabled {
 }
 
 .self-media-container video, .other-media-container video {
-  border: 2px #004080 solid;
+  border: 3px #004080 solid;
   border-radius: 5px;
   height: 100%;
   width: 100%;
@@ -359,9 +373,21 @@ button:disabled {
   display: inline-block;
 }
 
+.start-call {
+  background-color: #008000;
+}
+
+.end-call {
+  background-color: #FF0000;
+}
+
 @media handheld, only screen and (max-width: 767px) {
 
   /****************************** Top Bar ******************************/
+
+  .content {
+    margin-top: 11em;
+  }
 
   .right-nav {
     display: block;
@@ -370,14 +396,18 @@ button:disabled {
   /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
   .button-container {
     position: absolute;
-    left: 0;
-    bottom: -3em;
+    left: 1em;
+    bottom: -2em;
   }
 
   .person {
-    margin: 0 8% 5em 8%;
+    margin: 0 6% 5em 6%;
     border-bottom: transparent;
     border-top: 1.5px grey solid;
+  }
+
+  .person:first-child {
+    border-top: transparent;
   }
 
   .text-container {
