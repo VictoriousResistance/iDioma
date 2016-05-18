@@ -17,6 +17,8 @@ const updateLanguages = require('../db/controllers/updateLanguagesGivenTypeAndUs
 
 // controller for /rooms
 const findRoom = require('../db/controllers/findOrCreateRoomGivenUserIds');
+const hideRoom = require('../db/controllers/hideRoomGivenUserIdAndRoomId');
+const decrementRoom = require('../db/controllers/removeUserRoomGivenUserIdAndRoomId');
 
 // controllers /messages
 const getMessages = require('../db/controllers/getMessagesGivenRoomId');
@@ -132,8 +134,18 @@ apiRouter.route('/rooms')
       .catch(() => {
         res.sendStatus(404);
       });
-  }
-  );
+  })
+  .put((req, res) => {
+    decrementRoom(req.body.userId, req.body.roomId);
+
+    hideRoom(req.body.userId, req.body.roomId)
+      .then((data) => {
+        res.status(200).send(data);
+      })
+      .catch(() => {
+        res.sendStatus(404);
+      });
+  });
 
 apiRouter.route('/messages')
   .get((req, res) => {

@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './Button.jsx';
 import classNames from 'classnames';
 
 const nameMaker = (users) => {
@@ -10,19 +11,11 @@ const nameMaker = (users) => {
   );
 };
 
-const Room = ({ room, handleRoomChange, index }) => (
-  <a
-    href="#"
-    className={classNames({
-      'thread-list-item': true,
-      active: false, /* change this to be responsive using current room */
-    })}
-    onClick={(e) => {
-      handleRoomChange(e);
-    }}
-  >
-    <div id={index} className="room">
+const Room = ({ selfId, room, handleRoomChange, roomDeleter, index }) => (
+  <a href="#" onClick={(e) => handleRoomChange(e, index)}>
+    <div className="room">
       <div className="thread-name">{nameMaker(room.users)}</div>
+      <Button label='Delete' type='action' clickHandler={(e) => roomDeleter(e, index, selfId, room.id)} />
     </div>
   </a>
 );
@@ -31,11 +24,11 @@ const Room = ({ room, handleRoomChange, index }) => (
 /* add time last updated?? */
 /* display last message text? */
 
-const Rooms = ({ rooms, handleRoomChange }) => (
+const Rooms = ({ selfId, rooms, handleRoomChange, roomDeleter }) => (
   <div className="thread-section">
     <div className="thread-list">
       {rooms.map((room, i, roomsState) => (
-        <Room index={i} key={room.id} room={room} handleRoomChange={handleRoomChange} />
+        <Room key={i} index={i} room={room} handleRoomChange={handleRoomChange} roomDeleter={roomDeleter} selfId={selfId} />
       ))}
     </div>
   </div>

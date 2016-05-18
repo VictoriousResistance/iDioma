@@ -13,10 +13,17 @@ export const changeInputText = (value) => (
   }
 );
 
-export const changeCurrentRoom = (index) => (
+export const changeCurrentRoom = (roomIndex) => (
   {
     type: 'PUSH_ROOM_TO_TOP',
-    index,
+    roomIndex,
+  }
+);
+
+export const deleteRoom = (roomIndex) => (
+  {
+    type: 'DELETE_ROOM',
+    roomIndex,
   }
 );
 

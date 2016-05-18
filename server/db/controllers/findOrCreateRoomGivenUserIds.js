@@ -56,7 +56,7 @@ const getExistingRoomsInCommon = (user1Id, user2Id) => {
     .spread((results, metadata) => results[0]) // should only ever be 1 room where those 2 people are exclusively chatting
     .then(room =>
       room ?
-      updateRoomToBeVisible(room.id, user1Id) :
+      updateRoomToBeVisible(room, user1Id) :
       false
     );
 };

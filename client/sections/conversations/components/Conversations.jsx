@@ -6,7 +6,7 @@ import Button from './Button.jsx';
 import VideoRequestButton from './VideoRequestButton.jsx';
 
 // current room will always be the first object in rooms (i.e. rooms[0])
-const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInput, handleOnSend, handleVideoRequestClick, handleVideoDisconnectClick, handleToggleHasError, isInVideo, isWaiting, hasError, errorMessage, invite }) => {
+const Conversations = ({ self, rooms, inputText, handleRoomChange, roomDeleter, handleTextInput, handleOnSend, handleVideoRequestClick, handleVideoDisconnectClick, handleToggleHasError, isInVideo, isWaiting, hasError, errorMessage, invite }) => {
   if (rooms.length === 0) {
     return (
       <div className="empty-tab-message">
@@ -25,10 +25,14 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInp
 
   const msgTemplate = {
     roomId: currRoom.id,
-    senderId: user.id,
-    from: { firstName: user.firstName, lastName: user.lastName },
+    senderId: self.id,
+    from: { firstName: self.firstName, lastName: self.lastName },
     body: '',
   };
+
+  const submitMsg = () =>
+    handleOnSend(Object.assign({}, msgTemplate, { body: inputText.value }));
+
   const waitingMessage = isWaiting ?
     <div>Waiting for response...</div>
     : null;
@@ -47,14 +51,14 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, handleTextInp
   return (
     <div className="chatapp">
       <div>
-        <Rooms rooms={rooms} currentRoom={currRoom} handleRoomChange={handleRoomChange} />
+        <Rooms rooms={rooms} currentRoom={currRoom} handleRoomChange={handleRoomChange} roomDeleter={roomDeleter} selfId={self.id} />
       </div>
       <div>
         <div>
           <Messages usersKey={currRoom.usersKey} messages={currRoom.messages || []} />
         </div>
-        <Input msgTemplate={msgTemplate} inputText={inputText} handleOnSend={handleOnSend} handleTextInput={handleTextInput} />
-        <Button msgTemplate={msgTemplate} inputText={inputText} handleOnSend={handleOnSend} />
+        <Input msgTemplate={msgTemplate} inputText={inputText} clickHandler={submitMsg} handleTextInput={handleTextInput} />
+        <Button msgTemplate={msgTemplate} inputText={inputText} clickHandler={submitMsg} label='Send' type='action' />
         {videoRequestButton}
       </div>
       {waitingMessage}

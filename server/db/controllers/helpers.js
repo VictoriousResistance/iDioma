@@ -8,6 +8,7 @@ module.exports.inspect = (i) => {
 const pluckUser = module.exports.pluckUser = (user) =>
   ({
     id: user.id,
+    fbId: user.facebook_id,
     firstName: user.first_name,
     lastName: user.last_name,
     description: user.description,

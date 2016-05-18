@@ -1,13 +1,13 @@
 import React from 'react';
 
 // should disable when no rooms
-const Input = ({ msgTemplate, inputText, handleTextInput, handleOnSend }) => (
+const Input = ({ msgTemplate, inputText, handleTextInput, clickHandler }) => (
   <input
     className="message-composer"
     type="text"
     value={inputText.value}
     onChange={handleTextInput}
-    onKeyDown={(e) => { if (e.keyCode === 13) handleOnSend(Object.assign({}, msgTemplate, { body: inputText.value })); }}
+    onKeyDown={(e) => (e.keyCode === 13) && clickHandler()}
   />
 );
 

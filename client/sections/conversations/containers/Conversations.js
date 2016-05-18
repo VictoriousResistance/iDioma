@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Conversations from '../components/Conversations.jsx';
-import { addMsg, changeInputText, changeCurrentRoom, toggleIsInVideo, toggleIsWaiting, toggleHasError } from '../actions/index.js';
+import { addMsg, changeInputText, changeCurrentRoom, deleteRoom, toggleIsInVideo, toggleIsWaiting, toggleHasError } from '../actions/index.js';
 import { socket } from '../sockets.js';
 import request from 'then-request';
 import React from 'react';
@@ -9,7 +9,7 @@ import Video from '../components/Video.jsx';
 
 const mapStateToProps = (state) => (
   {
-    user: state.profile,
+    self: state.profile,
     rooms: state.rooms,
     inputText: state.inputText,
     isInVideo: state.video.isInVideo,
@@ -22,8 +22,20 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = (dispatch) => (
   {
-    handleRoomChange: (event) => {
-      dispatch(changeCurrentRoom(event.target.parentElement.id));
+    handleRoomChange: (e, roomIndex) => {
+      dispatch(changeCurrentRoom(roomIndex));
+      e.preventDefault();
+    },
+
+    roomDeleter: (e, roomIndex, selfId, roomId) => {
+      dispatch(deleteRoom(roomIndex));
+      e.stopPropagation();
+      request('PUT', '/api/rooms', {
+        json: {
+          userId: selfId,
+          roomId,
+        },
+      });
     },
 
     handleOnSend: (msg) => {
@@ -37,11 +49,6 @@ const mapDispatchToProps = (dispatch) => (
       request('POST', '/api/messages', {
         json: msg,
       });
-      // .done(data => {
-      //   if (data.statusCode !== 201) {
-      //     // TODO: handle error
-      //   }
-      // });
     },
 
     handleTextInput: (event) => {
