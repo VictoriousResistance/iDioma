@@ -51,6 +51,18 @@ const rooms = (state = [], action) => {
       ];
     }
 
+    case 'INCREMENT_ROOM_ONLINE_NOW': {
+      const { roomId } = action;
+      const roomNum = state.reduce((cum, curr, i) => ((curr.id === roomId) ? i : cum), 'N/A'); // TODO: what if nothing is found?
+      const room = state[roomNum];
+      const onlineNow = room.onlineNow || 0;
+      return [
+        ...state.slice(0, roomNum),
+        Object.assign({}, room, { onlineNow: onlineNow + 1 }),
+        ...state.slice(roomNum + 1),
+      ];
+    }
+
     default:
       return state;
   }

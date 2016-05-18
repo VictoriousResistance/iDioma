@@ -56,3 +56,10 @@ export const addNewRoom = (room, self, connections) => (
     connections,
   }
 );
+
+export const incrementOnlineNow = (roomId) => (
+    {
+      type: 'INCREMENT_ROOM_ONLINE_NOW',
+      roomId,
+    }
+);
