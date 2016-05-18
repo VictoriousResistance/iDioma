@@ -1,26 +1,28 @@
 
-const languageList = {
-  1: 'English',
-  2: 'Spanish',
+export const languageList = {
+  1: 'Arabic',
+  2: 'Bengali',
   3: 'Chinese',
-  4: 'Arabic',
-  5: 'Hindi',
-  6: 'Portuguese',
-  7: 'Bengali',
-  8: 'Russian',
-  9: 'Japanese',
-  10: 'Indonesian',
+  4: 'English',
+  5: 'French',
+  6: 'German',
+  7: 'Hindi',
+  8: 'Indonesian',
+  9: 'Italian',
+  10: 'Japanese',
   11: 'Korean',
-  12: 'German',
-  13: 'French',
-  14: 'Telugu',
-  15: 'Turkish',
-  16: 'Urdu',
-  17: 'Vietnamese',
-  18: 'Tamil',
-  19: 'Italian',
-  20: 'Persian',
-  21: 'Malay',
+  12: 'Malay',
+  13: 'Persian',
+  14: 'Portuguese',
+  15: 'Russian',
+  16: 'Spanish',
+  17: 'Tamil',
+  18: 'Telugu',
+  19: 'Turkish',
+  20: 'Urdu',
+  21: 'Vietnamese',
 };
-
 export default languageList;
+
+export const orderedArrayOfLanguages =
+  Object.keys(languageList).map((languageId) => languageList[languageId]);

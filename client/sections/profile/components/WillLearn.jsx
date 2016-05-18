@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import Language from '../../../components/Language.jsx';
-import languageList from '../languageList.js';
-
-export const orderedArrayOfLanguages = (languageListObject) =>
-  Object.keys(languageListObject).map((key) => languageListObject[key]);
+import { orderedArrayOfLanguages } from '../languageList.js';
 
 export const languageDropdown = (languageArray) => {
-  return languageArray.map((language) => (
-    <option value={language}>{language}</option>
+  return languageArray.map((language, i) => (
+    <option value={language} key={i}>{language}</option>
   ));
 };
 
@@ -35,7 +32,7 @@ export default class WillLearn extends Component {
         </div>
 
         <select ref="learn" className="language-selection" defaultValue="english">
-          {languageDropdown(orderedArrayOfLanguages(languageList))}
+          {languageDropdown(orderedArrayOfLanguages)}
         </select>
 
         <select ref="learn-level" className="level-selection" defaultValue="basic">

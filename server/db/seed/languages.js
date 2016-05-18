@@ -1,14 +1,34 @@
-import languageList from '../../../client/sections/profile/languageList.js';
-
 const Languages = require('../models/languageModel.js');
 
+const languageList = [
+  'Arabic',
+  'Bengali',
+  'Chinese',
+  'English',
+  'French',
+  'German',
+  'Hindi',
+  'Indonesian',
+  'Italian',
+  'Japanese',
+  'Korean',
+  'Malay',
+  'Persian',
+  'Portuguese',
+  'Russian',
+  'Spanish',
+  'Tamil',
+  'Telugu',
+  'Turkish',
+  'Urdu',
+  'Vietnamese',
+];
+
+const languageEntries = languageList.map((language, index) =>
+  ({ id: index + 1, name: language }));
+
 module.exports.seed = () =>
-  Languages.bulkCreate([
-    { id: '1', name: 'English' },
-    { id: '2', name: 'Spanish' },
-    { id: '3', name: 'French' },
-    { id: '4', name: 'German' },
-  ])
+  Languages.bulkCreate(languageEntries)
   .then((languages) => {
     const idToLanguage = module.exports.idToLanguage = {};
     const languageToId = module.exports.languageToId = {};

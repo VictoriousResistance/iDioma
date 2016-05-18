@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Language from '../../../components/Language.jsx';
-import languageList from '../languageList.js';
-import { orderedArrayOfLanguages, languageDropdown } from './WillLearn.jsx'
+import { orderedArrayOfLanguages } from '../languageList.js';
+import { languageDropdown } from './WillLearn.jsx'
 
 class CanTeach extends Component {
 
@@ -26,7 +26,7 @@ class CanTeach extends Component {
         </div>
 
         <select ref="teach" className="language-selection" defaultValue="english">
-          {languageDropdown(orderedArrayOfLanguages(languageList))}
+          {languageDropdown(orderedArrayOfLanguages)}
         </select>
 
         <select ref="teach-level" className="level-selection" defaultValue="native">
