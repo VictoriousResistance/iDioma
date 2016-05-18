@@ -349,7 +349,7 @@ button:disabled {
 }
 
 .self-media-container video, .other-media-container video {
-  border: 2px #004080 solid;
+  border: 3px #004080 solid;
   border-radius: 5px;
   height: 100%;
   width: 100%;
