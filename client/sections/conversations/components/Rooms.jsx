@@ -28,7 +28,7 @@ const Rooms = ({ selfId, rooms, handleRoomChange, roomDeleter }) => (
   <div className="thread-section">
     <div className="thread-list">
       {rooms.map((room, i, roomsState) => (
-        <Room index={i} room={room} handleRoomChange={handleRoomChange} roomDeleter={roomDeleter} selfId={selfId} />
+        <Room key={i} index={i} room={room} handleRoomChange={handleRoomChange} roomDeleter={roomDeleter} selfId={selfId} />
       ))}
     </div>
   </div>
