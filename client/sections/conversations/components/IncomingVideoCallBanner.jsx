@@ -9,8 +9,8 @@ const IncomingVideoCallBanner = ({ invite, handleConversationStarted, sender, ha
   <div className="banner">
     <div>Incoming Video Call from {sender}...</div>
     <audio autoPlay loop src="/assets/ringer.mp3"></audio>
-    <button className="action" onClick={() => { invite.accept().then(handleConversationStarted); unmountComponent(); }}>Accept</button>
-    <button className="action negative-action" onClick={() => { invite.reject(); unmountComponent(); handleToggleIsInVideo(); }}>Decline</button>
+    <button className="action start-call" onClick={() => { invite.accept().then(handleConversationStarted); unmountComponent(); }}>Accept</button>
+    <button className="action end-call" onClick={() => { invite.reject(); unmountComponent(); handleToggleIsInVideo(); }}>Decline</button>
   </div>
 );
 

@@ -373,6 +373,14 @@ button:disabled {
   display: inline-block;
 }
 
+.start-call {
+  background-color: #008000;
+}
+
+.end-call {
+  background-color: #FF0000;
+}
+
 @media handheld, only screen and (max-width: 767px) {
 
   /****************************** Top Bar ******************************/
