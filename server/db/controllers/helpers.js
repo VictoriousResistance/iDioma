@@ -1,8 +1,8 @@
 var num = 0;
-module.exports.inspect = (i) => {
+module.exports.inspect = (a) => {
   console.log('INSPECTOR #', ++num);
-  console.log(i);
-  return i;
+  console.log(a);
+  return a;
 };
 
 const pluckUser = module.exports.pluckUser = (user) =>
