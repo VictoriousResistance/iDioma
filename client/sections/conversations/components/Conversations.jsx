@@ -20,13 +20,13 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, roomDeleter, 
       </div>
     );
   }
-  
+
   const currRoom = rooms[0] || { id: 0, messages: [], users: [] };
 
   const msgTemplate = {
     roomId: currRoom.id,
-    senderId: user.id,
-    from: { firstName: user.firstName, lastName: user.lastName },
+    senderId: self.id,
+    from: { firstName: self.firstName, lastName: self.lastName },
     body: '',
   };
 
@@ -51,7 +51,7 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, roomDeleter, 
   return (
     <div className="chatapp">
       <div>
-        <Rooms rooms={rooms} currentRoom={currRoom} handleRoomChange={handleRoomChange} roomDeleter={roomDeleter} />
+        <Rooms rooms={rooms} currentRoom={currRoom} handleRoomChange={handleRoomChange} roomDeleter={roomDeleter} selfId={self.id} />
       </div>
       <div>
         <div>
