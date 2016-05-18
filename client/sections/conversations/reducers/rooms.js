@@ -1,10 +1,18 @@
 const rooms = (state = [], action) => {
   switch (action.type) {
     case 'PUSH_ROOM_TO_TOP': {
-      const i = isNaN(parseInt(action.index, 10)) ? 0 : parseInt(action.index, 10);
+      const i = action.roomIndex;
       // same as: return [state[i]].concat(state.slice(0, i)).concat(state.slice(i + 1));
       return [
         state[i],
+        ...state.slice(0, i),
+        ...state.slice(i + 1),
+      ];
+    }
+
+    case 'DELETE_ROOM': {
+      const i = action.roomIndex;
+      return [
         ...state.slice(0, i),
         ...state.slice(i + 1),
       ];

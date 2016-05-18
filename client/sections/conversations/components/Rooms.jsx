@@ -11,11 +11,11 @@ const nameMaker = (users) => {
   );
 };
 
-const Room = ({ room, handleRoomChange, index }) => (
+const Room = ({ room, handleRoomChange, roomDeleter, index }) => (
   <a href="#" onClick={() => handleRoomChange(index)}>
     <div className="room">
       <div className="thread-name">{nameMaker(room.users)}</div>
-      <Button label='Delete' type='action' clickHandler={() => console.log(room.id)} />
+      <Button label='Delete' type='action' clickHandler={(e) => roomDeleter(e, index)} />
     </div>
   </a>
 );
@@ -24,11 +24,11 @@ const Room = ({ room, handleRoomChange, index }) => (
 /* add time last updated?? */
 /* display last message text? */
 
-const Rooms = ({ rooms, handleRoomChange }) => (
+const Rooms = ({ rooms, handleRoomChange, roomDeleter }) => (
   <div className="thread-section">
     <div className="thread-list">
       {rooms.map((room, i, roomsState) => (
-        <Room index={i} room={room} handleRoomChange={handleRoomChange} />
+        <Room index={i} room={room} handleRoomChange={handleRoomChange} roomDeleter={roomDeleter} />
       ))}
     </div>
   </div>
