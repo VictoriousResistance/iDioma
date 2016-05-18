@@ -1,3 +1,5 @@
+import languageList from '../../../client/sections/profile/languageList.js';
+
 const Languages = require('../models/languageModel.js');
 
 module.exports.seed = () =>

@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
 import Language from '../../../components/Language.jsx';
+import languageList from '../languageList.js';
 
-class WillLearn extends Component {
+export const orderedArrayOfLanguages = (languageListObject) =>
+  Object.keys(languageListObject).map((key) => languageListObject[key]);
+
+export const languageDropdown = (languageArray) => {
+  return languageArray.map((language) => (
+    <option value={language}>{language}</option>
+  ));
+};
+
+
+export default class WillLearn extends Component {
 
   render() {
     const { willLearn, onAddLearnClick, onRemoveLearnClick } = this.props;
@@ -24,9 +35,7 @@ class WillLearn extends Component {
         </div>
 
         <select ref="learn" className="language-selection" defaultValue="english">
-          <option value="English">English</option> 
-          <option value="Spanish">Spanish</option>
-          <option value="French">French</option>
+          {languageDropdown(orderedArrayOfLanguages(languageList))}
         </select>
 
         <select ref="learn-level" className="level-selection" defaultValue="basic">
@@ -42,5 +51,3 @@ class WillLearn extends Component {
   }
 
 };
-
-export default WillLearn;
