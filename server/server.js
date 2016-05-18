@@ -31,16 +31,17 @@ function launchServer() {
     require('./routes/apiRoutes.js'));
 
 // ZACH: sockets in a different file
-  var server = require('http').Server(app);
+  var server = require('https').createServer(app);
   sockets(server);
 
   //twilio
   require('./routes/twilio.js')(app);
   
-  var port = process.env.PORT || 3000;
+  var ports = process.env.PORT ? [80, 443] : [3000, 5678];
 
-  server.listen(port, function() {
-    console.log('iDioma listening on port: ' + port);
+  server.listen(ports[1], function() {
+    console.log('iDioma listening on port: ' + ports[1]);
   });
+  app.listen(ports[0]);
 }
 
