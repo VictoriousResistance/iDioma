@@ -9,7 +9,7 @@ import Video from '../components/Video.jsx';
 
 const mapStateToProps = (state) => (
   {
-    user: state.profile,
+    self: state.profile,
     rooms: state.rooms,
     inputText: state.inputText,
     isInVideo: state.video.isInVideo,
@@ -22,13 +22,20 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = (dispatch) => (
   {
-    handleRoomChange: (roomIndex) => {
+    handleRoomChange: (e, roomIndex) => {
       dispatch(changeCurrentRoom(roomIndex));
+      e.preventDefault();
     },
 
-    roomDeleter: (e, roomIndex) => {
+    roomDeleter: (e, roomIndex, selfId, roomId) => {
       dispatch(deleteRoom(roomIndex));
       e.stopPropagation();
+      request('PUT', '/api/rooms', {
+        json: {
+          userId: selfId,
+          roomId,
+        },
+      });
     },
 
     handleOnSend: (msg) => {
@@ -42,11 +49,6 @@ const mapDispatchToProps = (dispatch) => (
       request('POST', '/api/messages', {
         json: msg,
       });
-      // .done(data => {
-      //   if (data.statusCode !== 201) {
-      //     // TODO: handle error
-      //   }
-      // });
     },
 
     handleTextInput: (event) => {
