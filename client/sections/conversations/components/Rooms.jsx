@@ -15,7 +15,7 @@ const Room = ({ room, handleRoomChange, index }) => (
   <a href="#" onClick={() => handleRoomChange(index)}>
     <div className="room">
       <div className="thread-name">{nameMaker(room.users)}</div>
-      <Button label='Delete' type='action' onClick={() => console.log(room.id)} />
+      <Button label='Delete' type='action' clickHandler={() => console.log(room.id)} />
     </div>
   </a>
 );
