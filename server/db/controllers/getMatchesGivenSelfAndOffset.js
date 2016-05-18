@@ -4,9 +4,9 @@ const pluckMatches = require('./helpers.js').pluckMatches;
 const getLanguages = require('./getUserLanguageInfoGivenUserId').bulk;
 
 module.exports = (self, offSet) => {
-  const queryStr = `SELECT DISTINCT teach.teach_id, teach.teach_url, teach.teach_first, teach.teach_last, teach.teach_description FROM (
+  const queryStr = `SELECT DISTINCT teach.teach_id, teach.teach_url, teach.teach_first, teach.teach_last, teach.teach_description, teach.teach_facebook_id FROM (
                       (
-                        SELECT users.id AS teach_id, users.photo_url AS teach_url, users.first_name AS teach_first, users.last_name AS teach_last, users.description AS teach_description FROM users 
+                        SELECT users.id AS teach_id, users.photo_url AS teach_url, users.first_name AS teach_first, users.last_name AS teach_last, users.description AS teach_description, users.facebook_id as teach_facebook_id FROM users 
                           INNER JOIN users_languages_levels  
                             ON users_languages_levels.user_id = users.id
                           INNER JOIN languages_levels 
@@ -19,7 +19,7 @@ module.exports = (self, offSet) => {
                       ) AS teach 
                       INNER JOIN 
                       ( 
-                        SELECT users.id AS learn_id, users.photo_url AS learn_url, users.first_name AS learn_first, users.last_name AS learn_last, users.description AS learn_description FROM users 
+                        SELECT users.id AS learn_id, users.photo_url AS learn_url, users.first_name AS learn_first, users.last_name AS learn_last, users.description AS learn_description, users.facebook_id as learn_facebook_id FROM users 
                           INNER JOIN users_languages_levels  
                             ON users_languages_levels.user_id = users.id
                           INNER JOIN languages_levels 
