@@ -21,3 +21,5 @@ serviceRouter.route('/notifications')
       res.sendStatus(404);
     });
   });
+
+module.exports = serviceRouter;
