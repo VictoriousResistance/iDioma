@@ -29,7 +29,7 @@ function launchServer() {
   //router and sockets
   require('./routes/webRoutes.js')(app, express);
   app.use('/api', auth.checkAuth, require('./routes/apiRoutes.js'));
-  app.use('/service', require('./routes/serviceRoutes.js'));
+  app.use('/service', auth.checkAuth, require('./routes/serviceRoutes.js'));
 
 // ZACH: sockets in a different file
 
