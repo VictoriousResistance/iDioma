@@ -11,18 +11,23 @@ module.exports = (server) => {
     console.log(`${++num} users online`);
 
     socket.on('join', data => {
-      const userId = data.userId;
+      const userId = socket.userId = data.userId;
+
+      // add user to master users obj
+      users[userId] = [];
 
       // join relevant channels (rooms)
       data.roomIds.forEach(roomId => {
         socket.join(roomId);
 
-        rooms[roomId] = rooms[roomId] || { numOnline: 0, users: {} };
-        console.log('before', rooms);
-        socket.nsp.in(roomId).emit('online room', { roomId, numOnline: rooms[roomId].numOnline++ });
-        console.log('after', rooms);
+        rooms[roomId] = rooms[roomId] || 0;
+        users[userId].push(roomId);
+        socket.nsp.in(roomId).emit('online room', { roomId, numOnline: rooms[roomId]++ });
       });
       socket.broadcast.emit('online user', { userId });
+
+      //
+      
     });
 
     socket.on('new message', (data) => {
@@ -30,6 +35,8 @@ module.exports = (server) => {
     });
 
     socket.on('disconnect', () => {
+      users[socket.userId].forEach(roomId => rooms[roomId]--);
+      delete users[socket.userId];
       console.log(`${--num} users online`);
     });
   });
