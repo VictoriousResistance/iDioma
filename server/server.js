@@ -28,9 +28,7 @@ function launchServer() {
 
   //router and sockets
   require('./routes/webRoutes.js')(app, express);
-  app.use('/api',
-    auth.checkAuth,
-    require('./routes/apiRoutes.js'));
+  app.use('/api', auth.checkAuth, require('./routes/apiRoutes.js'));
 
 // ZACH: sockets in a different file
 

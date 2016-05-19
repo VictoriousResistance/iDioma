@@ -9,6 +9,9 @@ const getRoomsInfo = require('../utils/getRoomInfo.js');
 
 const path = require('path');
 
+const crypto = require('crypto');
+const secret = require('../auth/config.js').SECRET;
+
 module.exports = (app, express) => {
 
   const redirectHome = (req, res) => res.redirect('/home/');
@@ -50,4 +53,28 @@ module.exports = (app, express) => {
     });
   });
 
+  if (process.env.PORT) {
+    app.post('/', (req, res, next) => {
+      if (req.query.signed_request) {
+        console.log('req.query.signed_request', req.query.signed_request);
+        const request = req.query.signed_request.split('.');
+        console.log('request', request);
+        const signature = request[0];
+        console.log('signature', signature);
+        const payload = request[1];
+        console.log('payload', payload);
+        // const decodedSignature = new Buffer(signature, 'base64').toString('ascii');
+        const expectedSignature = crypto.createHmac('sha256', secret).update(payload).digest('base64');
+        console.log('expectedSignature', expectedSignature);
+        if (signature === expectedSignature) {
+          const data = JSON.parse(new Buffer(payload, 'base64').toString('ascii'));
+          req.user.id = data.user_id;
+          req.session.passport.user = data.user_id;
+          return next();
+        }
+        return res.sendStatus(404);
+      }
+      return res.sendStatus(404);
+    }, redirectHome);
+  }
 };
