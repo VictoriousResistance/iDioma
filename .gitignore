@@ -46,3 +46,6 @@ client/tests/*
 
 # Environment variables
 .env
+
+# Encryption keys
+server/tls
