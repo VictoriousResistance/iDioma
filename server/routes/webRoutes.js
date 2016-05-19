@@ -57,7 +57,7 @@ module.exports = (app, express) => {
     app.post('/', (req, res, next) => {
       if (req.body.signed_request) {
         console.log('req.query.signed_request', req.query.signed_request);
-        const request = req.query.signed_request.split('.');
+        const request = req.body.signed_request.split('.');
         console.log('request', request);
         const signature = request[0];
         console.log('signature', signature);
