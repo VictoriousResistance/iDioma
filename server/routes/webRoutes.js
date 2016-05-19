@@ -63,10 +63,11 @@ module.exports = (app, express) => {
         console.log('signature', signature);
         const payload = request[1];
         console.log('payload', payload);
-        // const decodedSignature = new Buffer(signature, 'base64').toString('ascii');
-        const expectedSignature = crypto.createHmac('sha256', secret).update(payload).digest('base64');
+        const decodedSignature = new Buffer(signature, 'base64').toString('ascii');
+        const expectedSignature = new Buffer(crypto.createHmac('sha256', secret).update(payload).digest('base64'), 'base64').toString('ascii');
+                                  // .replace(/\//g, '_').replace(/\+/g, '-').replace(/\=/g, '');
         console.log('expectedSignature', expectedSignature);
-        if (signature === expectedSignature) {
+        if (decodedSignature === expectedSignature) {
           const data = JSON.parse(new Buffer(payload, 'base64').toString('ascii'));
           req.user.id = data.user_id;
           req.session.passport.user = data.user_id;
