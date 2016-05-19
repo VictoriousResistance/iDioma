@@ -7,14 +7,20 @@ serviceRouter.route('/notifications')
     const selfFB = req.body.selfFB;
     const otherFB = req.body.otherFB;
     const requestURL = `https://graph.facebook.com/${otherFB}/notifications`;
+    console.log('selfFB', selfFB);
+    console.log('otherFB', otherFB);
+    console.log('appID', fbConfig.ID);
+    console.log('appSecret', fbConfig.SECRET);
+    console.log('requestURL', requestURL);
     request('POST', requestURL, {
       qs: {
         access_token: `${fbConfig.ID}|${fbConfig.SECRET}`,
-        template: `@[${selfFB}] sent you a pair request on iDioma.`,
         href: 'requests',
+        template: `@[${selfFB}] sent you a pair request on iDioma.`,
       },
     })
     .done(data => {
+      console.log('done data', data);
       if (data.statusCode === 200) {
         return res.sendStatus(201);
       }
