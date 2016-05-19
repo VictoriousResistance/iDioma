@@ -55,7 +55,7 @@ module.exports = (app, express) => {
 
   if (process.env.PORT) {
     app.post('/', (req, res, next) => {
-      if (req.query.signed_request) {
+      if (req.body.signed_request) {
         console.log('req.query.signed_request', req.query.signed_request);
         const request = req.query.signed_request.split('.');
         console.log('request', request);
