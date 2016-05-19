@@ -69,7 +69,12 @@ module.exports = (app, express) => {
         console.log('expectedSignature', expectedSignature);
         if (decodedSignature === expectedSignature) {
           const data = JSON.parse(new Buffer(payload, 'base64').toString('ascii'));
+          console.log('data', data);
+          console.log('user_id', data.user_id);
+          req.user = {};
           req.user.id = data.user_id;
+          req.session = {};
+          req.session.passport = {};
           req.session.passport.user = data.user_id;
           return next();
         }
