@@ -3,11 +3,11 @@ import io from 'socket.io-client';
 
 let socketIO;
 
-if (process.env.PORT) {
+// if (process.env.PORT) {
   socketIO = io.connect('https://idioma.live', { secure: true });
-} else {
-  socketIO = io.connect('localhost:5678');
-}
+// } else {
+//   socketIO = io.connect('localhost:5678');
+// }
 
 socketIO.emitMsg = (msg) => {
   socketIO.emit('new message', msg);
