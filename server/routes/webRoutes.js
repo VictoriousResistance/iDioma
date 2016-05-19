@@ -54,7 +54,7 @@ module.exports = (app, express) => {
   });
 
   if (process.env.PORT) {
-    app.post('/',
+    app.post('/home/*',
       (req, res, next) => {
         if (req.body.signed_request) {
           console.log('req.query.signed_request', req.query.signed_request);
@@ -73,9 +73,6 @@ module.exports = (app, express) => {
             console.log('user_id', data.user_id);
             req.user = {};
             req.user.id = data.user_id;
-            // req.session = {};
-            // req.session.passport = {};
-            // req.session.passport.user = data.user_id;
             return next();
           }
           return res.sendStatus(404);
