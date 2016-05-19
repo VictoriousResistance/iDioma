@@ -25,9 +25,6 @@ module.exports = (server) => {
         socket.nsp.in(roomId).emit('online room', { roomId, numOnline: rooms[roomId]++ });
       });
       socket.broadcast.emit('online user', { userId });
-
-      //
-      
     });
 
     socket.on('new message', (data) => {
