@@ -25,18 +25,18 @@ export default function (store) {
   const state = store.getState();
   const userId = state.profile.id;
   const roomIds = state.rooms.map(room => room.id);
-  socket.emit('join', { userId, roomIds });
+  socketIO.emit('join', { userId, roomIds });
 
   // add socket listeners
-  socket.on('new message', msg => {
+  socketIO.on('new message', msg => {
     dispatch(conversationActions.addMsg(msg));
   });
 
-  socket.on('online room', data => {
+  socketIO.on('online room', data => {
     dispatch(conversationActions.updateOnlineNow(data.roomId, data.numOnline));
   });
 
-  socket.on('online user', data => {
+  socketIO.on('online user', data => {
     dispatch(connectionsActions.showOnlineNow(data.userId)); // FIXME WHY IS THIS TRIGGERING CONNECTION REQUESTS, TOO?
     // dispatch(connectionRequestsActions.showOnlineNow(data.userId));
   });

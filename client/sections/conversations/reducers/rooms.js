@@ -55,7 +55,11 @@ const rooms = (state = [], action) => {
       const { roomId, numOnline } = action;
       const roomNum = state.reduce((cum, curr, i) => ((curr.id === roomId) ? i : cum), null); // TODO: what if nothing is found?
       return roomNum === null ?
-      state :
+      [
+        ...state.slice(0, roomNum),
+        Object.assign({}, state[roomNum], { onlineNow: numOnline }),
+        ...state.slice(roomNum + 1),
+      ] :
       [
         ...state.slice(0, roomNum),
         Object.assign({}, state[roomNum], { onlineNow: numOnline }),
