@@ -54,33 +54,44 @@ module.exports = (app, express) => {
   });
 
   if (process.env.PORT) {
-    app.post('/', (req, res, next) => {
-      if (req.body.signed_request) {
-        console.log('req.query.signed_request', req.query.signed_request);
-        const request = req.body.signed_request.split('.');
-        console.log('request', request);
-        const signature = request[0];
-        console.log('signature', signature);
-        const payload = request[1];
-        console.log('payload', payload);
-        const decodedSignature = new Buffer(signature, 'base64').toString('ascii');
-        const expectedSignature = new Buffer(crypto.createHmac('sha256', secret).update(payload).digest('base64'), 'base64').toString('ascii');
-                                  // .replace(/\//g, '_').replace(/\+/g, '-').replace(/\=/g, '');
-        console.log('expectedSignature', expectedSignature);
-        if (decodedSignature === expectedSignature) {
-          const data = JSON.parse(new Buffer(payload, 'base64').toString('ascii'));
-          console.log('data', data);
-          console.log('user_id', data.user_id);
-          req.user = {};
-          req.user.id = data.user_id;
-          req.session = {};
-          req.session.passport = {};
-          req.session.passport.user = data.user_id;
-          return next();
+    app.post('/',
+      (req, res, next) => {
+        if (req.body.signed_request) {
+          console.log('req.query.signed_request', req.query.signed_request);
+          const request = req.body.signed_request.split('.');
+          console.log('request', request);
+          const signature = request[0];
+          console.log('signature', signature);
+          const payload = request[1];
+          console.log('payload', payload);
+          const decodedSignature = new Buffer(signature, 'base64').toString('ascii');
+          const expectedSignature = new Buffer(crypto.createHmac('sha256', secret).update(payload).digest('base64'), 'base64').toString('ascii');
+          console.log('expectedSignature', expectedSignature);
+          if (decodedSignature === expectedSignature) {
+            const data = JSON.parse(new Buffer(payload, 'base64').toString('ascii'));
+            console.log('data', data);
+            console.log('user_id', data.user_id);
+            req.user = {};
+            req.user.id = data.user_id;
+            // req.session = {};
+            // req.session.passport = {};
+            // req.session.passport.user = data.user_id;
+            return next();
+          }
+          return res.sendStatus(404);
         }
         return res.sendStatus(404);
-      }
-      return res.sendStatus(404);
-    }, redirectHome);
+      },
+      (req, res, next) => {
+        req.idioma = { connections: {}, matches: {}, connectionRequests: {} };
+        next();
+      },
+      getSelfProfile,
+      getConnections,
+      getMatches,
+      getConnectionRequests,
+      getRoomsInfo,
+      homeHandler
+    );
   }
 };
