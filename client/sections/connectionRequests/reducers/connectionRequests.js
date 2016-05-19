@@ -28,6 +28,7 @@ const connectionRequests = (state = [], action) => {
     case 'SHOW_ONLINE_NOW': {
       const { id } = action;
       const connectionNum = state.reduce((cum, curr, i) => ((curr.id === id) ? i : cum), null);
+      console.log('request', connectionNum);
       return connectionNum === null ?
       state :
       [

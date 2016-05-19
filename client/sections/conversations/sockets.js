@@ -37,8 +37,8 @@ export default function (store) {
   });
 
   socket.on('online user', data => {
-    dispatch(connectionsActions.showOnlineNow(data.userId));
-    dispatch(connectionRequestsActions.showOnlineNow(data.userId));
+    dispatch(connectionsActions.showOnlineNow(data.userId)); // FIXME WHY IS THIS TRIGGERING CONNECTION REQUESTS, TOO?
+    // dispatch(connectionRequestsActions.showOnlineNow(data.userId));
   });
 }
 

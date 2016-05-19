@@ -25,6 +25,7 @@ const ConnectionRequest = ({ connectionRequest, onAcceptClick, onDeclineClick, s
       </div>
       <div className="button-container">
         <button className="action" onClick={() => { onAcceptClick(selfId, connectionRequest); }}>Accept</button>
+          <div>{connectionRequest.onlineNow ? 'Online Now!' : ''}</div>
         <button className="action negative-action" onClick={() => { onDeclineClick(selfId, connectionRequest.id); }}>Decline</button>
       </div>
     </div>

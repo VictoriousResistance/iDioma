@@ -11,7 +11,7 @@ const connections = (state = [], action) => {
     case 'SHOW_ONLINE_NOW': {
       const { id } = action;
       const connectionNum = state.reduce((cum, curr, i) => ((curr.id === id) ? i : cum), null);
-      console.log('HERE', id, connectionNum);
+      console.log('connection', connectionNum);
       return connectionNum === null ?
       state :
       [
