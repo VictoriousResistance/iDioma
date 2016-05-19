@@ -51,16 +51,16 @@ const rooms = (state = [], action) => {
       ];
     }
 
-    case 'INCREMENT_ROOM_ONLINE_NOW': {
-      const { roomId } = action;
-      const roomNum = state.reduce((cum, curr, i) => ((curr.id === roomId) ? i : cum), 'N/A'); // TODO: what if nothing is found?
-      const room = state[roomNum];
-      const onlineNow = room.onlineNow || 0;
-      return [
+    case 'UPDATE_ROOM_ONLINE_NOW': {
+      const { roomId, numOnline } = action;
+      const roomNum = state.reduce((cum, curr, i) => ((curr.id === roomId) ? i : cum), null); // TODO: what if nothing is found?
+      return roomNum ?
+      [
         ...state.slice(0, roomNum),
-        Object.assign({}, room, { onlineNow: onlineNow + 1 }),
+        Object.assign({}, state[roomNum], { onlineNow: numOnline }),
         ...state.slice(roomNum + 1),
-      ];
+      ] :
+      state;
     }
 
     default:

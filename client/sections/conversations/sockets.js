@@ -32,8 +32,11 @@ export default function (store) {
     dispatch(conversationActions.addMsg(msg));
   });
 
-  socket.on('online now', data => {
-    dispatch(conversationActions.incrementOnlineNow(data.roomId));
+  socket.on('online room', data => {
+    dispatch(conversationActions.updateOnlineNow(data.roomId, data.numOnline));
+  });
+
+  socket.on('online user', data => {
     dispatch(connectionsActions.showOnlineNow(data.userId));
     dispatch(connectionRequestsActions.showOnlineNow(data.userId));
   });
@@ -44,6 +47,7 @@ export const socket = socketIO;
 /*
 TODO: join new room
 new message incoming should open new room
+get others online now
 leave room
 */
 

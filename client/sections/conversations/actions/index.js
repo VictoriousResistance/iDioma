@@ -57,9 +57,10 @@ export const addNewRoom = (room, self, connections) => (
   }
 );
 
-export const incrementOnlineNow = (roomId) => (
-    {
-      type: 'INCREMENT_ROOM_ONLINE_NOW',
-      roomId,
-    }
+export const updateOnlineNow = (roomId, numOnline) => (
+  {
+    type: 'UPDATE_ROOM_ONLINE_NOW',
+    roomId,
+    numOnline,
+  }
 );

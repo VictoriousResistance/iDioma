@@ -16,16 +16,18 @@ module.exports = (server) => {
       // join relevant channels (rooms)
       data.roomIds.forEach(roomId => {
         socket.join(roomId);
-        rooms[roomId] ?
-          socket.nsp.to(roomId).emit('online now', { roomId, userId }) :// emit online now to everyone, even yourself
-          socket.broadcast.in(roomId).emit('online now', { roomId, userId }); // TODO: use user-specific data to show WHO'S online in a room
-
-        rooms[roomId] = rooms[roomId] + 1 || 1;
+        console.log(rooms);
+        socket.nsp.in(roomId).emit('online room', { roomId, numOnline: rooms[roomId]++ });
+        socket.nsp.in(roomId).emit('online user', userId);
       });
     });
 
     socket.on('new message', (data) => {
       socket.broadcast.in(data.roomId).emit('new message', data);
     });
+
+    socket.on('disconnect', () =>
+      console.log('LOG OUT')
+    );
   });
 };
