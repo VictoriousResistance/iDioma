@@ -34,6 +34,7 @@ function launchServer() {
 
 // ZACH: sockets in a different file
 
+  // ssl config for deployment
   if (process.env.PORT) {
     var server = require('https').createServer(
       {
@@ -42,7 +43,7 @@ function launchServer() {
       },
       app);
   } else {
-    var server = require('https').createServer({}, app);
+    var server = require('http').Server(app);
   }
   sockets(server);
 
@@ -51,11 +52,10 @@ function launchServer() {
   
   var ports = process.env.PORT ? [80, 443] : [3000, 5678];
 
-  if (process.env.PORT) {
-    server.listen(ports[1], function() {
-      console.log('iDioma listening on port: ' + ports[1]);
-    });
-  }
+  server.listen(ports[1], function() {
+    console.log('iDioma listening on port: ' + ports[1]);
+  });
+  
   app.listen(ports[0], function() {
     console.log('iDioma listening on port: ' + ports[0]);
   });
