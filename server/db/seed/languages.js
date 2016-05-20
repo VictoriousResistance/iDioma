@@ -27,8 +27,14 @@ const languageList = [
 const languageEntries = languageList.map((language, index) =>
   ({ id: index + 1, name: language }));
 
-module.exports.seed = () =>
-  Languages.bulkCreate(languageEntries)
+module.exports.seed = () => (
+  Languages.findAll({})
+  .then(languages => {
+    if (languages.length === 0) {
+      return Languages.bulkCreate(languageEntries);
+    }
+    return languages;
+  })
   .then((languages) => {
     const idToLanguage = module.exports.idToLanguage = {};
     const languageToId = module.exports.languageToId = {};
@@ -37,4 +43,6 @@ module.exports.seed = () =>
       languageToId[language.dataValues.name] = language.dataValues.id;
     });
     return idToLanguage;
-  });
+  })
+);
+
