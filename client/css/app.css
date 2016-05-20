@@ -101,13 +101,14 @@ button:disabled {
   margin: 1em 12%;
   position: relative;
   padding: 1em;
-  border-bottom: 1.5px grey solid;
+  border: 1.5px grey solid;
+  background-color: #fafafa;
 }
-
+/*
 .person:last-child {
   border-bottom: transparent;
 }
-
+*/
 .person-name {
   font-size: 1.1em;
   font-weight: bold;
@@ -452,14 +453,14 @@ button:disabled {
 
   .person {
     margin: 0 6% 5em 6%;
-    border-bottom: transparent;
-    border-top: 1.5px grey solid;
+    border-/*bottom: transparent;
+    border-top*/: 1.5px grey solid;
   }
 
-  .person:first-child {
+ /* .person:first-child {
     border-top: transparent;
   }
-
+*/
   .text-container {
     display: block;
     position: static;
