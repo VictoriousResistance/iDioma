@@ -36,8 +36,8 @@ module.exports = function(initialState) {
       <body>
         <div id='app'>
         </div>
-        <script src="https://media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
-        <script src="https://media.twiliocdn.com/sdk/js/conversations/v0.13/twilio-conversations.min.js"></script>
+        <script src="/lib/twilio-common.min.js"></script>
+        <script src="/lib/twilio-conversations.min.js"></script>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
