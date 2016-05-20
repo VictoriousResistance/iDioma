@@ -46,7 +46,7 @@ button:disabled {
   top: 0;
   width: 100%;
   padding: 1% 8% 0 8%;
-  background-color: #1abb9c;
+  background-color: #30a281;
   font-weight: bold;
   margin-bottom: 2.5em;
   border-bottom: .8em #2a3f54 solid;
@@ -147,16 +147,16 @@ button:disabled {
   display: inline-block;
   text-align: center;
   font-size: 1em;
-  border: .1em #004080 solid;
+  border: .1em #30a281 solid;
   padding: 0.3em;
   color: white;
-  background-color: #004080;
+  background-color: #30a281;
   border-radius: 5px;
   margin: 0.5em 0.3em 0 0;
 }
 
 .negative-action {
-  color: #004080;
+  color: #30a281;
   border-color: transparent;
   background-color: transparent;
 }
@@ -266,9 +266,9 @@ button:disabled {
 }
 
 .add {
-  border: .1em #004080 solid;
+  border: .1em #30a281 solid;
   border-radius: .5em;
-  background-color: #004080;
+  background-color: #30a281;
   color: white;
 }
 
@@ -298,12 +298,12 @@ button:disabled {
   font-size: 1em;
   padding: 6px;
   color: white;
-  background-color: #004080;
-  border: .12em black solid;
+  background-color: #30a281;
+  border: .12em #2a3f54 solid;
   border-radius: .3em;
 }
 .need-update {
-  background-color: #FF0000;
+  background-color: #e66f69;
 }
 
 .need-update:disabled {
