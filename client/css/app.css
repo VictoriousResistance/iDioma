@@ -6,7 +6,7 @@
 
 body {
   font-size: 17px;
-  background-color: #86D0FF;
+  background-color: #ededed;
   margin: 0 auto;
   font-family: 'Source Sans Pro', sans-serif;
 }
@@ -46,10 +46,10 @@ button:disabled {
   top: 0;
   width: 100%;
   padding: 1% 8% 0 8%;
-  background-color: #004080;
+  background-color: #1abb9c;
   font-weight: bold;
   margin-bottom: 2.5em;
-  border-bottom: 1em #132A6C solid;
+  border-bottom: .8em #2a3f54 solid;
   z-index: 3;
 }
 
