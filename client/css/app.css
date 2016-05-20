@@ -48,7 +48,7 @@ button:disabled {
   width: 100%;
   padding: 20px 8% 0 12%;
   background-color: #30a281;
-  font-weight: bold;
+  /*font-weight: bold;*/
   margin-bottom: 2.5em;
   border-bottom: .8em #2a3f54 solid;
   z-index: 3;
@@ -74,7 +74,7 @@ button:disabled {
 
 .logo {
   font-size: 2em;
-  margin-right: 1.2em;
+  margin-right: 1.5em;
   display: inline-block;
   font-weight: normal;
   margin-bottom: 0em;
