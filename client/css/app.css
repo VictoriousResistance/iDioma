@@ -6,6 +6,7 @@
 
 body {
   font-size: 17px;
+  color: #004080;
   background-color: #ededed;
   margin: 0 auto;
   font-family: 'Source Sans Pro', sans-serif;
@@ -45,7 +46,7 @@ button:disabled {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 1% 8% 0 8%;
+  padding: 40px 8% 0 16%;
   background-color: #30a281;
   font-weight: bold;
   margin-bottom: 2.5em;
@@ -72,11 +73,11 @@ button:disabled {
 }
 
 .logo {
-  font-size: 3em;
-  margin-right: 2em;
+  font-size: 2em;
+  margin-right: 1.2em;
   display: inline-block;
   font-weight: normal;
-  margin-bottom: .3em;
+  margin-bottom: 0em;
 }
 
 
@@ -205,6 +206,7 @@ button:disabled {
   vertical-align: top;
   margin-right: 4em;
   margin-bottom: 2em;
+  margin-top: 3em;
 }
 
 .profile-detail {
@@ -392,6 +394,10 @@ button:disabled {
   .right-nav {
     display: block;
     position: static;
+  }
+
+  .topbar {
+    padding-left: 8%;
   }
   /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
   .button-container {
