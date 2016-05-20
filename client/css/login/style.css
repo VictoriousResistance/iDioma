@@ -353,7 +353,7 @@ footer {
 @media all and (max-width: 991px) {
 
 	header{
-		background: url(../images/wordcloud.png) no-repeat !important;
+		background: url(../../assets/wordcloud.png) no-repeat !important;
 	}
 }
 
