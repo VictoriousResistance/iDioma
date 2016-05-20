@@ -59,6 +59,10 @@ button:disabled {
   margin-right: 2em;
 }
 
+.main-nav-item > a:hover, .right-nav-item > a:hover {
+  color: #2a3f54;
+}
+
 .main-nav {
   display: inline-block;
   margin-bottom: .3em;
