@@ -37,7 +37,7 @@ button:disabled {
 }
 
 .content {
-  margin-top: 8em;
+  margin-top: 6em;
 }
 
 /****************************** Top Bar ******************************/
@@ -78,7 +78,7 @@ button:disabled {
 
 .logo {
   font-size: 2em;
-  margin-right: 1.5em;
+  margin-right: 1em;
   display: inline-block;
   font-weight: normal;
   margin-bottom: 0em;
@@ -92,7 +92,6 @@ button:disabled {
 /****************************** Content ******************************/
 .content {
   padding-bottom: 5em;
-  margin-top: 6em;
 }
 
 /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
@@ -408,7 +407,7 @@ button:disabled {
   background-color: #e66f69;
 }
 
-@media (max-width: 1140px) {
+@media (max-width: 1220px) {
   .right-nav {
     right: 0;
     /*display: block;*/
@@ -416,10 +415,16 @@ button:disabled {
   }
 }
 
-@media (max-width: 1010px) {
+@media (max-width: 1080px) {
+  .top-bar {
+    padding-left: 5%;
+  }
   .right-nav {
     display: block;
     position: static;
+  }
+  .content {
+    margin-top: 7em;
   }
 }
 
@@ -428,16 +433,15 @@ button:disabled {
   /****************************** Top Bar ******************************/
 
   .content {
-    margin-top: 11em;
+    margin-top: 9em;
   }
 
   .right-nav {
-    display: block;
     position: static;
   }
 
   .topbar {
-    padding-left: 8%;
+    padding-left: 30px;
   }
   /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
   .button-container {
