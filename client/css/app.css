@@ -46,7 +46,7 @@ button:disabled {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 40px 8% 0 16%;
+  padding: 20px 8% 0 12%;
   background-color: #30a281;
   font-weight: bold;
   margin-bottom: 2.5em;
@@ -67,8 +67,8 @@ button:disabled {
 
 .right-nav {
   position: absolute;
-  right: 6%;
-  bottom: 3em;
+  right: 10%;
+  bottom: .3em;
   display: inline-block;
 }
 
@@ -381,6 +381,21 @@ button:disabled {
 
 .end-call {
   background-color: #FF0000;
+}
+
+@media (max-width: 1140px) {
+  .right-nav {
+    right: 0;
+    /*display: block;*/
+    /*position: static;*/
+  }
+}
+
+@media (max-width: 1010px) {
+  .right-nav {
+    display: block;
+    position: static;
+  }
 }
 
 @media handheld, only screen and (max-width: 767px) {
