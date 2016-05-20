@@ -1,7 +1,7 @@
 import React from 'react';
 
 // should disable when no rooms
-const Input = ({ msgTemplate, inputText, handleTextInput, clickHandler }) => (
+const Input = ({ inputText, handleTextInput, clickHandler }) => (
   <input
     className="message-composer"
     type="text"

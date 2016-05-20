@@ -57,8 +57,8 @@ const Conversations = ({ self, rooms, inputText, handleRoomChange, roomDeleter, 
         <div>
           <Messages usersKey={currRoom.usersKey} messages={currRoom.messages || []} />
         </div>
-        <Input msgTemplate={msgTemplate} inputText={inputText} clickHandler={submitMsg} handleTextInput={handleTextInput} />
-        <Button msgTemplate={msgTemplate} inputText={inputText} clickHandler={submitMsg} label='Send' type='action' />
+        <Input inputText={inputText} clickHandler={submitMsg} handleTextInput={handleTextInput} />
+        <Button clickHandler={submitMsg} label='Send' type='action' />
         {videoRequestButton}
       </div>
       {waitingMessage}

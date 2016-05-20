@@ -11,3 +11,8 @@ export const removeRequest = (id) => {
     id,
   };
 };
+
+export const showOnlineNow = (id) => ({
+  type: 'SHOW_ONLINE_NOW',
+  id,
+});

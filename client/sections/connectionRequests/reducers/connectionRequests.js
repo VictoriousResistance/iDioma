@@ -25,6 +25,19 @@ const connectionRequests = (state = [], action) => {
       });
       return newState;
 
+    case 'SHOW_ONLINE_NOW': {
+      const { id } = action;
+      const connectionNum = state.reduce((cum, curr, i) => ((curr.id === id) ? i : cum), null);
+      console.log('request', connectionNum);
+      return connectionNum === null ?
+      state :
+      [
+        ...state.slice(0, connectionNum),
+        Object.assign({}, state[connectionNum], { onlineNow: true }),
+        ...state.slice(connectionNum + 1),
+      ];
+    }
+
     default:
       return state;
 
