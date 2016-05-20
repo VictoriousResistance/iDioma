@@ -5,6 +5,7 @@ const TopBar = () => (
   <div className="topbar">
     <div className="logo">
       <a href="/home/matches">iDioma</a>
+      <img className="logo-pic" src="../assets/logo.png"></img>
     </div>
     <ul className="main-nav">
       <li className="main-nav-item">

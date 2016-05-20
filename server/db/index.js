@@ -32,7 +32,7 @@ module.exports = function(launchServer) {
   Users.belongsToMany(Users, { as: 'User2', through: 'relationships', foreignKey: 'user2Id' });
 
   // TODO: remove force true
-  db.sync({ force: true })
+  db.sync()
     .then(languagesData.seed)
     .then(levelsData.seed)
     // make sure first test function does not need ANY inputs

@@ -37,7 +37,7 @@ button:disabled {
 }
 
 .content {
-  margin-top: 8em;
+  margin-top: 6em;
 }
 
 /****************************** Top Bar ******************************/
@@ -46,10 +46,10 @@ button:disabled {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 20px 8% 0 12%;
+  padding: 0 8% 0 12%;
   background-color: #30a281;
   /*font-weight: bold;*/
-  margin-bottom: 2.5em;
+  margin-bottom: 1em;
   border-bottom: .8em #2a3f54 solid;
   z-index: 3;
 }
@@ -57,6 +57,10 @@ button:disabled {
 .main-nav-item, .right-nav-item {
   display: inline-block;
   margin-right: 2em;
+}
+
+.main-nav-item > a:hover, .right-nav-item > a:hover {
+  color: #2a3f54;
 }
 
 .main-nav {
@@ -74,12 +78,16 @@ button:disabled {
 
 .logo {
   font-size: 2em;
-  margin-right: 1.5em;
+  margin-right: 1em;
   display: inline-block;
   font-weight: normal;
   margin-bottom: 0em;
 }
 
+.logo-pic {
+  padding-bottom: 5px;
+  width: 60px;
+}
 
 /****************************** Content ******************************/
 .content {
@@ -156,10 +164,25 @@ button:disabled {
   margin: 0.5em 0.3em 0 0;
 }
 
+.action:hover {
+  color: #2a3f54;
+  background-color: #ededed;
+}
+
 .negative-action {
   color: #e66f69;
   border-color: transparent;
   background-color: transparent;
+}
+
+.negative-action:hover {
+  color: #e66f69;
+  /*background-color: #e66f69;*/
+  border: .1em #e66f69 solid;
+}
+
+.conversation-link {
+  padding: 0.3em;
 }
 
 .languages {
@@ -384,7 +407,7 @@ button:disabled {
   background-color: #e66f69;
 }
 
-@media (max-width: 1140px) {
+@media (max-width: 1220px) {
   .right-nav {
     right: 0;
     /*display: block;*/
@@ -392,10 +415,16 @@ button:disabled {
   }
 }
 
-@media (max-width: 1010px) {
+@media (max-width: 1080px) {
+  .top-bar {
+    padding-left: 5%;
+  }
   .right-nav {
     display: block;
     position: static;
+  }
+  .content {
+    margin-top: 7em;
   }
 }
 
@@ -404,16 +433,15 @@ button:disabled {
   /****************************** Top Bar ******************************/
 
   .content {
-    margin-top: 11em;
+    margin-top: 9em;
   }
 
   .right-nav {
-    display: block;
     position: static;
   }
 
   .topbar {
-    padding-left: 8%;
+    padding-left: 30px;
   }
   /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
   .button-container {
