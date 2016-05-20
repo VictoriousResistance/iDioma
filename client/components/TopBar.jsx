@@ -25,7 +25,7 @@ const TopBar = () => (
         <Link to="/home/profile">My Profile</Link>
       </li>
       <li className="right-nav-item">
-        <a href="/logout">Sign out</a>
+        <a href="/logout">Sign Out</a>
       </li>
     </ul>
   </div>

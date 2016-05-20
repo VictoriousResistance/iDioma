@@ -6,7 +6,8 @@
 
 body {
   font-size: 17px;
-  background-color: #86D0FF;
+  color: #004080;
+  background-color: #ededed;
   margin: 0 auto;
   font-family: 'Source Sans Pro', sans-serif;
 }
@@ -45,11 +46,11 @@ button:disabled {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 1% 8% 0 8%;
-  background-color: #004080;
-  font-weight: bold;
+  padding: 20px 8% 0 12%;
+  background-color: #30a281;
+  /*font-weight: bold;*/
   margin-bottom: 2.5em;
-  border-bottom: 1em #132A6C solid;
+  border-bottom: .8em #2a3f54 solid;
   z-index: 3;
 }
 
@@ -66,17 +67,17 @@ button:disabled {
 
 .right-nav {
   position: absolute;
-  right: 6%;
-  bottom: 3em;
+  right: 10%;
+  bottom: .3em;
   display: inline-block;
 }
 
 .logo {
-  font-size: 3em;
-  margin-right: 2em;
+  font-size: 2em;
+  margin-right: 1.5em;
   display: inline-block;
   font-weight: normal;
-  margin-bottom: .3em;
+  margin-bottom: 0em;
 }
 
 
@@ -147,16 +148,16 @@ button:disabled {
   display: inline-block;
   text-align: center;
   font-size: 1em;
-  border: .1em #004080 solid;
+  border: .1em #2a3f54 solid;
   padding: 0.3em;
   color: white;
-  background-color: #004080;
+  background-color: #2a3f54;
   border-radius: 5px;
   margin: 0.5em 0.3em 0 0;
 }
 
 .negative-action {
-  color: #004080;
+  color: #e66f69;
   border-color: transparent;
   background-color: transparent;
 }
@@ -187,8 +188,8 @@ button:disabled {
 
 .language {
   display: inline-block;
-  background-color: #86CDFF;
-  border: .1em #004080 solid;
+  background-color: #c5e3bf;
+  border: .1em #30a281 solid;
   border-radius: .2em;
 }
 
@@ -205,6 +206,7 @@ button:disabled {
   vertical-align: top;
   margin-right: 4em;
   margin-bottom: 2em;
+  margin-top: 3em;
 }
 
 .profile-detail {
@@ -266,9 +268,9 @@ button:disabled {
 }
 
 .add {
-  border: .1em #004080 solid;
+  border: .1em #30a281 solid;
   border-radius: .5em;
-  background-color: #004080;
+  background-color: #30a281;
   color: white;
 }
 
@@ -287,9 +289,10 @@ button:disabled {
 }
 
 .x {
-  background-color: #86CDFF;
+  background-color: #c5e3bf;
+  color: #004080;
   padding: 0 .4em;
-  border: .1em #004080 solid;
+  border: .1em #30a281 solid;
   border-radius: .2em;
   vertical-align: bottom;
 }
@@ -298,12 +301,12 @@ button:disabled {
   font-size: 1em;
   padding: 6px;
   color: white;
-  background-color: #004080;
-  border: .12em black solid;
+  background-color: #30a281;
+  border: .12em #2a3f54 solid;
   border-radius: .3em;
 }
 .need-update {
-  background-color: #FF0000;
+  background-color: #e66f69;
 }
 
 .need-update:disabled {
@@ -349,7 +352,7 @@ button:disabled {
 }
 
 .self-media-container video, .other-media-container video {
-  border: 3px #004080 solid;
+  border: 3px #30a281 solid;
   border-radius: 5px;
   height: 100%;
   width: 100%;
@@ -374,11 +377,26 @@ button:disabled {
 }
 
 .start-call {
-  background-color: #008000;
+  background-color: #30a281;
 }
 
 .end-call {
-  background-color: #FF0000;
+  background-color: #e66f69;
+}
+
+@media (max-width: 1140px) {
+  .right-nav {
+    right: 0;
+    /*display: block;*/
+    /*position: static;*/
+  }
+}
+
+@media (max-width: 1010px) {
+  .right-nav {
+    display: block;
+    position: static;
+  }
 }
 
 @media handheld, only screen and (max-width: 767px) {
@@ -392,6 +410,10 @@ button:disabled {
   .right-nav {
     display: block;
     position: static;
+  }
+
+  .topbar {
+    padding-left: 8%;
   }
   /****************************** Person Component (Match, Connection, ConnectionRequest) ******************************/
   .button-container {
