@@ -156,10 +156,25 @@ button:disabled {
   margin: 0.5em 0.3em 0 0;
 }
 
+.action:hover {
+  color: #2a3f54;
+  background-color: #ededed;
+}
+
 .negative-action {
   color: #e66f69;
   border-color: transparent;
   background-color: transparent;
+}
+
+.negative-action:hover {
+  color: #e66f69;
+  /*background-color: #e66f69;*/
+  border: .1em #e66f69 solid;
+}
+
+.conversation-link {
+  padding: 0.3em;
 }
 
 .languages {
