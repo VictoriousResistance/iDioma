@@ -148,16 +148,16 @@ button:disabled {
   display: inline-block;
   text-align: center;
   font-size: 1em;
-  border: .1em #30a281 solid;
+  border: .1em #2a3f54 solid;
   padding: 0.3em;
   color: white;
-  background-color: #30a281;
+  background-color: #2a3f54;
   border-radius: 5px;
   margin: 0.5em 0.3em 0 0;
 }
 
 .negative-action {
-  color: #30a281;
+  color: #e66f69;
   border-color: transparent;
   background-color: transparent;
 }
@@ -351,7 +351,7 @@ button:disabled {
 }
 
 .self-media-container video, .other-media-container video {
-  border: 3px #004080 solid;
+  border: 3px #30a281 solid;
   border-radius: 5px;
   height: 100%;
   width: 100%;
@@ -376,11 +376,11 @@ button:disabled {
 }
 
 .start-call {
-  background-color: #008000;
+  background-color: #30a281;
 }
 
 .end-call {
-  background-color: #FF0000;
+  background-color: #e66f69;
 }
 
 @media (max-width: 1140px) {
