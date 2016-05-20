@@ -22,9 +22,9 @@ module.exports = (server) => {
 
         rooms[roomId] = rooms[roomId] || 0;
         users[userId].push(roomId);
-        socket.nsp.in(roomId).emit('online room', { roomId, numOnline: rooms[roomId]++ });
+        // socket.nsp.in(roomId).emit('online room', { roomId, numOnline: rooms[roomId]++ });
       });
-      socket.broadcast.emit('online user', { userId });
+      // socket.broadcast.emit('online user', { userId });
     });
 
     socket.on('new message', (data) => {
@@ -32,7 +32,7 @@ module.exports = (server) => {
     });
 
     socket.on('disconnect', () => {
-      users[socket.userId].forEach(roomId => rooms[roomId]--);
+      // users[socket.userId].forEach(roomId => rooms[roomId]--);
       delete users[socket.userId];
       console.log(`${--num} users online`);
     });
