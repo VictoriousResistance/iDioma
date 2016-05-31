@@ -32,20 +32,20 @@ module.exports = function(launchServer) {
   Users.belongsToMany(Users, { as: 'User2', through: 'relationships', foreignKey: 'user2Id' });
 
   // TODO: remove force true
-  db.sync({ force: true })
+  db.sync()
     .then(languagesData.seed)
     .then(levelsData.seed)
     // make sure first test function does not need ANY inputs
-    .then(testDB.addUsers)
+    // .then(testDB.addUsers)
     // don't need these since they're already seeded:
     // .then(testDB.addLevels)
     // .then(testDB.addLanguages)
-    .then(testDB.addLanguagesLevels)
-    .then(testDB.addUsersLanguagesLevels)
-    .then(testDB.addRooms)
-    .then(testDB.addUsersRooms)
-    .then(testDB.addMessages)
-    .then(testDB.addRelationships)
+    // .then(testDB.addLanguagesLevels)
+    // .then(testDB.addUsersLanguagesLevels)
+    // .then(testDB.addRooms)
+    // .then(testDB.addUsersRooms)
+    // .then(testDB.addMessages)
+    // .then(testDB.addRelationships)
     // end of tests
     // .then(r => console.log(r))
     .then(() => launchServer());

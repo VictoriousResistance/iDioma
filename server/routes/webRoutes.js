@@ -9,6 +9,9 @@ const getRoomsInfo = require('../utils/getRoomInfo.js');
 
 const path = require('path');
 
+const crypto = require('crypto');
+const secret = require('../auth/config.js').SECRET;
+
 module.exports = (app, express) => {
 
   const redirectHome = (req, res) => res.redirect('/home/');
@@ -50,4 +53,35 @@ module.exports = (app, express) => {
     });
   });
 
+  if (process.env.PORT) {
+    app.post('/home/*',
+      (req, res, next) => {
+        if (req.body.signed_request) {
+          const request = req.body.signed_request.split('.');
+          const signature = request[0];
+          const payload = request[1];
+          const decodedSignature = new Buffer(signature, 'base64').toString('ascii');
+          const expectedSignature = new Buffer(crypto.createHmac('sha256', secret).update(payload).digest('base64'), 'base64').toString('ascii');
+          if (decodedSignature === expectedSignature) {
+            const data = JSON.parse(new Buffer(payload, 'base64').toString('ascii'));
+            req.user = {};
+            req.user.id = data.user_id;
+            return next();
+          }
+          return res.sendStatus(404);
+        }
+        return res.sendStatus(404);
+      },
+      (req, res, next) => {
+        req.idioma = { connections: {}, matches: {}, connectionRequests: {} };
+        next();
+      },
+      getSelfProfile,
+      getConnections,
+      getMatches,
+      getConnectionRequests,
+      getRoomsInfo,
+      homeHandler
+    );
+  }
 };

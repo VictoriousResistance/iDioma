@@ -31,13 +31,13 @@ module.exports = function(initialState) {
         <link rel="stylesheet" href="/css/app.css" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" href="/css/conversations.css" media="screen" title="no title" charset="utf-8">
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,600' rel='stylesheet' type='text/css'>
-        <link href="http://fonts.googleapis.com/css?family=Muli" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" type="text/css">
       </head>
       <body>
         <div id='app'>
         </div>
-        <script src="https://media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
-        <script src="https://media.twiliocdn.com/sdk/js/conversations/v0.13/twilio-conversations.min.js"></script>
+        <script src="/lib/twilio-common.min.js"></script>
+        <script src="/lib/twilio-conversations.min.js"></script>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>

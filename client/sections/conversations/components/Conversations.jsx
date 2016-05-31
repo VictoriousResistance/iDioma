@@ -6,7 +6,7 @@ import Button from './Button.jsx';
 import VideoRequestButton from './VideoRequestButton.jsx';
 
 // current room will always be the first object in rooms (i.e. rooms[0])
-const Conversations = ({ user, rooms, inputText, handleRoomChange, roomDeleter, handleTextInput, handleOnSend, handleVideoRequestClick, handleVideoDisconnectClick, handleToggleHasError, isInVideo, isWaiting, hasError, errorMessage, invite }) => {
+const Conversations = ({ self, rooms, inputText, handleRoomChange, roomDeleter, handleTextInput, handleOnSend, handleVideoRequestClick, handleVideoDisconnectClick, handleToggleHasError, isInVideo, isWaiting, hasError, errorMessage, invite }) => {
   if (rooms.length === 0) {
     return (
       <div className="empty-tab-message">
@@ -57,8 +57,8 @@ const Conversations = ({ user, rooms, inputText, handleRoomChange, roomDeleter, 
         <div>
           <Messages usersKey={currRoom.usersKey} messages={currRoom.messages || []} />
         </div>
-        <Input msgTemplate={msgTemplate} inputText={inputText} clickHandler={submitMsg} handleTextInput={handleTextInput} />
-        <Button msgTemplate={msgTemplate} inputText={inputText} clickHandler={submitMsg} label='Send' type='action' />
+        <Input inputText={inputText} clickHandler={submitMsg} handleTextInput={handleTextInput} />
+        <Button clickHandler={submitMsg} label='Send' type='action' />
         {videoRequestButton}
       </div>
       {waitingMessage}

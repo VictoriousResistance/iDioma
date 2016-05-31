@@ -10,13 +10,14 @@ const mapStateToProps = (state) => (
     self: {
       id: state.profile.id,
       languages: state.profile.languages,
+      fbId: state.profile.fbId,
     },
   }
 );
 
 const mapDispatchToProps = (dispatch) => (
   {
-    onConnectClick: (selfId, id) => {
+    onConnectClick: (selfId, id, selfFB, otherFB) => {
       request('POST', '/api/relationships', {
         json: {
           newType: 'request',
@@ -27,6 +28,12 @@ const mapDispatchToProps = (dispatch) => (
       .done(data => {
         if (data.statusCode === 201) {
           dispatch(unmountMatch(id));
+          request('POST', '/service/notifications', {
+            json: {
+              selfFB,
+              otherFB,
+            },
+          });
           setTimeout(
             () => {
               dispatch(removeMatch(id));

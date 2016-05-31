@@ -24,7 +24,10 @@ const Connection = ({ connection, onRemoveClick, self, rooms, onNewConvo }) => (
         </div>
       </div>
       <div className="button-container">
-        <button className="action" onClick={() => onNewConvo(self, connection, rooms)}><Link to="/home/conversations">Start Conversation</Link></button>
+        <Link to="/home/conversations">
+          <button className="action" onClick={() => onNewConvo(self, connection, rooms)}>Start Conversation</button>
+
+        </Link>
         <button className="action negative-action" onClick={() => onRemoveClick(self.id, connection.id)}>Unpair</button>
       </div>
     </div>
@@ -47,3 +50,4 @@ const Connections = ({ connections, self, rooms, onRemoveClick, onNewConvo }) =>
 };
 
 export default Connections;
+// <div>{connection.onlineNow ? 'Online Now!' : ''}</div>

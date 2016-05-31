@@ -24,7 +24,7 @@ const Match = ({ match, onConnectClick, onHideClick, self }) => (
         </div>
       </div>
       <div className="button-container">
-        <button className="action" onClick={() => { onConnectClick(self.id, match.id); }}>Send Pair Request</button>
+        <button className="action" onClick={() => { onConnectClick(self.id, match.id, self.fbId, match.fbId); }}>Send Pair Request</button>
         <button className="action negative-action" onClick={() => { onHideClick(self.id, match.id); }}>Don't Show Again</button>
       </div>
     </div>

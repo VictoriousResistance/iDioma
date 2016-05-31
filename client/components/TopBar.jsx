@@ -5,6 +5,7 @@ const TopBar = () => (
   <div className="topbar">
     <div className="logo">
       <a href="/home/matches">iDioma</a>
+      <img className="logo-pic" src="../assets/logo.png"></img>
     </div>
     <ul className="main-nav">
       <li className="main-nav-item">
@@ -25,7 +26,7 @@ const TopBar = () => (
         <Link to="/home/profile">My Profile</Link>
       </li>
       <li className="right-nav-item">
-        <a href="/logout">Sign out</a>
+        <a href="/logout">Sign Out</a>
       </li>
     </ul>
   </div>

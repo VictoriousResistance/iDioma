@@ -56,3 +56,11 @@ export const addNewRoom = (room, self, connections) => (
     connections,
   }
 );
+
+export const updateOnlineNow = (roomId, numOnline) => (
+  {
+    type: 'UPDATE_ROOM_ONLINE_NOW',
+    roomId,
+    numOnline,
+  }
+);
