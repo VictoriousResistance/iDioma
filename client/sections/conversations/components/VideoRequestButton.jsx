@@ -10,7 +10,7 @@ const VideoRequestButton = ({ handleVideoRequestClick, otherId, isWaiting, invit
     );
   }
   return (
-    <button className="action start-call" onClick={() => { handleVideoRequestClick(otherId); }} >
+    <button onClick={() => { handleVideoRequestClick(otherId); }} >
       Video Call
     </button>
   );
