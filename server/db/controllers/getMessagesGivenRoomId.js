@@ -1,4 +1,5 @@
 const Messages = require('../models/messageModel.js');
+const inspect = require('./helpers.js').inspect;
 
 const pluckMessage = (messageObj) =>
   ({
@@ -9,7 +10,10 @@ const pluckMessage = (messageObj) =>
   });
 
 const getMessagesGivenRoomId = (roomId) =>
-  Messages.findAll({ where: { room_id: roomId } })
+  Messages.findAll({
+    where: { room_id: roomId },
+    order: [['updatedAt', 'ASC']],
+  }).then(inspect)
   .then(messages => messages.map(message =>
     pluckMessage(message))
   );

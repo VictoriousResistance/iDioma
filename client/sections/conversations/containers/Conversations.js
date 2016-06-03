@@ -46,6 +46,7 @@ const mapDispatchToProps = (dispatch) => (
       // clear Input
       dispatch(changeInputText(''));
       // add message to database
+      console.log(msg);
       request('POST', '/api/messages', {
         json: msg,
       });
