@@ -64,7 +64,7 @@ const Conversations = ({ self, rooms, inputText, handleRoomChange, roomDeleter, 
             </div>
             <i className="fa fa-star"></i>
           </div>
-          <Messages usersKey={currRoom.usersKey} messages={currRoom.messages} />
+          <Messages usersKey={currRoom.usersKey} messages={currRoom.messages} selfId={self.id} />
           
           <div className="chat-message clearfix">
             <textarea name="message-to-send" id="message-to-send" placeholder="Type your message" rows="3"></textarea>

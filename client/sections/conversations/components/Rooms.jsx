@@ -45,9 +45,3 @@ const Rooms = ({ selfId, rooms, handleRoomChange, roomDeleter }) => (
 );
 
 export default Rooms;
-
-// <Button label='Delete' type='action' clickHandler={(e) => roomDeleter(e, index, selfId, room.id)} />
-      // <div className="thread-name">{room.onlineNow ? 'Online now!' : ''}</div>
-      // <Button label='Delete' type='action' clickHandler={(e) => roomDeleter(e, index, selfId, room.id)} />
-/* TODO: Rooms should be linked lists
-room users should be pointers to pairs */
