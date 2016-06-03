@@ -209,3 +209,20 @@
   overflow: hidden;
   border-radius: 50%;
 }
+
+.room:hover {
+  /*color: grey;*/
+}
+
+.room:hover img {
+  border: 2px solid white;
+}
+
+.removeRoom {
+  margin-left: 2px;
+  color: grey;
+}
+
+.removeRoom:hover {
+  color: white;
+}
