@@ -20,7 +20,6 @@ const Room = ({ selfId, room, handleRoomChange, roomDeleter, index }) => (
         <span className='fa fa-times-circle-o removeRoom' onClick={(e) => roomDeleter(e, index, selfId, room.id)}></span>
       </div>
       <div className="status">
-        <i className="fa fa-circle offline"></i>
       </div>
     </div>
   </li>
@@ -45,3 +44,5 @@ const Rooms = ({ selfId, rooms, handleRoomChange, roomDeleter }) => (
 );
 
 export default Rooms;
+
+        // <i className="fa fa-circle offline"></i>
