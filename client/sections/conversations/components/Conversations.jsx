@@ -6,7 +6,7 @@ import Button from './Button.jsx';
 import VideoRequestButton from './VideoRequestButton.jsx';
 
 // current room will always be the first object in rooms (i.e. rooms[0])
-const Conversations = ({ self, rooms, inputText, handleRoomChange, roomDeleter, handleTextInput, handleOnSend, handleVideoRequestClick, handleVideoDisconnectClick, handleToggleHasError, isInVideo, isWaiting, hasError, errorMessage, invite }) => {
+const Conversations = ({ self, rooms, handleRoomChange, roomDeleter, handleOnSend, handleVideoRequestClick, handleVideoDisconnectClick, handleToggleHasError, isInVideo, isWaiting, hasError, errorMessage, invite }) => {
   if (rooms.length === 0) {
     return (
       <div className="empty-tab-message">
@@ -52,8 +52,7 @@ const Conversations = ({ self, rooms, inputText, handleRoomChange, roomDeleter, 
     
   return (
     <div>
-      <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'></link>
-      <link rel="stylesheet" href="/css/chat.css"></link>
+
       <div className="container clearfix">
         <Rooms selfId={self.id} rooms={rooms} handleRoomChange={handleRoomChange} roomDeleter={roomDeleter} />
         <div className="chat">

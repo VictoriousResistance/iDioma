@@ -21,8 +21,6 @@ const initialState = window.__INITIAL_STATE__;
 
 const store = createStore(rootReducer, initialState);
 
-socketIO(store);
-
 const renderApp = () => {
   render((
     <Provider store={store}>
@@ -41,4 +39,7 @@ const renderApp = () => {
   ), document.getElementById('app'));
 };
 
-twilioSetup(store, renderApp);
+const renderTwilio = () =>
+  twilioSetup(store, renderApp);
+
+socketIO(store, renderTwilio);
