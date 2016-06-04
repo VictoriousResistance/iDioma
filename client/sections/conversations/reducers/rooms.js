@@ -19,8 +19,11 @@ const rooms = (state = [], action) => {
     }
 
     case 'ADD_MESSAGE_TO_ROOM': {
-      var objDiv = document.getElementById("messages");
-      objDiv.scrollTop = objDiv.scrollHeight;
+      try {
+        var objDiv = document.getElementById("messages");
+        objDiv.scrollTop = objDiv.scrollHeight;
+      } catch (error) {
+      }
       
       const { msg, activeRoom } = action;
       const roomNum = activeRoom ? 0 : state.reduce((cum, curr, i) => ((curr.id === msg.roomId) ? i : cum), 'N/A'); // TODO: what if nothing is found?
