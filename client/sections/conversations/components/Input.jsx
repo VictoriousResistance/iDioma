@@ -7,15 +7,16 @@ const Input = ({ inputText, handleTextInput, submitMsg, videoRequestButton }) =>
       name="message-to-send"
       id="message-to-send"
       placeholder="Type your message"
-      rows="3" value={inputText.value}
+      rows="3"
+      // value={inputText.value}
       onChange={handleTextInput}
-      onKeyDown={(e) => (e.keyCode === 13) && submitMsg()}
+      onKeyDown={(e) => (e.keyCode === 13) && submitMsg(document.getElementById('message-to-send').value)}
     ></textarea>
             
     <i className="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
     <i className="fa fa-file-image-o"></i>
     
-    <button onClick={() => submitMsg()}>Send</button>
+    <button onClick={() => submitMsg(document.getElementById('message-to-send').value)}>Send</button>
     {videoRequestButton}
   </div>
 );

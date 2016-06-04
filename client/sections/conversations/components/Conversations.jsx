@@ -30,8 +30,10 @@ const Conversations = ({ self, rooms, inputText, handleRoomChange, roomDeleter, 
     body: '',
   };
 
-  const submitMsg = () =>
-    handleOnSend(Object.assign({}, msgTemplate, { body: inputText.value }));
+  const submitMsg = (inputText) => {
+    handleOnSend(Object.assign({}, msgTemplate, { body: inputText }));
+    document.getElementById('message-to-send').value = '';
+  }
 
   const waitingMessage = isWaiting ?
     <div>Waiting for response...</div>
@@ -65,7 +67,7 @@ const Conversations = ({ self, rooms, inputText, handleRoomChange, roomDeleter, 
             <i className="fa fa-star"></i>
           </div>
           <Messages usersKey={currRoom.usersKey} messages={currRoom.messages} selfId={self.id} />
-          <Input inputText={inputText} handleTextInput={handleTextInput} submitMsg={submitMsg} videoRequestButton={videoRequestButton} />
+          <Input submitMsg={submitMsg} videoRequestButton={videoRequestButton} />
 
         </div>
       </div>

@@ -31,10 +31,7 @@ const Room = ({ selfId, room, handleRoomChange, roomDeleter, index }) => (
 
 const Rooms = ({ selfId, rooms, handleRoomChange, roomDeleter }) => (
   <div className="people-list" id="people-list">
-    <div className="search">
-      <input type="text" placeholder="search" />
-      <i className="fa fa-search"></i>
-    </div>
+
     <ul className="list">
       {rooms.map((room, i, roomsState) => (
         <Room key={i} index={i} room={room} handleRoomChange={handleRoomChange} roomDeleter={roomDeleter} selfId={selfId} />
@@ -43,6 +40,11 @@ const Rooms = ({ selfId, rooms, handleRoomChange, roomDeleter }) => (
   </div>
 );
 
+    // <div className="search">
+    //   <input type="text" placeholder="search" />
+    //   <i className="fa fa-search"></i>
+    // </div>
+    
 export default Rooms;
 
         // <i className="fa fa-circle offline"></i>
