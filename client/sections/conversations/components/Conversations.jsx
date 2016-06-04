@@ -47,7 +47,7 @@ const Conversations = ({ self, rooms, handleRoomChange, roomDeleter, handleOnSen
     </div>
     : null;
   const videoRequestButton = !isInVideo ?
-    <VideoRequestButton handleVideoRequestClick={handleVideoRequestClick} isWaiting={isWaiting} invite={invite} otherId={'Test'} />
+    <VideoRequestButton handleVideoRequestClick={handleVideoRequestClick} isWaiting={isWaiting} invite={invite} otherId={rooms[0].users[0].id + '+' + rooms[0].users[0].firstName + '+' + rooms[0].users[0].lastName} />
     : null;
     
   return (
