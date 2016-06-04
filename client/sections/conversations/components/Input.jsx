@@ -13,8 +13,10 @@ const Input = ({ submitMsg, videoRequestButton, errorMessageHolder, waitingMessa
 
     <button className="action send" onClick={() => submitMsg(document.getElementById('message-to-send').value)}>Send</button>
     {videoRequestButton}
-    {waitingMessage}
-    {errorMessageHolder}
+    <div className='video-call-message-container' >
+      {waitingMessage}
+      {errorMessageHolder}
+    </div>
   </div>
 );
 

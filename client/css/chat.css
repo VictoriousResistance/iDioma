@@ -241,3 +241,7 @@
   background-color: #e66f69;
   float: right;
 }
+
+.video-call-message-container {
+ margin-top: 15px;
+}
