@@ -1,16 +1,18 @@
 const sockets = require('socket.io');
 
 var num = 0;
-// constant t lookup for active users and rooms
+// constant lookup for active users and rooms
 const users = {};
 const rooms = {};
 
 module.exports = (server) => {
   const io = sockets(server);
   io.on('connection', (socket) => {
+    // send back that it's ready -> mount React components
     console.log(`${++num} users online`);
 
     socket.on('join', data => {
+      console.log('JOINED');
       const userId = socket.userId = data.userId;
 
       // add user to master users obj
@@ -28,6 +30,7 @@ module.exports = (server) => {
     });
 
     socket.on('new message', (data) => {
+      console.log('here');
       socket.broadcast.in(data.roomId).emit('new message', data);
     });
 

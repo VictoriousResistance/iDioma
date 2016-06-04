@@ -9,7 +9,10 @@ const pluckMessage = (messageObj) =>
   });
 
 const getMessagesGivenRoomId = (roomId) =>
-  Messages.findAll({ where: { room_id: roomId } })
+  Messages.findAll({
+    where: { room_id: roomId },
+    order: [['updatedAt', 'ASC']],
+  })
   .then(messages => messages.map(message =>
     pluckMessage(message))
   );
