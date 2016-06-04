@@ -1,15 +1,13 @@
 import React from 'react';
 
 // should disable when no rooms
-const Input = ({ inputText, handleTextInput, submitMsg, videoRequestButton }) => (
+const Input = ({ submitMsg, videoRequestButton }) => (
   <div className="chat-message clearfix">
     <textarea
       name="message-to-send"
       id="message-to-send"
       placeholder="Type your message"
       rows="3"
-      // value={inputText.value}
-      onChange={handleTextInput}
       onKeyDown={(e) => (e.keyCode === 13) && submitMsg(document.getElementById('message-to-send').value)}
     ></textarea>
             
