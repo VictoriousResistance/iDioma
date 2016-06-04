@@ -33,19 +33,21 @@ const Conversations = ({ self, rooms, handleRoomChange, roomDeleter, handleOnSen
   const submitMsg = (inputText) => {
     handleOnSend(Object.assign({}, msgTemplate, { body: inputText }));
     document.getElementById('message-to-send').value = '';
-  }
+  };
 
   const waitingMessage = isWaiting ?
     <div>Waiting for response...</div>
     : null;
+
   const errorMessageHolder = hasError ?
-    <div>
-      <div className="language">
+    <div className="is-waiting-container">
+      <div className="language is-waiting-container">
         {errorMessage}
       </div>
       <button className="x" onClick={() => { handleToggleHasError(); }}>x</button>
     </div>
     : null;
+
   const videoRequestButton = !isInVideo ?
     <VideoRequestButton handleVideoRequestClick={handleVideoRequestClick} isWaiting={isWaiting} invite={invite} otherId={rooms[0].users[0].id + '+' + rooms[0].users[0].firstName + '+' + rooms[0].users[0].lastName} />
     : null;
@@ -66,12 +68,9 @@ const Conversations = ({ self, rooms, handleRoomChange, roomDeleter, handleOnSen
             <i className="fa fa-star"></i>
           </div>
           <Messages usersKey={currRoom.usersKey} messages={currRoom.messages} selfId={self.id} />
-          <Input submitMsg={submitMsg} videoRequestButton={videoRequestButton} />
-
+          <Input submitMsg={submitMsg} videoRequestButton={videoRequestButton} waitingMessage={waitingMessage} errorMessageHolder={errorMessageHolder} />
         </div>
       </div>
-      {waitingMessage}
-      {errorMessageHolder}
     </div>
   );
 };

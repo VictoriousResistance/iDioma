@@ -150,7 +150,7 @@
   color: gray;
   cursor: pointer;
 }
-.chat .chat-message button {
+/*.chat .chat-message button {
   float: right;
   color: #94C2ED;
   font-size: 16px;
@@ -163,7 +163,7 @@
 .chat .chat-message button:hover {
   color: #75b1e8;
 }
-
+*/
 .online, .offline, .me {
   margin-right: 3px;
   font-size: 10px;
@@ -226,4 +226,18 @@
 
 .removeRoom:hover {
   color: white;
+}
+
+.send {
+  float: right;
+}
+
+.start-call {
+  background-color: #30a281;
+  float: right;
+}
+
+.end-call {
+  background-color: #e66f69;
+  float: right;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 
 // should disable when no rooms
-const Input = ({ submitMsg, videoRequestButton }) => (
+const Input = ({ submitMsg, videoRequestButton, errorMessageHolder, waitingMessage }) => (
   <div className="chat-message clearfix">
     <textarea
       name="message-to-send"
@@ -10,12 +10,11 @@ const Input = ({ submitMsg, videoRequestButton }) => (
       rows="3"
       onKeyDown={(e) => (e.keyCode === 13) && submitMsg(document.getElementById('message-to-send').value)}
     ></textarea>
-            
-    <i className="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
-    <i className="fa fa-file-image-o"></i>
-    
-    <button onClick={() => submitMsg(document.getElementById('message-to-send').value)}>Send</button>
+
+    <button className="action send" onClick={() => submitMsg(document.getElementById('message-to-send').value)}>Send</button>
     {videoRequestButton}
+    {waitingMessage}
+    {errorMessageHolder}
   </div>
 );
 
