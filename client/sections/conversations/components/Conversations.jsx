@@ -65,7 +65,7 @@ const Conversations = ({ self, rooms, handleRoomChange, roomDeleter, handleOnSen
               <div className="chat-with">{currRoom.users[0].firstName + ' ' + currRoom.users[0].lastName}</div>
               <div className="chat-num-messages">{currRoom.messages.length} messages</div>
             </div>
-            <i className="fa fa-star"></i>
+
           </div>
           <Messages usersKey={currRoom.usersKey} messages={currRoom.messages} selfId={self.id} />
           <Input submitMsg={submitMsg} videoRequestButton={videoRequestButton} waitingMessage={waitingMessage} errorMessageHolder={errorMessageHolder} />

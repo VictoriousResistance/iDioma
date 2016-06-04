@@ -118,19 +118,19 @@
   width: 0;
   position: absolute;
   pointer-events: none;
-  border-bottom-color: #86BB71;
+  border-bottom-color: #35B48F;
   border-width: 10px;
   margin-left: -10px;
 }
 .chat .chat-history .other-message {
-  background: #86BB71;
+  background: #35B48F;
 }
 .chat .chat-history .my-message {
-  background: #94C2ED;
+  background: #486C92;
   float: right;
 }
 .chat .chat-history .my-message:after {
-  border-bottom-color: #94C2ED;
+  border-bottom-color: #486C92;
   left: 93%;
 }
 .chat .chat-message {
