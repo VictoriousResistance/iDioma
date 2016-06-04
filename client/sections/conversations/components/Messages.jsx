@@ -3,8 +3,13 @@ import Message from './Message.jsx';
 
 class Messages extends React.Component {
 
+  componentDidMount() {
+    const objDiv = document.getElementById('messages');
+    objDiv.scrollTop = objDiv.scrollHeight;
+  }
+
   componentDidUpdate() {
-    const objDiv = document.getElementById("messages");
+    const objDiv = document.getElementById('messages');
     objDiv.scrollTop = objDiv.scrollHeight;
   }
 
