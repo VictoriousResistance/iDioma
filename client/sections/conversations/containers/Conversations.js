@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Conversations from '../components/Conversations.jsx';
-import { addMsg, changeInputText, changeCurrentRoom, deleteRoom, toggleIsInVideo, toggleIsWaiting, toggleHasError } from '../actions/index.js';
+import { addMsg, changeCurrentRoom, deleteRoom, toggleIsInVideo, toggleIsWaiting, toggleHasError } from '../actions/index.js';
 import { socket } from '../sockets.js';
 import request from 'then-request';
 import React from 'react';
@@ -11,7 +11,6 @@ const mapStateToProps = (state) => (
   {
     self: state.profile,
     rooms: state.rooms,
-    inputText: state.inputText,
     isInVideo: state.video.isInVideo,
     hasError: state.video.hasError,
     isWaiting: state.video.isWaiting,
@@ -43,16 +42,10 @@ const mapDispatchToProps = (dispatch) => (
       socket.emitMsg(msg);
       // add it (second argument is a boolean that tells it to add to current room and therefore skip searching for the room)
       dispatch(addMsg(msg, true));
-      // clear Input
-      dispatch(changeInputText(''));
       // add message to database
       request('POST', '/api/messages', {
         json: msg,
       });
-    },
-
-    handleTextInput: (event) => {
-      dispatch(changeInputText(event.target.value));
     },
 
     handleVideoRequestClick: (otherId) => {

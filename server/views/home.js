@@ -32,6 +32,8 @@ module.exports = function(initialState) {
         <link rel="stylesheet" href="/css/conversations.css" media="screen" title="no title" charset="utf-8">
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,600' rel='stylesheet' type='text/css'>
         <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" type="text/css">
+        <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+        <link rel="stylesheet" href="/css/chat.css">
       </head>
       <body>
         <div id='app'>

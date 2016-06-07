@@ -6,7 +6,7 @@ import Button from './Button.jsx';
 import VideoRequestButton from './VideoRequestButton.jsx';
 
 // current room will always be the first object in rooms (i.e. rooms[0])
-const Conversations = ({ self, rooms, inputText, handleRoomChange, roomDeleter, handleTextInput, handleOnSend, handleVideoRequestClick, handleVideoDisconnectClick, handleToggleHasError, isInVideo, isWaiting, hasError, errorMessage, invite }) => {
+const Conversations = ({ self, rooms, handleRoomChange, roomDeleter, handleOnSend, handleVideoRequestClick, handleVideoDisconnectClick, handleToggleHasError, isInVideo, isWaiting, hasError, errorMessage, invite }) => {
   if (rooms.length === 0) {
     return (
       <div className="empty-tab-message">
@@ -21,7 +21,7 @@ const Conversations = ({ self, rooms, inputText, handleRoomChange, roomDeleter, 
     );
   }
 
-  const currRoom = rooms[0] || { id: 0, messages: [], users: [] };
+  const currRoom = rooms[0] || { id: 0, messages: [], users: [], usersKey: {} };
 
   const msgTemplate = {
     roomId: currRoom.id,
@@ -30,39 +30,47 @@ const Conversations = ({ self, rooms, inputText, handleRoomChange, roomDeleter, 
     body: '',
   };
 
-  const submitMsg = () =>
-    handleOnSend(Object.assign({}, msgTemplate, { body: inputText.value }));
+  const submitMsg = (inputText) => {
+    handleOnSend(Object.assign({}, msgTemplate, { body: inputText }));
+    document.getElementById('message-to-send').value = '';
+  };
 
   const waitingMessage = isWaiting ?
     <div>Waiting for response...</div>
     : null;
+
   const errorMessageHolder = hasError ?
-    <div>
-      <div className="language">
+    <div className="is-waiting-container">
+      <div className="language is-waiting-container">
         {errorMessage}
       </div>
       <button className="x" onClick={() => { handleToggleHasError(); }}>x</button>
     </div>
     : null;
+
   const videoRequestButton = !isInVideo ?
     <VideoRequestButton handleVideoRequestClick={handleVideoRequestClick} isWaiting={isWaiting} invite={invite} otherId={rooms[0].users[0].id + '+' + rooms[0].users[0].firstName + '+' + rooms[0].users[0].lastName} />
     : null;
     
   return (
-    <div className="chatapp">
-      <div>
-        <Rooms rooms={rooms} currentRoom={currRoom} handleRoomChange={handleRoomChange} roomDeleter={roomDeleter} selfId={self.id} />
-      </div>
-      <div>
-        <div>
-          <Messages usersKey={currRoom.usersKey} messages={currRoom.messages || []} />
+    <div>
+
+      <div className="container clearfix">
+        <Rooms selfId={self.id} rooms={rooms} handleRoomChange={handleRoomChange} roomDeleter={roomDeleter} />
+        <div className="chat">
+          <div className="chat-header clearfix">
+            <img className="profilePic" src={currRoom.users[0].photoUrl} alt="avatar" />
+            
+            <div className="chat-about">
+              <div className="chat-with">{currRoom.users[0].firstName + ' ' + currRoom.users[0].lastName}</div>
+              <div className="chat-num-messages">{currRoom.messages.length} messages</div>
+            </div>
+
+          </div>
+          <Messages usersKey={currRoom.usersKey} messages={currRoom.messages} selfId={self.id} />
+          <Input submitMsg={submitMsg} videoRequestButton={videoRequestButton} waitingMessage={waitingMessage} errorMessageHolder={errorMessageHolder} />
         </div>
-        <Input inputText={inputText} clickHandler={submitMsg} handleTextInput={handleTextInput} />
-        <Button clickHandler={submitMsg} label='Send' type='action' />
-        {videoRequestButton}
       </div>
-      {waitingMessage}
-      {errorMessageHolder}
     </div>
   );
 };

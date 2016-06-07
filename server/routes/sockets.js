@@ -1,13 +1,14 @@
 const sockets = require('socket.io');
 
 var num = 0;
-// constant t lookup for active users and rooms
+// constant lookup for active users and rooms
 const users = {};
 const rooms = {};
 
 module.exports = (server) => {
   const io = sockets(server);
   io.on('connection', (socket) => {
+    // send back that it's ready -> mount React components
     console.log(`${++num} users online`);
 
     socket.on('join', data => {

@@ -3,14 +3,14 @@ import * as connectionsActions from '../connections/actions/';
 import * as connectionRequestsActions from '../connectionRequests/actions/';
 import io from 'socket.io-client';
 
-let socketIO;
 
 // if (process.env.PORT) {
-  socketIO = io.connect('https://idioma.live', { secure: true });
+const socketIO = io.connect('https://idioma.live', { secure: true });
 // } else {
 //   socketIO = io.connect('localhost:5678');
 // }
 
+export default function (store, renderTwilio) {
 socketIO.emitMsg = (msg) => {
   socketIO.emit('new message', msg);
 };
@@ -19,15 +19,22 @@ socketIO.enterRoom = (user, room) => {
   socketIO.emit('enter room', room);
 };
 
-export default function (store) {
   const dispatch = store.dispatch;
   // initialize user and enter rooms server-side
   const state = store.getState();
   const userId = state.profile.id;
   const roomIds = state.rooms.map(room => room.id);
+  
+  socketIO.on('connect', renderTwilio);
+
   socketIO.emit('join', { userId, roomIds });
 
-  // add socket listeners
+  // add socket listener
+
+  socketIO.on('render React', () =>
+    console.log(new Date())
+  );
+
   socketIO.on('new message', msg => {
     dispatch(conversationActions.addMsg(msg));
   });
