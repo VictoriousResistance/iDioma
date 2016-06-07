@@ -12,7 +12,6 @@ module.exports = (server) => {
     console.log(`${++num} users online`);
 
     socket.on('join', data => {
-      console.log('JOINED');
       const userId = socket.userId = data.userId;
 
       // add user to master users obj
@@ -30,7 +29,6 @@ module.exports = (server) => {
     });
 
     socket.on('new message', (data) => {
-      console.log('here');
       socket.broadcast.in(data.roomId).emit('new message', data);
     });
 
